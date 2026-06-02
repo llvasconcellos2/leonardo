@@ -1,0 +1,34 @@
+/* global React */
+// ── LV Portfolio · top nav ──────────────────────────────────────────
+function Nav({ route, go, lang, setLang }) {
+  const items = [
+    { id: 'work', label: lang === 'pt' ? 'Trabalho' : 'Work', route: 'archive' },
+    { id: 'writing', label: lang === 'pt' ? 'Escrita' : 'Writing', route: 'writing' },
+    { id: 'about', label: lang === 'pt' ? 'Sobre' : 'About', route: 'about' },
+  ];
+  return (
+    <header className="lv-nav">
+      <button className="lv-nav-mark" onClick={() => go('home')} aria-label="Home">LV</button>
+      <nav className="lv-nav-links">
+        {items.map((it) => (
+          <button
+            key={it.id}
+            className={`lv-nav-link ${route === it.id ? 'is-active' : ''}`}
+            onClick={() => go(it.route)}
+          >{it.label}</button>
+        ))}
+      </nav>
+      <div className="lv-nav-right">
+        <div className="lv-lang">
+          {['en', 'pt'].map((l) => (
+            <button key={l} className={`lv-lang-b ${lang === l ? 'is-on' : ''}`} onClick={() => setLang(l)}>{l.toUpperCase()}</button>
+          ))}
+        </div>
+        <button className="lv-btn lv-btn-primary lv-nav-cta" onClick={() => go('about')}>
+          {lang === 'pt' ? 'Currículo' : 'Résumé'}
+        </button>
+      </div>
+    </header>
+  );
+}
+Object.assign(window, { Nav });

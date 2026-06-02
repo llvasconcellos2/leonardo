@@ -1,0 +1,218 @@
+/* ============================================================
+   LV — Leonardo Vasconcellos · Colors & Type
+   Single source of truth for design-system artifacts.
+   Authored in OKLCH. Dark-only. Derived from source/globals.css.
+   Load Google Fonts (Exo, Sora, JetBrains Mono) before this file.
+   ============================================================ */
+
+/* Fonts self-host from fonts/ — no CDN dependency. */
+@font-face {
+  font-family: 'Exo';
+  src: url('fonts/Exo-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('fonts/Sora-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- NEUTRAL RAMP (hue 258 — structure / elevation) ---------- */
+  --bg:             oklch(0.255 0.008 258); /* #202327  page ground */
+  --surface:        oklch(0.305 0.010 258); /* #2c2f34  cards */
+  --raised:         oklch(0.360 0.012 258); /* #393d44  elevated surfaces */
+  --border:         oklch(0.440 0.016 258); /* #4d535c  dividers (1px hairline) */
+  --border-strong:  oklch(0.520 0.018 258); /* #636974  hover / emphasis borders */
+  --text-muted:     oklch(0.680 0.020 258); /* #9199a5  captions, metadata */
+  --text-secondary: oklch(0.800 0.018 258); /* #b7beca  body / UI text */
+  --text-primary:   oklch(0.930 0.012 258); /* #e3e8f0  headings */
+
+  /* ---------- NAVY (hue 260 — quiet brand / structural color) ---------- */
+  --brand-deep:     oklch(0.270 0.090 260); /* #082451  brand bands, hero field */
+  --brand:          oklch(0.360 0.110 260); /* #173a76  brand surfaces */
+  --brand-bright:   oklch(0.450 0.085 260); /* #395584  brand hover / chart fills */
+
+  /* ---------- EMERALD (hue 158 — the single accent) ---------- */
+  --accent-bg:      oklch(0.330 0.060 158); /* #153f29  tag / pill fills */
+  --accent:         oklch(0.700 0.150 158); /* #2eba7a  buttons, solid accent */
+  --accent-bright:  oklch(0.720 0.140 158); /* #45bf82  links, kickers, underlines */
+  --accent-hover:   oklch(0.760 0.140 158); /* #54cc8e  accent hover */
+  --on-accent:      oklch(0.200 0.070 158); /* #001c0e  text on accent */
+  --accent-on-dim:  oklch(0.800 0.110 158); /* #7dd3a3  text on --accent-bg */
+
+  /* ---------- TYPE · FAMILIES ---------- */
+  --font-display: 'Exo', system-ui, sans-serif;
+  --font-sans:    'Sora', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+
+  /* ---------- TYPE · SIZE SCALE (ratio ~1.25, fluid at top) ---------- */
+  --text-xs:       0.78rem;
+  --text-sm:       0.875rem;
+  --text-base:     1rem;
+  --text-prose:    1.1875rem;
+  --text-lg:       1.25rem;
+  --text-xl:       1.5rem;
+  --text-2xl:      clamp(1.75rem, 3vw, 2.25rem);
+  --text-3xl:      clamp(2.25rem, 5vw, 3.25rem);
+  --text-display:  clamp(2.75rem, 8vw, 5rem);
+  --text-monogram: clamp(7rem, 22vw, 16rem);
+
+  /* ---------- TYPE · LINE-HEIGHT / TRACKING / MEASURE ---------- */
+  --leading-tight: 1.1;
+  --leading-snug:  1.35;
+  --leading-ui:    1.5;
+  --leading-prose: 1.7;
+  --tracking-tight: -0.02em;
+  --tracking-wide:  0.12em;
+  --tracking-mono:  0.03em;
+  --measure-prose: 68ch;
+  --measure-ui:    60ch;
+
+  /* ---------- SPACING · RAW SCALE (4px base) ---------- */
+  --space-1:  0.25rem;  --space-2:  0.5rem;   --space-3:  0.75rem;  --space-4:  1rem;
+  --space-5:  1.25rem;  --space-6:  1.5rem;   --space-8:  2rem;     --space-10: 2.5rem;
+  --space-12: 3rem;     --space-16: 4rem;     --space-20: 5rem;     --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ---------- SPACING · RHYTHM + LAYOUT ---------- */
+  --section-y:       clamp(4rem, 10vw, 8rem);
+  --gutter:          clamp(1rem, 4vw, 2rem);
+  --container:       72rem;
+  --container-prose: 42rem;
+
+  /* ---------- RADII ---------- */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-pill: 999px;
+
+  /* ---------- ELEVATION · DROP SHADOWS ----------
+     Elevation is communicated PRIMARILY by stepping lighter through the
+     neutral ramp. Shadows are a secondary cue — soft, low, near-black so
+     they read on a dark ground without glowing. Pair a shadow with a
+     one-step surface lift; never use a shadow to fake a color you skipped. */
+  --shadow-sm: 0 1px 2px rgba(8, 10, 14, 0.45);
+  --shadow-md: 0 6px 16px -4px rgba(8, 10, 14, 0.55);
+  --shadow-lg: 0 18px 40px -12px rgba(8, 10, 14, 0.65);
+
+  /* ---------- MOTION ---------- */
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast:    180ms;
+  --dur-base:    320ms;
+  --dur-slow:    600ms;
+}
+
+/* sRGB fallback for pre-OKLCH browsers */
+@supports not (color: oklch(0 0 0)) {
+  :root {
+    --bg:#202327; --surface:#2c2f34; --raised:#393d44; --border:#4d535c;
+    --border-strong:#636974; --text-muted:#9199a5; --text-secondary:#b7beca; --text-primary:#e3e8f0;
+    --brand-deep:#082451; --brand:#173a76; --brand-bright:#395584;
+    --accent-bg:#153f29; --accent:#2eba7a; --accent-bright:#45bf82;
+    --accent-hover:#54cc8e; --on-accent:#001c0e; --accent-on-dim:#7dd3a3;
+  }
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES — apply directly to elements
+   ============================================================ */
+body {
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-2xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+h4, .h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+p { color: var(--text-secondary); }
+
+/* long-form prose (blog, project write-ups) — Sora, the body font */
+.prose {
+  font-family: var(--font-sans);
+  font-size: var(--text-prose);
+  line-height: var(--leading-prose);
+  color: var(--text-primary);
+  max-width: var(--measure-prose);
+}
+
+/* category kicker — code-comment "// label" style */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-mono);
+  color: var(--accent-bright);
+  text-transform: lowercase;
+}
+
+/* monospace code / tech labels */
+code, .code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+
+/* the letterspaced hero name treatment */
+.display-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-display);
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent-bright);
+  line-height: var(--leading-tight);
+}
+
+a { color: var(--accent-bright); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+::selection { background: var(--accent); color: var(--on-accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
