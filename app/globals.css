@@ -1586,4 +1586,23 @@ a:hover {
   .lv-hero-portrait-card {
     display: none;
   }
+  .lv-hero {
+    flex-direction: column;
+    align-items: center;
+    padding-top: clamp(50px, 14vw, 120px);
+    padding-bottom: 0;
+    gap: 0;
+  }
+  .lv-hero-inner {
+    max-width: 100%;
+  }
+  .lv-hero-leolowpoly {
+    position: relative;
+    right: -43px;
+    height: auto;
+    width: min(75vw, 320px);
+    margin: 8px auto 0;
+    display: block;
+    flex-shrink: 0;
+  }
 }
