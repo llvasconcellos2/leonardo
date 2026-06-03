@@ -1,4 +1,5 @@
 "use client";
+import "./ContactFooter.css";
 
 import { Mail, Download, CodeXml, Briefcase, Rss } from "lucide-react";
 import { Kicker } from "./Primitives";

@@ -1,4 +1,5 @@
 "use client";
+import "./WorkSection.css";
 
 import { ArrowRight, ShieldAlert, Check } from "lucide-react";
 import { Kicker, TechChip } from "./Primitives";

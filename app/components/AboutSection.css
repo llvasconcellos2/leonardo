@@ -1,0 +1,318 @@
+.lv-about-head {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  justify-content: space-between;
+}
+.lv-about-head-text {
+  flex: 1;
+  min-width: 0;
+}
+.lv-about-portrait {
+  flex: none;
+  width: clamp(120px, 16vw, 190px);
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: radial-gradient(
+    120% 120% at 50% 18%,
+    var(--brand) 0%,
+    var(--brand-deep) 70%
+  );
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+.lv-about-portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+}
+.lv-about-hi {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 14px 0 10px;
+}
+.lv-about-hi .lv-em {
+  color: var(--accent-bright);
+}
+.lv-about-tag {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--text-secondary);
+  margin: 0 0 40px;
+  max-width: 30ch;
+  line-height: 1.25;
+}
+.lv-about-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.lv-about-intro {
+  font-size: 16px;
+  margin: 0 0 28px;
+}
+.lv-about-sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.lv-about-left .lv-about-sub:not(:first-of-type) {
+  margin-top: 32px;
+}
+
+/* accordions */
+.lv-acc-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lv-acc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color var(--dur-base) var(--ease-spring);
+}
+.lv-acc.is-open {
+  border-color: var(--accent-bright);
+}
+.lv-acc-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--text-primary);
+  text-align: left;
+}
+.lv-acc-head svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent-bright);
+  flex: none;
+}
+.lv-acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--dur-base) var(--ease-spring);
+}
+.lv-acc.is-open .lv-acc-body {
+  max-height: 140px;
+}
+.lv-acc-body p {
+  margin: 0;
+  padding: 0 16px 16px;
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* education */
+.lv-edu {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.lv-edu-row {
+  display: flex;
+  gap: 14px;
+}
+.lv-edu-y {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-bright);
+  padding-top: 2px;
+  flex: none;
+  width: 42px;
+}
+.lv-edu-t {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+.lv-edu-d {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+/* tech stack grid */
+.lv-stack {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.lv-stack-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition:
+    border-color var(--dur-base) var(--ease-spring),
+    transform var(--dur-base) var(--ease-spring);
+}
+.lv-stack-cell:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+.lv-stack-cell img {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+.lv-stack-cell span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+
+/* stat row */
+.lv-stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 30px;
+}
+.lv-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 14px;
+}
+.lv-stat-n {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--accent-bright);
+  line-height: 1;
+}
+.lv-stat-l {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  display: block;
+}
+
+/* career timeline */
+.lv-timeline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 6px 4px;
+}
+.lv-timeline-line {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 24px;
+  height: 2px;
+  background: var(--border);
+}
+.lv-era {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  text-align: center;
+}
+.lv-era-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--raised);
+  border: 2px solid var(--border-strong);
+  z-index: 1;
+}
+.lv-era.is-now .lv-era-dot {
+  background: var(--accent);
+  border-color: var(--accent-hover);
+  box-shadow: 0 0 0 4px var(--accent-bg);
+}
+.lv-era-y {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+.lv-era.is-now .lv-era-y {
+  color: var(--accent-bright);
+}
+.lv-era-l {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  line-height: 1.3;
+  max-width: 9ch;
+}
+
+/* about CTA */
+.lv-about-cta {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.lv-about-cta-t {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--text-primary);
+  margin: 0 0 10px;
+}
+.lv-about-cta-l {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin: 0 auto 24px;
+  max-width: 46ch;
+}
+.lv-about-cta-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .lv-about-cols {
+    grid-template-columns: 1fr;
+  }
+  .lv-stack {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .lv-stat-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .lv-timeline {
+    overflow-x: auto;
+  }
+}

@@ -1,0 +1,79 @@
+.lv-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px clamp(20px, 4vw, 40px);
+  background: color-mix(in oklab, var(--bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.lv-nav-mark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--accent-bright);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.lv-nav-links {
+  display: flex;
+  gap: 6px;
+}
+.lv-nav-link {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 7px 12px;
+  border-radius: 8px;
+  transition: color var(--dur-fast);
+}
+.lv-nav-link:hover {
+  color: var(--text-primary);
+}
+.lv-nav-link.is-active {
+  color: var(--accent-bright);
+}
+.lv-nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.lv-lang {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.lv-lang-b {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 6px 9px;
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  cursor: pointer;
+}
+.lv-lang-b.is-on {
+  background: var(--surface);
+  color: var(--accent-bright);
+}
+.lv-nav-cta {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .lv-nav-links {
+    display: none;
+  }
+}

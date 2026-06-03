@@ -1,4 +1,5 @@
 "use client";
+import "./Hero.css";
 
 import { ArrowRight, ChevronsDown } from "lucide-react";
 import { LowPolyField } from "./LowPolyField";

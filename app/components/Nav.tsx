@@ -1,4 +1,5 @@
 "use client";
+import "./Nav.css";
 
 import { ArrowRight } from "lucide-react";
 import type { Lang } from "../data";

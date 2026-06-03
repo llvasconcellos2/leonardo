@@ -1,4 +1,6 @@
 "use client";
+import "./BlogPost.css";
+import "./WritingSection.css";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Kicker } from "./Primitives";

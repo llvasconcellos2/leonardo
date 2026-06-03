@@ -1,4 +1,5 @@
 "use client";
+import "./WritingSection.css";
 
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Kicker } from "./Primitives";

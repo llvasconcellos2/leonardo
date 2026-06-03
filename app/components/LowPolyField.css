@@ -1,0 +1,27 @@
+.lv-lowpoly {
+  position: relative;
+  overflow: hidden;
+  background: var(--brand-deep);
+}
+.lv-lowpoly svg {
+  display: block;
+}
+.lv-lowpoly-tag {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary);
+  background: color-mix(in oklab, var(--bg) 55%, transparent);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+.lv-lowpoly-ph {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: color-mix(in oklab, var(--text-muted) 80%, transparent);
+}

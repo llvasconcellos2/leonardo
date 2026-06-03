@@ -1,0 +1,155 @@
+/* ── KICKER / PILL / CHIP ───────────────────────────────────── */
+.lv-kicker {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: var(--accent-bright);
+  margin: 0;
+}
+.lv-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 5px 11px;
+  border-radius: 6px;
+  background: var(--accent-bg);
+  color: var(--accent-on-dim);
+  border: 1px solid color-mix(in oklab, var(--accent) 38%, transparent);
+}
+.lv-pill::before {
+  content: "#";
+  color: var(--accent-bright);
+}
+.lv-chip {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 5px 11px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+.lv-chip.has-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding-left: 9px;
+}
+.lv-chip-logo {
+  width: 14px;
+  height: 14px;
+  display: block;
+  flex: none;
+}
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.lv-btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 11px 22px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform var(--dur-fast) var(--ease-spring),
+    box-shadow var(--dur-fast) var(--ease-spring),
+    filter var(--dur-fast) var(--ease-spring),
+    background var(--dur-fast) var(--ease-spring),
+    color var(--dur-fast) var(--ease-spring),
+    border-color var(--dur-fast) var(--ease-spring);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+.lv-btn svg {
+  width: 16px;
+  height: 16px;
+}
+.lv-btn-primary {
+  background: linear-gradient(180deg, var(--accent-hover), var(--accent));
+  color: var(--on-accent);
+  text-shadow: 0 1px 0 color-mix(in oklab, var(--accent-hover) 65%, #fff);
+  border-color: color-mix(in oklab, var(--accent) 70%, #000);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 2px 0 color-mix(in oklab, var(--accent) 55%, #000),
+    var(--shadow-md);
+}
+.lv-btn-primary:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 3px 0 color-mix(in oklab, var(--accent) 55%, #000),
+    var(--shadow-lg);
+}
+.lv-btn-primary:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.25),
+    var(--shadow-sm);
+}
+.lv-btn-ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+.lv-btn-ghost:hover {
+  background: var(--surface);
+  border-color: var(--accent-bright);
+  color: var(--accent-bright);
+  box-shadow: var(--shadow-sm);
+}
+.lv-btn-ghost:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+.lv-btn-link {
+  padding: 11px 4px;
+  border: none;
+  background: transparent;
+  background-image: linear-gradient(
+    90deg,
+    oklch(0.78 0.1 262) 0 50%,
+    var(--accent-bright) 50% 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  transition: background-position 0.5s ease-in-out;
+}
+.lv-btn-link:hover {
+  background-position: 0% 0;
+}
+
+/* ── ARROW LINKS ────────────────────────────────────────────── */
+.lv-link-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-bright);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  transition:
+    color 0.45s ease-in-out,
+    gap var(--dur-fast) var(--ease-spring);
+}
+.lv-link-arrow:hover {
+  color: oklch(0.78 0.1 262);
+  gap: 9px;
+}
+.lv-link-arrow svg {
+  width: 15px;
+  height: 15px;
+}

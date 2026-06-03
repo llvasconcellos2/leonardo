@@ -1,4 +1,5 @@
 "use client";
+import "./AboutSection.css";
 
 import { useState } from "react";
 import { Minus, Plus, Download, Mail } from "lucide-react";

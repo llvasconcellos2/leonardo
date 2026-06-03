@@ -1,4 +1,6 @@
 "use client";
+import "./Views.css";
+import "./WorkSection.css";
 
 import { ArrowLeft, ArrowRight, Archive, Check } from "lucide-react";
 import { Kicker, TechChip } from "./Primitives";

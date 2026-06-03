@@ -1,4 +1,6 @@
 "use client";
+import "./Testimonials.css";
+import "./WritingSection.css";
 
 import Image from "next/image";
 import { Quote } from "lucide-react";
