@@ -6,7 +6,6 @@ import { LowPolyField } from "./LowPolyField";
 import type { Lang } from "../data";
 import type { GoFn } from "./types";
 import { LeoLowPoly } from "./LeoLowPoly";
-import { LeoLowPolyPortraitCard } from "./LeoLowPolyPortraitCard";
 
 const heroCopy = {
   en: {
@@ -50,7 +49,7 @@ export function Hero({
       )}
       <div className="lv-hero-inner">
         <p className="lv-kicker lv-hero-kicker">{c.kicker}</p>
-        <h1 className="lv-hero-name">LEONARDO</h1>
+        <h1 className="lv-hero-name">LEONARDO VASCONCELLOS</h1>
         <p className="lv-hero-tagline">{c.tagline}</p>
         <p className="lv-hero-subline">{c.subline}</p>
         <div className="lv-hero-actions">
@@ -62,7 +61,11 @@ export function Hero({
           </button>
         </div>
       </div>
-      {!lowpoly && <LeoLowPoly className="lv-hero-leolowpoly" />}
+      {!lowpoly && (
+        <div className="lv-hero-leolowpoly">
+          <LeoLowPoly className="" />
+        </div>
+      )}
       <div className="lv-hero-scrollhint">
         <ChevronsDown size={22} />
       </div>

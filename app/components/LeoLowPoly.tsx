@@ -11,9 +11,10 @@
       style={style}
       xmlns="http://www.w3.org/2000/svg"
       xmlSpace="preserve"
-      width="512"
+      width="600"
       height="725"
-      viewBox="-30 -35 512 725"
+      viewBox="-81 -35 600 725"
+      preserveAspectRatio="xMidYMax meet"
     >
       <path
         fill="#987381"
