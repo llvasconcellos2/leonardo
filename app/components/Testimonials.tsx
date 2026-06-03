@@ -1,13 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { Quote } from "lucide-react";
 import { Kicker } from "./Primitives";
 import type { Lang } from "../data";
 
 const TESTIMONIALS = [
   {
-    quote:
-      "Leonardo is a great professional, always eager to get to work and face challenges. He is very skilled both on frontend and backend development, as well as development processes and architecture. He is always open for work discussions, giving awesome ideas for the job in question. As a person, he is very passionate on what he does and he gives a pleasant, light and funny conversation every time we talk. I highly recommend Leonardo's work.",
+    quote: {
+      en: "Leonardo is a great professional, always eager to get to work and face challenges. He is very skilled both on frontend and backend development, as well as development processes and architecture. He is always open for work discussions, giving awesome ideas for the job in question. As a person, he is very passionate on what he does and he gives a pleasant, light and funny conversation every time we talk. I highly recommend Leonardo's work.",
+      pt: "Leonardo é um grande profissional, sempre disposto a trabalhar e enfrentar desafios. Ele é muito habilidoso tanto no desenvolvimento frontend quanto backend, assim como em processos de desenvolvimento e arquitetura. Ele está sempre aberto a discussões sobre o trabalho, trazendo ótimas ideias para o assunto em questão. Como pessoa, ele é muito apaixonado pelo que faz e proporciona uma conversa agradável, leve e divertida sempre que conversamos. Eu recomendo muito o trabalho do Leonardo.",
+    },
     name: "Thiago LP",
     role: "Senior Software Engineer",
     rel: {
@@ -15,7 +18,7 @@ const TESTIMONIALS = [
       pt: "Trabalhou com Leonardo no mesmo time",
     },
     date: "Apr 2020",
-    initials: "TL",
+    avatar: "/thiago.jpeg",
     source: "LinkedIn",
   },
 ];
@@ -48,9 +51,13 @@ function TestimonialCard({
   return (
     <figure className={`lv-quote ${featured ? "is-featured" : ""}`}>
       <Quote className="lv-quote-mark" />
-      <blockquote className="lv-quote-text">{t.quote}</blockquote>
+      <blockquote className="lv-quote-text">{t.quote[lang]}</blockquote>
       <figcaption className="lv-quote-foot">
-        <span className="lv-quote-av">{t.initials}</span>
+        <span className="lv-quote-av">
+            {t.avatar ? (
+              <Image src={t.avatar} alt={t.name} width={40} height={40} className="lv-quote-av-img" />
+            ) : null}
+          </span>
         <span className="lv-quote-who">
           <span className="lv-quote-name">{t.name}</span>
           <span className="lv-quote-role">
