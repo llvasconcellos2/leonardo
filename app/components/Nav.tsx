@@ -47,7 +47,7 @@ export function Nav({ route, go, lang, setLang }: NavProps) {
               className={`lv-lang-b ${lang === l ? "is-on" : ""}`}
               onClick={() => setLang(l)}
             >
-              {l.toUpperCase()}
+              {l === "en" ? "🇺🇸" : "🇧🇷"}
             </button>
           ))}
         </div>

@@ -3,7 +3,7 @@
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.03em;
-  color: var(--accent-bright);
+  color: var(--cyan-shift);
   margin: 0;
 }
 .lv-pill {
