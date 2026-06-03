@@ -3,9 +3,11 @@ import "./Hero.css";
 
 import { ArrowRight, ChevronsDown } from "lucide-react";
 import { LowPolyField } from "./LowPolyField";
+
 import type { Lang } from "../data";
 import type { GoFn } from "./types";
 import { LeoLowPoly } from "./LeoLowPoly";
+import { Blueprint } from "./BluePrint";
 
 const heroCopy = {
   en: {
@@ -31,18 +33,29 @@ const heroCopy = {
 export function Hero({
   lang,
   go,
-  lowpoly = false,
+  background = "none",
 }: {
   lang: Lang;
   go: GoFn;
-  lowpoly?: boolean;
+  background?: "none" | "lowpoly" | "shader";
 }) {
   const c = heroCopy[lang];
+  const hasField = background === "lowpoly" || background === "shader";
   return (
-    <section className={"lv-hero" + (!lowpoly && " lv-hero-background")}>
-      {lowpoly && (
+    <section className={"lv-hero lv-hero-background"}>
+      {hasField && (
         <div className="lv-hero-field">
-          <LowPolyField seed={42} style={{ position: "absolute", inset: 0 }} />
+          {background === "lowpoly" && (
+            <LowPolyField
+              seed={42}
+              style={{ position: "absolute", inset: 0 }}
+            />
+          )}
+          {background === "shader" && (
+            <div style={{ position: "absolute", inset: 0, height: "100dvh" }}>
+              <Blueprint />
+            </div>
+          )}
           <div className="lv-hero-scrim" />
           <div className="lv-hero-ghost">LV</div>
         </div>
@@ -61,11 +74,9 @@ export function Hero({
           </button>
         </div>
       </div>
-      {!lowpoly && (
-        <div className="lv-hero-leolowpoly">
-          <LeoLowPoly className="" />
-        </div>
-      )}
+      <div className="lv-hero-leolowpoly">
+        <LeoLowPoly className="" />
+      </div>
       <div className="lv-hero-scrollhint">
         <ChevronsDown size={22} />
       </div>

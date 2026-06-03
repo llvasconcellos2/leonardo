@@ -61,7 +61,7 @@ export default function Portfolio() {
     default:
       content = (
         <>
-          <Hero lang={lang} go={go} />
+          <Hero lang={lang} go={go} background="shader" />
           <AboutSection lang={lang} go={go} embedded />
           <WorkSection lang={lang} go={go} />
           <WritingSection lang={lang} go={go} />

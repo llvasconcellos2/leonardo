@@ -43,10 +43,11 @@ export function Kicker({
   className = "",
 }: {
   children: React.ReactNode;
-  as?: keyof React.JSX.IntrinsicElements;
+  as?: React.ElementType;
   className?: string;
 }) {
-  return <Tag className={`lv-kicker ${className}`}>{children}</Tag>;
+  const T = Tag as React.ComponentType<{ className: string; children: React.ReactNode }>;
+  return <T className={`lv-kicker ${className}`}>{children}</T>;
 }
 
 export function Pill({ children }: { children: React.ReactNode }) {

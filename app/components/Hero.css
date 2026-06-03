@@ -21,8 +21,7 @@
 }
 .lv-hero-ghost {
   position: absolute;
-  right: 6%;
-  top: 8%;
+  top: 15%;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(7rem, 22vw, 16rem);
@@ -30,6 +29,8 @@
   letter-spacing: 0.02em;
   pointer-events: none;
   user-select: none;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .lv-hero-portrait-card,
 .lv-hero-background {
@@ -45,6 +46,7 @@
   justify-content: flex-end;
   align-items: flex-end;
   margin-left: -20vw;
+  z-index: 1;
 }
 .lv-hero-leolowpoly svg {
   height: 100%;
@@ -78,6 +80,8 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 clamp(20px, 6vw, 80px);
+  /* margin-right: -503px; */
+  z-index: 10;
 }
 .lv-hero-kicker {
   font-size: 14px;
