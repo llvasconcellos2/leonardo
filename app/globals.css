@@ -540,6 +540,21 @@ a:hover {
   pointer-events: none;
   user-select: none;
 }
+.lv-hero-portrait-card,
+.lv-hero-background {
+  background: radial-gradient(
+    120% 120% at 50% 18%,
+    var(--brand) 0%,
+    var(--brand-deep) 70%
+  );
+}
+.lv-hero-leolowpoly {
+  z-index: 0;
+  position: absolute;
+  right: -30px;
+  height: 88dvh;
+  margin-top: 1.9em;
+}
 .lv-hero-portrait-card {
   position: relative;
   flex: none;
@@ -548,15 +563,10 @@ a:hover {
   aspect-ratio: 1;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: radial-gradient(
-    120% 120% at 50% 18%,
-    var(--brand) 0%,
-    var(--brand-deep) 70%
-  );
   border: 1px solid var(--border-strong);
   box-shadow: var(--shadow-lg);
 }
-.lv-hero-portrait-card img {
+.lv-hero-portrait-card-img {
   position: absolute;
   left: 50%;
   bottom: -2%;

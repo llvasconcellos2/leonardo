@@ -4,6 +4,8 @@ import { ArrowRight, ChevronsDown } from "lucide-react";
 import { LowPolyField } from "./LowPolyField";
 import type { Lang } from "../data";
 import type { GoFn } from "./types";
+import { LeoLowPoly } from "./LeoLowPoly";
+import { LeoLowPolyPortraitCard } from "./LeoLowPolyPortraitCard";
 
 const heroCopy = {
   en: {
@@ -26,39 +28,40 @@ const heroCopy = {
   },
 };
 
-export function Hero({ lang, go }: { lang: Lang; go: GoFn }) {
+export function Hero({
+  lang,
+  go,
+  lowpoly = false,
+}: {
+  lang: Lang;
+  go: GoFn;
+  lowpoly?: boolean;
+}) {
   const c = heroCopy[lang];
   return (
-    <section className="lv-hero">
-      <div className="lv-hero-field">
-        <LowPolyField seed={42} style={{ position: "absolute", inset: 0 }} />
-        <div className="lv-hero-scrim" />
-        <div className="lv-hero-ghost">LV</div>
-      </div>
+    <section className={"lv-hero" + (!lowpoly && " lv-hero-background")}>
+      {lowpoly && (
+        <div className="lv-hero-field">
+          <LowPolyField seed={42} style={{ position: "absolute", inset: 0 }} />
+          <div className="lv-hero-scrim" />
+          <div className="lv-hero-ghost">LV</div>
+        </div>
+      )}
       <div className="lv-hero-inner">
         <p className="lv-kicker lv-hero-kicker">{c.kicker}</p>
         <h1 className="lv-hero-name">LEONARDO</h1>
         <p className="lv-hero-tagline">{c.tagline}</p>
         <p className="lv-hero-subline">{c.subline}</p>
         <div className="lv-hero-actions">
-          <button
-            className="lv-btn lv-btn-primary"
-            onClick={() => go("about")}
-          >
+          <button className="lv-btn lv-btn-primary" onClick={() => go("about")}>
             {c.cta} <ArrowRight size={16} />
           </button>
-          <button
-            className="lv-btn lv-btn-ghost"
-            onClick={() => go("archive")}
-          >
+          <button className="lv-btn lv-btn-ghost" onClick={() => go("archive")}>
             {c.cta2}
           </button>
         </div>
       </div>
-      <div className="lv-hero-portrait-card">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/leo_low_poly.svg" alt="Low-poly portrait of Leonardo" />
-      </div>
+      {!lowpoly && <LeoLowPoly className="lv-hero-leolowpoly" />}
       <div className="lv-hero-scrollhint">
         <ChevronsDown size={22} />
       </div>
