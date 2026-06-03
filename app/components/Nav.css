@@ -9,6 +9,7 @@
   background: color-mix(in oklab, var(--bg) 82%, transparent);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
 }
 .lv-nav-mark {
   font-family: var(--font-display);

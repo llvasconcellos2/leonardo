@@ -25,6 +25,7 @@
 
 :root {
   /* NEUTRAL RAMP (hue 258) */
+  --dark: oklch(19.99% 0.004 264.47);
   --bg: oklch(0.255 0.008 258);
   --surface: oklch(0.305 0.01 258);
   --raised: oklch(0.36 0.012 258);
@@ -278,7 +279,7 @@ a:hover {
 
 /* ── SECTIONS (shared by WorkSection, WritingSection, AboutSection, Views, BlogPost) */
 .lv-section {
-  max-width: 72rem;
+  /* max-width: 72rem; */
   margin: 0 auto;
   padding: clamp(4rem, 9vw, 7rem) clamp(20px, 4vw, 40px);
 }
@@ -300,4 +301,9 @@ a:hover {
 /* ── SHARED UTILITIES ──────────────────────────────────────── */
 .lv-back {
   margin-bottom: 28px;
+}
+
+#work,
+#testimonials {
+  background: var(--dark);
 }

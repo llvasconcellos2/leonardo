@@ -1,5 +1,6 @@
 .lv-footer {
   margin-top: 2rem;
+  background: var(--surface);
 }
 .lv-hire {
   max-width: 72rem;
