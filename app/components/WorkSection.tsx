@@ -27,7 +27,11 @@ function WorkRow({
         onClick={() => go("project", p.id)}
         aria-label={`View ${p.title[lang]}`}
       >
-        <LowPolyField seed={p.seed} label={p.year} style={{ position: "absolute", inset: 0 }} />
+        <LowPolyField
+          seed={p.seed}
+          label={p.year}
+          style={{ position: "absolute", inset: 0 }}
+        />
       </button>
       <div className="lv-row-body">
         <Kicker as="p">{p.kicker[lang]}</Kicker>
@@ -54,10 +58,7 @@ function WorkRow({
             <TechChip key={x}>{x}</TechChip>
           ))}
         </div>
-        <button
-          className="lv-link-arrow"
-          onClick={() => go("project", p.id)}
-        >
+        <button className="lv-link-arrow" onClick={() => go("project", p.id)}>
           {t.viewDetails} <ArrowRight size={15} />
         </button>
       </div>
@@ -74,6 +75,7 @@ export function WorkSection({ lang, go }: { lang: Lang; go: GoFn }) {
         <h2 className="lv-section-title">{t.selectedWork}</h2>
         <button
           className="lv-link-arrow lv-section-see"
+          // className="link"
           onClick={() => go("archive")}
         >
           {t.seeAll} <ArrowRight size={15} />

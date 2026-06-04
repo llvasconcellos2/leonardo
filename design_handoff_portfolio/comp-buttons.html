@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0}
+  .wrap{width:700px;background:var(--bg);padding:28px 32px;box-sizing:border-box;font-family:var(--font-sans)}
+  .cap{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin:0 0 18px}
+  .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .btn{font-family:var(--font-display);font-weight:600;font-size:15px;padding:11px 22px;border-radius:10px;
+    border:1px solid transparent;cursor:pointer;transition:transform .14s var(--ease-spring),box-shadow .14s var(--ease-spring),filter .14s var(--ease-spring),background .14s var(--ease-spring),color .14s var(--ease-spring),border-color .14s var(--ease-spring)}
+
+  /* primary — tactile push button: top-lit gradient, darker bottom edge, soft shadow */
+  .primary{background:linear-gradient(180deg,var(--accent-hover),var(--accent));color:var(--on-accent);
+    text-shadow:0 1px 0 color-mix(in oklab, var(--accent-hover) 65%, #fff);
+    border:1px solid color-mix(in oklab,var(--accent) 70%,#000);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 2px 0 color-mix(in oklab,var(--accent) 55%,#000), var(--shadow-md)}
+  .primary:hover{filter:brightness(1.06);transform:translateY(-1px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.28), 0 3px 0 color-mix(in oklab,var(--accent) 55%,#000), var(--shadow-lg)}
+  .primary:active{transform:translateY(2px);
+    box-shadow:inset 0 1px 2px rgba(0,0,0,.25), 0 0 0 color-mix(in oklab,var(--accent) 55%,#000), var(--shadow-sm)}
+
+  /* ghost — outlined; hover fills + tints emerald (more visible) */
+  .ghost{background:transparent;color:var(--text-primary);border-color:var(--border)}
+  .ghost:hover{background:var(--surface);border-color:var(--accent-bright);color:var(--accent-bright);box-shadow:var(--shadow-sm)}
+  .ghost:active{transform:translateY(1px);box-shadow:none}
+
+  /* link — chosen: hover color sweeps across the text itself, left → right (brand blue) */
+  .link{border:none;padding:11px 0;background:transparent;
+    background-image:linear-gradient(90deg,oklch(0.78 0.10 262) 0 50%,var(--accent-bright) 50% 100%);
+    background-size:200% 100%;background-position:100% 0;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+    transition:background-position .5s ease-in-out}
+  .link:hover{background-position:0% 0}
+
+  .pressed{transform:translateY(2px);box-shadow:inset 0 1px 2px rgba(0,0,0,.25), var(--shadow-sm)!important;filter:brightness(.98)}
+  .sub{font-family:var(--font-mono);font-size:10.5px;color:var(--text-muted);margin-top:18px}
+  .tagp{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-left:6px}
+  .cap2{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin:24px 0 12px}
+  .lrow{display:flex;gap:28px;align-items:center}
+  .llab{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);display:block;margin-top:2px}
+  .lcell{display:flex;flex-direction:column}
+</style></head>
+<body><div class="wrap">
+  <div class="cap">// buttons · primary is a tactile push button — lifts on hover, presses down on click</div>
+  <div class="row">
+    <button class="btn primary">View résumé</button>
+    <button class="btn primary pressed">View résumé</button><span class="tagp">:active</span>
+    <button class="btn ghost">Selected work</button>
+  </div>
+  <div class="cap2">// link — hover sweeps brand blue across the text, left → right</div>
+  <div class="lrow">
+    <div class="lcell"><button class="btn link">read the writing →</button><span class="llab">resting · emerald</span></div>
+    <div class="lcell"><button class="btn link" style="background-position:0% 0">read the writing →</button><span class="llab">hover · brand blue swept in</span></div>
+  </div>
+</div></body></html>

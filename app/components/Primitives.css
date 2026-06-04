@@ -131,6 +131,41 @@
 
 /* ── ARROW LINKS ────────────────────────────────────────────── */
 .lv-link-arrow {
+  background-image: linear-gradient(
+    90deg,
+    oklch(0.78 0.1 262) 0 50%,
+    var(--accent-bright) 50% 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-bright);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  transition:
+    background-position 0.5s ease-in-out,
+    color 0.45s ease-in-out,
+    gap var(--dur-fast) var(--ease-spring);
+}
+.lv-link-arrow:hover {
+  background-position: 0% 0;
+  color: oklch(0.78 0.1 262);
+  gap: 9px;
+}
+.lv-link-arrow svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* .lv-link-arrow {
   background: none;
   border: none;
   cursor: pointer;
@@ -152,4 +187,4 @@
 .lv-link-arrow svg {
   width: 15px;
   height: 15px;
-}
+} */

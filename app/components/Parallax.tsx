@@ -35,8 +35,6 @@ export function Parallax({
   const duration = Math.max(7, width / 100) / speed;
   const scaleFactor = duration / 7;
 
-  console.log({ numWaves, width, duration, scaleFactor });
-
   return (
     <div
       style={style}
