@@ -1,12 +1,12 @@
 .lv-footer {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   background: var(--surface);
 }
 .lv-hire {
   max-width: 72rem;
   margin: 0 auto;
   padding: clamp(4rem, 9vw, 7rem) clamp(20px, 4vw, 40px);
-  border-top: 1px solid var(--border);
+  /* border-top: 1px solid var(--border); */
 }
 .lv-hire-title {
   font-family: var(--font-display);

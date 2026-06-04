@@ -11,6 +11,7 @@ import { ContactFooter, MiniFooter } from "./components/ContactFooter";
 import { ProjectDetail, ArchiveView } from "./components/Views";
 import { BlogPost, WritingIndex } from "./components/BlogPost";
 import type { Lang } from "./data";
+import { Parallax } from "./components/Parallax";
 
 interface View {
   route: string;
@@ -28,7 +29,8 @@ export default function Portfolio() {
       setTimeout(() => {
         const el = document.getElementById("about");
         const sc = scrollRef.current;
-        if (el && sc) sc.scrollTo({ top: el.offsetTop - 64, behavior: "smooth" });
+        if (el && sc)
+          sc.scrollTo({ top: el.offsetTop - 64, behavior: "smooth" });
       }, 60);
       return;
     }
@@ -39,10 +41,10 @@ export default function Portfolio() {
   const navId = ["work", "project", "archive"].includes(view.route)
     ? "work"
     : ["writing", "post"].includes(view.route)
-    ? "writing"
-    : view.route === "about"
-    ? "about"
-    : "";
+      ? "writing"
+      : view.route === "about"
+        ? "about"
+        : "";
 
   let content: React.ReactNode;
   switch (view.route) {
@@ -61,11 +63,17 @@ export default function Portfolio() {
     default:
       content = (
         <>
-          <Hero lang={lang} go={go} background="shader" />
+          <Hero lang={lang} go={go} background="pattern" />
           <AboutSection lang={lang} go={go} embedded />
+          <Parallax flip={true} />
           <WorkSection lang={lang} go={go} />
+          <Parallax />
           <WritingSection lang={lang} go={go} />
+          <Parallax flip={true} />
           <Testimonials lang={lang} />
+          <Parallax
+            targetColor="44, 47, 52" /*style={{ marginTop: "2rem" }}*/
+          />
           <ContactFooter lang={lang} go={go} />
         </>
       );

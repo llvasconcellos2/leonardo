@@ -8,6 +8,7 @@ import type { Lang } from "../data";
 import type { GoFn } from "./types";
 import { LeoLowPoly } from "./LeoLowPoly";
 import { Blueprint } from "./BluePrint";
+import { BGPattern } from "./BG-Pattern";
 
 const heroCopy = {
   en: {
@@ -37,10 +38,13 @@ export function Hero({
 }: {
   lang: Lang;
   go: GoFn;
-  background?: "none" | "lowpoly" | "shader";
+  background?: "none" | "lowpoly" | "shader" | "pattern";
 }) {
   const c = heroCopy[lang];
-  const hasField = background === "lowpoly" || background === "shader";
+  const hasField =
+    background === "lowpoly" ||
+    background === "shader" ||
+    background === "pattern";
   return (
     <section className={"lv-hero lv-hero-background"}>
       {hasField && (
@@ -55,6 +59,9 @@ export function Hero({
             <div style={{ position: "absolute", inset: 0, height: "100dvh" }}>
               <Blueprint />
             </div>
+          )}
+          {background === "pattern" && (
+            <BGPattern variant="grid" mask="fade-edges" style={{ zIndex: 1 }} />
           )}
           <div className="lv-hero-scrim" />
           <div className="lv-hero-ghost">LV</div>

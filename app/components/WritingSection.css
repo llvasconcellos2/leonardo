@@ -1,5 +1,5 @@
 .lv-writing {
-  border-top: 1px solid var(--border);
+  /* border-top: 1px solid var(--border); */
 }
 .lv-writing-lead {
   color: var(--text-secondary);
