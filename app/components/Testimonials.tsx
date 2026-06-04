@@ -5,7 +5,7 @@ import "./WritingSection.css";
 import Image from "next/image";
 import { Quote } from "lucide-react";
 import { Kicker } from "./Primitives";
-import type { Lang } from "../data";
+import { useLanguage } from "./LanguageProvider";
 
 const TESTIMONIALS = [
   {
@@ -29,7 +29,7 @@ const TT = {
   en: {
     kicker: "// in their words",
     title: "Testimonials",
-    lead: "A few words from people I’ve built with.",
+    lead: "A few words from people I've built with.",
     via: "via",
   },
   pt: {
@@ -42,13 +42,12 @@ const TT = {
 
 function TestimonialCard({
   t,
-  lang,
   featured,
 }: {
   t: (typeof TESTIMONIALS)[number];
-  lang: Lang;
   featured: boolean;
 }) {
+  const { lang } = useLanguage();
   const tt = TT[lang];
   return (
     <figure className={`lv-quote ${featured ? "is-featured" : ""}`}>
@@ -56,10 +55,16 @@ function TestimonialCard({
       <blockquote className="lv-quote-text">{t.quote[lang]}</blockquote>
       <figcaption className="lv-quote-foot">
         <span className="lv-quote-av">
-            {t.avatar ? (
-              <Image src={t.avatar} alt={t.name} width={40} height={40} className="lv-quote-av-img" />
-            ) : null}
-          </span>
+          {t.avatar ? (
+            <Image
+              src={t.avatar}
+              alt={t.name}
+              width={40}
+              height={40}
+              className="lv-quote-av-img"
+            />
+          ) : null}
+        </span>
         <span className="lv-quote-who">
           <span className="lv-quote-name">{t.name}</span>
           <span className="lv-quote-role">
@@ -75,7 +80,8 @@ function TestimonialCard({
   );
 }
 
-export function Testimonials({ lang }: { lang: Lang }) {
+export function Testimonials() {
+  const { lang } = useLanguage();
   const tt = TT[lang];
   const featured = TESTIMONIALS.length === 1;
   return (
@@ -87,7 +93,7 @@ export function Testimonials({ lang }: { lang: Lang }) {
       </div>
       <div className={`lv-quotes ${featured ? "is-single" : ""}`}>
         {TESTIMONIALS.map((t, i) => (
-          <TestimonialCard key={i} t={t} lang={lang} featured={featured} />
+          <TestimonialCard key={i} t={t} featured={featured} />
         ))}
       </div>
     </section>

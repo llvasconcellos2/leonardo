@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { LanguageProvider } from "./components/LanguageProvider";
+import { Nav } from "./components/Nav";
 
 export const metadata: Metadata = {
   title: "Leonardo Vasconcellos — Full-Stack Engineer",
@@ -12,7 +14,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="h-full">
-      <body className="h-full">{children}</body>
+      <body className="h-full">
+        <LanguageProvider>
+          <div className="lv-app">
+            <Nav />
+            <main className="lv-scroll">{children}</main>
+          </div>
+        </LanguageProvider>
+      </body>
     </html>
   );
 }

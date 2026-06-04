@@ -1,14 +1,13 @@
 "use client";
 import "./Hero.css";
 
+import Link from "next/link";
 import { ArrowRight, ChevronsDown } from "lucide-react";
 import { LowPolyField } from "./LowPolyField";
-
-import type { Lang } from "../data";
-import type { GoFn } from "./types";
 import { LeoLowPoly } from "./LeoLowPoly";
 import { Blueprint } from "./BluePrint";
 import { BGPattern } from "./BG-Pattern";
+import { useLanguage } from "./LanguageProvider";
 
 const heroCopy = {
   en: {
@@ -32,14 +31,11 @@ const heroCopy = {
 };
 
 export function Hero({
-  lang,
-  go,
   background = "none",
 }: {
-  lang: Lang;
-  go: GoFn;
   background?: "none" | "lowpoly" | "shader" | "pattern";
 }) {
+  const { lang } = useLanguage();
   const c = heroCopy[lang];
   const hasField =
     background === "lowpoly" ||
@@ -73,12 +69,12 @@ export function Hero({
         <p className="lv-hero-tagline">{c.tagline}</p>
         <p className="lv-hero-subline">{c.subline}</p>
         <div className="lv-hero-actions">
-          <button className="lv-btn lv-btn-primary" onClick={() => go("about")}>
+          <Link href="/#about" className="lv-btn lv-btn-primary">
             {c.cta} <ArrowRight size={16} />
-          </button>
-          <button className="lv-btn lv-btn-ghost" onClick={() => go("archive")}>
+          </Link>
+          <Link href="/work" className="lv-btn lv-btn-ghost">
             {c.cta2}
-          </button>
+          </Link>
         </div>
       </div>
       <div className="lv-hero-leolowpoly">

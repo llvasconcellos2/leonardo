@@ -4,10 +4,10 @@ import "./ContactFooter.css";
 import { Mail, Download, CodeXml, Briefcase, Rss } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { T } from "../data";
-import type { Lang } from "../data";
-import type { GoFn } from "./types";
+import { useLanguage } from "./LanguageProvider";
 
-export function ContactFooter({ lang, go }: { lang: Lang; go: GoFn }) {
+export function ContactFooter() {
+  const { lang } = useLanguage();
   const t = T[lang];
   return (
     <footer className="lv-footer">
@@ -16,16 +16,19 @@ export function ContactFooter({ lang, go }: { lang: Lang; go: GoFn }) {
         <h2 className="lv-hire-title">
           {lang === "pt"
             ? "Vamos construir algo que não pode falhar."
-            : "Let’s build something that can’t fail."}
+            : "Let's build something that can't fail."}
         </h2>
         <p className="lv-hire-lead">{t.hireLead}</p>
         <div className="lv-hire-actions">
-          <button className="lv-btn lv-btn-primary">
+          <a
+            href="mailto:leonardolimadevasconcellos@gmail.com"
+            className="lv-btn lv-btn-primary"
+          >
             {t.contact} <Mail size={16} />
-          </button>
-          <button className="lv-btn lv-btn-ghost">
+          </a>
+          <a href="/cv.pdf" className="lv-btn lv-btn-ghost">
             {t.resume} <Download size={16} />
-          </button>
+          </a>
         </div>
       </section>
       <div className="lv-footer-bar">
@@ -38,17 +41,26 @@ export function ContactFooter({ lang, go }: { lang: Lang; go: GoFn }) {
         <div className="lv-footer-meta">
           <span>Joinville · Santa Catarina · Brasil</span>
           <span className="lv-footer-soc">
-            <a href="#" onClick={(e) => e.preventDefault()} aria-label="GitHub">
+            <a
+              href="https://github.com/leonardolimadevasconcellos"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
               <CodeXml size={17} />
             </a>
             <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
+              href="https://www.linkedin.com/in/leonardolimadevasconcellos"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
             >
               <Briefcase size={17} />
             </a>
-            <a href="#" onClick={(e) => e.preventDefault()} aria-label="Feed">
+            <a
+              href="/rss.xml"
+              aria-label="Feed"
+            >
               <Rss size={17} />
             </a>
           </span>

@@ -1,30 +1,27 @@
 "use client";
 import "./WorkSection.css";
 
+import Link from "next/link";
 import { ArrowRight, ShieldAlert, Check } from "lucide-react";
 import { Kicker, TechChip } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
 import { PROJECTS, T } from "../data";
-import type { Lang } from "../data";
-import type { GoFn } from "./types";
+import { useLanguage } from "./LanguageProvider";
 
 function WorkRow({
   p,
-  lang,
-  go,
   flip,
 }: {
   p: (typeof PROJECTS)[number];
-  lang: Lang;
-  go: GoFn;
   flip: boolean;
 }) {
+  const { lang } = useLanguage();
   const t = T[lang];
   return (
     <article className={`lv-row ${flip ? "is-flip" : ""}`}>
-      <button
+      <Link
+        href={`/work/${p.id}`}
         className="lv-row-media"
-        onClick={() => go("project", p.id)}
         aria-label={`View ${p.title[lang]}`}
       >
         <LowPolyField
@@ -32,7 +29,7 @@ function WorkRow({
           label={p.year}
           style={{ position: "absolute", inset: 0 }}
         />
-      </button>
+      </Link>
       <div className="lv-row-body">
         <Kicker as="p">{p.kicker[lang]}</Kicker>
         <h3 className="lv-row-title">
@@ -58,32 +55,29 @@ function WorkRow({
             <TechChip key={x}>{x}</TechChip>
           ))}
         </div>
-        <button className="lv-link-arrow" onClick={() => go("project", p.id)}>
+        <Link href={`/work/${p.id}`} className="lv-link-arrow">
           {t.viewDetails} <ArrowRight size={15} />
-        </button>
+        </Link>
       </div>
     </article>
   );
 }
 
-export function WorkSection({ lang, go }: { lang: Lang; go: GoFn }) {
+export function WorkSection() {
+  const { lang } = useLanguage();
   const t = T[lang];
   return (
     <section className="lv-section" id="work">
       <div className="lv-section-head">
         <Kicker as="p">// selected work</Kicker>
         <h2 className="lv-section-title">{t.selectedWork}</h2>
-        <button
-          className="lv-link-arrow lv-section-see"
-          // className="link"
-          onClick={() => go("archive")}
-        >
+        <Link href="/work" className="lv-link-arrow lv-section-see">
           {t.seeAll} <ArrowRight size={15} />
-        </button>
+        </Link>
       </div>
       <div className="lv-rows">
         {PROJECTS.map((p, i) => (
-          <WorkRow key={p.id} p={p} lang={lang} go={go} flip={i % 2 === 1} />
+          <WorkRow key={p.id} p={p} flip={i % 2 === 1} />
         ))}
       </div>
     </section>

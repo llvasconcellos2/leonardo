@@ -1,42 +1,41 @@
 "use client";
 import "./Nav.css";
 
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useLanguage } from "./LanguageProvider";
 import type { Lang } from "../data";
-import type { GoFn } from "./types";
-
-interface NavProps {
-  route: string;
-  go: GoFn;
-  lang: Lang;
-  setLang: (l: Lang) => void;
-}
 
 const items = [
-  { id: "work", label: { en: "Work", pt: "Trabalho" }, route: "archive" },
-  { id: "writing", label: { en: "Writing", pt: "Escrita" }, route: "writing" },
-  { id: "about", label: { en: "About", pt: "Sobre" }, route: "about" },
+  { id: "work", label: { en: "Work", pt: "Trabalho" }, href: "/work" },
+  { id: "writing", label: { en: "Writing", pt: "Escrita" }, href: "/writing" },
+  { id: "about", label: { en: "About", pt: "Sobre" }, href: "/#about" },
 ] as const;
 
-export function Nav({ route, go, lang, setLang }: NavProps) {
+export function Nav() {
+  const { lang, setLang } = useLanguage();
+  const pathname = usePathname();
+
+  const activeId = pathname.startsWith("/work")
+    ? "work"
+    : pathname.startsWith("/writing")
+      ? "writing"
+      : "";
+
   return (
     <header className="lv-nav">
-      <button
-        className="lv-nav-mark"
-        onClick={() => go("home")}
-        aria-label="Home"
-      >
+      <Link href="/" className="lv-nav-mark" aria-label="Home">
         LV
-      </button>
+      </Link>
       <nav className="lv-nav-links">
         {items.map((it) => (
-          <button
+          <Link
             key={it.id}
-            className={`lv-nav-link ${route === it.id ? "is-active" : ""}`}
-            onClick={() => go(it.route)}
+            href={it.href}
+            className={`lv-nav-link ${activeId === it.id ? "is-active" : ""}`}
           >
             {it.label[lang]}
-          </button>
+          </Link>
         ))}
       </nav>
       <div className="lv-nav-right">
@@ -51,12 +50,9 @@ export function Nav({ route, go, lang, setLang }: NavProps) {
             </button>
           ))}
         </div>
-        <button
-          className="lv-btn lv-btn-primary lv-nav-cta"
-          onClick={() => go("about")}
-        >
+        <Link href="/#about" className="lv-btn lv-btn-primary lv-nav-cta">
           {lang === "pt" ? "Currículo" : "Résumé"}
-        </button>
+        </Link>
       </div>
     </header>
   );

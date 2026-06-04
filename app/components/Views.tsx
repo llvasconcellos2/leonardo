@@ -2,29 +2,22 @@
 import "./Views.css";
 import "./WorkSection.css";
 
+import Link from "next/link";
 import { ArrowLeft, ArrowRight, Archive, Check } from "lucide-react";
 import { Kicker, TechChip } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
 import { PROJECTS, T } from "../data";
-import type { Lang } from "../data";
-import type { GoFn } from "./types";
+import { useLanguage } from "./LanguageProvider";
 
-export function ProjectDetail({
-  id,
-  lang,
-  go,
-}: {
-  id: string | null;
-  lang: Lang;
-  go: GoFn;
-}) {
+export function ProjectDetail({ id }: { id: string | null }) {
+  const { lang } = useLanguage();
   const p = PROJECTS.find((x) => x.id === id) || PROJECTS[0];
   const t = T[lang];
   return (
     <article className="lv-detail">
-      <button className="lv-link-arrow lv-back" onClick={() => go("archive")}>
+      <Link href="/work" className="lv-link-arrow lv-back">
         <ArrowLeft size={15} /> {t.back}
-      </button>
+      </Link>
       <Kicker as="p">{p.kicker[lang]}</Kicker>
       <h1 className="lv-detail-title">{p.title[lang]}</h1>
       <p className="lv-detail-lead">{p.desc[lang]}</p>
@@ -67,7 +60,8 @@ export function ProjectDetail({
   );
 }
 
-export function ArchiveView({ lang, go }: { lang: Lang; go: GoFn }) {
+export function ArchiveView() {
+  const { lang } = useLanguage();
   const t = T[lang];
   const tiles = Array.from({ length: 24 }, (_, i) => ({
     ...PROJECTS[i % PROJECTS.length],
@@ -75,18 +69,18 @@ export function ArchiveView({ lang, go }: { lang: Lang; go: GoFn }) {
   }));
   return (
     <section className="lv-archive">
-      <button className="lv-link-arrow lv-back" onClick={() => go("home")}>
+      <Link href="/" className="lv-link-arrow lv-back">
         <ArrowLeft size={15} /> {t.back}
-      </button>
+      </Link>
       <Kicker as="p">// archive</Kicker>
       <h1 className="lv-archive-title">{t.archive}</h1>
       <p className="lv-archive-lead">{t.archiveLead}</p>
       <div className="lv-archive-grid">
         {tiles.map((p, i) => (
-          <button
+          <Link
             key={i}
+            href={`/work/${PROJECTS[i % PROJECTS.length].id}`}
             className="lv-tile"
-            onClick={() => go("project", PROJECTS[i % PROJECTS.length].id)}
           >
             <LowPolyField
               seed={p.seed}
@@ -98,7 +92,7 @@ export function ArchiveView({ lang, go }: { lang: Lang; go: GoFn }) {
                 {p.year} · {p.tech[0]}
               </span>
             </div>
-          </button>
+          </Link>
         ))}
       </div>
     </section>

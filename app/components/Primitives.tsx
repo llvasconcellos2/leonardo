@@ -1,7 +1,5 @@
-"use client";
 import "./Primitives.css";
 import React from "react";
-import Image from "next/image";
 
 export const TECH_LOGOS: Record<string, string> = {
   "Next.js": "https://cdn.simpleicons.org/nextdotjs/ffffff",

@@ -2,22 +2,15 @@
 import "./BlogPost.css";
 import "./WritingSection.css";
 
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { PostCard } from "./WritingSection";
 import { POSTS, T } from "../data";
-import type { Lang } from "../data";
-import type { GoFn } from "./types";
+import { useLanguage } from "./LanguageProvider";
 
-export function BlogPost({
-  id,
-  lang,
-  go,
-}: {
-  id: string | null;
-  lang: Lang;
-  go: GoFn;
-}) {
+export function BlogPost({ id }: { id: string | null }) {
+  const { lang } = useLanguage();
   const post = POSTS.find((x) => x.id === id) || POSTS[0];
   const t = T[lang];
   const body =
@@ -35,12 +28,9 @@ export function BlogPost({
 
   return (
     <article className="lv-read">
-      <button
-        className="lv-link-arrow lv-back"
-        onClick={() => go("writing")}
-      >
+      <Link href="/writing" className="lv-link-arrow lv-back">
         <ArrowLeft size={15} /> {t.back}
-      </button>
+      </Link>
       <Kicker as="p">{post.kicker[lang]}</Kicker>
       <h1 className="lv-read-title">{post.title[lang]}</h1>
       <div className="lv-read-meta">
@@ -76,19 +66,20 @@ export function BlogPost({
   );
 }
 
-export function WritingIndex({ lang, go }: { lang: Lang; go: GoFn }) {
+export function WritingIndex() {
+  const { lang } = useLanguage();
   const t = T[lang];
   return (
     <section className="lv-section">
-      <button className="lv-link-arrow lv-back" onClick={() => go("home")}>
+      <Link href="/" className="lv-link-arrow lv-back">
         <ArrowLeft size={15} /> {t.back}
-      </button>
+      </Link>
       <Kicker as="p">// the engine</Kicker>
       <h1 className="lv-archive-title">{t.writing}</h1>
       <p className="lv-archive-lead">{t.writingLead}</p>
       <div className="lv-posts lv-posts-index">
         {POSTS.map((p) => (
-          <PostCard key={p.id} post={p} lang={lang} go={go} />
+          <PostCard key={p.id} post={p} />
         ))}
       </div>
     </section>

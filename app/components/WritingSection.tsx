@@ -1,24 +1,24 @@
 "use client";
 import "./WritingSection.css";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { POSTS, T } from "../data";
-import type { Lang, Post } from "../data";
-import type { GoFn } from "./types";
+import type { Post } from "../data";
+import { useLanguage } from "./LanguageProvider";
 
-export function PostCard({
-  post,
-  lang,
-  go,
-}: {
-  post: Post;
-  lang: Lang;
-  go: GoFn;
-}) {
+export function PostCard({ post }: { post: Post }) {
+  const { lang } = useLanguage();
   const t = T[lang];
+  const router = useRouter();
   return (
-    <article className="lv-post" onClick={() => go("post", post.id)}>
+    <article
+      className="lv-post"
+      onClick={() => router.push(`/writing/${post.id}`)}
+      style={{ cursor: "pointer" }}
+    >
       <Kicker as="p">{post.kicker[lang]}</Kicker>
       <h3 className="lv-post-title">{post.title[lang]}</h3>
       <p className="lv-post-excerpt">{post.excerpt[lang]}</p>
@@ -35,7 +35,8 @@ export function PostCard({
   );
 }
 
-export function WritingSection({ lang, go }: { lang: Lang; go: GoFn }) {
+export function WritingSection() {
+  const { lang } = useLanguage();
   const t = T[lang];
   return (
     <section className="lv-section lv-writing" id="writing">
@@ -46,15 +47,12 @@ export function WritingSection({ lang, go }: { lang: Lang; go: GoFn }) {
       </div>
       <div className="lv-posts">
         {POSTS.map((p) => (
-          <PostCard key={p.id} post={p} lang={lang} go={go} />
+          <PostCard key={p.id} post={p} />
         ))}
       </div>
-      <button
-        className="lv-link-arrow lv-writing-all"
-        onClick={() => go("writing")}
-      >
+      <Link href="/writing" className="lv-link-arrow lv-writing-all">
         {t.allWriting} <ArrowRight size={15} />
-      </button>
+      </Link>
     </section>
   );
 }

@@ -4,14 +4,14 @@ import "./AboutSection.css";
 import { useState } from "react";
 import { Minus, Plus, Download, Mail } from "lucide-react";
 import { Kicker, Button, TECH_LOGOS } from "./Primitives";
-import type { Lang } from "../data";
-import type { GoFn } from "./types";
+import { useLanguage } from "./LanguageProvider";
 
 const ABOUT = {
   en: {
     kicker: "// about · how to work with me",
     hi: "Hi, I'm Leonardo",
-    tagline: "Turning tangled, mission-critical systems into software people depend on.",
+    tagline:
+      "Turning tangled, mission-critical systems into software people depend on.",
     intro:
       "Since 2005 I've shipped ~70 projects across five eras of the web — from an Ebola-response records system with Doctors Without Borders to Brazil's top-ranked smart city. I take the systems where failure has real consequences, and make them scale: clean, fast, built to last. Still hands-on, now AI-assisted.",
     whatido: "// what I do",
@@ -79,8 +79,14 @@ const SKILLS = [
 const EDU = [
   {
     y: "2005",
-    en: ["Started shipping software", "First production code — Flash / Flex era."],
-    pt: ["Comecei a entregar software", "Primeiro código em produção — era Flash / Flex."],
+    en: [
+      "Started shipping software",
+      "First production code — Flash / Flex era.",
+    ],
+    pt: [
+      "Comecei a entregar software",
+      "Primeiro código em produção — era Flash / Flex.",
+    ],
   },
   {
     y: "2014",
@@ -96,10 +102,22 @@ const EDU = [
 ];
 
 const STACK = [
-  "JavaScript", "TypeScript", "React", "Next.js",
-  "Node.js", ".NET", "C#", "Java",
-  "Android", "PHP", "PostgreSQL", "SQL Server",
-  "Azure", "Git", "Docker", "Tailwind",
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  ".NET",
+  "C#",
+  "Java",
+  "Android",
+  "PHP",
+  "PostgreSQL",
+  "SQL Server",
+  "Azure",
+  "Git",
+  "Docker",
+  "Tailwind",
 ];
 
 const ERAS = [
@@ -149,32 +167,13 @@ function Accordion({
   );
 }
 
-export function AboutSection({
-  lang,
-  go,
-  embedded,
-}: {
-  lang: Lang;
-  go: GoFn;
-  embedded?: boolean;
-}) {
+export function AboutSection() {
+  const { lang } = useLanguage();
   const t = ABOUT[lang];
   const [open, setOpen] = useState(0);
 
   return (
-    <section
-      className={`lv-section lv-about ${embedded ? "is-embedded" : ""}`}
-      id="about"
-    >
-      {!embedded && (
-        <button
-          className="lv-link-arrow lv-back"
-          onClick={() => go("home")}
-        >
-          <ArrowLeft size={15} />
-          {lang === "pt" ? "Voltar" : "Back"}
-        </button>
-      )}
+    <section className="lv-section lv-about is-embedded" id="about">
       <Kicker as="p">{t.kicker}</Kicker>
       <div className="lv-about-head">
         <div className="lv-about-head-text">
@@ -271,40 +270,6 @@ export function AboutSection({
           </div>
         </div>
       </div>
-
-      {!embedded && (
-        <div className="lv-about-cta">
-          <h3 className="lv-about-cta-t">{t.hireTitle}</h3>
-          <p className="lv-about-cta-l">{t.hireLead}</p>
-          <div className="lv-about-cta-row">
-            <button className="lv-btn lv-btn-primary">
-              {t.cv} <Download size={16} />
-            </button>
-            <button className="lv-btn lv-btn-ghost">
-              {t.contact} <Mail size={16} />
-            </button>
-          </div>
-        </div>
-      )}
     </section>
-  );
-}
-
-function ArrowLeft({ size }: { size: number }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m12 19-7-7 7-7" />
-      <path d="M19 12H5" />
-    </svg>
   );
 }
