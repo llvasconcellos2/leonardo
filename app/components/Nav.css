@@ -6,7 +6,7 @@
   align-items: center;
   gap: 24px;
   padding: 14px clamp(20px, 4vw, 40px);
-  background: color-mix(in oklab, var(--bg) 82%, transparent);
+  background: color-mix(in oklab, var(--raised) 82%, transparent);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow-md);
