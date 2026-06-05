@@ -6,9 +6,10 @@ import { usePathname } from "next/navigation";
 import type { Lang } from "../data";
 
 const items = [
-  { id: "work", label: { en: "Work", pt: "Trabalho" } },
-  { id: "writing", label: { en: "Writing", pt: "Escrita" } },
-  { id: "about", label: { en: "About", pt: "Sobre" } },
+  { id: "home", path: "/", label: { en: "Home", pt: "Início" } },
+  { id: "work", path: "/work", label: { en: "Work", pt: "Trabalho" } },
+  { id: "writing", path: "/writing", label: { en: "Writing", pt: "Escrita" } },
+  { id: "about", path: "/#about", label: { en: "About", pt: "Sobre" } },
 ] as const;
 
 export function Nav({ lang }: { lang: Lang }) {
@@ -20,10 +21,9 @@ export function Nav({ lang }: { lang: Lang }) {
     ? "work"
     : pathname.includes("/writing")
       ? "writing"
-      : "";
-
-  const href = (id: string) =>
-    id === "about" ? `/${lang}#about` : `/${lang}/${id}`;
+      : pathname === `/${lang}`
+        ? "home"
+        : "";
 
   return (
     <header className="lv-nav">
@@ -31,13 +31,13 @@ export function Nav({ lang }: { lang: Lang }) {
         LV
       </Link>
       <nav className="lv-nav-links">
-        {items.map((it) => (
+        {items.map((item) => (
           <Link
-            key={it.id}
-            href={href(it.id)}
-            className={`lv-nav-link ${activeId === it.id ? "is-active" : ""}`}
+            key={item.id}
+            href={`/${lang}${item.path}`}
+            className={`lv-nav-link ${activeId === item.id ? "is-active" : ""}`}
           >
-            {it.label[lang]}
+            {item.label[lang]}
           </Link>
         ))}
       </nav>
@@ -53,7 +53,10 @@ export function Nav({ lang }: { lang: Lang }) {
             </Link>
           ))}
         </div>
-        <Link href={`/${lang}#about`} className="lv-btn lv-btn-primary lv-nav-cta">
+        <Link
+          href={`/${lang}#about`}
+          className="lv-btn lv-btn-primary lv-nav-cta"
+        >
           {lang === "pt" ? "Currículo" : "Résumé"}
         </Link>
       </div>
