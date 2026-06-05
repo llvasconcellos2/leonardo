@@ -116,6 +116,9 @@
   --dur-fast: 180ms;
   --dur-base: 320ms;
   --dur-slow: 600ms;
+
+  /* Enable intrinsic size keyword animations globally */
+  interpolate-size: allow-keywords;
 }
 
 @supports not (color: oklch(0 0 0)) {

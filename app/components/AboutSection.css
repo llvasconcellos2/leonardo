@@ -80,6 +80,7 @@
   flex-direction: column;
   gap: 10px;
 }
+
 .lv-acc {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -87,10 +88,13 @@
   overflow: hidden;
   transition: border-color var(--dur-base) var(--ease-spring);
 }
-.lv-acc.is-open {
+
+.lv-acc[open] {
   border-color: var(--accent-bright);
 }
+
 .lv-acc-head {
+  list-style: none;
   width: 100%;
   display: flex;
   align-items: center;
@@ -106,20 +110,44 @@
   color: var(--text-primary);
   text-align: left;
 }
-.lv-acc-head svg {
+
+.lv-acc-head::after {
+  content: '';
+  display: block;
   width: 16px;
   height: 16px;
-  color: var(--accent-bright);
   flex: none;
+  background-image:
+    linear-gradient(var(--accent-bright), var(--accent-bright)),
+    linear-gradient(var(--accent-bright), var(--accent-bright));
+  background-repeat: no-repeat;
+  background-position: center, center;
+  background-size: 10px 1.5px, 1.5px 10px;
+  transition: background-size var(--dur-base) var(--ease-spring);
 }
-.lv-acc-body {
-  max-height: 0;
+
+.lv-acc[open] .lv-acc-head::after {
+  background-size: 10px 1.5px, 1.5px 0px;
+}
+
+.lv-acc::details-content {
+  height: 0;
   overflow: hidden;
-  transition: max-height var(--dur-base) var(--ease-spring);
+  transition: height var(--dur-base) var(--ease-spring),
+              content-visibility var(--dur-base) var(--ease-spring);
+  transition-behavior: allow-discrete;
 }
-.lv-acc.is-open .lv-acc-body {
-  max-height: 140px;
+
+.lv-acc[open]::details-content {
+  height: auto;
 }
+
+@starting-style {
+  .lv-acc[open]::details-content {
+    height: 0;
+  }
+}
+
 .lv-acc-body p {
   margin: 0;
   padding: 0 16px 16px;
@@ -127,6 +155,9 @@
   color: var(--text-secondary);
   line-height: 1.55;
 }
+
+
+
 
 /* education */
 .lv-edu {

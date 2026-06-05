@@ -147,29 +147,23 @@ function Accordion({
   title,
   body,
   open,
-  onClick,
 }: {
   title: string;
   body: string;
   open: boolean;
-  onClick: () => void;
 }) {
   return (
-    <div className={`lv-acc ${open ? "is-open" : ""}`}>
-      <button className="lv-acc-head" onClick={onClick}>
-        <span>{title}</span>
-        {open ? <Minus size={16} /> : <Plus size={16} />}
-      </button>
+    <details className="lv-acc" open={open}>
+      <summary className="lv-acc-head">{title}</summary>
       <div className="lv-acc-body">
         <p>{body}</p>
       </div>
-    </div>
+    </details>
   );
 }
 
 export function AboutSection({ lang }: { lang: Lang }) {
   const t = ABOUT[lang];
-  const [open, setOpen] = useState(0);
 
   return (
     <section className="lv-section lv-about is-embedded" id="about">
@@ -193,14 +187,14 @@ export function AboutSection({ lang }: { lang: Lang }) {
           <p className="prose lv-about-intro">{t.intro}</p>
 
           <div className="lv-about-sub">{t.whatido}</div>
+          
           <div className="lv-acc-group">
             {SKILLS.map((s, i) => (
               <Accordion
+                open={i === 0}
                 key={i}
                 title={s[lang][0]}
                 body={s[lang][1]}
-                open={open === i}
-                onClick={() => setOpen(open === i ? -1 : i)}
               />
             ))}
           </div>
