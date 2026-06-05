@@ -214,10 +214,13 @@
   border-color: var(--border-strong);
   transform: translateY(-2px);
 }
-.lv-stack-cell img {
+.lv-stack-logo {
   width: 26px;
   height: 26px;
   display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .lv-stack-cell span {
   font-family: var(--font-mono);

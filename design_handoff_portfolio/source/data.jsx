@@ -28,7 +28,7 @@ const PROJECTS = [
       en: ['Untangled a years-deep legacy core', 'Citizen-facing services at city scale', 'Top national smart-city ranking'],
       pt: ['Desembaraçou um núcleo legado de anos', 'Serviços ao cidadão em escala municipal', 'Melhor ranking nacional de cidade inteligente'],
     },
-    tech: ['.NET', 'React', 'SQL Server', 'Azure'],
+    tech: ['.NET', 'React', 'SQL Server', 'AWS'],
   },
   {
     id: 'bv', seed: 21, year: '2017', stakes: true,

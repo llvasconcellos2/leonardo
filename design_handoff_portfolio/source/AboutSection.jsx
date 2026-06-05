@@ -41,7 +41,7 @@ const EDU = [
   { y: '2014', en: ['Technical lead, Doctors Without Borders', 'Selected from 1,000+ for the Ebola-response records system.'], pt: ['Líder técnico, Médicos Sem Fronteiras', 'Selecionado entre 1.000+ para o sistema de prontuários do Ebola.'] },
 ];
 
-const STACK = ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', '.NET', 'C#', 'Java', 'Android', 'PHP', 'PostgreSQL', 'SQL Server', 'Azure', 'Git', 'Docker', 'Tailwind'];
+const STACK = ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', '.NET', 'C#', 'Java', 'Android', 'PHP', 'PostgreSQL', 'SQL Server', 'AWS', 'Git', 'Docker', 'Tailwind'];
 
 const ERAS = [
   { y: '2005', l: 'Flash / Flex' },

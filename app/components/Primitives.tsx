@@ -2,7 +2,7 @@ import "./Primitives.css";
 import React from "react";
 
 export const TECH_LOGOS: Record<string, string> = {
-  "Next.js": "https://cdn.simpleicons.org/nextdotjs/ffffff",
+  "Next.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
   ".NET":
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg",
   Java: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
@@ -14,8 +14,8 @@ export const TECH_LOGOS: Record<string, string> = {
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   "SQL Server":
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
-  Azure:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+  AWS:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
   Oracle:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg",
   JavaScript:

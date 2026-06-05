@@ -82,7 +82,7 @@ export const PROJECTS: Project[] = [
         "Melhor ranking nacional de cidade inteligente",
       ],
     },
-    tech: [".NET", "React", "SQL Server", "Azure"],
+    tech: [".NET", "React", "SQL Server", "AWS"],
   },
   {
     id: "bv",

@@ -1,8 +1,4 @@
-"use client";
 import "./AboutSection.css";
-
-import { useState } from "react";
-import { Minus, Plus } from "lucide-react";
 import { Kicker, TECH_LOGOS } from "./Primitives";
 import type { Lang } from "../data";
 
@@ -114,7 +110,7 @@ const STACK = [
   "PHP",
   "PostgreSQL",
   "SQL Server",
-  "Azure",
+  "AWS",
   "Git",
   "Docker",
   "Tailwind",
@@ -221,6 +217,15 @@ export function AboutSection({ lang }: { lang: Lang }) {
               return (
                 <div key={name} className="lv-stack-cell" title={name}>
                   {logo && (
+                    <span
+                      className="lv-stack-logo"
+                      style={{ backgroundImage: `url(${logo})` }}
+                    />
+                  )}
+
+                  {/*
+                  TODO: switch to inline svg and optimize these logos. For now, hide broken ones.
+                  {logo && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={logo}
@@ -231,7 +236,7 @@ export function AboutSection({ lang }: { lang: Lang }) {
                         (e.target as HTMLImageElement).style.opacity = "0";
                       }}
                     />
-                  )}
+                  )} */}
                   <span>{name}</span>
                 </div>
               );
