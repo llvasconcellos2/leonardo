@@ -3,35 +3,38 @@ import "./Nav.css";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLanguage } from "./LanguageProvider";
 import type { Lang } from "../data";
 
 const items = [
-  { id: "work", label: { en: "Work", pt: "Trabalho" }, href: "/work" },
-  { id: "writing", label: { en: "Writing", pt: "Escrita" }, href: "/writing" },
-  { id: "about", label: { en: "About", pt: "Sobre" }, href: "/#about" },
+  { id: "work", label: { en: "Work", pt: "Trabalho" } },
+  { id: "writing", label: { en: "Writing", pt: "Escrita" } },
+  { id: "about", label: { en: "About", pt: "Sobre" } },
 ] as const;
 
-export function Nav() {
-  const { lang, setLang } = useLanguage();
+export function Nav({ lang }: { lang: Lang }) {
   const pathname = usePathname();
+  const otherLang: Lang = lang === "en" ? "pt" : "en";
+  const switchHref = pathname.replace(/^\/(en|pt)/, `/${otherLang}`);
 
-  const activeId = pathname.startsWith("/work")
+  const activeId = pathname.includes("/work")
     ? "work"
-    : pathname.startsWith("/writing")
+    : pathname.includes("/writing")
       ? "writing"
       : "";
 
+  const href = (id: string) =>
+    id === "about" ? `/${lang}#about` : `/${lang}/${id}`;
+
   return (
     <header className="lv-nav">
-      <Link href="/" className="lv-nav-mark" aria-label="Home">
+      <Link href={`/${lang}`} className="lv-nav-mark" aria-label="Home">
         LV
       </Link>
       <nav className="lv-nav-links">
         {items.map((it) => (
           <Link
             key={it.id}
-            href={it.href}
+            href={href(it.id)}
             className={`lv-nav-link ${activeId === it.id ? "is-active" : ""}`}
           >
             {it.label[lang]}
@@ -41,16 +44,16 @@ export function Nav() {
       <div className="lv-nav-right">
         <div className="lv-lang">
           {(["en", "pt"] as Lang[]).map((l) => (
-            <button
+            <Link
               key={l}
+              href={l === lang ? "#" : switchHref}
               className={`lv-lang-b ${lang === l ? "is-on" : ""}`}
-              onClick={() => setLang(l)}
             >
               {l === "en" ? "🇺🇸" : "🇧🇷"}
-            </button>
+            </Link>
           ))}
         </div>
-        <Link href="/#about" className="lv-btn lv-btn-primary lv-nav-cta">
+        <Link href={`/${lang}#about`} className="lv-btn lv-btn-primary lv-nav-cta">
           {lang === "pt" ? "Currículo" : "Résumé"}
         </Link>
       </div>

@@ -1,11 +1,10 @@
-"use client";
 import "./Testimonials.css";
 import "./WritingSection.css";
 
 import Image from "next/image";
 import { Quote } from "lucide-react";
 import { Kicker } from "./Primitives";
-import { useLanguage } from "./LanguageProvider";
+import type { Lang } from "../data";
 
 const TESTIMONIALS = [
   {
@@ -42,12 +41,13 @@ const TT = {
 
 function TestimonialCard({
   t,
+  lang,
   featured,
 }: {
   t: (typeof TESTIMONIALS)[number];
+  lang: Lang;
   featured: boolean;
 }) {
-  const { lang } = useLanguage();
   const tt = TT[lang];
   return (
     <figure className={`lv-quote ${featured ? "is-featured" : ""}`}>
@@ -80,8 +80,7 @@ function TestimonialCard({
   );
 }
 
-export function Testimonials() {
-  const { lang } = useLanguage();
+export function Testimonials({ lang }: { lang: Lang }) {
   const tt = TT[lang];
   const featured = TESTIMONIALS.length === 1;
   return (
@@ -93,7 +92,7 @@ export function Testimonials() {
       </div>
       <div className={`lv-quotes ${featured ? "is-single" : ""}`}>
         {TESTIMONIALS.map((t, i) => (
-          <TestimonialCard key={i} t={t} featured={featured} />
+          <TestimonialCard key={i} t={t} lang={lang} featured={featured} />
         ))}
       </div>
     </section>

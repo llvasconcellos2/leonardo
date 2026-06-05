@@ -1,24 +1,15 @@
-"use client";
 import "./WritingSection.css";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { POSTS, T } from "../data";
-import type { Post } from "../data";
-import { useLanguage } from "./LanguageProvider";
+import type { Lang, Post } from "../data";
 
-export function PostCard({ post }: { post: Post }) {
-  const { lang } = useLanguage();
+export function PostCard({ post, lang }: { post: Post; lang: Lang }) {
   const t = T[lang];
-  const router = useRouter();
   return (
-    <article
-      className="lv-post"
-      onClick={() => router.push(`/writing/${post.id}`)}
-      style={{ cursor: "pointer" }}
-    >
+    <Link href={`/${lang}/writing/${post.id}`} className="lv-post">
       <Kicker as="p">{post.kicker[lang]}</Kicker>
       <h3 className="lv-post-title">{post.title[lang]}</h3>
       <p className="lv-post-excerpt">{post.excerpt[lang]}</p>
@@ -31,12 +22,11 @@ export function PostCard({ post }: { post: Post }) {
           {t.readMore} <ArrowUpRight size={12} />
         </span>
       </div>
-    </article>
+    </Link>
   );
 }
 
-export function WritingSection() {
-  const { lang } = useLanguage();
+export function WritingSection({ lang }: { lang: Lang }) {
   const t = T[lang];
   return (
     <section className="lv-section lv-writing" id="writing">
@@ -47,10 +37,10 @@ export function WritingSection() {
       </div>
       <div className="lv-posts">
         {POSTS.map((p) => (
-          <PostCard key={p.id} post={p} />
+          <PostCard key={p.id} post={p} lang={lang} />
         ))}
       </div>
-      <Link href="/writing" className="lv-link-arrow lv-writing-all">
+      <Link href={`/${lang}/writing`} className="lv-link-arrow lv-writing-all">
         {t.allWriting} <ArrowRight size={15} />
       </Link>
     </section>

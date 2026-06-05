@@ -1,4 +1,3 @@
-"use client";
 import "./BlogPost.css";
 import "./WritingSection.css";
 
@@ -7,10 +6,9 @@ import { ArrowLeft } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { PostCard } from "./WritingSection";
 import { POSTS, T } from "../data";
-import { useLanguage } from "./LanguageProvider";
+import type { Lang } from "../data";
 
-export function BlogPost({ id }: { id: string | null }) {
-  const { lang } = useLanguage();
+export function BlogPost({ lang, id }: { lang: Lang; id: string | null }) {
   const post = POSTS.find((x) => x.id === id) || POSTS[0];
   const t = T[lang];
   const body =
@@ -28,7 +26,7 @@ export function BlogPost({ id }: { id: string | null }) {
 
   return (
     <article className="lv-read">
-      <Link href="/writing" className="lv-link-arrow lv-back">
+      <Link href={`/${lang}/writing`} className="lv-link-arrow lv-back">
         <ArrowLeft size={15} /> {t.back}
       </Link>
       <Kicker as="p">{post.kicker[lang]}</Kicker>
@@ -66,12 +64,11 @@ export function BlogPost({ id }: { id: string | null }) {
   );
 }
 
-export function WritingIndex() {
-  const { lang } = useLanguage();
+export function WritingIndex({ lang }: { lang: Lang }) {
   const t = T[lang];
   return (
     <section className="lv-section">
-      <Link href="/" className="lv-link-arrow lv-back">
+      <Link href={`/${lang}`} className="lv-link-arrow lv-back">
         <ArrowLeft size={15} /> {t.back}
       </Link>
       <Kicker as="p">// the engine</Kicker>
@@ -79,7 +76,7 @@ export function WritingIndex() {
       <p className="lv-archive-lead">{t.writingLead}</p>
       <div className="lv-posts lv-posts-index">
         {POSTS.map((p) => (
-          <PostCard key={p.id} post={p} />
+          <PostCard key={p.id} post={p} lang={lang} />
         ))}
       </div>
     </section>

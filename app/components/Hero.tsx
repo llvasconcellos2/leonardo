@@ -1,4 +1,3 @@
-"use client";
 import "./Hero.css";
 
 import Link from "next/link";
@@ -7,7 +6,7 @@ import { LowPolyField } from "./LowPolyField";
 import { LeoLowPoly } from "./LeoLowPoly";
 import { Blueprint } from "./BluePrint";
 import { BGPattern } from "./BG-Pattern";
-import { useLanguage } from "./LanguageProvider";
+import type { Lang } from "../data";
 
 const heroCopy = {
   en: {
@@ -31,18 +30,19 @@ const heroCopy = {
 };
 
 export function Hero({
+  lang,
   background = "none",
 }: {
+  lang: Lang;
   background?: "none" | "lowpoly" | "shader" | "pattern";
 }) {
-  const { lang } = useLanguage();
   const c = heroCopy[lang];
   const hasField =
     background === "lowpoly" ||
     background === "shader" ||
     background === "pattern";
   return (
-    <section className={"lv-hero lv-hero-background"}>
+    <section className="lv-hero lv-hero-background">
       {hasField && (
         <div className="lv-hero-field">
           {background === "lowpoly" && (
@@ -69,10 +69,10 @@ export function Hero({
         <p className="lv-hero-tagline">{c.tagline}</p>
         <p className="lv-hero-subline">{c.subline}</p>
         <div className="lv-hero-actions">
-          <Link href="/#about" className="lv-btn lv-btn-primary">
+          <Link href={`/${lang}#about`} className="lv-btn lv-btn-primary">
             {c.cta} <ArrowRight size={16} />
           </Link>
-          <Link href="/work" className="lv-btn lv-btn-ghost">
+          <Link href={`/${lang}/work`} className="lv-btn lv-btn-ghost">
             {c.cta2}
           </Link>
         </div>

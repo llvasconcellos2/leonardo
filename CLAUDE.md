@@ -6,14 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 pnpm dev      # Start dev server (always use this, not npx next dev)
-pnpm build    # Production build + TypeScript check (emits static out/ directory)
+pnpm build    # Production build + TypeScript check
 pnpm start    # Start production server
 pnpm lint     # Run ESLint
 ```
 
 ## What this is
 
-A bilingual (EN/PT-BR) dark-only personal portfolio for Leonardo Lima de Vasconcellos, implemented as a Next.js App Router static site (`output: "export"`).
+A bilingual (EN/PT-BR) dark-only personal portfolio for Leonardo Lima de Vasconcellos, implemented as a Next.js App Router site hosted on Vercel.
 
 **Positioning:** mission-critical systems where failure has real consequences. Core line: _"the engineer you want when the system actually matters — and has grown tangled."_
 
@@ -23,40 +23,43 @@ The design handoff in `design_handoff_portfolio/` was the original visual spec. 
 
 ### Routing
 
-File-system routing with `output: "export"` — `pnpm build` emits fully pre-rendered HTML under `out/`. Navigation uses `<Link>` from `next/link` throughout.
+File-system routing under `app/[lang]/`. Middleware at the repo root (`middleware.ts`) redirects bare `/` and non-prefixed paths to the preferred locale (from `Accept-Language`, defaulting to `en`).
 
-| Route           | What renders                                                                                 |
-| --------------- | -------------------------------------------------------------------------------------------- |
-| `/`             | Hero + AboutSection (embedded) + WorkSection + WritingSection + Testimonials + ContactFooter |
-| `/work`         | `ArchiveView` (tier-1 dense grid)                                                            |
-| `/work/[id]`    | `ProjectDetail` (tier-3 deep dive)                                                           |
-| `/writing`      | `WritingIndex`                                                                               |
-| `/writing/[id]` | `BlogPost`                                                                                   |
+| Route                   | What renders                                                                                 |
+| ----------------------- | -------------------------------------------------------------------------------------------- |
+| `/en` · `/pt`           | Hero + AboutSection (embedded) + WorkSection + WritingSection + Testimonials + ContactFooter |
+| `/en/work` · `/pt/work` | `ArchiveView` (tier-1 dense grid)                                                            |
+| `/[lang]/work/[id]`     | `ProjectDetail` (tier-3 deep dive)                                                           |
+| `/[lang]/writing`       | `WritingIndex`                                                                               |
+| `/[lang]/writing/[id]`  | `BlogPost`                                                                                   |
 
-The "About" nav link is `href="/#about"` — it scrolls to the embedded `<section id="about">` on the homepage. No programmatic scroll handling needed; the browser and `.lv-scroll`'s `scroll-behavior: smooth` handle it.
+The "About" nav link is `href="/${lang}#about"` — it scrolls to `<section id="about">` on the homepage. No programmatic scroll handling; the browser and `.lv-scroll`'s `scroll-behavior: smooth` handle it.
 
 ### Language
 
-`lang` state lives in `LanguageProvider` (client context at `app/components/LanguageProvider.tsx`), wrapping the entire app in `app/layout.tsx`. Components read language with `useLanguage()` — there is no i18n framework. EN is canonical; PT is finalized.
+`lang` is a URL segment (`en` | `pt`). The `[lang]/layout.tsx` receives it as `params.lang` and passes it as a prop to `Nav`. Every page receives it via `params` and threads it down to all components. No context, no client state. The language toggle in Nav is a `<Link>` that swaps the locale prefix in the current pathname.
 
 ### Components (`app/components/`)
 
 | File                   | Type   | Exports                                                             |
 | ---------------------- | ------ | ------------------------------------------------------------------- |
-| `LanguageProvider.tsx` | client | `LanguageProvider`, `useLanguage`                                   |
 | `Primitives.tsx`       | server | `Kicker`, `Pill`, `TechChip`, `Button`, `TECH_LOGOS`                |
 | `LowPolyField.tsx`     | server | `LowPolyField` — deterministic faceted navy SVG from a numeric seed |
-| `Nav.tsx`              | client | `Nav` — uses `usePathname()` + `useLanguage()`                      |
-| `Hero.tsx`             | client | `Hero`                                                              |
-| `AboutSection.tsx`     | client | `AboutSection` — always embedded on homepage; accordion `useState`  |
-| `WorkSection.tsx`      | client | `WorkSection`, `WorkRow`                                            |
-| `WritingSection.tsx`   | client | `WritingSection`, `PostCard`                                        |
-| `Testimonials.tsx`     | client | `Testimonials`, `TestimonialCard`                                   |
-| `ContactFooter.tsx`    | client | `ContactFooter`, `MiniFooter`                                       |
-| `Views.tsx`            | client | `ProjectDetail`, `ArchiveView`                                      |
-| `BlogPost.tsx`         | client | `BlogPost`, `WritingIndex`                                          |
+| `Hero.tsx`             | server | `Hero` — receives `lang` prop                                       |
+| `WorkSection.tsx`      | server | `WorkSection`, `WorkRow` — receives `lang` prop                     |
+| `WritingSection.tsx`   | server | `WritingSection`, `PostCard` — receives `lang` prop                 |
+| `Testimonials.tsx`     | server | `Testimonials`, `TestimonialCard` — receives `lang` prop            |
+| `ContactFooter.tsx`    | server | `ContactFooter`, `MiniFooter` — receives `lang` prop                |
+| `Views.tsx`            | server | `ProjectDetail`, `ArchiveView` — receives `lang` prop               |
+| `BlogPost.tsx`         | server | `BlogPost`, `WritingIndex` — receives `lang` prop                   |
+| `Nav.tsx`              | client | `Nav` — `usePathname()` for active state; receives `lang` prop      |
+| `AboutSection.tsx`     | client | `AboutSection` — accordion `useState`; receives `lang` prop         |
+| `Parallax.tsx`         | client | `Parallax` — `window.innerWidth` + `ResizeObserver`                 |
+| `BluePrint.tsx`        | client | `Blueprint` — animation effects                                     |
+| `BG-Pattern.tsx`       | server | `BGPattern`                                                         |
+| `LeoLowPoly.tsx`       | server | `LeoLowPoly`                                                        |
 
-`LowPolyField` and `Primitives` are server components (no hooks, no browser APIs). All content components are `"use client"` because they call `useLanguage()`.
+The only `"use client"` components are those that require browser APIs or React state. Everything else is a server component receiving `lang: Lang` as a prop.
 
 ### Content (`app/data.ts`)
 
@@ -64,10 +67,7 @@ Exports `PROJECTS`, `POSTS`, `T` (UI string table). Every bilingual field is `Re
 
 `PROJECTS` items carry a `seed` (integer) used to deterministically generate the low-poly SVG placeholder. Keep seeds unique and stable — changing a seed changes the visual.
 
-Dynamic routes call `generateStaticParams` to enumerate all slugs at build time:
-
-- `app/work/[id]/page.tsx` — `PROJECTS.map(p => ({ id: p.id }))`
-- `app/writing/[id]/page.tsx` — `POSTS.map(p => ({ id: p.id }))`
+Dynamic routes call `generateStaticParams` to enumerate slugs. The `[lang]` layout also exports `generateStaticParams` returning `[{ lang: 'en' }, { lang: 'pt' }]`.
 
 ### Design system (`app/globals.css`)
 
@@ -105,13 +105,15 @@ Icons use `lucide-react`. Note: brand icons (`Github`, `Linkedin`) do not exist 
 
 ## Key implementation notes
 
-**Static export:** `next.config.ts` sets `output: "export"` and `images: { unoptimized: true }`. `pnpm build` emits `out/`. Host `out/` on any static CDN.
+**Vercel hosting:** no `output: "export"`. Vercel handles SSR and image optimisation natively.
+
+**Locale routing:** `proxy.ts` at the repo root (Next.js 16's replacement for `middleware.ts`) intercepts all non-asset requests. If the path has no `/en/` or `/pt/` prefix it redirects to the preferred locale (from `Accept-Language` header, fallback `en`).
 
 **LowPolyField:** Pure deterministic math — no hooks, no browser APIs. Server component. SVG coordinates are rounded to 4 decimal places (`Math.round(n * 1e4) / 1e4`) for consistency.
 
-**Language toggle:** `lang` state in `LanguageProvider` context, read via `useLanguage()`. No i18n framework. Every bilingual string is `copy[lang]`.
+**Language prop:** `lang: Lang` flows from the URL param through the `[lang]` layout and page components down to every content component as an explicit prop. There is no context or global state for language.
 
-**Navigation:** Use `<Link href="...">` from `next/link` for all internal links. Nav active state from `usePathname()` — no prop needed. The "About" link (`href="/#about"`) relies on native anchor scroll; no JS scroll handling.
+**Navigation:** Use `<Link href={`/${lang}/...`}>` from `next/link` for all internal links. Nav active state is derived from `usePathname()` — no prop needed. The language toggle computes `pathname.replace(/^\/(en|pt)/, '/${otherLang}')`.
 
 **Imagery placeholders:** Every `LowPolyField` stands in for a real project screenshot. The `seed` prop controls the faceted pattern. When adding real screenshots, keep the navy-framed container (1px `--border` → `--border-strong` on hover, `--radius-lg`).
 

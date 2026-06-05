@@ -1,13 +1,11 @@
-"use client";
 import "./ContactFooter.css";
 
 import { Mail, Download, CodeXml, Briefcase, Rss } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { T } from "../data";
-import { useLanguage } from "./LanguageProvider";
+import type { Lang } from "../data";
 
-export function ContactFooter() {
-  const { lang } = useLanguage();
+export function ContactFooter({ lang }: { lang: Lang }) {
   const t = T[lang];
   return (
     <footer className="lv-footer">
@@ -34,9 +32,7 @@ export function ContactFooter() {
       <div className="lv-footer-bar">
         <div className="lv-footer-mark">
           <span className="lv-footer-lv">LV</span>
-          <span className="lv-footer-name">
-            Leonardo Lima de Vasconcellos
-          </span>
+          <span className="lv-footer-name">Leonardo Lima de Vasconcellos</span>
         </div>
         <div className="lv-footer-meta">
           <span>Joinville · Santa Catarina · Brasil</span>
@@ -57,10 +53,7 @@ export function ContactFooter() {
             >
               <Briefcase size={17} />
             </a>
-            <a
-              href="/rss.xml"
-              aria-label="Feed"
-            >
+            <a href="/rss.xml" aria-label="Feed">
               <Rss size={17} />
             </a>
           </span>

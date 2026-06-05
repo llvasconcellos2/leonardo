@@ -2,9 +2,9 @@
 import "./AboutSection.css";
 
 import { useState } from "react";
-import { Minus, Plus, Download, Mail } from "lucide-react";
-import { Kicker, Button, TECH_LOGOS } from "./Primitives";
-import { useLanguage } from "./LanguageProvider";
+import { Minus, Plus } from "lucide-react";
+import { Kicker, TECH_LOGOS } from "./Primitives";
+import type { Lang } from "../data";
 
 const ABOUT = {
   en: {
@@ -167,8 +167,7 @@ function Accordion({
   );
 }
 
-export function AboutSection() {
-  const { lang } = useLanguage();
+export function AboutSection({ lang }: { lang: Lang }) {
   const t = ABOUT[lang];
   const [open, setOpen] = useState(0);
 

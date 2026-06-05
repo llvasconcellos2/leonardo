@@ -1,21 +1,19 @@
-"use client";
 import "./Views.css";
 import "./WorkSection.css";
 
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Archive, Check } from "lucide-react";
+import { ArrowLeft, Archive, Check } from "lucide-react";
 import { Kicker, TechChip } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
 import { PROJECTS, T } from "../data";
-import { useLanguage } from "./LanguageProvider";
+import type { Lang } from "../data";
 
-export function ProjectDetail({ id }: { id: string | null }) {
-  const { lang } = useLanguage();
+export function ProjectDetail({ lang, id }: { lang: Lang; id: string | null }) {
   const p = PROJECTS.find((x) => x.id === id) || PROJECTS[0];
   const t = T[lang];
   return (
     <article className="lv-detail">
-      <Link href="/work" className="lv-link-arrow lv-back">
+      <Link href={`/${lang}/work`} className="lv-link-arrow lv-back">
         <ArrowLeft size={15} /> {t.back}
       </Link>
       <Kicker as="p">{p.kicker[lang]}</Kicker>
@@ -60,8 +58,7 @@ export function ProjectDetail({ id }: { id: string | null }) {
   );
 }
 
-export function ArchiveView() {
-  const { lang } = useLanguage();
+export function ArchiveView({ lang }: { lang: Lang }) {
   const t = T[lang];
   const tiles = Array.from({ length: 24 }, (_, i) => ({
     ...PROJECTS[i % PROJECTS.length],
@@ -69,7 +66,7 @@ export function ArchiveView() {
   }));
   return (
     <section className="lv-archive">
-      <Link href="/" className="lv-link-arrow lv-back">
+      <Link href={`/${lang}`} className="lv-link-arrow lv-back">
         <ArrowLeft size={15} /> {t.back}
       </Link>
       <Kicker as="p">// archive</Kicker>
@@ -79,7 +76,7 @@ export function ArchiveView() {
         {tiles.map((p, i) => (
           <Link
             key={i}
-            href={`/work/${PROJECTS[i % PROJECTS.length].id}`}
+            href={`/${lang}/work/${PROJECTS[i % PROJECTS.length].id}`}
             className="lv-tile"
           >
             <LowPolyField
