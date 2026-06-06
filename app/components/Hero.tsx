@@ -36,7 +36,7 @@ export function Hero({
   lang: Lang;
   background?: "none" | "lowpoly" | "shader" | "pattern";
 }) {
-  const c = heroCopy[lang];
+  const content = heroCopy[lang];
   const hasField =
     background === "lowpoly" ||
     background === "shader" ||
@@ -64,16 +64,16 @@ export function Hero({
         </div>
       )}
       <div className="lv-hero-inner">
-        <p className="lv-kicker lv-hero-kicker">{c.kicker}</p>
+        <p className="lv-kicker lv-hero-kicker">{content.kicker}</p>
         <h1 className="lv-hero-name">LEONARDO VASCONCELLOS</h1>
-        <p className="lv-hero-tagline">{c.tagline}</p>
-        <p className="lv-hero-subline">{c.subline}</p>
+        <p className="lv-hero-tagline">{content.tagline}</p>
+        <p className="lv-hero-subline">{content.subline}</p>
         <div className="lv-hero-actions">
           <Link href={`/${lang}#about`} className="lv-btn lv-btn-primary">
-            {c.cta} <ArrowRight size={16} />
+            {content.cta} <ArrowRight size={16} />
           </Link>
           <Link href={`/${lang}/work`} className="lv-btn lv-btn-ghost">
-            {c.cta2}
+            {content.cta2}
           </Link>
         </div>
       </div>

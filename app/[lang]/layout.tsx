@@ -12,6 +12,8 @@ export function generateStaticParams() {
   return [{ lang: "en" }, { lang: "pt" }];
 }
 
+export const dynamicParams = false;
+
 export default async function LangLayout({
   children,
   params,
