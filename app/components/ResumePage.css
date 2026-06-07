@@ -1,0 +1,459 @@
+/* ============================================================
+   Resume page — lv-resume
+   ============================================================ */
+
+.lv-resume {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--section-y) var(--gutter);
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+
+.lv-resume-header {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--border);
+}
+
+.lv-resume-portrait {
+  flex: none;
+  width: clamp(100px, 13vw, 150px);
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: radial-gradient(120% 120% at 50% 18%, var(--brand) 0%, var(--brand-deep) 70%);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.lv-resume-portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+.lv-resume-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.lv-resume-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  color: var(--accent-bright);
+  letter-spacing: var(--tracking-wide);
+  line-height: 1;
+  margin: 10px 0 4px;
+}
+
+.lv-resume-fullname {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  margin: 0 0 16px;
+}
+
+.lv-resume-tagline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  color: var(--text-secondary);
+  margin: 0 0 20px;
+  max-width: 56ch;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+.lv-resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin-bottom: 24px;
+}
+
+.lv-resume-contact a,
+.lv-resume-contact span {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: var(--tracking-mono);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color var(--dur-fast) var(--ease-spring);
+}
+
+.lv-resume-contact a:hover {
+  color: var(--accent-bright);
+}
+
+.lv-resume-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ── Sections ────────────────────────────────────────────── */
+
+.lv-resume-section {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--border);
+}
+
+.lv-resume-section-head {
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.lv-resume-section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  color: var(--text-primary);
+  margin: 6px 0 0;
+  letter-spacing: var(--tracking-tight);
+}
+
+.lv-resume-sub {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  letter-spacing: var(--tracking-mono);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+
+/* ── Experience cards ────────────────────────────────────── */
+
+.lv-exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lv-exp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--dur-base) var(--ease-spring);
+}
+
+.lv-exp-card[open] {
+  border-color: var(--accent-bright);
+}
+
+.lv-exp-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 4px 16px;
+  align-items: center;
+  user-select: none;
+}
+
+.lv-exp-summary::-webkit-details-marker {
+  display: none;
+}
+
+.lv-exp-role {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--text-primary);
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  line-height: 1.3;
+}
+
+.lv-exp-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.lv-exp-meta-company {
+  color: var(--text-secondary);
+}
+
+.lv-exp-meta-sep {
+  color: var(--border-strong);
+}
+
+.lv-exp-chevron {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    color var(--dur-fast) var(--ease-spring);
+  flex: none;
+}
+
+.lv-exp-card[open] .lv-exp-chevron {
+  transform: rotate(180deg);
+  color: var(--accent-bright);
+}
+
+/* Details open/close animation */
+.lv-exp-card::details-content {
+  height: 0;
+  overflow: hidden;
+  transition:
+    height var(--dur-base) var(--ease-spring),
+    content-visibility var(--dur-base) var(--ease-spring);
+  transition-behavior: allow-discrete;
+}
+
+.lv-exp-card[open]::details-content {
+  height: auto;
+}
+
+@starting-style {
+  .lv-exp-card[open]::details-content {
+    height: 0;
+  }
+}
+
+.lv-exp-body {
+  padding: 4px 20px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.lv-exp-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.lv-exp-bullets li {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-left: 22px;
+  position: relative;
+}
+
+.lv-exp-bullets li::before {
+  content: "//";
+  position: absolute;
+  left: 0;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--accent-bright);
+  top: 4px;
+  letter-spacing: -0.04em;
+}
+
+.lv-exp-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.lv-exp-tech-lab {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-right: 2px;
+}
+
+/* Mission-critical badge */
+.lv-stakes-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--accent-bg);
+  color: var(--accent-on-dim);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-mono);
+  padding: 2px 8px;
+  white-space: nowrap;
+  line-height: 1.6;
+}
+
+/* ── Skills grid ─────────────────────────────────────────── */
+
+.lv-resume-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3.5rem);
+}
+
+.lv-resume-skill-cat {
+  display: flex;
+  flex-direction: column;
+}
+
+.lv-resume-stack {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.lv-resume-stack-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 4px;
+  background: var(--raised);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition:
+    border-color var(--dur-base) var(--ease-spring),
+    transform var(--dur-base) var(--ease-spring);
+}
+
+.lv-resume-stack-cell:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.lv-resume-stack-cell .lv-stack-logo {
+  width: 22px;
+  height: 22px;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.lv-resume-stack-cell span:last-child {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* ── Education + Languages (bottom two-col) ─────────────── */
+
+.lv-resume-bottom {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--border);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.lv-resume-edu-entry {
+  margin-bottom: 20px;
+}
+
+.lv-resume-edu-entry:last-child {
+  margin-bottom: 0;
+}
+
+.lv-resume-edu-degree {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 14.5px;
+  color: var(--text-primary);
+  margin: 0 0 3px;
+  line-height: 1.35;
+}
+
+.lv-resume-edu-period {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-bright);
+  margin-bottom: 4px;
+}
+
+.lv-resume-edu-inst {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.lv-resume-human-langs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lv-resume-hlang {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lv-resume-hlang-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 14.5px;
+  color: var(--text-primary);
+}
+
+.lv-resume-hlang-level {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .lv-resume-header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .lv-resume-portrait {
+    width: clamp(72px, 18vw, 110px);
+  }
+
+  .lv-resume-skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lv-resume-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .lv-resume-stack {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

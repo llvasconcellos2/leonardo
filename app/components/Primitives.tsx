@@ -33,6 +33,12 @@ export const TECH_LOGOS: Record<string, string> = {
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
   Tailwind:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  Python:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  MongoDB:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  Redis:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
 };
 
 export function Kicker({

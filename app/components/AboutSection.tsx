@@ -9,7 +9,7 @@ const ABOUT = {
     tagline:
       "Turning tangled, mission-critical systems into software people depend on.",
     intro:
-      "Since 2005 I've shipped ~70 projects across five eras of the web — from an Ebola-response records system with Doctors Without Borders to Brazil's top-ranked smart city. I take the systems where failure has real consequences, and make them scale: clean, fast, built to last. Still hands-on, now AI-assisted.",
+      "I'm a senior full-stack engineer who's been shipping for the web since 2005 — around 70 projects across five eras of the technology. I was elected technical lead on an Ebola-response records system with Doctors Without Borders, helped scale high-concurrency SaaS at Email on Acid, and contributed to Brazil's top-ranked smart city in Itajaí. My specialty is the systems where failure has real consequences: I take them — mission-critical, often tangled — and make them scale, clean and fast and built to last. I'm still hands-on every day, now AI-assisted, and I work in both English and Portuguese. Off the clock I play bass, drums, and guitar — same discipline and timing, different instrument. If you're building something that genuinely has to work, I'd like to hear about it.",
     whatido: "// what I do",
     edu: "// education & certifications",
     stack: "// tech stack",
@@ -26,7 +26,7 @@ const ABOUT = {
     tagline:
       "Transformando sistemas complexos e essenciais no software de que as pessoas dependem.",
     intro:
-      "Desde 2005 entreguei ~70 projetos em cinco eras da web — de um sistema de prontuários para a resposta ao Ebola com os Médicos Sem Fronteiras à cidade inteligente nº 1 do Brasil. Eu pego os sistemas onde falhar tem consequências reais e os faço escalar: limpos, rápidos, feitos para durar. Ainda mão na massa, agora com IA.",
+      "Sou engenheiro de software full-stack sênior e desenvolvo para a web desde 2005 — cerca de 70 projetos ao longo de cinco eras da tecnologia. Fui eleito líder técnico de um sistema de prontuários para o combate ao Ebola com os Médicos Sem Fronteiras, ajudei a escalar SaaS de alta concorrência na Email on Acid e contribuí para a cidade inteligente mais bem classificada do Brasil, em Itajaí. Eu me especializo em sistemas em que a falha tem consequências reais: pego os mais críticos e complexos e os transformo em soluções escaláveis — limpas, rápidas e feitas para durar. Continuo com a mão no código todos os dias, agora com auxílio de IA, e trabalho em português e inglês. Fora do expediente, toco baixo, bateria e guitarra — mesma disciplina e timing, outro instrumento. Se você está construindo algo que realmente precisa funcionar, vou adorar saber mais.",
     whatido: "// o que eu faço",
     edu: "// formação & certificações",
     stack: "// stack",

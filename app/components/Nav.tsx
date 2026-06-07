@@ -54,7 +54,7 @@ export function Nav({ lang }: { lang: Lang }) {
           ))}
         </div>
         <Link
-          href={`/${lang}#about`}
+          href={`/${lang}/resume`}
           className="lv-btn lv-btn-primary lv-nav-cta"
         >
           {lang === "pt" ? "Currículo" : "Résumé"}

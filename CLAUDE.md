@@ -11,6 +11,10 @@ pnpm start    # Start production server
 pnpm lint     # Run ESLint
 ```
 
+## Brand.md
+
+Informations at `docs/Brand.md`
+
 ## What this is
 
 A bilingual (EN/PT-BR) dark-only personal portfolio for Leonardo Lima de Vasconcellos, implemented as a Next.js App Router site hosted on Vercel.
