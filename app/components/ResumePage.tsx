@@ -1,537 +1,269 @@
 import "./ResumePage.css";
-import { Kicker, TechChip, TECH_LOGOS } from "./Primitives";
-import { MiniFooter } from "./ContactFooter";
-import { Download, Mail, Phone, MapPin, ChevronDown, ShieldAlert } from "lucide-react";
+import "./AboutSection.css";
+import Link from "next/link";
+import {
+  ArrowLeft, Mail, Phone, MapPin, Download, FileDown,
+  Briefcase, ArrowUpRight, CodeXml, Globe,
+} from "lucide-react";
+import { Kicker, TECH_LOGOS } from "./Primitives";
+import { ResumeExperience } from "./ResumeExperience";
 import type { Lang } from "../data";
 
-// ── Experience ────────────────────────────────────────────
+const RESUME_PDF: Record<Lang, string> = {
+  en: "/resume/Leonardo_LV_EN.pdf",
+  pt: "/resume/Leonardo_LV_PT.pdf",
+};
 
-interface ExperienceEntry {
-  id: string;
-  role: Record<Lang, string>;
-  company: Record<Lang, string>;
-  period: Record<Lang, string>;
-  stakes: boolean;
-  defaultOpen: boolean;
-  tech: string[];
-  bullets: Record<Lang, string[]>;
-}
-
-const EXPERIENCE: ExperienceEntry[] = [
-  {
-    id: "itajai",
-    role: {
-      en: "Senior Web Application Developer",
-      pt: "Desenvolvedor Sênior de Aplicações Web",
-    },
-    company: { en: "Prefeitura Municipal de Itajaí", pt: "Prefeitura Municipal de Itajaí" },
-    period: { en: "Apr 2025 – Jan 2026", pt: "Abr 2025 – Jan 2026" },
-    stakes: true,
-    defaultOpen: true,
-    tech: ["React", "Next.js", "Node.js", "PostgreSQL"],
-    bullets: {
-      en: [
-        "Played a key role in the digital transformation of Brazil's top-ranked Smart City, developing full-stack applications.",
-        "Created seamless citizen experiences with React and Next.js, backed by a high-concurrency Node.js backend and highly available PostgreSQL data layer.",
-        "AI-assisted development workflow using Cursor and Claude Code.",
-      ],
-      pt: [
-        "Tive papel fundamental na transformação digital da cidade inteligente mais bem classificada do Brasil, desenvolvendo aplicações full-stack.",
-        "Criei experiências fluidas para os cidadãos com React e Next.js, sustentadas por backend Node.js de alta concorrência e PostgreSQL altamente disponível.",
-        "Fluxo de desenvolvimento assistido por IA com Cursor e Claude Code.",
-      ],
-    },
-  },
-  {
-    id: "devhouse-2024",
-    role: { en: "Senior Software Engineer", pt: "Engenheiro de Software Sênior" },
-    company: { en: "DevHouse", pt: "DevHouse" },
-    period: { en: "Jan 2024 – Apr 2025", pt: "Jan 2024 – Abr 2025" },
-    stakes: false,
-    defaultOpen: true,
-    tech: ["TypeScript", "React", "Next.js", "Node.js"],
-    bullets: {
-      en: [
-        "AI-assisted development of modern client websites using TypeScript, React, Next.js, Zustand, Zod, ShadCN, and TailwindCSS.",
-        "Built RESTful APIs with Node.js, Express, and Drizzle ORM.",
-      ],
-      pt: [
-        "Desenvolvimento assistido por IA de sites modernos para clientes usando TypeScript, React, Next.js, Zustand, Zod, ShadCN e TailwindCSS.",
-        "APIs RESTful com Node.js, Express e Drizzle ORM.",
-      ],
-    },
-  },
-  {
-    id: "emailonacid",
-    role: {
-      en: "Senior Full Stack Software Engineer",
-      pt: "Engenheiro de Software Full Stack Sênior",
-    },
-    company: { en: "Email on Acid", pt: "Email on Acid" },
-    period: { en: "Sep 2019 – Sep 2023", pt: "Set 2019 – Set 2023" },
-    stakes: true,
-    defaultOpen: true,
-    tech: ["React", "Node.js", "PHP", "PostgreSQL", "MongoDB", "Redis"],
-    bullets: {
-      en: [
-        "Architected and scaled a full-stack SaaS cloud application — React, Node.js (Express), and PHP (CodeIgniter) — supporting high-concurrency environments.",
-        "Spearheaded a critical legacy system refactor: modernized the codebase for significant scalability and readability gains while slashing technical debt.",
-        "Implemented advanced caching with Redis and managed hybrid data architectures across PostgreSQL and MongoDB.",
-        "Delivered measurable performance improvements including reduced API latency and page load times.",
-      ],
-      pt: [
-        "Arquitetei e escalei uma aplicação SaaS full-stack em nuvem — React, Node.js (Express) e PHP (CodeIgniter) — suportando ambientes de alta concorrência.",
-        "Liderei um refatoramento crítico de sistema legado: modernizei a base de código para ganhos significativos em escalabilidade e legibilidade, reduzindo drasticamente a dívida técnica.",
-        "Implementei cache avançado com Redis e gerenciei arquiteturas de dados híbridas com PostgreSQL e MongoDB.",
-        "Entreguei melhorias mensuráveis de desempenho, incluindo redução de latência de API e tempos de carregamento.",
-      ],
-    },
-  },
-  {
-    id: "bureau-veritas",
-    role: { en: "Full Stack Software Engineer", pt: "Engenheiro de Software Full Stack" },
-    company: { en: "Bureau Veritas Group", pt: "Bureau Veritas Group" },
-    period: { en: "Mar 2019 – Sep 2019", pt: "Mar 2019 – Set 2019" },
-    stakes: true,
-    defaultOpen: true,
-    tech: ["React", "PHP", "PostgreSQL", "AWS"],
-    bullets: {
-      en: [
-        "Developed full-stack features for SurvAgri©, a mission-critical grain shipment management platform used worldwide — React front-end, distributed Laravel (PHP) RESTful API, and PostgreSQL.",
-        "Spearheaded the refactoring of KerpWeb, an ERP and agricultural auditing system used by global giants BASF and Bayer, applying Clean Code and ZendFramework optimizations.",
-        "Streamlined CI/CD pipelines via Bitbucket and deployed architectures on Amazon AWS Cloud.",
-      ],
-      pt: [
-        "Desenvolvi funcionalidades full-stack para o SurvAgri©, plataforma de missão crítica para gerenciamento de embarque de grãos usada mundialmente — front-end React, API RESTful Laravel (PHP) distribuída e PostgreSQL.",
-        "Liderei o refatoramento do KerpWeb, sistema ERP e de auditoria agrícola usado pela BASF e Bayer, aplicando Clean Code e otimizações com ZendFramework.",
-        "Otimizei pipelines de CI/CD via Bitbucket e implantei arquiteturas na Amazon AWS Cloud.",
-      ],
-    },
-  },
-  {
-    id: "devhouse-2011",
-    role: { en: "Senior Software Engineer", pt: "Engenheiro de Software Sênior" },
-    company: { en: "DevHouse", pt: "DevHouse" },
-    period: { en: "Nov 2011 – Mar 2019", pt: "Nov 2011 – Mar 2019" },
-    stakes: false,
-    defaultOpen: false,
-    tech: ["React", "Node.js", "PostgreSQL", "PHP", "C#"],
-    bullets: {
-      en: [
-        "Development of web applications using React, Node.js, and PostgreSQL.",
-        "Development, implementation, and customization of websites and e-commerce using WordPress, Joomla, and Magento.",
-        "Analysis, development, and support for small-to-mid-size web applications using PHP and ASP.NET (C#).",
-        "Teaching Adobe Flex courses.",
-      ],
-      pt: [
-        "Desenvolvimento de aplicações web com React, Node.js e PostgreSQL.",
-        "Desenvolvimento, implantação e customização de sites e e-commerces com WordPress, Joomla e Magento.",
-        "Análise, desenvolvimento e suporte para aplicações web de pequeno e médio porte com PHP e ASP.NET (C#).",
-        "Ministração de cursos de Adobe Flex.",
-      ],
-    },
-  },
-  {
-    id: "msf",
-    role: {
-      en: "Tech Lead · Java & Android Engineer",
-      pt: "Líder Técnico · Engenheiro Java & Android",
-    },
-    company: { en: "Doctors Without Borders (MSF)", pt: "Médicos Sem Fronteiras (MSF)" },
-    period: { en: "Sep 2015 – Mar 2016", pt: "Set 2015 – Mar 2016" },
-    stakes: true,
-    defaultOpen: false,
-    tech: ["Android", "Java", "MySQL", "Python"],
-    bullets: {
-      en: [
-        "Android/Java developer on Project Buendia — an open-source medical records system for Ebola and malnutrition relief missions, created by MSF and Google Crisis Response.",
-        "Started as a volunteer writing unit tests. After two weeks, selected from 1,000+ candidates to join as a full-time Android developer.",
-        "Elected technical lead — led code reviews, resolved architectural blockers, and drove new features and bug fixes.",
-        "Stack: Android, Java, JUnit, XForms, Spring, OpenMRS, Hibernate, Python, MySQL, Linux.",
-      ],
-      pt: [
-        "Desenvolvedor Android/Java no Projeto Buendia — sistema de prontuário eletrônico open-source para missões de combate ao Ebola e desnutrição, criado pelo MSF e Google Crisis Response.",
-        "Iniciei como voluntário desenvolvendo testes unitários. Após duas semanas, selecionado entre mais de 1.000 candidatos como desenvolvedor Android em tempo integral.",
-        "Eleito líder técnico — conduzi revisões de código, resolvi bloqueios arquiteturais e liderei novas funcionalidades e correções.",
-        "Stack: Android, Java, JUnit, XForms, Spring, OpenMRS, Hibernate, Python, MySQL, Linux.",
-      ],
-    },
-  },
-  {
-    id: "stock-info",
-    role: { en: "Java Software Engineer", pt: "Engenheiro de Software Java" },
-    company: { en: "Stock & Info", pt: "Stock & Info" },
-    period: { en: "Apr 2015 – Jul 2015", pt: "Abr 2015 – Jul 2015" },
-    stakes: false,
-    defaultOpen: false,
-    tech: ["Java", "C#"],
-    bullets: {
-      en: [
-        "Java RESTful web service development using JBoss Resteasy.",
-        "Front-end development with HTML5, CSS3, Bootstrap, and jQuery.",
-        "Helper and version control applications for FileMaker using .NET C#.",
-      ],
-      pt: [
-        "Desenvolvimento de Web Services RESTful em Java com JBoss Resteasy.",
-        "Desenvolvimento frontend com HTML5, CSS3, Bootstrap e jQuery.",
-        "Aplicações auxiliares e de controle de versão para FileMaker em .NET C#.",
-      ],
-    },
-  },
-  {
-    id: "bravi",
-    role: { en: "Software Engineer", pt: "Engenheiro de Software" },
-    company: { en: "Bravi Software", pt: "Bravi Software" },
-    period: { en: "Nov 2014 – Feb 2015", pt: "Nov 2014 – Fev 2015" },
-    stakes: false,
-    defaultOpen: false,
-    tech: ["C#", ".NET"],
-    bullets: {
-      en: [
-        "Microsoft C# and .NET WPF developer for the world's largest educational software.",
-        "Outsourced engineer to Tribaltech, United Kingdom.",
-      ],
-      pt: [
-        "Desenvolvedor Microsoft C# e .NET WPF para o maior software educacional do mundo.",
-        "Engenheiro terceirizado para a Tribaltech, Reino Unido.",
-      ],
-    },
-  },
-  {
-    id: "morphy",
-    role: { en: "Web Developer", pt: "Desenvolvedor Web" },
-    company: { en: "Morphy Digital Group", pt: "Morphy Digital Group" },
-    period: { en: "Aug 2014 – Nov 2014", pt: "Ago 2014 – Nov 2014" },
-    stakes: false,
-    defaultOpen: false,
-    tech: ["PHP"],
-    bullets: {
-      en: [
-        "Full-stack web development using PHP ZendFramework, Bootstrap, jQuery, and HTML5.",
-        "RESTful services for mobile applications.",
-      ],
-      pt: [
-        "Desenvolvimento web full-stack com PHP ZendFramework, Bootstrap, jQuery e HTML5.",
-        "Serviços RESTful para aplicações móveis.",
-      ],
-    },
-  },
-  {
-    id: "totvs",
-    role: { en: "Java Software Engineer", pt: "Engenheiro de Software Java" },
-    company: { en: "TOTVS", pt: "TOTVS" },
-    period: { en: "Apr 2011 – Nov 2011", pt: "Abr 2011 – Nov 2011" },
-    stakes: false,
-    defaultOpen: false,
-    tech: ["Java", "JavaScript"],
-    bullets: {
-      en: [
-        "Bug fixes and support on an EDM (Electronic Document Management) system built with Flex and Java EE.",
-        "Front-end migration from Adobe Flex to web standards (HTML5/CSS/JS) using jQuery and YUI.",
-        "RESTful API development using JBoss Resteasy (JAX-RS).",
-      ],
-      pt: [
-        "Correção de bugs e suporte em sistema EDM (Gerenciamento Eletrônico de Documentos) com Flex e Java EE.",
-        "Migração de frontend de Adobe Flex para padrões web (HTML5/CSS/JS) com jQuery e YUI.",
-        "Desenvolvimento de API RESTful com JBoss Resteasy (JAX-RS).",
-      ],
-    },
-  },
-  {
-    id: "dmg",
-    role: { en: "Web Developer", pt: "Desenvolvedor Web" },
-    company: { en: "DMG Digital Agency", pt: "DMG Digital Agency" },
-    period: { en: "Feb 2010 – Apr 2011", pt: "Fev 2010 – Abr 2011" },
-    stakes: false,
-    defaultOpen: false,
-    tech: ["PHP", "PostgreSQL", "JavaScript"],
-    bullets: {
-      en: [
-        "Magento e-commerce customizations, plugins, and theme development.",
-        "Object-oriented PHP5 development of a casino management system using ZendFramework, backed by PostgreSQL and Doctrine ORM.",
-        "Sencha ExtJS front-end for a rich internet application (RIA).",
-      ],
-      pt: [
-        "Customizações, plugins e temas para e-commerce Magento.",
-        "Desenvolvimento PHP5 orientado a objetos de sistema de gerenciamento de cassino com ZendFramework, backend PostgreSQL e Doctrine ORM.",
-        "Frontend Sencha ExtJS para aplicação rica para internet (RIA).",
-      ],
-    },
-  },
-  {
-    id: "freelance",
-    role: { en: "Web Developer", pt: "Desenvolvedor Web" },
-    company: { en: "Self-Employed", pt: "Autônomo" },
-    period: { en: "Jul 2005 – Feb 2010", pt: "Jul 2005 – Fev 2010" },
-    stakes: false,
-    defaultOpen: false,
-    tech: ["PHP", "PostgreSQL", "JavaScript"],
-    bullets: {
-      en: [
-        "On-demand application development using PHP ZendFramework, Doctrine ORM, PostgreSQL, MySQL, and ExtJS.",
-        "Development and customization of websites and e-commerce using WordPress, Joomla, and Magento.",
-        "Served various local businesses in Joinville: Izi Sistemas, Datasul, LDI Eletrônica Industrial, VonMuller Fotografia, and others.",
-        "Notable builds: Social Well-Being management system for City Hall (DataSul partnership), EAD platform, email marketing system with bounce handling and analytics.",
-      ],
-      pt: [
-        "Desenvolvimento de aplicações sob demanda com PHP ZendFramework, Doctrine ORM, PostgreSQL, MySQL e ExtJS.",
-        "Desenvolvimento e customização de sites e e-commerces com WordPress, Joomla e Magento.",
-        "Atendi diversas empresas de Joinville: Izi Sistemas, Datasul, LDI Eletrônica Industrial, VonMuller Fotografia, entre outras.",
-        "Projetos notáveis: sistema de gestão de Assistência Social para a Prefeitura (parceria DataSul), plataforma EAD, sistema de e-mail marketing com tratamento de bounces e analytics.",
-      ],
-    },
-  },
+const RES_ERAS = [
+  { y: "2005", label: { en: "Flash · Flex", pt: "Flash · Flex" } },
+  { y: "2008", label: { en: "PHP · Zend", pt: "PHP · Zend" } },
+  { y: "2011", label: { en: "Java · Android", pt: "Java · Android" } },
+  { y: "2014", label: { en: ".NET · C#", pt: ".NET · C#" } },
+  { y: "2019", label: { en: "React · Next · AI", pt: "React · Next · IA" }, now: true },
 ];
 
-// ── Skills ────────────────────────────────────────────────
+const RES_SKILLS = {
+  core: ["TypeScript", "React", "Next.js", "Node.js", "Java", "PHP", "C#", "PostgreSQL", "Python", "Android", "MySQL", "Tailwind"],
+  groups: [
+    {
+      label: { en: "languages", pt: "linguagens" },
+      items: ["TypeScript", "JavaScript", "Java", "PHP", "Python", "C#", "HTML", "CSS"],
+    },
+    {
+      label: { en: "frameworks & tools", pt: "frameworks & ferramentas" },
+      items: ["React", "Next.js", "Node.js", "Nest.js", "Zustand", "React Query", "TailwindCSS", "ShadCN", "Zod", "Drizzle ORM", "Better Auth", "Jest", "Java Spring", "JBoss RESTEasy", "Laravel", "ZendFramework", "Bootstrap", "jQuery", "WordPress", "Magento", "Git"],
+    },
+    {
+      label: { en: "databases", pt: "bancos de dados" },
+      items: ["PostgreSQL", "MySQL", "MSSQL", "MongoDB", "Redis", "Oracle"],
+    },
+    {
+      label: { en: "methodologies", pt: "metodologias" },
+      items: ["Agile", "Scrum", "XP", "Clean Code"],
+    },
+  ],
+};
 
-const SKILL_CATS = [
-  {
-    label: { en: "// languages", pt: "// linguagens" },
-    items: ["TypeScript", "JavaScript", "Java", "PHP", "Python", "C#"],
-  },
-  {
-    label: { en: "// frontend & ui", pt: "// frontend & ui" },
-    items: ["React", "Next.js", "Tailwind", "Android"],
-  },
-  {
-    label: { en: "// backend & infra", pt: "// backend & infra" },
-    items: ["Node.js", ".NET", "AWS", "Docker", "Git"],
-  },
-  {
-    label: { en: "// databases", pt: "// bancos de dados" },
-    items: ["PostgreSQL", "MySQL", "SQL Server", "MongoDB"],
-  },
+const SPOKEN = [
+  { name: { en: "Portuguese", pt: "Português" }, level: { en: "Native", pt: "Nativo" }, pct: 100 },
+  { name: { en: "English", pt: "Inglês" }, level: { en: "Fluent · TOEFL B1", pt: "Fluente · TOEFL B1" }, pct: 88 },
+  { name: { en: "Spanish", pt: "Espanhol" }, level: { en: "Conversational", pt: "Conversação · Intermediário" }, pct: 55 },
 ];
-
-// ── Education ─────────────────────────────────────────────
 
 const EDUCATION = [
   {
-    id: "masters",
-    degree: {
-      en: "Master's in Software Engineering",
-      pt: "Mestrado em Engenharia de Software",
-    },
-    period: { en: "Jan 2020 — Incomplete", pt: "Jan 2020 — Incompleto" },
-    institution: "Universidade Tecnológica Federal do Paraná (UTFPR)",
+    deg: { en: "Master's, Software Engineering", pt: "Mestrado em Engenharia de Software" },
+    school: "UTFPR", when: { en: "2020 · incomplete", pt: "2020 · incompleto" },
   },
   {
-    id: "postgrad",
-    degree: {
-      en: "Postgraduate in Project Management",
-      pt: "Pós-Graduação em Gerenciamento de Projetos",
-    },
-    period: { en: "Jan 2018 — Dec 2019", pt: "Jan 2018 — Dez 2019" },
-    institution: "Universidade Cesumar (UNICESUMAR)",
+    deg: { en: "Postgraduate, Project Management", pt: "Pós-graduação em Gerência de Projetos" },
+    school: "UNICESUMAR", when: { en: "2018 — 2019", pt: "2018 — 2019" },
   },
   {
-    id: "bachelors",
-    degree: {
-      en: "Bachelor's in Computer Science",
-      pt: "Bacharelado em Ciência da Computação",
-    },
-    period: { en: "Jan 2011 — Dec 2017", pt: "Jan 2011 — Dez 2017" },
-    institution: "Universidade Cesumar (UDESC)",
+    deg: { en: "Bachelor's, Computer Science", pt: "Bacharelado em Ciência da Computação" },
+    school: "UDESC", when: { en: "2011 — 2017", pt: "2011 — 2017" },
   },
 ];
 
-// ── Human languages ───────────────────────────────────────
-
-const HUMAN_LANGS = [
-  {
-    name: { en: "English", pt: "Inglês" },
-    level: { en: "Fluent · TOEFL B1", pt: "Fluente · TOEFL B1" },
-  },
-  {
-    name: { en: "Portuguese", pt: "Português" },
-    level: { en: "Native", pt: "Nativo" },
-  },
-  {
-    name: { en: "Spanish", pt: "Espanhol" },
-    level: { en: "Conversational", pt: "Conversação" },
-  },
+const LINKS = [
+  { icon: "github", label: "github.com/llvasconcellos", href: "https://github.com/llvasconcellos" },
+  { icon: "github", label: "github.com/llvasconcellos2", href: "https://github.com/llvasconcellos2" },
+  { icon: "globe", label: "leonardo-vasconcellos.vercel.app", href: "https://leonardo-vasconcellos.vercel.app" },
 ];
 
-// ── Component ─────────────────────────────────────────────
+const RT = {
+  en: {
+    kicker: "// résumé · curriculum vitae",
+    role: "Senior Full-Stack Engineer",
+    location: "Joinville · Santa Catarina · Brazil",
+    summary: "I'm a senior full-stack engineer who's been shipping for the web since 2005 — around 70 projects across five eras of the technology. I was elected technical lead on an Ebola-response records system with Doctors Without Borders, helped scale high-concurrency SaaS at Email on Acid, and contributed to Brazil's top-ranked smart city in Itajaí. My specialty is the systems where failure has real consequences: I take them — mission-critical, often tangled — and make them scale, clean and fast and built to last. I'm still hands-on every day, now AI-assisted, and I work in both English and Portuguese. Off the clock I play bass, drums, and guitar — same discipline and timing, different instrument.",
+    downloadThis: "Download PDF",
+    other: "Versão em Português",
+    pdfNote: "Print-ready PDF · updated 2026",
+    stats: [["~20", "years shipping"], ["~70", "projects"], ["5", "tech eras"], ["12", "roles"]],
+    erasH: "// five eras of the web — still writing code",
+    skillsH: "Skills",
+    coreH: "// core stack",
+    eduH: "Education",
+    langH: "Languages",
+    linksH: "Links",
+    backHome: "Back to portfolio",
+  },
+  pt: {
+    kicker: "// currículo · curriculum vitae",
+    role: "Engenheiro de Software Full-Stack Sênior",
+    location: "Joinville · Santa Catarina · Brasil",
+    summary: "Sou engenheiro de software full-stack sênior e desenvolvo para a web desde 2005 — cerca de 70 projetos ao longo de cinco eras da tecnologia. Fui eleito líder técnico de um sistema de prontuários para o combate ao Ebola com os Médicos Sem Fronteiras, ajudei a escalar SaaS de alta concorrência na Email on Acid e contribuí para a cidade inteligente mais bem classificada do Brasil, em Itajaí. Eu me especializo em sistemas em que a falha tem consequências reais: pego os mais críticos e complexos e os transformo em soluções escaláveis — limpas, rápidas e feitas para durar. Continuo com a mão no código todos os dias, agora com auxílio de IA, e trabalho em português e inglês. Fora do expediente, toco baixo, bateria e guitarra — mesma disciplina e timing, outro instrumento.",
+    downloadThis: "Baixar PDF",
+    other: "English version",
+    pdfNote: "PDF pronto para impressão · atualizado em 2026",
+    stats: [["~20", "anos de carreira"], ["~70", "projetos"], ["5", "eras de tecnologia"], ["12", "cargos"]],
+    erasH: "// cinco eras da web — ainda escrevendo código",
+    skillsH: "Habilidades",
+    coreH: "// stack principal",
+    eduH: "Formação",
+    langH: "Idiomas",
+    linksH: "Links",
+    backHome: "Voltar ao portfólio",
+  },
+};
 
 export function ResumePage({ lang }: { lang: Lang }) {
-  const pdfFile = lang === "pt" ? "Leonardo_LV_PT.pdf" : "Leonardo_LV_EN.pdf";
+  const t = RT[lang];
+  const otherLang: Lang = lang === "en" ? "pt" : "en";
 
   return (
-    <article className="lv-resume">
+    <div className="lv-resume">
+      <Link href={`/${lang}`} className="lv-link-arrow lv-back">
+        <ArrowLeft size={15} /> {t.backHome}
+      </Link>
 
-      {/* ── Header ── */}
-      <header className="lv-resume-header">
-        <div className="lv-resume-copy">
-          <Kicker as="p">{lang === "pt" ? "// currículo" : "// résumé"}</Kicker>
-          <h1 className="lv-resume-name">LEONARDO</h1>
-          <p className="lv-resume-fullname">Lima de Vasconcellos</p>
-          <p className="lv-resume-tagline">
-            {lang === "pt"
-              ? "O engenheiro que você quer quando o sistema realmente importa — e cresceu emaranhado."
-              : "The engineer you want when the system actually matters — and has grown tangled."}
-          </p>
+      {/* ── header ── */}
+      <header className="lv-resume-head">
+        <div className="lv-resume-head-main">
+          <Kicker className="lv-resume-kicker">{t.kicker}</Kicker>
+          <h1 className="lv-resume-name">Leonardo Lima de Vasconcellos</h1>
+          <p className="lv-resume-role">{t.role}</p>
           <div className="lv-resume-contact">
             <a href="mailto:leonardolimadevasconcellos@gmail.com">
-              <Mail size={12} />
+              <Mail size={15} />
               leonardolimadevasconcellos@gmail.com
             </a>
-            <span>
-              <Phone size={12} />
+            <a href="tel:+5541992151301">
+              <Phone size={15} />
               +55 41 99215-1301
+            </a>
+            <a href="https://linkedin.com/in/llvasconcellos" target="_blank" rel="noopener noreferrer">
+              <Briefcase size={15} />
+              in/llvasconcellos
+            </a>
+            <span className="lv-resume-loc">
+              <MapPin size={15} />
+              {t.location}
             </span>
-            <a
-              href="https://linkedin.com/in/llvasconcellos"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              linkedin.com/in/llvasconcellos
-            </a>
-            <span>
-              <MapPin size={12} />
-              {lang === "pt" ? "Joinville, SC, Brasil" : "Joinville, SC, Brazil"}
-            </span>
-          </div>
-          <div className="lv-resume-actions">
-            <a
-              href={`/resume/${pdfFile}`}
-              download
-              className="lv-btn lv-btn-primary"
-            >
-              {lang === "pt" ? "Baixar PDF" : "Download PDF"} <Download size={15} />
-            </a>
-            <a
-              href="mailto:leonardolimadevasconcellos@gmail.com"
-              className="lv-btn lv-btn-ghost"
-            >
-              {lang === "pt" ? "Fale comigo" : "Get in touch"} <Mail size={15} />
-            </a>
           </div>
         </div>
-        <div className="lv-resume-portrait">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/leo_photo.jpg" alt="Photo of Leonardo" />
+        <div className="lv-resume-dl">
+          <a className="lv-btn lv-btn-primary" href={RESUME_PDF[lang]} download>
+            {t.downloadThis} · {lang.toUpperCase()} <Download size={15} />
+          </a>
+          <a className="lv-btn lv-btn-ghost" href={RESUME_PDF[otherLang]} download>
+            {t.other} <FileDown size={15} />
+          </a>
+          <span className="lv-resume-pdfnote">{t.pdfNote}</span>
         </div>
       </header>
 
-      {/* ── Experience ── */}
-      <section className="lv-resume-section">
-        <div className="lv-resume-section-head">
-          <Kicker as="p">
-            {lang === "pt" ? "// experiência profissional" : "// professional experience"}
-          </Kicker>
-          <h2 className="lv-resume-section-title">
-            {lang === "pt" ? "Experiência" : "Experience"}
-          </h2>
-        </div>
-        <div className="lv-exp-list">
-          {EXPERIENCE.map((exp) => (
-            <details key={exp.id} className="lv-exp-card" open={exp.defaultOpen}>
-              <summary className="lv-exp-summary">
-                <span className="lv-exp-role">
-                  {exp.role[lang]}
-                  {exp.stakes && (
-                    <span className="lv-stakes-badge">
-                      <ShieldAlert size={10} />
-                      {lang === "pt" ? "missão crítica" : "mission-critical"}
-                    </span>
-                  )}
-                </span>
-                <span className="lv-exp-meta">
-                  <span className="lv-exp-meta-company">{exp.company[lang]}</span>
-                  <span className="lv-exp-meta-sep">·</span>
-                  <span>{exp.period[lang]}</span>
-                </span>
-                <span className="lv-exp-chevron" aria-hidden="true">
-                  <ChevronDown size={16} />
-                </span>
-              </summary>
-              <div className="lv-exp-body">
-                <ul className="lv-exp-bullets">
-                  {exp.bullets[lang].map((bullet, i) => (
-                    <li key={i}>{bullet}</li>
-                  ))}
-                </ul>
-                {exp.tech.length > 0 && (
-                  <div className="lv-exp-tech">
-                    <span className="lv-exp-tech-lab">
-                      {lang === "pt" ? "Tecnologias:" : "Built with:"}
-                    </span>
-                    {exp.tech.map((t) => (
-                      <TechChip key={t}>{t}</TechChip>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </details>
-          ))}
-        </div>
-      </section>
+      {/* ── summary ── */}
+      <p className="lv-resume-summary">{t.summary}</p>
 
-      {/* ── Skills ── */}
-      <section className="lv-resume-section">
-        <div className="lv-resume-section-head">
-          <Kicker as="p">{lang === "pt" ? "// habilidades" : "// skills"}</Kicker>
-          <h2 className="lv-resume-section-title">
-            {lang === "pt" ? "Habilidades" : "Skills"}
-          </h2>
-        </div>
-        <div className="lv-resume-skills-grid">
-          {SKILL_CATS.map((cat) => (
-            <div key={cat.label.en} className="lv-resume-skill-cat">
-              <div className="lv-resume-sub">{cat.label[lang]}</div>
-              <div className="lv-resume-stack">
-                {cat.items.map((name) => {
-                  const logo = TECH_LOGOS[name];
-                  return (
-                    <div key={name} className="lv-resume-stack-cell" title={name}>
-                      {logo && (
-                        <span
-                          className="lv-stack-logo"
-                          style={{ backgroundImage: `url(${logo})` }}
-                        />
-                      )}
-                      <span>{name}</span>
-                    </div>
-                  );
-                })}
+      {/* ── stats ── */}
+      <div className="lv-stat-row lv-resume-stats">
+        {t.stats.map(([n, l], i) => (
+          <div className="lv-stat" key={i}>
+            <span className="lv-stat-n">{n}</span>
+            <span className="lv-stat-l">{l}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* ── eras arc ── */}
+      <p className="lv-resume-h lv-resume-h-mono">{t.erasH}</p>
+      <div className="lv-timeline lv-resume-eras">
+        <div className="lv-timeline-line" />
+        {RES_ERAS.map((e, i) => (
+          <div key={i} className={`lv-era${e.now ? " is-now" : ""}`}>
+            <div className="lv-era-dot" />
+            <div className="lv-era-y">{e.y}</div>
+            <div className="lv-era-l">{e.label[lang]}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* ── experience (client component for filter + expand state) ── */}
+      <ResumeExperience lang={lang} />
+
+      {/* ── core stack ── */}
+      <p className="lv-resume-h lv-resume-h-mono lv-resume-coreh">{t.coreH}</p>
+      <div className="lv-stack lv-resume-core">
+        {RES_SKILLS.core.map((name) => {
+          const logo = TECH_LOGOS[name];
+          return (
+            <div key={name} className="lv-stack-cell" title={name}>
+              {logo
+                ? <span className="lv-stack-logo" style={{ backgroundImage: `url(${logo})` }} />
+                : <span className="lv-resume-core-glyph">{name[0]}</span>
+              }
+              <span>{name}</span>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ── lower grid: skills | languages + education + links ── */}
+      <div className="lv-resume-cols">
+        <div className="lv-resume-col">
+          <h2 className="lv-resume-h">{t.skillsH}</h2>
+          {RES_SKILLS.groups.map((g, i) => (
+            <div key={i} className="lv-skill-group">
+              <p className="lv-about-sub">{`// ${g.label[lang]}`}</p>
+              <div className="lv-skill-chips">
+                {g.items.map((s) => (
+                  <span key={s} className="lv-chip">{s}</span>
+                ))}
               </div>
             </div>
           ))}
         </div>
-      </section>
 
-      {/* ── Education + Languages ── */}
-      <div className="lv-resume-bottom">
-        <div>
-          <div className="lv-resume-sub">
-            {lang === "pt" ? "// educação" : "// education"}
-          </div>
-          {EDUCATION.map((edu) => (
-            <div key={edu.id} className="lv-resume-edu-entry">
-              <p className="lv-resume-edu-degree">{edu.degree[lang]}</p>
-              <p className="lv-resume-edu-period">{edu.period[lang]}</p>
-              <p className="lv-resume-edu-inst">{edu.institution}</p>
-            </div>
-          ))}
-        </div>
-        <div>
-          <div className="lv-resume-sub">
-            {lang === "pt" ? "// idiomas" : "// languages"}
-          </div>
-          <div className="lv-resume-human-langs">
-            {HUMAN_LANGS.map((l) => (
-              <div key={l.name.en} className="lv-resume-hlang">
-                <span className="lv-resume-hlang-name">{l.name[lang]}</span>
-                <span className="lv-resume-hlang-level">{l.level[lang]}</span>
+        <div className="lv-resume-col">
+          <h2 className="lv-resume-h">{t.langH}</h2>
+          <div className="lv-spoken">
+            {SPOKEN.map((s, i) => (
+              <div key={i} className="lv-spoken-row">
+                <div className="lv-spoken-top">
+                  <span className="lv-spoken-name">{s.name[lang]}</span>
+                  <span className="lv-spoken-lvl">{s.level[lang]}</span>
+                </div>
+                <div className="lv-spoken-bar">
+                  <span className="lv-spoken-fill" style={{ width: `${s.pct}%` }} />
+                </div>
               </div>
+            ))}
+          </div>
+
+          <h2 className="lv-resume-h lv-resume-h-gap">{t.eduH}</h2>
+          <div className="lv-edu">
+            {EDUCATION.map((e, i) => (
+              <div key={i} className="lv-edu-row">
+                <span className="lv-edu-y">{e.when[lang].split(" ")[0]}</span>
+                <div>
+                  <div className="lv-edu-t">{e.deg[lang]}</div>
+                  <div className="lv-edu-d">{e.school} · {e.when[lang]}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 className="lv-resume-h lv-resume-h-gap">{t.linksH}</h2>
+          <div className="lv-linklist">
+            {LINKS.map((l, i) => (
+              <a key={i} className="lv-linkrow" href={l.href} target="_blank" rel="noopener noreferrer">
+                {l.icon === "github" ? <CodeXml size={16} /> : <Globe size={16} />}
+                <span>{l.label}</span>
+                <ArrowUpRight className="lv-linkrow-out" size={14} />
+              </a>
             ))}
           </div>
         </div>
       </div>
 
-      <MiniFooter />
-    </article>
+      {/* ── closing download ── */}
+      <div className="lv-resume-foot">
+        <a className="lv-btn lv-btn-primary" href={RESUME_PDF[lang]} download>
+          {t.downloadThis} · {lang.toUpperCase()} <Download size={15} />
+        </a>
+      </div>
+    </div>
   );
 }

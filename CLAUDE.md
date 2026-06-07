@@ -21,7 +21,7 @@ A bilingual (EN/PT-BR) dark-only personal portfolio for Leonardo Lima de Vasconc
 
 **Positioning:** mission-critical systems where failure has real consequences. Core line: _"the engineer you want when the system actually matters — and has grown tangled."_
 
-The design handoff in `design_handoff_portfolio/` was the original visual spec. The implementation has since diverged from it — treat `design_handoff_portfolio/` as historical reference only. The live code is the source of truth.
+The design handoff in `/design/design_handoff_portfolio/` was the original visual spec. The implementation has since diverged from it — treat `/design/design_handoff_portfolio/` as historical reference only. The live code is the source of truth.
 
 ## Architecture
 
