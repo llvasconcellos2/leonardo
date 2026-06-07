@@ -41,3 +41,5 @@ yarn-error.log*
 next-env.d.ts
 
 .gitmodules
+/project_archive/
+/project_archive_other/
