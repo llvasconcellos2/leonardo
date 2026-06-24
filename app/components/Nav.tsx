@@ -8,7 +8,7 @@ import type { Lang } from "../data";
 const items = [
   { id: "home", path: "/", label: { en: "Home", pt: "Início" } },
   { id: "work", path: "/work", label: { en: "Work", pt: "Trabalho" } },
-  { id: "writing", path: "/writing", label: { en: "Writing", pt: "Escrita" } },
+  { id: "writing", path: "/blog", label: { en: "Writing", pt: "Escrita" } },
   { id: "about", path: "/#about", label: { en: "About", pt: "Sobre" } },
 ] as const;
 
