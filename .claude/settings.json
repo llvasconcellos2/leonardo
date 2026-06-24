@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node_modules/.bin/tsx.CMD -e ' *)",
+      "Bash(node_modules/.bin/tsx.CMD scripts/migrate-blog/test-db.ts)",
+      "Bash(node_modules/.bin/tsx.CMD scripts/migrate-blog/test-full.ts)",
+      "Bash(echo \"DONE exit=$?\")",
+      "Bash(node_modules/.bin/tsx.CMD scripts/migrate-blog/index.ts)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(node_modules/.bin/tsc.CMD --noEmit)"
+    ]
+  }
+}
