@@ -6,7 +6,7 @@ export const ARCHIVE_ROOT = path.join(ROOT, "project_archive", "devhouse-wordpre
 export const SQL_DUMP_PATH = path.join(
   ARCHIVE_ROOT,
   "db",
-  "devhouse_backup_20260623_052913.sql"
+  "devhouse_backup_20260624_174219.sql"
 );
 export const RIP_SITE_PATH = path.join(ARCHIVE_ROOT, "rip", "site");
 export const RIP_UPLOADS_PATH = path.join(RIP_SITE_PATH, "wp-content", "uploads");

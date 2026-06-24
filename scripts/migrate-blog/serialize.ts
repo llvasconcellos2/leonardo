@@ -58,7 +58,7 @@ export interface BlogComment {
 
 export interface BlogPost {
   id: number;
-  slug: string;
+  slug: Record<Lang, string>;
   date: Date;
   modified: Date;
   featuredImage: string | null;

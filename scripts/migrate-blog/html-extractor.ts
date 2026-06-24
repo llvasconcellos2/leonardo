@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import * as cheerio from "cheerio";
+import slugify from "slugify";
 import { EXCLUDED_SLUGS, RIP_BLOG_INDEX_PATH, RIP_SITE_PATH } from "./constants";
 import { copyUploadImage, extractUploadPath, resolveAvatar } from "./images";
 import { convertHtmlToMarkdown, scanResidualShortcodes } from "./markdown";
@@ -71,6 +72,32 @@ export function enumerateSlugs(db: DbData, warn: Warn): string[] {
     `Resolved ${final.length} published posts (folder-only mismatches: ${folderOnly.length}, SQL-only mismatches: ${sqlOnly.length})`
   );
   return final;
+}
+
+/**
+ * WordPress falls back to the numeric post ID as the slug when a title has
+ * no sluggable text (confirmed case: post "143", title "<img title vs alt |
+ * ..."). Detect any folder name that's purely numeric and derive a real
+ * slug from its title via the same `slugify` convention used elsewhere in
+ * this codebase (semprecomvoce-next: `slugify(title, { lower: true, strict:
+ * true })`). The original numeric folder name is kept for disk/SQL lookups
+ * — only the returned map's value (the output slug) changes.
+ */
+export function buildSlugRenameMap(folderNames: string[], db: DbData, warn: Warn): Map<string, string> {
+  const renameMap = new Map<string, string>();
+  for (const folderName of folderNames) {
+    if (!/^\d+$/.test(folderName)) continue;
+    const sqlPost = db.postsBySlug.get(folderName);
+    if (!sqlPost) continue;
+    const newSlug = slugify(decodeHtmlEntities(sqlPost.title), { lower: true, strict: true });
+    if (!newSlug) {
+      warn(`Could not derive a slug from title for numeric-slug post "${folderName}" — keeping numeric slug`);
+      continue;
+    }
+    renameMap.set(folderName, newSlug);
+    warn(`Renamed numeric slug "${folderName}" -> "${newSlug}" (derived from title)`);
+  }
+  return renameMap;
 }
 
 function cleanText(text: string): string {
@@ -146,6 +173,7 @@ interface CommentWalkContext {
   slug: string;
   db: DbData;
   knownSlugs: Set<string>;
+  renameMap: Map<string, string>;
   warn: Warn;
 }
 
@@ -197,6 +225,7 @@ async function walkCommentList(
     const content = convertHtmlToMarkdown($body.html() ?? "", {
       currentSlug: ctx.slug,
       knownSlugs: ctx.knownSlugs,
+      renameMap: ctx.renameMap,
       warn: ctx.warn,
     });
     for (const snippet of scanResidualShortcodes(content)) {
@@ -235,17 +264,19 @@ export async function extractAuthorAvatar(warn: Warn): Promise<string | null> {
 }
 
 export async function extractPost(
+  folderName: string,
   slug: string,
   db: DbData,
   knownSlugs: Set<string>,
+  renameMap: Map<string, string>,
   warn: Warn
 ): Promise<ExtractedPost> {
-  const sqlPost = db.postsBySlug.get(slug);
+  const sqlPost = db.postsBySlug.get(folderName);
   if (!sqlPost) {
-    throw new Error(`extractPost called for unresolved slug "${slug}"`);
+    throw new Error(`extractPost called for unresolved slug "${folderName}"`);
   }
 
-  const filePath = path.join(RIP_SITE_PATH, slug, "index.html");
+  const filePath = path.join(RIP_SITE_PATH, folderName, "index.html");
   const html = fs.readFileSync(filePath, "utf8");
   const $ = cheerio.load(html);
 
@@ -258,7 +289,7 @@ export async function extractPost(
   rewriteInlineImages($, $postText, slug, warn);
   rewriteUploadLinks($, $postText, slug, warn);
   const bodyHtml = $postText.html() ?? "";
-  const content = convertHtmlToMarkdown(bodyHtml, { currentSlug: slug, knownSlugs, warn });
+  const content = convertHtmlToMarkdown(bodyHtml, { currentSlug: slug, knownSlugs, renameMap, warn });
   for (const snippet of scanResidualShortcodes(content)) {
     warn(`Residual bracket pattern on "${slug}": ${snippet}`);
   }
@@ -271,7 +302,7 @@ export async function extractPost(
   const catsAndTags = db.categoriesAndTagsByPostId.get(sqlPost.id) ?? { categories: [], tags: [] };
 
   const $commentList = $("#comments .commentlist").first();
-  const ctx: CommentWalkContext = { slug, db, knownSlugs, warn };
+  const ctx: CommentWalkContext = { slug, db, knownSlugs, renameMap, warn };
   const comments = $commentList.length ? await walkCommentList($, $commentList, ctx) : [];
 
   return {

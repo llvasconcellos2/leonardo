@@ -1,6 +1,12 @@
 import fs from "node:fs";
 import { loadDatabase } from "./db";
-import { enumerateSlugs, extractAuthorAvatar, extractPost, type ExtractedComment } from "./html-extractor";
+import {
+  buildSlugRenameMap,
+  enumerateSlugs,
+  extractAuthorAvatar,
+  extractPost,
+  type ExtractedComment,
+} from "./html-extractor";
 import { avatarStats, ensurePublicDirs } from "./images";
 import { buildBlogDataModule } from "./serialize";
 import { OUTPUT_DATA_FILE } from "./constants";
@@ -21,8 +27,10 @@ async function main() {
   const db = loadDatabase();
 
   console.log("Enumerating published post slugs...");
-  const slugs = enumerateSlugs(db, warn);
-  const knownSlugs = new Set(slugs);
+  const folderNames = enumerateSlugs(db, warn);
+  const renameMap = buildSlugRenameMap(folderNames, db, warn);
+  const slugFor = (folderName: string) => renameMap.get(folderName) ?? folderName;
+  const knownSlugs = new Set(folderNames.map(slugFor));
 
   // Single-author site — confirmed by the SQL dump (one row in wp_users).
   const sqlAuthor = [...db.authorById.values()][0];
@@ -35,19 +43,20 @@ async function main() {
     about: db.authorBioByUserId.get(sqlAuthor.id) ?? "",
   };
 
-  console.log(`Extracting ${slugs.length} posts...`);
+  console.log(`Extracting ${folderNames.length} posts...`);
   const posts: unknown[] = [];
   const diagnostics: { slug: string; rendered: number; rawApproved: number }[] = [];
 
-  for (const slug of slugs) {
-    const extracted = await extractPost(slug, db, knownSlugs, warn);
+  for (const folderName of folderNames) {
+    const slug = slugFor(folderName);
+    const extracted = await extractPost(folderName, slug, db, knownSlugs, renameMap, warn);
     const rendered = countComments(extracted.comments);
     const rawApproved = db.commentsByPostId.get(extracted.id)?.length ?? 0;
     diagnostics.push({ slug, rendered, rawApproved });
 
     posts.push({
       id: extracted.id,
-      slug: extracted.slug,
+      slug: { pt: extracted.slug, en: "" },
       date: extracted.date,
       modified: extracted.modified,
       featuredImage: extracted.featuredImage,

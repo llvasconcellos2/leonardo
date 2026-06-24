@@ -4,6 +4,8 @@ import { LANGUAGE_ALIASES, LOCAL_SITE_HOSTS } from "./constants";
 export interface MarkdownContext {
   currentSlug: string;
   knownSlugs: Set<string>;
+  /** Maps an old numeric WordPress folder name (e.g. "143") to its final, title-derived slug — so a link pointing at the old path still resolves to the renamed post. */
+  renameMap: Map<string, string>;
   warn: (message: string) => void;
 }
 
@@ -84,7 +86,8 @@ export function createTurndownService(): TurndownService {
       const el = node as HTMLElement;
       const href = el.getAttribute("href") ?? "";
       const ctx = activeContext;
-      const slug = extractSlugFromHref(href);
+      const rawSlug = extractSlugFromHref(href);
+      const slug = rawSlug && ctx ? ctx.renameMap.get(rawSlug) ?? rawSlug : rawSlug;
 
       if (slug && ctx?.knownSlugs.has(slug)) {
         return `[${content}](post:${slug})`;

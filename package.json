@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "migrate:blog": "tsx scripts/migrate-blog/index.ts"
+    "migrate:blog": "tsx scripts/migrate-blog/index.ts",
+    "slugify": "tsx scripts/slugify.ts"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",
@@ -24,6 +25,7 @@
     "cheerio": "^1.2.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
+    "slugify": "^1.6.9",
     "tsx": "^4.22.4",
     "turndown": "^7.2.4",
     "typescript": "^5"

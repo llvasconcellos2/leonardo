@@ -22,7 +22,7 @@ export interface BlogComment {
 
 export interface BlogPost {
   id: number;
-  slug: string;
+  slug: Record<Lang, string>;
   date: Date;
   modified: Date;
   featuredImage: string | null;
@@ -40,7 +40,10 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     "id": 879,
-    "slug": "dica-icone-do-skype-nao-aparece-no-ubuntu",
+    "slug": {
+      "pt": "dica-icone-do-skype-nao-aparece-no-ubuntu",
+      "en": "",
+    },
     "date": new Date("2015-08-27T18:43:55.000Z"),
     "modified": new Date("2016-07-31T23:04:20.000Z"),
     "featuredImage": "/old-blog/uploads/2015/08/skype-logo-open-graph.png",
@@ -58,16 +61,16 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
     "title": {
-      "pt": "[Dica] Ícone do Skype não aparece no Ubuntu",
+      "pt": "[Dica] �cone do Skype n�o aparece no Ubuntu",
       "en": "",
     },
     "excerpt": {
-      "pt": "Como fazer com que o ícone do skype apareça no painel (systray) do Ubuntu.",
+      "pt": "Como fazer com que o �cone do skype apare�a no painel (systray) do Ubuntu.",
       "en": "",
     },
     "content": {
@@ -77,7 +80,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 790,
-    "slug": "configurando-https-no-wildfly",
+    "slug": {
+      "pt": "configurando-https-no-wildfly",
+      "en": "",
+    },
     "date": new Date("2015-05-04T15:29:26.000Z"),
     "modified": new Date("2015-05-04T15:29:26.000Z"),
     "featuredImage": "/old-blog/uploads/2015/05/wildflynewimproved.jpg",
@@ -95,14 +101,14 @@ export const BLOG_POSTS: BlogPost[] = [
       "standalone",
       "undertow",
       "servidor",
-      "aplicação",
+      "aplica��o",
     ],
     "featured": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -297,7 +303,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 777,
-    "slug": "resolvido-error-state-sent_second_ehlo-code0-ou-server-response-read-error-code0",
+    "slug": {
+      "pt": "resolvido-error-state-sent_second_ehlo-code0-ou-server-response-read-error-code0",
+      "en": "",
+    },
     "date": new Date("2015-02-09T22:11:38.000Z"),
     "modified": new Date("2015-05-04T14:13:03.000Z"),
     "featuredImage": "/old-blog/uploads/2015/02/Gmail_logo.png",
@@ -320,7 +329,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -339,7 +348,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 765,
-    "slug": "copiar-download-de-um-site-inteiro-com-wget-ripar",
+    "slug": {
+      "pt": "copiar-download-de-um-site-inteiro-com-wget-ripar",
+      "en": "",
+    },
     "date": new Date("2014-10-11T08:44:03.000Z"),
     "modified": new Date("2016-10-16T03:17:39.000Z"),
     "featuredImage": "/old-blog/uploads/2012/06/binbash.jpg",
@@ -366,7 +378,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -385,7 +397,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 757,
-    "slug": "acessar-dbadapter-ou-outra-resource-do-bootstrap-de-qualquer-lugar-da-aplicacao-zend-framework-1",
+    "slug": {
+      "pt": "acessar-dbadapter-ou-outra-resource-do-bootstrap-de-qualquer-lugar-da-aplicacao-zend-framework-1",
+      "en": "",
+    },
     "date": new Date("2014-09-30T12:27:24.000Z"),
     "modified": new Date("2014-10-01T12:41:16.000Z"),
     "featuredImage": null,
@@ -407,12 +422,12 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
     "title": {
-      "pt": "Acessar dbAdapter ou outra resource do bootstrap de qualquer lugar da aplicação [Zend Framework 1]",
+      "pt": "Acessar dbAdapter ou outra resource do bootstrap de qualquer lugar da aplica��o [Zend Framework 1]",
       "en": "",
     },
     "excerpt": {
@@ -426,7 +441,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 750,
-    "slug": "habilitando-syntax-highlighting-no-nano",
+    "slug": {
+      "pt": "habilitando-syntax-highlighting-no-nano",
+      "en": "",
+    },
     "date": new Date("2014-09-29T18:29:06.000Z"),
     "modified": new Date("2015-08-28T04:23:17.000Z"),
     "featuredImage": "/old-blog/uploads/2012/06/binbash.jpg",
@@ -450,7 +468,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -469,7 +487,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 748,
-    "slug": "impedir-que-um-script-php-seja-executado-ao-mesmo-tempo-no-cron",
+    "slug": {
+      "pt": "impedir-que-um-script-php-seja-executado-ao-mesmo-tempo-no-cron",
+      "en": "",
+    },
     "date": new Date("2014-09-29T18:11:53.000Z"),
     "modified": new Date("2014-09-29T18:11:53.000Z"),
     "featuredImage": "/old-blog/uploads/2014/09/php.png",
@@ -489,7 +510,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -508,7 +529,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 742,
-    "slug": "enviando-via-gmail-com-phpmailer",
+    "slug": {
+      "pt": "enviando-via-gmail-com-phpmailer",
+      "en": "",
+    },
     "date": new Date("2014-09-29T17:30:08.000Z"),
     "modified": new Date("2014-09-29T17:43:40.000Z"),
     "featuredImage": "/old-blog/uploads/2014/09/php.png",
@@ -529,7 +553,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -548,7 +572,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 732,
-    "slug": "concatenar-varias-linhas-de-um-select-em-uma-unica-linha-e-gerar-um-json-de-uma-query-mysql",
+    "slug": {
+      "pt": "concatenar-varias-linhas-de-um-select-em-uma-unica-linha-e-gerar-um-json-de-uma-query-mysql",
+      "en": "",
+    },
     "date": new Date("2014-09-22T20:13:18.000Z"),
     "modified": new Date("2014-09-22T20:13:18.000Z"),
     "featuredImage": "/old-blog/uploads/2014/09/sql_script.png",
@@ -567,12 +594,12 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
     "title": {
-      "pt": "Concatenar várias linhas de um Select em uma única linha e gerar um JSON de uma Query [MySQL]",
+      "pt": "Concatenar v�rias linhas de um Select em uma �nica linha e gerar um JSON de uma Query [MySQL]",
       "en": "",
     },
     "excerpt": {
@@ -586,7 +613,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 731,
-    "slug": "concatenar-varias-linhas-de-um-select-em-uma-unica-linha-e-gerar-um-json-de-uma-query-sql-server",
+    "slug": {
+      "pt": "concatenar-varias-linhas-de-um-select-em-uma-unica-linha-e-gerar-um-json-de-uma-query-sql-server",
+      "en": "",
+    },
     "date": new Date("2014-09-22T20:12:12.000Z"),
     "modified": new Date("2014-09-25T21:29:47.000Z"),
     "featuredImage": "/old-blog/uploads/2014/09/sql_script.png",
@@ -608,12 +638,12 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
     "title": {
-      "pt": "Concatenar várias linhas de um Select em uma única linha e gerar um JSON de uma Query [SQL SERVER]",
+      "pt": "Concatenar v�rias linhas de um Select em uma �nica linha e gerar um JSON de uma Query [SQL SERVER]",
       "en": "",
     },
     "excerpt": {
@@ -627,7 +657,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 728,
-    "slug": "update-com-join-no-mysql",
+    "slug": {
+      "pt": "update-com-join-no-mysql",
+      "en": "",
+    },
     "date": new Date("2014-09-20T23:22:18.000Z"),
     "modified": new Date("2014-09-20T23:22:18.000Z"),
     "featuredImage": "/old-blog/uploads/2014/09/sql_script.png",
@@ -650,7 +683,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -669,7 +702,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 726,
-    "slug": "query-para-encontrar-uma-coluna-em-todo-o-banco-mysql",
+    "slug": {
+      "pt": "query-para-encontrar-uma-coluna-em-todo-o-banco-mysql",
+      "en": "",
+    },
     "date": new Date("2014-09-20T23:05:48.000Z"),
     "modified": new Date("2014-09-20T23:05:48.000Z"),
     "featuredImage": "/old-blog/uploads/2014/09/sql_script.png",
@@ -690,7 +726,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -709,7 +745,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 720,
-    "slug": "query-para-encontrar-uma-coluna-em-todo-o-banco-ms-sql-server",
+    "slug": {
+      "pt": "query-para-encontrar-uma-coluna-em-todo-o-banco-ms-sql-server",
+      "en": "",
+    },
     "date": new Date("2014-09-20T22:43:46.000Z"),
     "modified": new Date("2026-06-22T14:23:07.000Z"),
     "featuredImage": "/old-blog/uploads/2014/09/sql_script.png",
@@ -732,7 +771,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -751,9 +790,12 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 683,
-    "slug": "redimensionar-imagens-em-lote-no-linux-imagemagick-batch-resize",
+    "slug": {
+      "pt": "redimensionar-imagens-em-lote-no-linux-imagemagick-batch-resize",
+      "en": "",
+    },
     "date": new Date("2014-05-05T03:00:16.000Z"),
-    "modified": new Date("2026-06-22T14:29:06.000Z"),
+    "modified": new Date("2026-06-23T08:53:33.000Z"),
     "featuredImage": null,
     "category": [
       "Linux",
@@ -778,7 +820,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -848,7 +890,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 666,
-    "slug": "como-corrigir-o-gpg-error-no_pubkey-no-linux-ubuntu-debian-mint",
+    "slug": {
+      "pt": "como-corrigir-o-gpg-error-no_pubkey-no-linux-ubuntu-debian-mint",
+      "en": "",
+    },
     "date": new Date("2014-04-23T15:32:38.000Z"),
     "modified": new Date("2014-04-23T15:34:48.000Z"),
     "featuredImage": "/old-blog/uploads/2014/04/Ubuntu-Update-error.jpeg",
@@ -874,7 +919,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -931,7 +976,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 669,
-    "slug": "windows-update-nao-passa-de-0-kb-0-windows-8",
+    "slug": {
+      "pt": "windows-update-nao-passa-de-0-kb-0-windows-8",
+      "en": "",
+    },
     "date": new Date("2014-04-21T07:25:58.000Z"),
     "modified": new Date("2014-04-21T07:25:58.000Z"),
     "featuredImage": "/old-blog/uploads/2014/04/windows_update.jpg",
@@ -951,12 +999,12 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
     "title": {
-      "pt": "Windows Update não Passa de 0 KB 0% [Windows 8]",
+      "pt": "Windows Update n�o Passa de 0 KB 0% [Windows 8]",
       "en": "",
     },
     "excerpt": {
@@ -970,7 +1018,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 656,
-    "slug": "problemas-no-touch-enquanto-carregando",
+    "slug": {
+      "pt": "problemas-no-touch-enquanto-carregando",
+      "en": "",
+    },
     "date": new Date("2014-02-11T18:00:48.000Z"),
     "modified": new Date("2014-02-11T18:00:48.000Z"),
     "featuredImage": null,
@@ -983,7 +1034,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -1015,7 +1066,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 648,
-    "slug": "opcoes-do-desenvolvedor-no-cyanogemmod-depuracao-usb-usb-debugging",
+    "slug": {
+      "pt": "opcoes-do-desenvolvedor-no-cyanogemmod-depuracao-usb-usb-debugging",
+      "en": "",
+    },
     "date": new Date("2014-01-11T18:28:31.000Z"),
     "modified": new Date("2014-01-11T18:28:31.000Z"),
     "featuredImage": "/old-blog/uploads/2014/01/cm11.jpg",
@@ -1032,15 +1086,15 @@ export const BLOG_POSTS: BlogPost[] = [
       "root",
       "usb",
       "debugging",
-      "depuração",
-      "opç�╡es do desenvolvedor",
+      "depura��o",
+      "op��es do desenvolvedor",
     ],
     "featured": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -1096,7 +1150,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     "commentCount": 4,
     "title": {
-      "pt": "Opç�╡es do desenvolvedor no CyanogemMod [Depuração USB / USB Debugging]",
+      "pt": "Op��es do desenvolvedor no CyanogemMod [Depura��o USB / USB Debugging]",
       "en": "",
     },
     "excerpt": {
@@ -1110,7 +1164,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 627,
-    "slug": "dualboot-com-safestrap-e-cyanogenmod-11-android-kitkat-4-4-2-no-motorola-droid-razr-xt910",
+    "slug": {
+      "pt": "dualboot-com-safestrap-e-cyanogenmod-11-android-kitkat-4-4-2-no-motorola-droid-razr-xt910",
+      "en": "",
+    },
     "date": new Date("2014-01-10T00:25:17.000Z"),
     "modified": new Date("2015-04-27T11:55:00.000Z"),
     "featuredImage": "/old-blog/uploads/2014/01/cm11-kit-kat.jpg",
@@ -1140,7 +1197,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -2778,7 +2835,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 619,
-    "slug": "root-no-motorola-droid-razr-xt910-jelly-bean-4-1-2",
+    "slug": {
+      "pt": "root-no-motorola-droid-razr-xt910-jelly-bean-4-1-2",
+      "en": "",
+    },
     "date": new Date("2014-01-08T03:12:09.000Z"),
     "modified": new Date("2015-04-27T11:55:39.000Z"),
     "featuredImage": "/old-blog/uploads/2014/01/How-to-Root-Android-Phone.jpg",
@@ -2804,7 +2864,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -3710,7 +3770,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 599,
-    "slug": "desbrickar-motorola-razr-xt910-jelly-bean-4-1-2",
+    "slug": {
+      "pt": "desbrickar-motorola-razr-xt910-jelly-bean-4-1-2",
+      "en": "",
+    },
     "date": new Date("2014-01-08T01:07:06.000Z"),
     "modified": new Date("2015-04-27T11:55:57.000Z"),
     "featuredImage": "/old-blog/uploads/2014/01/motorola-droid-razr-jelly-bean-update.png",
@@ -3740,7 +3803,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -5662,7 +5725,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 568,
-    "slug": "melhorando-o-desempenho-do-half-life-2-rodando-em-um-netbook-atom",
+    "slug": {
+      "pt": "melhorando-o-desempenho-do-half-life-2-rodando-em-um-netbook-atom",
+      "en": "",
+    },
     "date": new Date("2013-03-10T11:24:29.000Z"),
     "modified": new Date("2013-03-10T11:24:29.000Z"),
     "featuredImage": null,
@@ -5675,7 +5741,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -5694,7 +5760,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 435,
-    "slug": "instalacao-do-debian-linux-no-galaxy-tab-10-1",
+    "slug": {
+      "pt": "instalacao-do-debian-linux-no-galaxy-tab-10-1",
+      "en": "",
+    },
     "date": new Date("2012-11-26T02:26:13.000Z"),
     "modified": new Date("2014-01-03T13:21:49.000Z"),
     "featuredImage": null,
@@ -5738,7 +5807,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -6093,7 +6162,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     "commentCount": 28,
     "title": {
-      "pt": "Instalação do Debian Linux no Galaxy Tab 10.1",
+      "pt": "Instala��o do Debian Linux no Galaxy Tab 10.1",
       "en": "",
     },
     "excerpt": {
@@ -6107,7 +6176,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 553,
-    "slug": "desabilitando-o-ipv6-no-debian",
+    "slug": {
+      "pt": "desabilitando-o-ipv6-no-debian",
+      "en": "",
+    },
     "date": new Date("2012-11-26T02:13:28.000Z"),
     "modified": new Date("2012-11-26T02:13:28.000Z"),
     "featuredImage": "/old-blog/uploads/2012/06/binbash.jpg",
@@ -6129,7 +6201,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -6148,7 +6220,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 513,
-    "slug": "instalando-o-debian-squeeze-no-nas-d-link-dns-320",
+    "slug": {
+      "pt": "instalando-o-debian-squeeze-no-nas-d-link-dns-320",
+      "en": "",
+    },
     "date": new Date("2012-10-21T23:45:25.000Z"),
     "modified": new Date("2016-04-25T12:04:02.000Z"),
     "featuredImage": "/old-blog/uploads/2012/10/DNS-320_NAS_debian.jpg",
@@ -6177,7 +6252,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -7482,7 +7557,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 486,
-    "slug": "instalando-o-fonz-fun_plug-no-d-link-dns-320-nas",
+    "slug": {
+      "pt": "instalando-o-fonz-fun_plug-no-d-link-dns-320-nas",
+      "en": "",
+    },
     "date": new Date("2012-10-21T20:40:09.000Z"),
     "modified": new Date("2012-10-21T20:40:09.000Z"),
     "featuredImage": "/old-blog/uploads/2012/10/DNS-320_NAS.jpg",
@@ -7511,7 +7589,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -8731,7 +8809,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 474,
-    "slug": "apt-file-search-resolvendo-problemas-de-no-such-file-or-directory",
+    "slug": {
+      "pt": "apt-file-search-resolvendo-problemas-de-no-such-file-or-directory",
+      "en": "",
+    },
     "date": new Date("2012-09-07T20:12:05.000Z"),
     "modified": new Date("2012-09-07T20:13:03.000Z"),
     "featuredImage": "/old-blog/uploads/2012/06/binbash.jpg",
@@ -8762,7 +8843,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -8781,7 +8862,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 467,
-    "slug": "um-prompt-bash-colorido-com-retorno-dos-comandos-em-smiles",
+    "slug": {
+      "pt": "um-prompt-bash-colorido-com-retorno-dos-comandos-em-smiles",
+      "en": "",
+    },
     "date": new Date("2012-09-05T19:56:58.000Z"),
     "modified": new Date("2016-12-22T12:40:54.000Z"),
     "featuredImage": "/old-blog/uploads/2012/09/color_bash_prompt.jpg",
@@ -8804,7 +8888,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -8823,7 +8907,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 387,
-    "slug": "resolvendo-erro-update-do-mint-search-addon-2012-05-11",
+    "slug": {
+      "pt": "resolvendo-erro-update-do-mint-search-addon-2012-05-11",
+      "en": "",
+    },
     "date": new Date("2012-08-22T03:03:29.000Z"),
     "modified": new Date("2012-08-22T03:10:27.000Z"),
     "featuredImage": "/old-blog/uploads/2012/08/mint-search-addon-error.jpg",
@@ -8837,7 +8924,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -8856,7 +8943,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 363,
-    "slug": "como-instalar-gimp-2-8-no-debian-linux-mint-debian-edition",
+    "slug": {
+      "pt": "como-instalar-gimp-2-8-no-debian-linux-mint-debian-edition",
+      "en": "",
+    },
     "date": new Date("2012-08-22T01:34:16.000Z"),
     "modified": new Date("2012-08-22T01:42:29.000Z"),
     "featuredImage": null,
@@ -8878,7 +8968,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -8960,7 +9050,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 377,
-    "slug": "wgetmd5-um-shell-script-que-verifica-o-md5-do-download-com-wget",
+    "slug": {
+      "pt": "wgetmd5-um-shell-script-que-verifica-o-md5-do-download-com-wget",
+      "en": "",
+    },
     "date": new Date("2012-08-20T18:05:45.000Z"),
     "modified": new Date("2012-08-20T18:05:45.000Z"),
     "featuredImage": "/old-blog/uploads/2012/06/binbash.jpg",
@@ -8985,7 +9078,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -9030,7 +9123,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 341,
-    "slug": "arquivos-desktop-colocando-seu-aplicativo-nos-menus-do-gnome",
+    "slug": {
+      "pt": "arquivos-desktop-colocando-seu-aplicativo-nos-menus-do-gnome",
+      "en": "",
+    },
     "date": new Date("2012-06-15T21:03:09.000Z"),
     "modified": new Date("2012-06-15T21:03:09.000Z"),
     "featuredImage": "/old-blog/uploads/2012/06/binbash.jpg",
@@ -9055,7 +9151,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -9074,7 +9170,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 346,
-    "slug": "editando-a-variavel-de-ambiente-path-no-linux-mint-debian",
+    "slug": {
+      "pt": "editando-a-variavel-de-ambiente-path-no-linux-mint-debian",
+      "en": "",
+    },
     "date": new Date("2012-06-15T20:50:47.000Z"),
     "modified": new Date("2012-06-15T20:50:47.000Z"),
     "featuredImage": null,
@@ -9099,7 +9198,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -9142,7 +9241,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     "commentCount": 3,
     "title": {
-      "pt": "Editando a variável de ambiente PATH no Linux Mint Debian",
+      "pt": "Editando a vari�vel de ambiente PATH no Linux Mint Debian",
       "en": "",
     },
     "excerpt": {
@@ -9156,7 +9255,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 334,
-    "slug": "adicionando-o-google-ao-firefox-no-linux-mint",
+    "slug": {
+      "pt": "adicionando-o-google-ao-firefox-no-linux-mint",
+      "en": "",
+    },
     "date": new Date("2012-06-15T19:41:38.000Z"),
     "modified": new Date("2012-06-15T19:41:38.000Z"),
     "featuredImage": null,
@@ -9179,7 +9281,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -9273,7 +9375,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 329,
-    "slug": "associacao-de-arquivos-no-nautilus-associando-arquivos-deb-ao-instalador-de-pacotes-gdebi",
+    "slug": {
+      "pt": "associacao-de-arquivos-no-nautilus-associando-arquivos-deb-ao-instalador-de-pacotes-gdebi",
+      "en": "",
+    },
     "date": new Date("2012-06-15T18:47:19.000Z"),
     "modified": new Date("2012-06-15T18:47:19.000Z"),
     "featuredImage": "/old-blog/uploads/2012/06/default_to_deb.jpg",
@@ -9299,7 +9404,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -9330,7 +9435,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     "commentCount": 2,
     "title": {
-      "pt": "Associação de arquivos no Nautilus - Associando arquivos .deb ao Instalador de pacotes GDebi",
+      "pt": "Associa��o de arquivos no Nautilus - Associando arquivos .deb ao Instalador de pacotes GDebi",
       "en": "",
     },
     "excerpt": {
@@ -9344,7 +9449,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 324,
-    "slug": "sudo-sem-senha",
+    "slug": {
+      "pt": "sudo-sem-senha",
+      "en": "",
+    },
     "date": new Date("2012-06-15T18:31:59.000Z"),
     "modified": new Date("2012-06-15T18:48:00.000Z"),
     "featuredImage": null,
@@ -9370,7 +9478,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -9389,7 +9497,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 243,
-    "slug": "gerenciadores-de-arquivos-para-o-wordpress",
+    "slug": {
+      "pt": "gerenciadores-de-arquivos-para-o-wordpress",
+      "en": "",
+    },
     "date": new Date("2012-06-03T20:05:14.000Z"),
     "modified": new Date("2012-10-17T00:29:38.000Z"),
     "featuredImage": null,
@@ -9413,7 +9524,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -9483,7 +9594,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 252,
-    "slug": "extplorer-um-gerenciador-de-arquivos-em-php",
+    "slug": {
+      "pt": "extplorer-um-gerenciador-de-arquivos-em-php",
+      "en": "",
+    },
     "date": new Date("2012-06-03T10:24:04.000Z"),
     "modified": new Date("2012-06-03T22:42:26.000Z"),
     "featuredImage": "/old-blog/uploads/2012/06/extplorer_destaque.jpg",
@@ -9513,7 +9627,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -9681,9 +9795,12 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 212,
-    "slug": "corrigindo-o-controle-de-brilho-no-notebook-com-linux",
+    "slug": {
+      "pt": "corrigindo-o-controle-de-brilho-no-notebook-com-linux",
+      "en": "",
+    },
     "date": new Date("2012-06-03T04:51:44.000Z"),
-    "modified": new Date("2026-06-23T08:04:30.000Z"),
+    "modified": new Date("2026-06-23T08:58:43.000Z"),
     "featuredImage": null,
     "category": [
       "Linux",
@@ -9715,7 +9832,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -10082,7 +10199,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 201,
-    "slug": "como-traduzir-um-template-do-wordpress",
+    "slug": {
+      "pt": "como-traduzir-um-template-do-wordpress",
+      "en": "",
+    },
     "date": new Date("2012-05-30T05:17:03.000Z"),
     "modified": new Date("2012-10-08T02:41:09.000Z"),
     "featuredImage": "/old-blog/uploads/2012/05/poedit.jpg",
@@ -10091,7 +10211,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "WordPress",
     ],
     "tags": [
-      "tradução",
+      "tradu��o",
       "template",
       "tema",
       "wordpress",
@@ -10101,14 +10221,14 @@ export const BLOG_POSTS: BlogPost[] = [
       "poedit",
       "gettext",
       "gted",
-      "localização",
+      "localiza��o",
     ],
     "featured": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -10127,7 +10247,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 172,
-    "slug": "trabalhando-com-absolute-path-em-imagens-e-links-de-posts-do-wordpress",
+    "slug": {
+      "pt": "trabalhando-com-absolute-path-em-imagens-e-links-de-posts-do-wordpress",
+      "en": "",
+    },
     "date": new Date("2012-05-30T04:04:12.000Z"),
     "modified": new Date("2012-05-30T04:51:26.000Z"),
     "featuredImage": "/old-blog/uploads/2012/05/config-gerais-wordpress-endereco-site.jpg",
@@ -10151,7 +10274,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -10170,7 +10293,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 143,
-    "slug": "143",
+    "slug": {
+      "pt": "lessimg-title-vs-alt-or-como-usar-corretamente-o-atributo-alt",
+      "en": "",
+    },
     "date": new Date("2012-05-30T03:28:08.000Z"),
     "modified": new Date("2026-06-23T08:06:51.000Z"),
     "featuredImage": "/old-blog/uploads/2012/05/wordpress-img-insert.jpg",
@@ -10197,7 +10323,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [],
     "commentCount": 0,
@@ -10216,7 +10342,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 46,
-    "slug": "instalacao-do-linux-mint-debian-edition-201204",
+    "slug": {
+      "pt": "instalacao-do-linux-mint-debian-edition-201204",
+      "en": "",
+    },
     "date": new Date("2012-05-29T07:47:26.000Z"),
     "modified": new Date("2026-06-23T07:54:10.000Z"),
     "featuredImage": null,
@@ -10230,7 +10359,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "linux mint",
       "linux mint debian edition 201204",
       "debian",
-      "instalação",
+      "instala��o",
       "passo a passo",
       "grub",
       "gparted",
@@ -10244,7 +10373,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
@@ -10337,7 +10466,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     "commentCount": 7,
     "title": {
-      "pt": "Passo a passo da instalação do Linux Mint Debian Edition LMDE 201204",
+      "pt": "Passo a passo da instala��o do Linux Mint Debian Edition LMDE 201204",
       "en": "",
     },
     "excerpt": {
@@ -10351,7 +10480,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     "id": 18,
-    "slug": "o-primeiro-post-a-gente-nunca-esquece",
+    "slug": {
+      "pt": "o-primeiro-post-a-gente-nunca-esquece",
+      "en": "",
+    },
     "date": new Date("2012-05-29T05:29:06.000Z"),
     "modified": new Date("2017-01-10T10:00:54.000Z"),
     "featuredImage": "/old-blog/uploads/2012/05/primeiro_post.jpg",
@@ -10387,7 +10519,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
       "avatar": "/old-blog/avatars/99fe9aca45a0ff67168e243fd583ef02.png",
-      "about": "Um desenvolvedor web veterano que está sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
+      "about": "Um desenvolvedor web veterano que est� sempre a procura de novas tecnologias que facilitem o desenvolvimento de aplicativos ricos para a internet. Louco por tecnologia, games e Linux.",
     },
     "comments": [
       {
