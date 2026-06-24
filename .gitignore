@@ -40,6 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.gitmodules
-/project_archive/
-/project_archive_other/
+# .gitmodules
+# /project_archive/
+# /project_archive_other/
