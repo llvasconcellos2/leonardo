@@ -5,8 +5,8 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { PostCard } from "./WritingSection";
-import { POSTS, T } from "../data";
-import type { Lang } from "../data";
+import { POSTS, T } from "../../data/data";
+import type { Lang } from "../../data/data";
 
 export function BlogPost({ lang, id }: { lang: Lang; id: string | null }) {
   const post = POSTS.find((x) => x.id === id) || POSTS[0];

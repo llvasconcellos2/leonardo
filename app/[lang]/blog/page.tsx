@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { WritingIndex } from "../../components/BlogPost";
 import { MiniFooter } from "../../components/ContactFooter";
-import type { Lang } from "../../data";
+import type { Lang } from "../../../data/data";
 
 const titles: Record<Lang, string> = {
   en: "Writing — Leonardo Vasconcellos",

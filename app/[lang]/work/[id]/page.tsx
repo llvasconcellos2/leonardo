@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { PROJECTS } from "../../../data";
+import { PROJECTS } from "../../../../data/data";
 import { ProjectDetail } from "../../../components/Views";
 import { MiniFooter } from "../../../components/ContactFooter";
-import type { Lang } from "../../../data";
+import type { Lang } from "../../../../data/data";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ id: p.id }));

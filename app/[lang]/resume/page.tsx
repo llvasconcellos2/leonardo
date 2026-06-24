@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ResumePage } from "../../components/ResumePage";
-import type { Lang } from "../../data";
+import type { Lang } from "../../../data/data";
 
 export async function generateMetadata({
   params,

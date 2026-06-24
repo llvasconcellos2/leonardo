@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Kicker, TECH_LOGOS } from "./Primitives";
 import { ResumeExperience } from "./ResumeExperience";
-import type { Lang } from "../data";
+import type { Lang } from "../../data/data";
 
 const RESUME_PDF: Record<Lang, string> = {
   en: "/resume/Leonardo_LV_EN.pdf",

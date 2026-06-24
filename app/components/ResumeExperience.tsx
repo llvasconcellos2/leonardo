@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { ShieldAlert, ChevronDown, ChevronUp, Check } from "lucide-react";
 import { TechChip } from "./Primitives";
-import type { Lang } from "../data";
+import type { Lang } from "../../data/data";
 
 const XP_FILTERS = [
   "React", "Next.js", "Node.js", "TypeScript", "PHP",

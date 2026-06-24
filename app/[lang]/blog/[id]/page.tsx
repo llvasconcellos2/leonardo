@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { POSTS } from "../../../data";
+import { POSTS } from "../../../../data/data";
 import { BlogPost } from "../../../components/BlogPost";
 import { MiniFooter } from "../../../components/ContactFooter";
-import type { Lang } from "../../../data";
+import type { Lang } from "../../../../data/data";
 
 export function generateStaticParams() {
   return POSTS.map((p) => ({ id: p.id }));

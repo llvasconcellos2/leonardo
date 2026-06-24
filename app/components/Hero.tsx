@@ -6,7 +6,7 @@ import { LowPolyField } from "./LowPolyField";
 import { LeoLowPoly } from "./LeoLowPoly";
 import { Blueprint } from "./BluePrint";
 import { BGPattern } from "./BG-Pattern";
-import type { Lang } from "../data";
+import type { Lang } from "../../data/data";
 
 const heroCopy = {
   en: {

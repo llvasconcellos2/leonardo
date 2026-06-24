@@ -5,8 +5,8 @@ import Link from "next/link";
 import { ArrowLeft, Archive, Check } from "lucide-react";
 import { Kicker, TechChip } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
-import { PROJECTS, T } from "../data";
-import type { Lang } from "../data";
+import { PROJECTS, T } from "../../data/data";
+import type { Lang } from "../../data/data";
 
 export function ProjectDetail({ lang, id }: { lang: Lang; id: string | null }) {
   const p = PROJECTS.find((x) => x.id === id) || PROJECTS[0];

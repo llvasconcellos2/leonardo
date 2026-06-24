@@ -1,6 +1,6 @@
 import "./AboutSection.css";
 import { Kicker, TECH_LOGOS } from "./Primitives";
-import type { Lang } from "../data";
+import type { Lang } from "../../data/data";
 
 const ABOUT = {
   en: {

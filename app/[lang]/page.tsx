@@ -6,7 +6,7 @@ import { WritingSection } from "../components/WritingSection";
 import { Testimonials } from "../components/Testimonials";
 import { ContactFooter } from "../components/ContactFooter";
 import { Parallax } from "../components/Parallax";
-import type { Lang } from "../data";
+import type { Lang } from "../../data/data";
 
 export async function generateMetadata({
   params,

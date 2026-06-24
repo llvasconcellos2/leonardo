@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ArchiveView } from "../../components/Views";
 import { MiniFooter } from "../../components/ContactFooter";
-import type { Lang } from "../../data";
+import type { Lang } from "../../../data/data";
 
 const titles: Record<Lang, string> = {
   en: "Work — Leonardo Vasconcellos",
