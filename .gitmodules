@@ -115,6 +115,7 @@
 [submodule "project_archive/first-personal-website"]
 	path = project_archive/first-personal-website
 	url = https://github.com/llvasconcellos2/first-personal-website.git
+	branch = main
 [submodule "project_archive_other/wp-client-side-image-resize"]
 	path = project_archive_other/wp-client-side-image-resize
 	url = https://github.com/llvasconcellos2/wp-client-side-image-resize.git
