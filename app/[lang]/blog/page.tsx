@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { WritingIndex } from "../../components/BlogPost";
+import { BlogIndex } from "../../components/BlogIndex";
 import { MiniFooter } from "../../components/ContactFooter";
+import { BLOG_T } from "../../lib/blog";
 import type { Lang } from "../../../data/data";
-
-const titles: Record<Lang, string> = {
-  en: "Writing — Leonardo Vasconcellos",
-  pt: "Escrita — Leonardo Vasconcellos",
-};
 
 export async function generateMetadata({
   params,
@@ -14,10 +10,14 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  return { title: titles[lang as Lang] ?? titles.en };
+  const l = (lang as Lang) ?? "en";
+  return {
+    title: `${BLOG_T[l].title} — Leonardo Vasconcellos`,
+    description: BLOG_T[l].lead,
+  };
 }
 
-export default async function WritingPage({
+export default async function BlogPage({
   params,
 }: {
   params: Promise<{ lang: string }>;
@@ -25,7 +25,7 @@ export default async function WritingPage({
   const { lang } = await params;
   return (
     <>
-      <WritingIndex lang={lang as Lang} />
+      <BlogIndex lang={lang as Lang} />
       <MiniFooter />
     </>
   );

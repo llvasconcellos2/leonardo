@@ -1,0 +1,112 @@
+/* ── MARKDOWN PROSE ─────────────────────────────────────────── */
+.lv-md {
+  font-family: var(--font-sans);
+  font-size: var(--text-prose);
+  line-height: var(--leading-prose);
+  color: var(--text-secondary);
+  max-width: var(--measure-prose);
+}
+.lv-md > :first-child {
+  margin-top: 0;
+}
+.lv-md > :last-child {
+  margin-bottom: 0;
+}
+.lv-md p {
+  margin: 0 0 var(--space-5);
+}
+.lv-md h2,
+.lv-md h3,
+.lv-md h4 {
+  margin: var(--space-10) 0 var(--space-4);
+}
+.lv-md h2 {
+  font-size: var(--text-xl);
+}
+.lv-md h3 {
+  font-size: var(--text-lg);
+}
+.lv-md a {
+  color: var(--accent-bright);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklch, var(--accent) 40%, transparent);
+  text-underline-offset: 3px;
+}
+.lv-md a:hover {
+  color: var(--accent-hover);
+}
+.lv-md ul,
+.lv-md ol {
+  margin: 0 0 var(--space-5);
+  padding-left: 1.4em;
+}
+.lv-md li {
+  margin: var(--space-2) 0;
+}
+.lv-md blockquote {
+  margin: var(--space-6) 0;
+  padding: var(--space-1) 0 var(--space-1) var(--space-5);
+  border-left: 2px solid var(--accent);
+  color: var(--text-muted);
+  font-style: italic;
+}
+.lv-md img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: var(--space-6) 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+.lv-md hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--space-10) 0;
+}
+.lv-md table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  font-size: var(--text-sm);
+}
+.lv-md th,
+.lv-md td {
+  border: 1px solid var(--border);
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+}
+.lv-md th {
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+/* Inline code (not inside a Shiki <pre>) */
+.lv-md :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.4em;
+  color: var(--text-primary);
+}
+
+/* Shiki code blocks (synthwave-84) */
+.lv-md pre.shiki {
+  margin: var(--space-6) 0;
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  box-shadow: var(--shadow-md);
+}
+.lv-md pre.shiki code {
+  font-family: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  display: block;
+}
