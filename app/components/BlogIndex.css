@@ -1,6 +1,7 @@
 /* ── BLOG INDEX — old WordPress two-column post list, restyled ── */
 .lv-blog-index {
   max-width: 64rem;
+  padding-top: clamp(1rem, 2vw, 2rem);
 }
 .lv-blog-h1 {
   font-family: var(--font-display);

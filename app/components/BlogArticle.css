@@ -1,6 +1,7 @@
 /* ── BLOG ARTICLE (tier-3 detail) ───────────────────────────── */
 .lv-article {
   max-width: 48rem;
+  padding-top: clamp(1rem, 2vw, 2rem);
 }
 
 .lv-article-head {
