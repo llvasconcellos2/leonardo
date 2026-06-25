@@ -3,14 +3,21 @@ import path from "node:path";
 export const ROOT = path.resolve(__dirname, "..", "..");
 
 export const ARCHIVE_ROOT = path.join(ROOT, "project_archive", "devhouse-wordpress");
-export const SQL_DUMP_PATH = path.join(
-  ARCHIVE_ROOT,
-  "db",
-  "devhouse_backup_20260624_174219.sql"
-);
+export const SQL_DUMP_PATH = path.join(ARCHIVE_ROOT, "db", "devhouse.sql");
 export const RIP_SITE_PATH = path.join(ARCHIVE_ROOT, "rip", "site");
 export const RIP_UPLOADS_PATH = path.join(RIP_SITE_PATH, "wp-content", "uploads");
 export const RIP_BLOG_INDEX_PATH = path.join(RIP_SITE_PATH, "blog", "index.html");
+
+/**
+ * The actual WordPress webroot (served by docker-compose), as a second
+ * source tree for uploads. The HTTrack mirror (RIP_UPLOADS_PATH) only
+ * contains files a browser would have actually fetched while crawling
+ * rendered pages — it never fetches a featured image whose only reference
+ * on the page is a bare <meta property="og:image"> URL, so several
+ * featured images are missing there even though they're set in WordPress.
+ * This tree has the real, full-resolution originals for those.
+ */
+export const WWW_UPLOADS_PATH = path.join(ARCHIVE_ROOT, "www", "wp-content", "uploads");
 
 export const RIP_GRAVATAR_AVATAR_DIRS = [
   path.join(ARCHIVE_ROOT, "rip", "www.gravatar.com", "avatar"),

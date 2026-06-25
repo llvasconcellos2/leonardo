@@ -5,7 +5,11 @@ import {
   PUBLIC_UPLOADS_PATH,
   RIP_GRAVATAR_AVATAR_DIRS,
   RIP_UPLOADS_PATH,
+  WWW_UPLOADS_PATH,
 } from "./constants";
+
+/** Source trees to check for an upload, in priority order. */
+const UPLOAD_SOURCE_DIRS = [RIP_UPLOADS_PATH, WWW_UPLOADS_PATH];
 
 export type Warn = (message: string) => void;
 
@@ -75,19 +79,31 @@ export function copyUploadImage(relativeUploadPath: string, slug: string, warn: 
   const original = toOriginalFilename(relativeUploadPath);
   if (copiedUploads.has(original)) return copiedUploads.get(original)!;
 
-  const originalSource = resolveImageSource(path.join(RIP_UPLOADS_PATH, original));
-  const sizedSource = resolveImageSource(path.join(RIP_UPLOADS_PATH, relativeUploadPath));
-
+  // Prefer the original (unsized) file across every source tree before
+  // falling back to a sized variant in any of them — a different tree's
+  // full original beats this tree's resized copy.
   let chosenSource: string | null = null;
   let chosenRelative: string | null = null;
-  if (originalSource) {
-    chosenSource = originalSource;
-    chosenRelative = original;
-  } else if (sizedSource) {
-    warn(`Original image missing for "${slug}", using sized variant: ${relativeUploadPath}`);
-    chosenSource = sizedSource;
-    chosenRelative = relativeUploadPath;
-  } else {
+  for (const dir of UPLOAD_SOURCE_DIRS) {
+    const source = resolveImageSource(path.join(dir, original));
+    if (source) {
+      chosenSource = source;
+      chosenRelative = original;
+      break;
+    }
+  }
+  if (!chosenSource) {
+    for (const dir of UPLOAD_SOURCE_DIRS) {
+      const source = resolveImageSource(path.join(dir, relativeUploadPath));
+      if (source) {
+        warn(`Original image missing for "${slug}", using sized variant: ${relativeUploadPath}`);
+        chosenSource = source;
+        chosenRelative = relativeUploadPath;
+        break;
+      }
+    }
+  }
+  if (!chosenSource || !chosenRelative) {
     warn(`Image source not found for "${slug}": ${relativeUploadPath}`);
     copiedUploads.set(original, null);
     return null;
