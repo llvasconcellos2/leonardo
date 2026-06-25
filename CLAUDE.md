@@ -9,11 +9,25 @@ pnpm dev      # Start dev server (always use this, not npx next dev)
 pnpm build    # Production build + TypeScript check
 pnpm start    # Start production server
 pnpm lint     # Run ESLint
+
+pnpm screenshot [path] [label]   # Playwright dev screenshot → ./screenshots-dev/ (see WEBDESIGN.md)
 ```
 
 ## Brand.md
 
 Informations at `docs/Brand.md`
+
+## DESIGN.md
+
+Visual design system & specs at `design/DESIGN.md` — the single source of truth for colors, typography, spacing, motion, and components. The live CSS is the executable spec; DESIGN.md is the principles + as-built reference.
+
+## WEBDESIGN.md
+
+Frontend workflow rules at `design/WEBDESIGN.md` — invoke the `frontend-design` skill first; the local dev server is HTTPS self-signed (`https://localhost:3000`); take screenshots with `pnpm screenshot` (Playwright → `./screenshots-dev/`), never an MCP. Read it before any frontend/visual work.
+
+## MCP
+
+`.mcp.json` registers the **`next-devtools`** MCP (`next-devtools-mcp`) for Next.js build/runtime errors, route-tree, and render diagnostics. Project-scoped, so it requires approval on session load. Screenshots do **not** use an MCP — use `pnpm screenshot` (see WEBDESIGN.md).
 
 ## What this is
 
@@ -21,7 +35,7 @@ A bilingual (EN/PT-BR) dark-only personal portfolio for Leonardo Lima de Vasconc
 
 **Positioning:** mission-critical systems where failure has real consequences. Core line: _"the engineer you want when the system actually matters — and has grown tangled."_
 
-The design handoff in `/design/design_handoff_portfolio/` was the original visual spec. The implementation has since diverged from it — treat `/design/design_handoff_portfolio/` as historical reference only. The live code is the source of truth.
+For the design system, see `design/DESIGN.md`. The design handoff in `/design/design_handoff_portfolio/` was the original visual spec, but the implementation has since diverged — treat `/design/design_handoff_portfolio/` as historical reference only. The live code is the source of truth.
 
 ## Architecture
 
@@ -75,6 +89,8 @@ Dynamic routes call `generateStaticParams` to enumerate slugs. The `[lang]` layo
 
 ### Design system (`app/globals.css`)
 
+The visual design system — color logic, tokens, typography, spacing, motion, and component specs — lives in `design/DESIGN.md` (single source of truth). This section is just the code-navigation summary.
+
 All styles live in one file plus per-component CSS files co-located with each component (e.g. `Nav.css`, `Hero.css`). **Do not add Tailwind utility classes to components** — the design uses `.lv-*` CSS classes exclusively.
 
 `globals.css` structure:
@@ -87,15 +103,7 @@ All styles live in one file plus per-component CSS files co-located with each co
 6. Shared section utilities (`.lv-section`, `.lv-section-head`, etc.)
 7. Responsive breakpoint (`@media (max-width: 860px)`)
 
-**Three-tier color logic:**
-
-- Neutral grey (`--bg` → `--raised`) = structure and elevation
-- Navy (`--brand-deep` → `--brand-bright`) = quiet brand, large calm surfaces
-- Emerald (`--accent-bright`, `--accent`) = the single interactive accent — links, buttons, kickers, active states
-
-The one deliberate exception: arrow/link hover uses a blue slide (`oklch(0.78 0.10 262)`), not emerald.
-
-**App shell:** `.lv-app` is a full-height flex column. `.lv-scroll` (`flex: 1; overflow-y: auto; scroll-behavior: smooth`) is the scroll container for all page content. Custom scrollbar: 10px wide, `--raised` thumb, pill radius.
+See `design/DESIGN.md` for the three-tier color logic, the OKLCH token tables, app-shell behavior, and component specs.
 
 ### Assets
 
@@ -106,6 +114,8 @@ The one deliberate exception: arrow/link hover uses a blue slide (`oklch(0.78 0.
 Tech logos come from CDN: Devicon `-original` SVGs + Simple Icons for Next.js (white). The full map is `TECH_LOGOS` in `Primitives.tsx`. Unknown tech names fall back to a text-only chip.
 
 Icons use `lucide-react`. Note: brand icons (`Github`, `Linkedin`) do not exist in this package — use `CodeXml`, `Briefcase`, `Rss` for the social links in the footer.
+
+See `design/DESIGN.md` §10 for the imagery treatment (navy-framed placeholders, `LowPolyField` seeds).
 
 ## Key implementation notes
 
@@ -119,6 +129,6 @@ Icons use `lucide-react`. Note: brand icons (`Github`, `Linkedin`) do not exist 
 
 **Navigation:** Use `<Link href={`/${lang}/...`}>` from `next/link` for all internal links. Nav active state is derived from `usePathname()` — no prop needed. The language toggle computes `pathname.replace(/^\/(en|pt)/, '/${otherLang}')`.
 
-**Imagery placeholders:** Every `LowPolyField` stands in for a real project screenshot. The `seed` prop controls the faceted pattern. When adding real screenshots, keep the navy-framed container (1px `--border` → `--border-strong` on hover, `--radius-lg`).
+**Imagery placeholders:** Every `LowPolyField` stands in for a real project screenshot (the `seed` prop controls the faceted pattern). See `design/DESIGN.md` §10 for the navy-framed treatment to keep when adding real screenshots.
 
 **No emoji anywhere** — the `//` kicker and mono labels carry the "engineer" texture.

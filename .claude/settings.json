@@ -7,7 +7,12 @@
       "Bash(echo \"DONE exit=$?\")",
       "Bash(node_modules/.bin/tsx.CMD scripts/migrate-blog/index.ts)",
       "Bash(echo \"EXIT=$?\")",
-      "Bash(node_modules/.bin/tsc.CMD --noEmit)"
+      "Bash(node_modules/.bin/tsc.CMD --noEmit)",
+      "Bash(curl -sk https://localhost:3000/ -o /dev/null -w \"%{http_code}\\\\n\")",
+      "PowerShell(pnpm dev)",
+      "Bash(node scripts/screenshot.js /en home)",
+      "PowerShell(node scripts/screenshot.js /en home)",
+      "Bash(git check-ignore *)"
     ]
   }
 }
