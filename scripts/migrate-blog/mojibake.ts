@@ -1,13 +1,26 @@
 /**
- * The SQL dump has UTF-8 multibyte sequences (e.g. "á" = 0xC3 0xA1) that were,
- * at some point before this dump was created, decoded one byte at a time as
+ * Some dumps have UTF-8 multibyte sequences (e.g. "á" = 0xC3 0xA1) that were,
+ * at some point before the dump was created, decoded one byte at a time as
  * CP850 (the classic DOS Latin-1 codepage) and re-saved as UTF-8 — turning
  * "está" into "est├í". This is baked into the dump's bytes; no read-encoding
- * choice in Node fixes it. Reversing it: re-encode each CP850-artifact
- * character back to its original CP850 byte, then decode that byte sequence
- * as UTF-8 to recover the real character. Characters not part of this
- * artifact set (plain ASCII, or already-correct text) pass through unchanged,
- * which makes this safe to apply unconditionally to every text field.
+ * choice in Node fixes it.
+ *
+ * IMPORTANT: this can only be reversed by anchoring on the lead-byte artifact
+ * characters "┬" (0xC2) and "├" (0xC3) — the cp850 decoding of the only two
+ * UTF-8 lead bytes used by the Latin-1 Supplement range (which covers every
+ * accented Portuguese letter). Those two characters never legitimately occur
+ * standalone in prose, so seeing one is an unambiguous corruption signal,
+ * consuming exactly one following character as its continuation byte.
+ *
+ * Earlier versions of this function instead matched on ANY character that
+ * happened to be a cp850 table value (e.g. "Í", "ã" — both real, correct
+ * Portuguese letters that are *also* values in the cp850 byte table, since
+ * cp850 itself is the Latin-American/Portuguese DOS codepage). That treated
+ * already-correct standalone accented letters as corruption and "reversed"
+ * them into a single stray byte, which is invalid UTF-8 on its own and
+ * decodes to U+FFFD ("�") — i.e. it introduced real data loss into clean
+ * text. Only ever match on the lead-byte artifacts, never on a lone
+ * continuation-byte character.
  */
 
 const CP850_HIGH_BYTES: Record<number, string> = {
@@ -37,25 +50,31 @@ for (const [byte, ch] of Object.entries(CP850_HIGH_BYTES)) {
   CHAR_TO_CP850_BYTE.set(ch, Number(byte));
 }
 
+/** The only two cp850-decoded lead-byte artifacts that can appear from corrupting a Latin-1 Supplement (accented Portuguese letter) UTF-8 sequence. */
+const LEAD_BYTE_ARTIFACTS: Record<string, number> = {
+  "┬": 0xc2,
+  "├": 0xc3,
+};
+
 export function fixMojibake(input: string): string {
-  if (!input) return input;
-  const bytes: number[] = [];
+  if (!input || !/[┬├]/.test(input)) return input;
+  const chars = Array.from(input);
+  let result = "";
   let changed = false;
-  for (const ch of input) {
-    const code = ch.codePointAt(0)!;
-    if (code < 0x80) {
-      bytes.push(code);
-      continue;
+  for (let i = 0; i < chars.length; i++) {
+    const ch = chars[i];
+    const leadByte = LEAD_BYTE_ARTIFACTS[ch];
+    if (leadByte !== undefined) {
+      const next = chars[i + 1];
+      const continuationByte = next !== undefined ? CHAR_TO_CP850_BYTE.get(next) : undefined;
+      if (continuationByte !== undefined) {
+        result += Buffer.from([leadByte, continuationByte]).toString("utf8");
+        changed = true;
+        i++; // consumed the continuation char too
+        continue;
+      }
     }
-    const byte = CHAR_TO_CP850_BYTE.get(ch);
-    if (byte !== undefined) {
-      bytes.push(byte);
-      changed = true;
-      continue;
-    }
-    // Not a recognized mojibake artifact char — keep its real UTF-8 bytes.
-    bytes.push(...Buffer.from(ch, "utf8"));
+    result += ch;
   }
-  if (!changed) return input;
-  return Buffer.from(bytes).toString("utf8");
+  return changed ? result : input;
 }
