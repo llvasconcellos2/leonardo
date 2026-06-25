@@ -53,7 +53,12 @@ function BlogRow({ post, lang }: { post: BlogPost; lang: Lang }) {
           <Link href={href}>{txt(post.title, lang)}</Link>
         </h2>
 
-        <Link href={href} className="lv-bl-figure" aria-hidden="true" tabIndex={-1}>
+        <Link
+          href={href}
+          className="lv-bl-figure"
+          aria-hidden="true"
+          tabIndex={-1}
+        >
           {post.featuredImage ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={post.featuredImage} alt="" loading="lazy" />

@@ -22,29 +22,48 @@ function CommentNode({ comment, lang }: { comment: BlogComment; lang: Lang }) {
       <div className="lv-cmt-head">
         {comment.avatar ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img className="lv-cmt-avatar" src={comment.avatar} alt="" loading="lazy" />
+          <img
+            className="lv-cmt-avatar"
+            src={comment.avatar}
+            alt=""
+            loading="lazy"
+          />
         ) : (
-          <span className="lv-cmt-avatar lv-cmt-avatar-blank" aria-hidden="true" />
+          <span
+            className="lv-cmt-avatar lv-cmt-avatar-blank"
+            aria-hidden="true"
+          />
         )}
         <div className="lv-cmt-ident">
           <span className="lv-cmt-author">
             {comment.authorUrl ? (
-              <a href={comment.authorUrl} rel="nofollow noopener noreferrer ugc">
+              <a
+                href={comment.authorUrl}
+                rel="nofollow noopener noreferrer ugc"
+              >
                 {comment.author}
               </a>
             ) : (
               comment.author
             )}
-            {comment.isAuthor && <span className="lv-cmt-badge">{t.author}</span>}
+            {comment.isAuthor && (
+              <span className="lv-cmt-badge">{t.author}</span>
+            )}
             {comment.isPingback && (
-              <span className="lv-cmt-badge lv-cmt-badge-ping">{t.pingback}</span>
+              <span className="lv-cmt-badge lv-cmt-badge-ping">
+                {t.pingback}
+              </span>
             )}
           </span>
           <time className="lv-cmt-date">{formatDate(comment.date, lang)}</time>
         </div>
       </div>
       <div className="lv-cmt-body">
-        <Markdown source={comment.content} lang={lang} className="lv-md lv-md-tight" />
+        <Markdown
+          source={comment.content}
+          lang={lang}
+          className="lv-md lv-md-tight"
+        />
       </div>
       {comment.replies.length > 0 && (
         <ul className="lv-cmt-replies">
@@ -72,9 +91,9 @@ export function BlogArticle({ post, lang }: { post: BlogPost; lang: Lang }) {
         <h1 className="lv-article-title">{txt(post.title, lang)}</h1>
         <div className="lv-article-meta">
           <span>
-            {t.by} {post.author.name}
+            {t.by} <span className="lv-blog-author">{post.author.name}</span>
           </span>
-          <span>{formatDate(post.date, lang)}</span>
+          <span className="lv-article-date">{formatDate(post.date, lang)}</span>
           <span className="lv-article-cmtcount">
             <MessageSquare size={13} />
             {commentCountLabel(post.commentCount, lang)}
@@ -91,7 +110,11 @@ export function BlogArticle({ post, lang }: { post: BlogPost; lang: Lang }) {
         )}
       </div>
 
-      <Markdown source={txt(post.content, lang)} lang={lang} className="lv-md lv-article-body" />
+      <Markdown
+        source={txt(post.content, lang)}
+        lang={lang}
+        className="lv-md lv-article-body"
+      />
 
       {post.tags.length > 0 && (
         <div className="lv-article-tags">

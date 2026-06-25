@@ -54,18 +54,25 @@
 .lv-bl-author {
   display: block;
   margin-top: 2px;
-  color: var(--text-secondary);
+  color: var(--accent-on-dim);
   text-transform: none;
   font-weight: 500;
 }
 .lv-bl-date {
   color: var(--accent-on-dim);
 }
+.lv-bl-date span {
+  color: var(--text-primary);
+}
 .lv-bl-cat {
-  color: var(--text-secondary);
+  color: var(--cyan-shift);
 }
 .lv-bl-comments {
   margin-bottom: 0 !important;
+}
+
+.lv-bl-comments span {
+  color: var(--accent);
 }
 
 /* RIGHT — entry content */

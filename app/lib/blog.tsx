@@ -26,13 +26,39 @@ export function uniqueCategories(post: BlogPost): string[] {
 }
 
 /** "Nenhum comentário" / "3 comentários" — matches the old WordPress meta line. */
-export function commentCountLabel(n: number, lang: Lang): string {
+// export function commentCountLabel(n: number, lang: Lang): string {
+//   if (lang === "pt") {
+//     if (n === 0) return "Nenhum comentário";
+//     return n === 1 ? "1 comentário" : `${n} comentários`;
+//   }
+//   if (n === 0) return "No comments";
+//   return n === 1 ? "1 comment" : `${n} comments`;
+// }
+
+export function commentCountLabel(n: number, lang: Lang): React.ReactNode {
   if (lang === "pt") {
     if (n === 0) return "Nenhum comentário";
-    return n === 1 ? "1 comentário" : `${n} comentários`;
+    return n === 1 ? (
+      <>
+        <span>1</span> comentário
+      </>
+    ) : (
+      <>
+        <span>{n}</span> comentários
+      </>
+    );
   }
+
   if (n === 0) return "No comments";
-  return n === 1 ? "1 comment" : `${n} comments`;
+  return n === 1 ? (
+    <>
+      <span>1</span> comment
+    </>
+  ) : (
+    <>
+      <span>{n}</span> comments
+    </>
+  );
 }
 
 export const BLOG_T: Record<Lang, Record<string, string>> = {

@@ -213,3 +213,15 @@
     padding-left: 0;
   }
 }
+
+.lv-blog-author {
+  color: var(--accent-on-dim);
+}
+
+.lv-article-cmtcount span {
+  color: var(--accent);
+}
+
+.lv-article-date {
+  color: var(--text-primary);
+}
