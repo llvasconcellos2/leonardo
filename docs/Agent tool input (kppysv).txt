@@ -1,0 +1,14 @@
+Convert all inline `style="..."` attributes in c:\Users\leona\Projects\leonardo\app\[lang]\syntax\page.tsx to React style objects with camelCase properties.
+
+Rules:
+1. Convert CSS kebab-case properties to camelCase (e.g. "background-color" → "backgroundColor", "font-style" → "fontStyle")
+2. Keep color values and other values as-is (e.g. "#07090F", "italic", "1rem")
+3. Convert: `style="prop1:value1;prop2:value2"` → `style={{ prop1: 'value1', prop2: 'value2' }}`
+4. Do NOT convert custom attributes like `relative=""`, `of-x-scroll=""`, `flex-none=""`, `transition-all=""`, `duration-500=""` — these are not valid React props and appear to be custom attrs; just remove them
+5. Keep all other attributes (className, etc.) unchanged
+6. The file is very large (~260KB) so be thorough in finding and replacing ALL occurrences
+
+After converting, verify that:
+- All style="..." attributes are gone
+- All style={{ ... }} objects use camelCase properties
+- No syntax errors are introduced

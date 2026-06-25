@@ -1,0 +1,94 @@
+/* [project]/app/components/Nav.css [app-client] (css) */
+.lv-nav {
+  z-index: 20;
+  background: color-mix(in oklab, var(--raised) 82%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  align-items: center;
+  gap: 24px;
+  padding: 14px clamp(20px, 4vw, 40px);
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+.lv-nav-mark {
+  font-family: var(--font-display);
+  letter-spacing: .04em;
+  color: var(--accent-bright);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.lv-nav-links {
+  gap: 6px;
+  display: flex;
+}
+
+.lv-nav-link {
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color var(--dur-fast);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 14px;
+}
+
+.lv-nav-link:hover {
+  color: var(--text-primary);
+}
+
+.lv-nav-link.is-active {
+  color: var(--accent-bright);
+}
+
+.lv-nav-right {
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  display: flex;
+}
+
+.lv-lang {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  overflow: hidden;
+}
+
+.lv-lang-b {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 6px 9px;
+  font-size: 11px;
+}
+
+.lv-lang-b.is-on {
+  background: var(--surface);
+  color: var(--accent-bright);
+}
+
+.lv-nav-cta {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .lv-nav-links {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=app_components_Nav_1-ltgm5.css.map*/

@@ -12,7 +12,13 @@
       "PowerShell(pnpm dev)",
       "Bash(node scripts/screenshot.js /en home)",
       "PowerShell(node scripts/screenshot.js /en home)",
-      "Bash(git check-ignore *)"
+      "Bash(git check-ignore *)",
+      "Bash(cp \"C:\\\\Users\\\\leona\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-leona-Projects-leonardo\\\\2cccce60-d402-451b-bdf6-1130dceddd00\\\\scratchpad\\\\page_converted.tsx\" \"C:\\\\Users\\\\leona\\\\Projects\\\\leonardo\\\\app\\\\[lang]\\\\syntax\\\\page.tsx\")",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\leona\\\\Projects\\\\leonardo\\\\app\" -Recurse -Filter \"*syntax*\")",
+      "Read(//c/Users/leona/Projects/leonardo/app/**)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\leona\\Projects\\leonardo\\app\\[lang]\\syntax"
     ]
   }
 }
