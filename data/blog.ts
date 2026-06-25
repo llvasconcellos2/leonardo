@@ -403,7 +403,7 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     "date": new Date("2014-09-30T12:27:24.000Z"),
     "modified": new Date("2014-10-01T12:41:16.000Z"),
-    "featuredImage": null,
+    "featuredImage": "/old-blog/uploads/2014/09/zendframework.png",
     "category": [
       "Zend Framework 1",
       "Desenvolvimento Web",
