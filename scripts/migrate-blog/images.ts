@@ -8,8 +8,13 @@ import {
   WWW_UPLOADS_PATH,
 } from "./constants";
 
-/** Source trees to check for an upload, in priority order. */
-const UPLOAD_SOURCE_DIRS = [RIP_UPLOADS_PATH, WWW_UPLOADS_PATH];
+/**
+ * Source trees to check for an upload, in priority order. The real webroot
+ * is authoritative — always full resolution, never disguised under the
+ * wrong extension — so it's checked first. The HTTrack mirror is a fallback
+ * for anything missing from the webroot.
+ */
+const UPLOAD_SOURCE_DIRS = [WWW_UPLOADS_PATH, RIP_UPLOADS_PATH];
 
 export type Warn = (message: string) => void;
 
@@ -27,12 +32,20 @@ export function toOriginalFilename(relativeUploadPath: string): string {
   return relativeUploadPath.replace(/-\d+x\d+(\.[a-zA-Z0-9]+)$/, "$1");
 }
 
-/** Pull the `YYYY/MM/filename.ext` tail out of any uploads URL/path (handles both the HTTrack-rewritten absolute host and relative forms). */
+/**
+ * Pull the `YYYY/MM/filename.ext` tail out of any uploads URL/path (handles
+ * both the HTTrack-rewritten absolute host and relative forms). Splits on
+ * `?`, `&`, and `#` — needed because the marker can appear *inside* an outer
+ * query string (a timthumb wrapper URL like
+ * `timthumb<hash>.jpg?src=http://localhost:8080/wp-content/uploads/foo.jpg&h=227&w=600`),
+ * in which case everything after the marker still carries that outer
+ * query's own `&...` params unless all three delimiters are cut.
+ */
 export function extractUploadPath(url: string): string | null {
   const marker = "/wp-content/uploads/";
   const idx = url.indexOf(marker);
   if (idx === -1) return null;
-  return url.slice(idx + marker.length).split("?")[0].split("#")[0];
+  return url.slice(idx + marker.length).split(/[?&#]/)[0];
 }
 
 const copiedUploads = new Map<string, string | null>();
@@ -45,35 +58,56 @@ function sniffImageMagicBytes(buffer: Buffer): boolean {
   return false;
 }
 
+function stemOf(filename: string): string {
+  return filename.replace(/\.[^.]+$/, "").toLowerCase();
+}
+
 /**
- * Resolve the actual file to read bytes from for a given expected upload
- * path. HTTrack sometimes mis-saves an image under a `.html` extension
- * instead of its real one (confirmed: the live WordPress server returned a
- * text/html content-type header for some image requests even though the
- * body bytes are a genuine image) — so if the expected filename isn't
- * present, this also tries the same path with a `.html` extension and
- * verifies via magic-byte sniffing that it's really image data before
- * trusting it, guarding against actually copying a real HTML error page.
+ * Find the real file backing an expected upload path by matching filename
+ * stems (case-insensitive, extension-agnostic) within the same YYYY/MM
+ * directory, rather than trusting the extension in the reference. Neither
+ * source tree's extensions can be trusted: HTTrack sometimes saves a real
+ * image under a `.html` extension (stale content-type header at crawl
+ * time), and even the real webroot isn't internally consistent (e.g. an
+ * original saved as `.jpeg` while its WordPress-generated sized copies are
+ * `.jpg`). Stem-matching sidesteps guessing extensions entirely.
+ *
+ * Returns the corrected relative path (real directory + real filename) and
+ * the absolute source path, or null if nothing in this directory matches.
  */
-function resolveImageSource(filePath: string): string | null {
-  if (fs.existsSync(filePath)) return filePath;
-  const ext = path.extname(filePath);
-  const htmlVariant = filePath.slice(0, -ext.length) + ".html";
-  if (fs.existsSync(htmlVariant)) {
-    const fd = fs.openSync(htmlVariant, "r");
+function findUploadFile(
+  dirRoot: string,
+  relativeUploadPath: string
+): { relative: string; absolute: string } | null {
+  const relDir = path.dirname(relativeUploadPath);
+  const dir = path.join(dirRoot, relDir);
+  if (!fs.existsSync(dir)) return null;
+
+  const targetStem = stemOf(path.basename(relativeUploadPath));
+  const match = fs.readdirSync(dir).find((f) => stemOf(f) === targetStem);
+  if (!match) return null;
+
+  const absolute = path.join(dir, match);
+  const ext = path.extname(match).toLowerCase();
+  if (ext === ".html" || ext === ".htm") {
+    // Only a real risk on the HTTrack mirror (which sometimes disguises an
+    // image this way) — verify it's actually image data before trusting it,
+    // so we never copy a genuine HTML error page under an image's name.
+    const fd = fs.openSync(absolute, "r");
     const header = Buffer.alloc(16);
     fs.readSync(fd, header, 0, 16, 0);
     fs.closeSync(fd);
-    if (sniffImageMagicBytes(header)) return htmlVariant;
+    if (!sniffImageMagicBytes(header)) return null;
   }
-  return null;
+
+  return { relative: path.join(relDir, match).split(path.sep).join("/"), absolute };
 }
 
 /**
  * Copy an uploaded image (always the original, unsized file when available)
- * from the HTTrack mirror into public/old-blog/uploads/, preserving the
- * WordPress YYYY/MM/filename structure. Returns the new public path, or
- * null if no source file could be found at all.
+ * into public/old-blog/uploads/, preserving the WordPress YYYY/MM/filename
+ * structure. Returns the new public path, or null if no source file could
+ * be found at all.
  */
 export function copyUploadImage(relativeUploadPath: string, slug: string, warn: Warn): string | null {
   const original = toOriginalFilename(relativeUploadPath);
@@ -82,39 +116,32 @@ export function copyUploadImage(relativeUploadPath: string, slug: string, warn: 
   // Prefer the original (unsized) file across every source tree before
   // falling back to a sized variant in any of them — a different tree's
   // full original beats this tree's resized copy.
-  let chosenSource: string | null = null;
-  let chosenRelative: string | null = null;
+  let chosen: { relative: string; absolute: string } | null = null;
   for (const dir of UPLOAD_SOURCE_DIRS) {
-    const source = resolveImageSource(path.join(dir, original));
-    if (source) {
-      chosenSource = source;
-      chosenRelative = original;
-      break;
-    }
+    chosen = findUploadFile(dir, original);
+    if (chosen) break;
   }
-  if (!chosenSource) {
+  if (!chosen) {
     for (const dir of UPLOAD_SOURCE_DIRS) {
-      const source = resolveImageSource(path.join(dir, relativeUploadPath));
-      if (source) {
+      chosen = findUploadFile(dir, relativeUploadPath);
+      if (chosen) {
         warn(`Original image missing for "${slug}", using sized variant: ${relativeUploadPath}`);
-        chosenSource = source;
-        chosenRelative = relativeUploadPath;
         break;
       }
     }
   }
-  if (!chosenSource || !chosenRelative) {
+  if (!chosen) {
     warn(`Image source not found for "${slug}": ${relativeUploadPath}`);
     copiedUploads.set(original, null);
     return null;
   }
 
-  const dest = path.join(PUBLIC_UPLOADS_PATH, chosenRelative);
+  const dest = path.join(PUBLIC_UPLOADS_PATH, chosen.relative);
   if (!fs.existsSync(dest)) {
     fs.mkdirSync(path.dirname(dest), { recursive: true });
-    fs.copyFileSync(chosenSource, dest);
+    fs.copyFileSync(chosen.absolute, dest);
   }
-  const publicPath = toPublicPath("old-blog", "uploads", chosenRelative);
+  const publicPath = toPublicPath("old-blog", "uploads", chosen.relative);
   copiedUploads.set(original, publicPath);
   return publicPath;
 }
