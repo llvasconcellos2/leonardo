@@ -5,8 +5,8 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { PostCard } from "./WritingSection";
-import { POSTS, T } from "../../data/data";
-import type { Lang } from "../../data/data";
+import { POSTS, T } from "@/data/data";
+import type { Lang } from "@/data/data";
 
 export function BlogPost({ lang, id }: { lang: Lang; id: string | null }) {
   const post = POSTS.find((x) => x.id === id) || POSTS[0];
@@ -48,8 +48,7 @@ export function BlogPost({ lang, id }: { lang: Lang; id: string | null }) {
             <span className="cm">// crawl + rewrite + self-host</span>
             {"\n"}
             <span className="kw">const</span> snap ={" "}
-            <span className="kw">await</span> crawl(url,{" "}
-            {"{ rewriteBase: "}
+            <span className="kw">await</span> crawl(url, {"{ rewriteBase: "}
             <span className="tr">true</span>
             {" }"});
           </code>

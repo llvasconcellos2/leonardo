@@ -4,7 +4,7 @@ import "./WritingSection.css";
 import Image from "next/image";
 import { Quote } from "lucide-react";
 import { Kicker } from "./Primitives";
-import type { Lang } from "../../data/data";
+import type { Lang } from "@/data/data";
 
 const TESTIMONIALS = [
   {

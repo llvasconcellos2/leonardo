@@ -5,7 +5,7 @@ import { ArrowLeft, MessageSquare } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
 import { Markdown } from "./Markdown";
-import type { BlogComment, BlogPost } from "../../data/blog";
+import type { BlogComment, BlogPost } from "@/data/blog";
 import {
   BLOG_T,
   commentCountLabel,
@@ -13,7 +13,7 @@ import {
   txt,
   uniqueCategories,
 } from "../lib/blog";
-import type { Lang } from "../../data/data";
+import type { Lang } from "@/data/data";
 
 function CommentNode({ comment, lang }: { comment: BlogComment; lang: Lang }) {
   const t = BLOG_T[lang];

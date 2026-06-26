@@ -10,9 +10,9 @@ import rehypeShikiFromHighlighter from "@shikijs/rehype/core";
 import { createHighlighter, type Highlighter } from "shiki";
 import type { Root, Element, ElementContent } from "hast";
 
-import { BLOG_POSTS } from "../../data/blog";
-import { postSlug } from "../lib/blog";
-import type { Lang } from "../../data/data";
+import { BLOG_POSTS } from "@/data/blog";
+import { postSlug } from "@/app/lib/blog";
+import type { Lang } from "@/data/data";
 
 // The migration emits canonical fence tags; map the ones Shiki names differently.
 const LANG_ALIAS: Record<string, string> = {
@@ -96,7 +96,10 @@ function rehypePostLinks(lang: Lang) {
   };
 }
 
-export async function renderMarkdown(source: string, lang: Lang): Promise<string> {
+export async function renderMarkdown(
+  source: string,
+  lang: Lang,
+): Promise<string> {
   const highlighter = await getHighlighter();
   const file = await unified()
     .use(remarkParse)
@@ -126,5 +129,7 @@ export async function Markdown({
   className?: string;
 }) {
   const html = await renderMarkdown(source, lang);
-  return <div className={className} dangerouslySetInnerHTML={{ __html: html }} />;
+  return (
+    <div className={className} dangerouslySetInnerHTML={{ __html: html }} />
+  );
 }

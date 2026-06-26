@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Hero } from "../components/Hero";
-import { AboutSection } from "../components/AboutSection";
-import { WorkSection } from "../components/WorkSection";
-import { WritingSection } from "../components/WritingSection";
-import { Testimonials } from "../components/Testimonials";
-import { ContactFooter } from "../components/ContactFooter";
-import { Parallax } from "../components/Parallax";
-import type { Lang } from "../../data/data";
+import { Hero } from "@/app/components/Hero";
+import { AboutSection } from "@/app/components/AboutSection";
+import { WorkSection } from "@/app/components/WorkSection";
+import { WritingSection } from "@/app/components/WritingSection";
+import { Testimonials } from "@/app/components/Testimonials";
+import { ContactFooter } from "@/app/components/ContactFooter";
+import { Parallax } from "@/app/components/Parallax";
+import type { Lang } from "@/data/data";
 
 export async function generateMetadata({
   params,

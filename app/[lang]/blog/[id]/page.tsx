@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { BLOG_POSTS } from "../../../../data/blog";
-import { BlogArticle } from "../../../components/BlogArticle";
-import { MiniFooter } from "../../../components/ContactFooter";
-import { txt, postSlug } from "../../../lib/blog";
-import type { Lang } from "../../../../data/data";
+import { BLOG_POSTS } from "@/data/blog";
+import { BlogArticle } from "@/app/components/BlogArticle";
+import { MiniFooter } from "@/app/components/ContactFooter";
+import { txt, postSlug } from "@/app/lib/blog";
+import type { Lang } from "@/data/data";
 
-export function generateStaticParams({
-  params,
-}: {
-  params: { lang: string };
-}) {
+export function generateStaticParams({ params }: { params: { lang: string } }) {
   return BLOG_POSTS.map((p) => ({ id: postSlug(p, params.lang as Lang) }));
 }
 

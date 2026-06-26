@@ -4,8 +4,8 @@ import Link from "next/link";
 import { ArrowRight, ShieldAlert, Check } from "lucide-react";
 import { Kicker, TechChip } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
-import { PROJECTS, T } from "../../data/data";
-import type { Lang } from "../../data/data";
+import { PROJECTS, T } from "@/data/data";
+import type { Lang } from "@/data/data";
 
 function WorkRow({
   p,

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { BlogIndex } from "../../components/BlogIndex";
-import { MiniFooter } from "../../components/ContactFooter";
-import { BLOG_T } from "../../lib/blog";
-import type { Lang } from "../../../data/data";
+import { BlogIndex } from "@/app/components/BlogIndex";
+import { MiniFooter } from "@/app/components/ContactFooter";
+import { BLOG_T } from "@/app/lib/blog";
+import type { Lang } from "@/data/data";
 
 export async function generateMetadata({
   params,

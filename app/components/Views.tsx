@@ -5,8 +5,8 @@ import Link from "next/link";
 import { ArrowLeft, Archive, Check } from "lucide-react";
 import { Kicker, TechChip } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
-import { PROJECTS, T } from "../../data/data";
-import type { Lang } from "../../data/data";
+import { PROJECTS, T } from "@/data/data";
+import type { Lang } from "@/data/data";
 
 export function ProjectDetail({ lang, id }: { lang: Lang; id: string | null }) {
   const p = PROJECTS.find((x) => x.id === id) || PROJECTS[0];
@@ -27,7 +27,10 @@ export function ProjectDetail({ lang, id }: { lang: Lang; id: string | null }) {
         <span className="lv-detail-year">{p.year}</span>
       </div>
       <div className="lv-detail-hero">
-        <LowPolyField seed={p.seed} style={{ position: "absolute", inset: 0 }} />
+        <LowPolyField
+          seed={p.seed}
+          style={{ position: "absolute", inset: 0 }}
+        />
       </div>
       <div className="lv-detail-grid">
         <div className="lv-detail-prose prose">

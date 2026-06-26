@@ -1,6 +1,6 @@
 import "./AboutSection.css";
 import { Kicker, TECH_LOGOS } from "./Primitives";
-import type { Lang } from "../../data/data";
+import type { Lang } from "@/data/data";
 
 const ABOUT = {
   en: {
@@ -183,7 +183,7 @@ export function AboutSection({ lang }: { lang: Lang }) {
           <p className="prose lv-about-intro">{t.intro}</p>
 
           <div className="lv-about-sub">{t.whatido}</div>
-          
+
           <div className="lv-acc-group">
             {SKILLS.map((s, i) => (
               <Accordion

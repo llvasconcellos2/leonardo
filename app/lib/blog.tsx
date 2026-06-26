@@ -1,5 +1,5 @@
-import type { Lang } from "../../data/data";
-import type { BlogPost } from "../../data/blog";
+import type { Lang } from "@/data/data";
+import type { BlogPost } from "@/data/blog";
 
 /** Bilingual field accessor with PT fallback (the migrated posts are PT-only). */
 export function txt(field: Record<Lang, string>, lang: Lang): string {

@@ -2,8 +2,8 @@ import "./ContactFooter.css";
 
 import { Mail, Download, CodeXml, Briefcase, Rss } from "lucide-react";
 import { Kicker } from "./Primitives";
-import { T } from "../../data/data";
-import type { Lang } from "../../data/data";
+import { T } from "@/data/data";
+import type { Lang } from "@/data/data";
 
 export function ContactFooter({ lang }: { lang: Lang }) {
   const t = T[lang];

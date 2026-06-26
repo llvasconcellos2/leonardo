@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Nav } from "../components/Nav";
-import type { Lang } from "../../data/data";
+import { Nav } from "@/app/components/Nav";
+import type { Lang } from "@/data/data";
 
 export const metadata: Metadata = {
   title: "Leonardo Vasconcellos — Full-Stack Engineer",

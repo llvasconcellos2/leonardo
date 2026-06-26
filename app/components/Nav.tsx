@@ -3,7 +3,7 @@ import "./Nav.css";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { Lang } from "../../data/data";
+import type { Lang } from "@/data/data";
 
 const items = [
   { id: "home", path: "/", label: { en: "Home", pt: "Início" } },

@@ -3,8 +3,8 @@ import "./WritingSection.css";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Kicker } from "./Primitives";
-import { POSTS, T } from "../../data/data";
-import type { Lang, Post } from "../../data/data";
+import { POSTS, T } from "@/data/data";
+import type { Lang, Post } from "@/data/data";
 
 export function PostCard({ post, lang }: { post: Post; lang: Lang }) {
   const t = T[lang];

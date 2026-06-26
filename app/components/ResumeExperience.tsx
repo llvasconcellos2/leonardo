@@ -2,21 +2,41 @@
 import { useState } from "react";
 import { ShieldAlert, ChevronDown, ChevronUp, Check } from "lucide-react";
 import { TechChip } from "./Primitives";
-import type { Lang } from "../../data/data";
+import type { Lang } from "@/data/data";
 
 const XP_FILTERS = [
-  "React", "Next.js", "Node.js", "TypeScript", "PHP",
-  "Java", "Android", ".NET", "Python", "PostgreSQL",
+  "React",
+  "Next.js",
+  "Node.js",
+  "TypeScript",
+  "PHP",
+  "Java",
+  "Android",
+  ".NET",
+  "Python",
+  "PostgreSQL",
 ];
 
 const RT = {
   en: {
-    xpH: "Experience", filterLab: "Filter by tech", all: "All",
-    showing: "Showing", of: "of", roles: "roles", details: "details", hide: "hide",
+    xpH: "Experience",
+    filterLab: "Filter by tech",
+    all: "All",
+    showing: "Showing",
+    of: "of",
+    roles: "roles",
+    details: "details",
+    hide: "hide",
   },
   pt: {
-    xpH: "Experiência", filterLab: "Filtrar por tech", all: "Todas",
-    showing: "Mostrando", of: "de", roles: "cargos", details: "detalhes", hide: "ocultar",
+    xpH: "Experiência",
+    filterLab: "Filtrar por tech",
+    all: "Todas",
+    showing: "Mostrando",
+    of: "de",
+    roles: "cargos",
+    details: "detalhes",
+    hide: "ocultar",
   },
 };
 
@@ -39,8 +59,12 @@ function pick(v: string | Record<string, string>, lang: string): string {
 
 const EXPERIENCE: XpEntry[] = [
   {
-    id: "itajai", stakes: true,
-    role: { en: "Senior Web Application Developer", pt: "Desenvolvedor Sênior de Aplicações Web" },
+    id: "itajai",
+    stakes: true,
+    role: {
+      en: "Senior Web Application Developer",
+      pt: "Desenvolvedor Sênior de Aplicações Web",
+    },
     co: "Prefeitura Municipal de Itajaí",
     period: { en: "Apr 2025 — Jan 2026", pt: "Abr 2025 — Jan 2026" },
     dur: { en: "9 mos", pt: "9 meses" },
@@ -61,7 +85,10 @@ const EXPERIENCE: XpEntry[] = [
   },
   {
     id: "devhouse2",
-    role: { en: "Senior Software Engineer", pt: "Engenheiro de Software Sênior" },
+    role: {
+      en: "Senior Software Engineer",
+      pt: "Engenheiro de Software Sênior",
+    },
     co: "DevHouse",
     period: { en: "Jan 2024 — Apr 2025", pt: "Jan 2024 — Abr 2025" },
     dur: { en: "1 yr 3 mos", pt: "1 ano 3 meses" },
@@ -79,8 +106,12 @@ const EXPERIENCE: XpEntry[] = [
     },
   },
   {
-    id: "eoa", stakes: true,
-    role: { en: "Senior Full-Stack Software Engineer", pt: "Engenheiro de Software Full-Stack Sênior" },
+    id: "eoa",
+    stakes: true,
+    role: {
+      en: "Senior Full-Stack Software Engineer",
+      pt: "Engenheiro de Software Full-Stack Sênior",
+    },
     co: "Email on Acid",
     period: { en: "Sep 2019 — Sep 2023", pt: "Set 2019 — Set 2023" },
     dur: { en: "4 yrs", pt: "4 anos" },
@@ -100,8 +131,12 @@ const EXPERIENCE: XpEntry[] = [
     },
   },
   {
-    id: "bv", stakes: true,
-    role: { en: "Full-Stack Software Engineer", pt: "Engenheiro de Software Full-Stack" },
+    id: "bv",
+    stakes: true,
+    role: {
+      en: "Full-Stack Software Engineer",
+      pt: "Engenheiro de Software Full-Stack",
+    },
     co: "Bureau Veritas Group",
     period: { en: "Mar 2019 — Sep 2019", pt: "Mar 2019 — Set 2019" },
     dur: { en: "6 mos", pt: "6 meses" },
@@ -122,7 +157,10 @@ const EXPERIENCE: XpEntry[] = [
   },
   {
     id: "devhouse1",
-    role: { en: "Senior Software Engineer", pt: "Engenheiro de Software Sênior" },
+    role: {
+      en: "Senior Software Engineer",
+      pt: "Engenheiro de Software Sênior",
+    },
     co: "DevHouse",
     period: { en: "Nov 2011 — Mar 2019", pt: "Nov 2011 — Mar 2019" },
     dur: { en: "7 yrs 4 mos", pt: "7 anos 4 meses" },
@@ -142,8 +180,12 @@ const EXPERIENCE: XpEntry[] = [
     },
   },
   {
-    id: "msf", stakes: true,
-    role: { en: "Tech Lead · Java/Android Engineer", pt: "Líder Técnico · Engenheiro Java/Android" },
+    id: "msf",
+    stakes: true,
+    role: {
+      en: "Tech Lead · Java/Android Engineer",
+      pt: "Líder Técnico · Engenheiro Java/Android",
+    },
     co: "Doctors Without Borders (MSF)",
     period: { en: "Sep 2015 — Mar 2016", pt: "Set 2015 — Mar 2016" },
     dur: { en: "6 mos", pt: "6 meses" },
@@ -182,7 +224,8 @@ const EXPERIENCE: XpEntry[] = [
     },
   },
   {
-    id: "bravi", stakes: true,
+    id: "bravi",
+    stakes: true,
     role: { en: "Software Engineer", pt: "Engenheiro de Software" },
     co: "Bravi Software",
     period: { en: "Nov 2014 — Feb 2015", pt: "Nov 2014 — Fev 2015" },
@@ -259,7 +302,10 @@ const EXPERIENCE: XpEntry[] = [
   },
   {
     id: "self",
-    role: { en: "Web Developer · Freelance", pt: "Desenvolvedor Web · Autônomo" },
+    role: {
+      en: "Web Developer · Freelance",
+      pt: "Desenvolvedor Web · Autônomo",
+    },
     co: { en: "Self-Employed", pt: "Autônomo" },
     period: { en: "Jul 2005 — Feb 2010", pt: "Jul 2005 — Fev 2010" },
     dur: { en: "4 yrs 7 mos", pt: "4 anos 7 meses" },
@@ -284,7 +330,10 @@ export function ResumeExperience({ lang }: { lang: Lang }) {
   const t = RT[lang];
   const [filter, setFilter] = useState<string | null>(null);
   const [open, setOpen] = useState<Record<string, boolean>>({
-    itajai: true, devhouse2: true, eoa: true, msf: true,
+    itajai: true,
+    devhouse2: true,
+    eoa: true,
+    msf: true,
   });
 
   const toggle = (id: string) => setOpen((o) => ({ ...o, [id]: !o[id] }));
@@ -316,7 +365,8 @@ export function ResumeExperience({ lang }: { lang: Lang }) {
           ))}
         </div>
         <span className="lv-xp-count">
-          {t.showing} <strong>{shown}</strong> {t.of} {EXPERIENCE.length} {t.roles}
+          {t.showing} <strong>{shown}</strong> {t.of} {EXPERIENCE.length}{" "}
+          {t.roles}
         </span>
       </div>
 
@@ -354,7 +404,11 @@ export function ResumeExperience({ lang }: { lang: Lang }) {
                   </span>
                   <span className="lv-xp-toggle">
                     {isOpen ? t.hide : t.details}
-                    {isOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    {isOpen ? (
+                      <ChevronUp size={14} />
+                    ) : (
+                      <ChevronDown size={14} />
+                    )}
                   </span>
                 </button>
                 <div className="lv-xp-tech">
