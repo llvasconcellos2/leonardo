@@ -3,12 +3,20 @@ import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "../../../../data/blog";
 import { BlogArticle } from "../../../components/BlogArticle";
 import { MiniFooter } from "../../../components/ContactFooter";
-import { txt } from "../../../lib/blog";
+import { txt, postSlug } from "../../../lib/blog";
 import type { Lang } from "../../../../data/data";
 
-export function generateStaticParams() {
-  return BLOG_POSTS.map((p) => ({ id: p.slug.pt }));
+export function generateStaticParams({
+  params,
+}: {
+  params: { lang: string };
+}) {
+  return BLOG_POSTS.map((p) => ({ id: postSlug(p, params.lang as Lang) }));
 }
+
+/** Resolve a post by its slug in either locale (en or pt). */
+const findPost = (id: string) =>
+  BLOG_POSTS.find((p) => p.slug.en === id || p.slug.pt === id);
 
 export async function generateMetadata({
   params,
@@ -16,7 +24,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string; id: string }>;
 }): Promise<Metadata> {
   const { lang, id } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug.pt === id);
+  const post = findPost(id);
   if (!post) return {};
   const l = lang as Lang;
   return {
@@ -31,7 +39,7 @@ export default async function PostPage({
   params: Promise<{ lang: string; id: string }>;
 }) {
   const { lang, id } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug.pt === id);
+  const post = findPost(id);
   if (!post) notFound();
   return (
     <>
