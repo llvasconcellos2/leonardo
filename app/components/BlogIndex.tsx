@@ -1,7 +1,7 @@
 import "./BlogIndex.css";
 
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, MessageSquare } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
 import { BLOG_POSTS } from "../../data/blog";
@@ -43,6 +43,7 @@ function BlogRow({ post, lang }: { post: BlogPost; lang: Lang }) {
           </p>
         )}
         <p className="lv-bl-comments">
+          <MessageSquare size={13} />
           {commentCountLabel(post.commentCount, lang)}
         </p>
       </div>

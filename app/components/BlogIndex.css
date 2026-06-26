@@ -70,6 +70,9 @@
 }
 .lv-bl-comments {
   margin-bottom: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .lv-bl-comments span {
