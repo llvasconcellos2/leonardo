@@ -5,6 +5,7 @@ import { BLOG_POSTS } from "@/data/blog";
 import { BlogArticle } from "@/app/components/BlogArticle";
 import { MiniFooter } from "@/app/components/ContactFooter";
 import { txt, postSlug } from "@/app/lib/blog";
+import { DEFAULT_OG_IMAGE } from "@/app/[lang]/layout";
 import type { Lang } from "@/data/data";
 
 export function generateStaticParams({ params }: { params: { lang: string } }) {
@@ -24,9 +25,29 @@ export async function generateMetadata({
   const post = findPost(id);
   if (!post) return {};
   const l = lang as Lang;
+  const title = `${txt(post.title, l)} — Leonardo Vasconcellos`;
+  const description = txt(post.excerpt, l);
+  // Blog articles share their featured image; fall back to the site default.
+  const image = post.featuredImage ?? DEFAULT_OG_IMAGE;
   return {
-    title: `${txt(post.title, l)} — Leonardo Vasconcellos`,
-    description: txt(post.excerpt, l),
+    title,
+    description,
+    openGraph: {
+      type: "article",
+      siteName: "Leonardo Vasconcellos",
+      title,
+      description,
+      url: `/${l}/blog/${postSlug(post, l)}`,
+      publishedTime: post.date.toISOString(),
+      modifiedTime: post.modified.toISOString(),
+      images: [{ url: image, alt: txt(post.title, l) }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
   };
 }
 
