@@ -19,7 +19,7 @@ const TESTIMONIALS = [
       pt: "Trabalhou com Leonardo no mesmo time",
     },
     date: "Apr 2020",
-    avatar: "/thiago.jpeg",
+    avatar: "/assets/thiago.jpeg",
     source: "LinkedIn",
   },
 ];
