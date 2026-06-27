@@ -140,3 +140,6 @@
 [submodule "project_archive/devhouse-wordpress"]
 	path = project_archive/devhouse-wordpress
 	url = https://github.com/llvasconcellos2/devhouse-wordpress.git
+[submodule "project_archive/easy-clinic"]
+	path = project_archive/easy-clinic
+	url = https://github.com/llvasconcellos2/easy-clinic.git
