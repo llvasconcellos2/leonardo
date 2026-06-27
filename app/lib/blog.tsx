@@ -91,3 +91,33 @@ export const BLOG_T: Record<Lang, Record<string, string>> = {
     pingback: "mencionou este post",
   },
 };
+
+export function isNotBlogPath(referrerUrl: string): boolean {
+  try {
+    const url = new URL(referrerUrl);
+
+    // Split the path into individual segments
+    const pathSegments = url.pathname.split("/");
+
+    // Returns true ONLY if 'blog' is completely missing from the path segments
+    return !pathSegments.includes("blog");
+  } catch (e) {
+    // If the referrer is empty, invalid, or direct navigation, handle it here
+    return true;
+  }
+}
+
+export function isBlogPath(referrerUrl: string): boolean {
+  try {
+    const url = new URL(referrerUrl);
+
+    // Split the path into individual segments
+    const pathSegments = url.pathname.split("/");
+
+    // Returns true ONLY if 'blog' is the last path segment
+    return pathSegments[pathSegments.length - 1] === "blog";
+  } catch (e) {
+    // If the referrer is empty, invalid, or direct navigation, handle it here
+    return false;
+  }
+}

@@ -1,6 +1,7 @@
 import "./BlogIndex.css";
 
 import Link from "next/link";
+import { ViewTransition } from "react";
 import { ArrowLeft, ArrowUpRight, MessageSquare } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
@@ -26,11 +27,15 @@ function BlogRow({ post, lang }: { post: BlogPost; lang: Lang }) {
       {/* LEFT — entry meta */}
       <div className="lv-bl-meta">
         <p className="lv-bl-by">
-          {t.by} <span className="lv-bl-author">{post.author.name}</span>
+          <ViewTransition name={`post-author-${post.id}`} share="morph">
+            {t.by} <span className="lv-bl-author">{post.author.name}</span>
+          </ViewTransition>
         </p>
-        <p className="lv-bl-date">
-          {t.on} {formatDate(post.date, lang)}
-        </p>
+        <ViewTransition name={`post-date-${post.id}`} share="morph">
+          <p className="lv-bl-date">
+            {t.on} {formatDate(post.date, lang)}
+          </p>
+        </ViewTransition>
         {cats.length > 0 && (
           <p className="lv-bl-cats">
             {t.inCats}{" "}
@@ -42,30 +47,37 @@ function BlogRow({ post, lang }: { post: BlogPost; lang: Lang }) {
             ))}
           </p>
         )}
-        <p className="lv-bl-comments">
-          <MessageSquare size={13} />
-          {commentCountLabel(post.commentCount, lang)}
-        </p>
+        <ViewTransition name={`post-comments-${post.id}`} share="morph">
+          <p className="lv-bl-comments">
+            <MessageSquare size={13} />
+            {commentCountLabel(post.commentCount, lang)}
+          </p>
+        </ViewTransition>
       </div>
 
       {/* RIGHT — entry content */}
       <div className="lv-bl-content">
-        <h2 className="lv-bl-title">
-          <Link href={href}>{txt(post.title, lang)}</Link>
-        </h2>
-
+        <ViewTransition name={`post-title-${post.id}`} share="morph">
+          <h2 className="lv-bl-title">
+            <Link href={href} transitionTypes={["nav-forward"]}>
+              {txt(post.title, lang)}
+            </Link>
+          </h2>
+        </ViewTransition>
         <Link
           href={href}
           className="lv-bl-figure"
           aria-hidden="true"
           tabIndex={-1}
         >
-          {post.featuredImage ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={post.featuredImage} alt="" loading="lazy" />
-          ) : (
-            <LowPolyField seed={post.id} />
-          )}
+          <ViewTransition name={`post-image-${post.id}`} share="morph">
+            {post.featuredImage ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={post.featuredImage} alt="" loading="lazy" />
+            ) : (
+              <LowPolyField seed={post.id} />
+            )}
+          </ViewTransition>
         </Link>
 
         <p className="lv-bl-excerpt">{txt(post.excerpt, lang)}</p>

@@ -26,7 +26,8 @@ export function Nav({ lang }: { lang: Lang }) {
         : "";
 
   return (
-    <header className="lv-nav">
+    // <header className="lv-nav" style={{ viewTransitionName: "site-header" }}>
+    <header className="lv-nav" style={{ viewTransitionName: "site-header" }}>
       <Link href={`/${lang}`} className="lv-nav-mark" aria-label="Home">
         LV
       </Link>

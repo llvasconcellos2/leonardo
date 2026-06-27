@@ -25,7 +25,7 @@ export default async function LangLayout({
   return (
     <div className="lv-app">
       <Nav lang={lang as Lang} />
-      <main className="lv-scroll">{children}</main>
+      <main>{children}</main>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import "./BlogArticle.css";
-
-import Link from "next/link";
+import { headers } from "next/headers";
+import { ViewTransition } from "react";
 import { ArrowLeft, MessageSquare } from "lucide-react";
 import { Kicker } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
@@ -14,6 +14,7 @@ import {
   uniqueCategories,
 } from "../lib/blog";
 import type { Lang } from "@/data/data";
+import { BlogBackLink } from "./BlogBackLink";
 
 function CommentNode({ comment, lang }: { comment: BlogComment; lang: Lang }) {
   const t = BLOG_T[lang];
@@ -76,40 +77,59 @@ function CommentNode({ comment, lang }: { comment: BlogComment; lang: Lang }) {
   );
 }
 
-export function BlogArticle({ post, lang }: { post: BlogPost; lang: Lang }) {
+export async function BlogArticle({
+  post,
+  lang,
+}: {
+  post: BlogPost;
+  lang: Lang;
+}) {
   const t = BLOG_T[lang];
   const cats = uniqueCategories(post);
 
+  const headersList = await headers();
+  const referrer = headersList.get("referer");
+
   return (
     <article className="lv-section lv-article">
-      <Link href={`/${lang}/blog`} className="lv-link-arrow lv-back">
+      <BlogBackLink referrer={referrer ?? ""}>
         <ArrowLeft size={15} /> {t.back}
-      </Link>
+      </BlogBackLink>
 
       <header className="lv-article-head">
         {cats.length > 0 && <Kicker as="p">// {cats.join(" · ")}</Kicker>}
-        <h1 className="lv-article-title">{txt(post.title, lang)}</h1>
+        <ViewTransition name={`post-title-${post.id}`} share="morph">
+          <h1 className="lv-article-title">{txt(post.title, lang)}</h1>
+        </ViewTransition>
         <div className="lv-article-meta">
           <span>
-            {t.by} <span className="lv-blog-author">{post.author.name}</span>
+            <ViewTransition name={`post-author-${post.id}`} share="morph">
+              {t.by} <span className="lv-blog-author">{post.author.name}</span>
+            </ViewTransition>
           </span>
-          <span className="lv-article-date">{formatDate(post.date, lang)}</span>
-          <span className="lv-article-cmtcount">
-            <MessageSquare size={13} />
-            {commentCountLabel(post.commentCount, lang)}
-          </span>
+          <ViewTransition name={`post-date-${post.id}`} share="morph">
+            <span className="lv-article-date">
+              {formatDate(post.date, lang)}
+            </span>
+          </ViewTransition>
+          <ViewTransition name={`post-comments-${post.id}`} share="morph">
+            <span className="lv-article-cmtcount">
+              <MessageSquare size={13} />
+              {commentCountLabel(post.commentCount, lang)}
+            </span>
+          </ViewTransition>
         </div>
       </header>
-
-      <div className="lv-article-figure">
-        {post.featuredImage ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={post.featuredImage} alt="" />
-        ) : (
-          <LowPolyField seed={post.id} />
-        )}
-      </div>
-
+      <ViewTransition name={`post-image-${post.id}`} share="morph">
+        <div className="lv-article-figure">
+          {post.featuredImage ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={post.featuredImage} alt="" />
+          ) : (
+            <LowPolyField seed={post.id} />
+          )}
+        </div>
+      </ViewTransition>
       <Markdown
         source={txt(post.content, lang)}
         lang={lang}

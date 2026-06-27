@@ -26,5 +26,9 @@ export default async function ResumePageRoute({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  return <ResumePage lang={lang as Lang} />;
+  return (
+    <div className="lv-resume enable-smooth">
+      <ResumePage lang={lang as Lang} />
+    </div>
+  );
 }

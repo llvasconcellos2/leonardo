@@ -31,7 +31,7 @@ export default async function HomePage({
   const { lang } = await params;
   const l = lang as Lang;
   return (
-    <>
+    <div className="enable-smooth">
       <Hero lang={l} background="pattern" />
       <AboutSection lang={l} />
       <Parallax flip={true} />
@@ -42,6 +42,6 @@ export default async function HomePage({
       <Testimonials lang={l} />
       <Parallax targetColor="44, 47, 52" />
       <ContactFooter lang={l} />
-    </>
+    </div>
   );
 }

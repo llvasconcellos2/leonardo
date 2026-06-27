@@ -217,7 +217,7 @@ export function ResumePage({ lang }: { lang: Lang }) {
   const otherLang: Lang = lang === "en" ? "pt" : "en";
 
   return (
-    <div className="lv-resume">
+    <>
       <Link href={`/${lang}`} className="lv-link-arrow lv-back">
         <ArrowLeft size={15} /> {t.backHome}
       </Link>
@@ -405,6 +405,6 @@ export function ResumePage({ lang }: { lang: Lang }) {
           {t.downloadThis} · {lang.toUpperCase()} <Download size={15} />
         </a>
       </div>
-    </div>
+    </>
   );
 }

@@ -25,9 +25,9 @@ export default async function WorkPage({
   const { lang } = await params;
   const l = lang as Lang;
   return (
-    <>
+    <div className="enable-smooth">
       <ArchiveView lang={l} />
       <MiniFooter />
-    </>
+    </div>
   );
 }
