@@ -9,6 +9,11 @@ const items = [
   { id: "home", path: "/", label: { en: "Home", pt: "Início" } },
   { id: "work", path: "/work", label: { en: "Work", pt: "Trabalho" } },
   { id: "writing", path: "/blog", label: { en: "Writing", pt: "Escrita" } },
+  {
+    id: "clinica-facil",
+    path: "/../clinica-facil",
+    label: { en: "Easy Clinic", pt: "Clínica Fácil" },
+  },
   { id: "about", path: "/#about", label: { en: "About", pt: "Sobre" } },
 ] as const;
 
