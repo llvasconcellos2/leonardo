@@ -1,0 +1,157 @@
+.lv-ec {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 3rem clamp(20px, 4vw, 40px) 2rem;
+}
+
+.lv-ec-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 5vw, 3.4rem);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 12px 0 16px;
+}
+
+.lv-ec-lead {
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.65;
+  max-width: 58ch;
+  margin: 0 0 24px;
+}
+
+.lv-ec-tech {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.lv-ec-cta {
+  margin-bottom: 8px;
+}
+
+.lv-ec-cta-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 32px;
+}
+
+/* Framed live-app screenshot — the "self-hosted archive exhibit" */
+.lv-ec-frame {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--brand-deep);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 44px;
+  transition:
+    border-color var(--dur-base, 0.25s) var(--ease-spring),
+    transform var(--dur-base, 0.25s) var(--ease-spring);
+}
+.lv-ec-frame:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.lv-ec-frame-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  background: var(--raised);
+}
+.lv-ec-frame-bar svg {
+  color: var(--accent-bright);
+}
+
+.lv-ec-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lv-ec-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.lv-ec-h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin: 0 0 18px;
+}
+
+.lv-ec-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lv-ec-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.lv-ec-bullets li svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--accent-bright);
+}
+
+.lv-ec-meta {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.lv-ec-meta-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.lv-ec-meta-row:last-child {
+  border-bottom: none;
+}
+.lv-ec-meta-k {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.lv-ec-meta-v {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+@media (max-width: 860px) {
+  .lv-ec-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

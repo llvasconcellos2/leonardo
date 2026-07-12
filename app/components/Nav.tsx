@@ -11,7 +11,7 @@ const items = [
   { id: "writing", path: "/blog", label: { en: "Writing", pt: "Escrita" } },
   {
     id: "clinica-facil",
-    path: "/../clinica-facil",
+    path: "/easy-clinic",
     label: { en: "Easy Clinic", pt: "Clínica Fácil" },
   },
   { id: "about", path: "/#about", label: { en: "About", pt: "Sobre" } },
@@ -26,9 +26,12 @@ export function Nav({ lang }: { lang: Lang }) {
     ? "work"
     : pathname.includes("/writing")
       ? "writing"
-      : pathname === `/${lang}`
-        ? "home"
-        : "";
+      : pathname.includes("/easy-clinic") ||
+          pathname.includes("/clinica-facil")
+        ? "clinica-facil"
+        : pathname === `/${lang}`
+          ? "home"
+          : "";
 
   return (
     // <header className="lv-nav" style={{ viewTransitionName: "site-header" }}>
