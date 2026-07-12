@@ -64,7 +64,7 @@ export interface BlogPost {
   featuredImage: string | null;
   category: string[];
   tags: string[];
-  featured: boolean;
+  pinned: boolean;
   author: BlogAuthor;
   comments: BlogComment[];
   commentCount: number;

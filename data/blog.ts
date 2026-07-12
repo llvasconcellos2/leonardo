@@ -28,7 +28,7 @@ export interface BlogPost {
   featuredImage: string | null;
   category: string[];
   tags: string[];
-  featured: boolean;
+  pinned: boolean;
   author: BlogAuthor;
   comments: BlogComment[];
   commentCount: number;
@@ -56,7 +56,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "ubuntu",
       "skype",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -103,7 +103,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "servidor",
       "aplicação",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -324,7 +324,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "imap",
       "smtp",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -373,7 +373,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "website",
       "download",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -417,7 +417,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "bootstrap",
       "dbadapter",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -463,7 +463,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "ssh",
       "putty",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -505,7 +505,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "lock",
       "pid",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -548,7 +548,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "email",
       "google",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -589,7 +589,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "concat",
       "json",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -633,7 +633,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "concat",
       "json",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -678,7 +678,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "tabela",
       "coluna",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -721,7 +721,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "coluna",
       "encontrar",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -766,7 +766,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "coluna",
       "encontrar",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -815,7 +815,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "image",
       "batch",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -914,7 +914,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "apt-get",
       "update",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -994,7 +994,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "erro",
       "progresso",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -1029,7 +1029,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Android",
     ],
     "tags": [],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -1089,7 +1089,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "depuração",
       "opções do desenvolvedor",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -1192,7 +1192,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "razr",
       "xt910",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -2859,7 +2859,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "oracle",
       "jelly bean",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -3798,7 +3798,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "stock",
       "stock rom",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -5736,7 +5736,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Games",
     ],
     "tags": [],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -5802,7 +5802,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "TurboVNC",
       "libjpeg-turbo",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -6196,7 +6196,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "squeeze",
       "wheezy",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -6247,7 +6247,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "telnet",
       "ssh",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -7584,7 +7584,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "telnet",
       "ssh",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -8838,7 +8838,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "build",
       "compilar",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -8883,7 +8883,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "bash",
       "prompt",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -8919,7 +8919,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Linux Mint Debian Edition",
     ],
     "tags": [],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -8963,7 +8963,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "mint",
       "lmde",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -9073,7 +9073,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "git",
       "github",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -9146,7 +9146,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "gnome",
       "lmde",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -9193,7 +9193,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "profile",
       "path",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -9276,7 +9276,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "yahoo",
       "duckduckgo",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -9399,7 +9399,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "canonical",
       ".desktop",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -9473,7 +9473,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "debian",
       "lmde",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -9519,7 +9519,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "usability",
       "json",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -9622,7 +9622,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "ria",
       "gerenciador de arquivos",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -9827,7 +9827,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "windows",
       "chipset",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -10223,7 +10223,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "gted",
       "localização",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -10269,7 +10269,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "absolute",
       "path",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -10318,7 +10318,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "tooltip",
       "user agent",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -10368,7 +10368,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "linux-swap",
       "LMDE 201204",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -10514,7 +10514,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "lmde",
       "debian",
     ],
-    "featured": false,
+    "pinned": false,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",

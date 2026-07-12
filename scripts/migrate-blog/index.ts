@@ -62,7 +62,7 @@ async function main() {
       featuredImage: extracted.featuredImage,
       category: extracted.category,
       tags: extracted.tags,
-      featured: false,
+      pinned: false,
       author,
       comments: extracted.comments,
       commentCount: extracted.commentCount,
