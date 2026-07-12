@@ -143,3 +143,6 @@
 [submodule "project_archive/easy-clinic"]
 	path = project_archive/easy-clinic
 	url = https://github.com/llvasconcellos2/easy-clinic.git
+[submodule "project_archive/juca"]
+	path = project_archive/juca
+	url = https://github.com/llvasconcellos2/juca
