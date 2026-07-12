@@ -44,12 +44,12 @@ After research, compile internally:
 - Drafted answers for the **3 items you must synthesize from research** (marked "Draft — confirm or edit"), presented inline so the user can approve or correct in one reply
 
 1. **Project Name** — What is the human-readable display name of this project? (Not the repository name — e.g. "Ebola-Response Records System", not "ebola-records")
-2. **One-sentence description** *(Draft — confirm or edit)* — Based on your research, write a compelling one-sentence description of the project. Present it here for the user to approve or rewrite.
+2. **One-sentence description** _(Draft — confirm or edit)_ — Based on your research, write a compelling one-sentence description of the project. Present it here for the user to approve or rewrite.
 3. **Kicker line** — A short tagline that appears preceded by `//` on the portfolio card (e.g. `// medical records · doctors without borders`). This is typically `// {domain} · {client or context}`.
 4. **Logo** — I found these image files: _{list the files you found}_. Which should be used as the centered logo (80×80)? If none are suitable, which emoji best represents this project?
 5. **Release year** — I inferred _{year}_. Is that correct, or should it be different? (Some projects were started years before their first commit.)
-6. **Key features** *(Draft — confirm or edit)* — Based on all project files, draft exactly 3 short bullet points framed from the developer's perspective: what you built and how it benefited the business. Present them here for the user to approve or edit.
-7. **About text** *(Draft — confirm or edit)* — Write the full extended about section now, based on all archived files and research. Present it inline here. The user will approve or request edits — do not ask whether to write it.
+6. **Key features** _(Draft — confirm or edit)_ — Based on all project files, draft exactly 3 short bullet points framed from the developer's perspective: what you built and how it benefited the business. Present them here for the user to approve or edit. These are rendered in Phase 3 as the `<!-- KEY FEATURES -->` section.
+7. **About text** _(Draft — confirm or edit)_ — Write the full extended about section now, based on all archived files and research. Present it inline here. The user will approve or request edits — do not ask whether to write it.
 
 Wait for the user's answers before proceeding.
 
@@ -67,6 +67,7 @@ Using the user's answers and your research, write `README.md` at the project roo
 <!-- SHIELDS -->
 <!-- TABLE OF CONTENTS -->
 <!-- ABOUT THE PROJECT -->
+<!-- KEY FEATURES -->
 <!-- SCREENSHOTS -->
 <!-- BUILT WITH -->
 <!-- GETTING STARTED -->       (only if original README had this — keep it verbatim)
@@ -105,8 +106,9 @@ Using the user's answers and your research, write `README.md` at the project roo
 
   <br />
 
-  <a href="https://leonardo-vasconcellos.vercel.app/portfolio/{REPO_NAME}"
-    ><strong>View it live »</strong></a>
+  <a href="https://leonardo-vasconcellos.vercel.app/portfolio/{REPO_NAME}">
+    <strong>View it live »</strong>
+  </a>
 </div>
 
 <br />
@@ -156,6 +158,8 @@ Use reference-style links (defined at the bottom of the file).
 </details>
 ```
 
+- Do **not** add a Table of Contents entry for Key Features — it is a `###` subsection of About The Project, so it stays out of the list.
+
 ---
 
 #### `<!-- ABOUT THE PROJECT -->`
@@ -179,6 +183,22 @@ Use reference-style links (defined at the bottom of the file).
 
 ---
 
+#### `<!-- KEY FEATURES -->`
+
+```markdown
+### Key Features
+
+- **{Feature 1 — bold lead}** — {what you built and how it benefited the business}
+- **{Feature 2 — bold lead}** — {what you built and how it benefited the business}
+- **{Feature 3 — bold lead}** — {what you built and how it benefited the business}
+```
+
+- Render as a `### Key Features` subsection placed immediately after the About The Project extended description and **before** the Screenshots gallery. It lives inside the About block — use a `###` heading (not `##`) so it stays out of the Table of Contents.
+- Exactly **3** bullets, framed from the developer's perspective: what you built and the concrete business/impact benefit. Reuse the answers confirmed in Phase 2, item 6.
+- Lead each bullet with a **bold** phrase naming the accomplishment, then an em-dash and the benefit.
+
+---
+
 #### `<!-- SCREENSHOTS -->`
 
 ```markdown
@@ -193,6 +213,7 @@ Use reference-style links (defined at the bottom of the file).
 - List **all** screenshots found in `screenshots/`. Use `height="220"` for all so mixed aspect ratios display consistently.
 - The screenshot used in "About The Project" must appear **last** in the gallery.
 - Each thumbnail links to the raw file path in the repo (relative path, no domain).
+- If a filename contains spaces or non-ASCII characters, URL-encode the path (` ` → `%20`, `í` → `%C3%AD`, etc.) so it resolves on GitHub.
 
 ---
 
