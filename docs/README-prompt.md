@@ -8,7 +8,7 @@ Run this prompt in any project repository to generate a polished `README.md` for
 
 You are going to create a comprehensive `README.md` for this project. **Do not write anything until Phase 2 is complete.** Work through each phase in order.
 
-- You have to write the features based on me the developer that is enumerating key features that someone, the reader, would like to see in a project of this kind and hire me.
+- You have to write the features based on me the developer that is enumerating key features that someone, the reader, would like to see in a project of this kind and hire me. But not start with "I did this", "I created that" - just describe the key features. Don't mention the tech stack in the key features. Instead of "I created custom Joomla CMS" say "Custom CMS". Instead of "I created a full Virtuemart product catalog" say "Full product catalog".
 - Try to say more about how the development of this project features benefited the business.
 
 ---
