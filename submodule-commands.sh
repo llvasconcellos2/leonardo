@@ -1,2 +1,3 @@
 git submodule add https://github.com/llvasconcellos2/devhouse-br.github.com.git .\project_archive\devhouse-br.github.com                                                                            
                                             
+git submodule update --init --recursive --remote
