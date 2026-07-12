@@ -146,3 +146,6 @@
 [submodule "project_archive/juca"]
 	path = project_archive/juca
 	url = https://github.com/llvasconcellos2/juca
+[submodule "project_archive/semprecomvoce-next"]
+	path = project_archive/semprecomvoce-next
+	url = https://github.com/llvasconcellos2/semprecomvoce-next.git
