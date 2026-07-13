@@ -115,7 +115,7 @@ export function isBlogPath(referrerUrl: string): boolean {
     const pathSegments = url.pathname.split("/");
 
     // Returns true ONLY if 'blog' is the last path segment
-    return pathSegments[pathSegments.length - 1] === "blog";
+    return pathSegments[pathSegments.length - 2] === "blog";
   } catch (e) {
     // If the referrer is empty, invalid, or direct navigation, handle it here
     return false;
