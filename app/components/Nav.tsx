@@ -14,6 +14,7 @@ const items = [
     path: "/easy-clinic",
     label: { en: "Easy Clinic", pt: "Clínica Fácil" },
   },
+  { id: "juca", path: "/juca", label: { en: "Juca", pt: "Juca" } },
   { id: "about", path: "/#about", label: { en: "About", pt: "Sobre" } },
 ] as const;
 
@@ -29,9 +30,11 @@ export function Nav({ lang }: { lang: Lang }) {
       : pathname.includes("/easy-clinic") ||
           pathname.includes("/clinica-facil")
         ? "clinica-facil"
-        : pathname === `/${lang}`
-          ? "home"
-          : "";
+        : pathname.includes("/juca")
+          ? "juca"
+          : pathname === `/${lang}`
+            ? "home"
+            : "";
 
   return (
     // <header className="lv-nav" style={{ viewTransitionName: "site-header" }}>
