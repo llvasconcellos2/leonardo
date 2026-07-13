@@ -77,6 +77,59 @@ function rehypeNormalizeCodeLang() {
   };
 }
 
+// --- Related-post "see also" card normalisation -----------------------------
+//
+// The WordPress → Markdown migration mangled a handful of author-embedded
+// "see also" cards: the thumbnail is wrapped in a link whose text contains a
+// blank line (`[![img]( )\n\n](post:slug)`), which is invalid Markdown — the
+// brackets, the `post:` target and the `*` bullet all leak as literal text,
+// and the date/comment-count line renders glued together. There are 3 such
+// posts (PT + EN). The SQL archive isn't in the repo so the migration can't be
+// re-run; we repair the pattern here, on the raw source, into a single clean
+// anchor card. (If scripts/migrate-blog/markdown.ts is ever fixed + re-run,
+// have it emit this same structure so the two converge.)
+const RELATED_CARD_RE =
+  /^[*-] {3}\[!\[((?:\\.|[^\]\\])*)\]\(([^\s)]+)(?:\s+"(?:(?:\\.|[^"\\])*)")?\)\s*\]\(post:([^)]+)\)\s*###\s+\[((?:\\.|[^\]\\])*)\]\(post:[^)]+\)\s*([^[\n]*)\[((?:\\.|[^\]\\])*)\]\(post:[^)]+\)\s*([^\n]+)/gm;
+
+function unescapeMd(raw: string): string {
+  return raw.replace(/\\(.)/g, "$1");
+}
+
+function htmlEscape(raw: string): string {
+  return raw
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// Rewrite each mangled "see also" widget into a clean HTML anchor card. The
+// `post:<slug>` href is left intact so the existing rehypePostLinks plugin
+// resolves it to a real locale URL after rehypeRaw parses this into an <a>.
+function normalizeRelatedCards(source: string, lang: Lang): string {
+  const kicker = lang === "pt" ? "leia também" : "read also";
+  return source.replace(
+    RELATED_CARD_RE,
+    (_m, alt, img, slug, title, date, count, excerpt) => {
+      const t = (x: string) => htmlEscape(unescapeMd(String(x ?? "")).trim());
+      // The migration ran the count into the word ("71Comment"); re-insert the
+      // missing space between the number and the label.
+      const countText = t(count).replace(/(\d)(?=\p{L})/u, "$1 ");
+      return (
+        `<a class="lv-related-card" href="post:${t(slug)}">\n` +
+        `<span class="lv-related-card__media"><img src="${t(img)}" alt="${t(alt)}" loading="lazy" /></span>\n` +
+        `<span class="lv-related-card__text">` +
+        `<span class="lv-related-card__kicker">// ${kicker}</span>` +
+        `<span class="lv-related-card__title">${t(title)}</span>` +
+        `<span class="lv-related-card__meta">${t(date)}<span class="lv-related-card__dot"> · </span>${countText}</span>` +
+        `<span class="lv-related-card__excerpt">${t(excerpt)}</span>` +
+        `</span>\n` +
+        `</a>`
+      );
+    },
+  );
+}
+
 // hast plugin: resolve internal `post:<slug>` links to real locale-prefixed URLs.
 function rehypePostLinks(lang: Lang) {
   return (tree: Root) => {
@@ -101,6 +154,7 @@ export async function renderMarkdown(
   lang: Lang,
 ): Promise<string> {
   const highlighter = await getHighlighter();
+  const normalized = normalizeRelatedCards(source, lang);
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -114,7 +168,7 @@ export async function renderMarkdown(
     })
     .use(rehypePostLinks, lang)
     .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(source);
+    .process(normalized);
   return String(file);
 }
 
