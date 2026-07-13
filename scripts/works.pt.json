@@ -1,0 +1,1202 @@
+{
+  "juca": {
+    "name": "Histórias do Juca",
+    "tagline": "Ficção interativa baseada em escolhas, projetada para funcionar de verdade com leitores de tela — a mesma aventura, viva para quem enxerga e para quem não enxerga.",
+    "kicker": "// ficção interativa acessível · inclusão para leitores cegos",
+    "intro": "**Histórias do Juca** é uma plataforma de ficção interativa baseada em escolhas para um projeto social de inclusão de pessoas cegas — feita para que quem usa leitor de tela consiga de fato terminar a aventura sozinho, e ainda assim divertida para todos.",
+    "body": [
+      "O leitor lê _ou ouve_ uma cena e escolhe, com botões de verdade, o que acontece a seguir; cada história é um grafo ramificado de nós com finais diferentes. O herói é o **Juca**, um jacaré jovem e cego do Rio Cachoeira, em Joinville, Brasil, que encontra tesouros usando o olfato e a audição — o próprio protagonista espelha o público que o projeto quer acolher.",
+      "A primeira história, _Juca e a Caça ao Tesouro do Rio_, se ramifica em dois caminhos e dois finais. A segunda, _Juca e a Corrida do Churrasco_, introduz **estado leve** (dinheiro e tempo) que muda conforme você escolhe e libera ou esconde opções — uma corrida contra o relógio (e contra a fome) para chegar a um churrasco do outro lado da cidade.",
+      "A premissa inegociável é **acessibilidade em primeiro lugar**: a experiência precisa _funcionar de verdade_ com leitores de tela (NVDA, JAWS, VoiceOver, Narrator) e navegação por teclado — não apenas \"ser compatível\". As escolhas são botões reais alcançáveis por Tab e acionados com Enter/Espaço; a cada troca de cena, o foco vai para o novo texto para que o leitor de tela o anuncie; há link de pular conteúdo, alto contraste, um anel de foco sempre visível e nenhuma informação transmitida apenas por cor. Narração no navegador (Web Speech API, pt-BR) com controle de velocidade, um botão nativo de compartilhar e ilustrações por cena completam a experiência.",
+      "Arquiteturalmente, o **motor é totalmente separado do conteúdo**: os componentes React são genéricos e agnósticos de história, enquanto cada história é autocontida em `stories/<slug>/` (um grafo de nós em JSON, arte de capa e o roteiro-fonte). Um validador de grafo (`pnpm validate-stories`) garante que nenhum nó fique inalcançável, sem escolhas ou sem texto alternativo de imagem — mantendo a acessibilidade verificável a cada nova história publicada."
+    ],
+    "features": [
+      {
+        "heading": "Construí um motor com acessibilidade em primeiro lugar, verificado contra leitores de tela reais",
+        "body": "(NVDA, JAWS, VoiceOver, Narrator) e navegação somente por teclado, com percursos automatizados em Playwright — transformando \"compatível com leitor de tela\" em um produto que uma criança cega consegue de fato terminar sozinha, que é todo o alcance deste projeto social."
+      },
+      {
+        "heading": "Desacoplei um motor de histórias agnóstico de conteúdo de grafos definidos em JSON",
+        "body": "(além de estado leve opcional, como dinheiro e tempo), para que autores publiquem uma nova história ramificada — e até novas mecânicas de jogo — sem tocar em uma linha do código do motor, levando o custo de cada nova história para perto de zero."
+      },
+      {
+        "heading": "Fiz cada cena funcionar sem as mãos e pronta para compartilhar, de imediato",
+        "body": "narração no navegador (Web Speech API) com controle de velocidade, ilustrações por cena geradas por IA e compartilhamento nativo com fallback de copiar link — para que as histórias cheguem às crianças sem instalar app e sem conta de TTS paga."
+      }
+    ]
+  },
+  "semprecomvoce-next": {
+    "name": "Instituto do Câncer Sempre Com Você",
+    "tagline": "O site oficial de uma ONG de apoio a pacientes com câncer em Joinville, Brasil.",
+    "kicker": "// site sem fins lucrativos · instituto do câncer",
+    "intro": "O site oficial do Instituto do Câncer Sempre Com Você, uma ONG de apoio a pacientes com câncer em Joinville, Brasil — conectando pacientes ao suporte, amplificando suas histórias e tornando as doações simples.",
+    "body": [
+      "O Instituto do Câncer Sempre Com Você é uma organização sem fins lucrativos dedicada a melhorar a vida de pacientes com câncer e de suas famílias em Santa Catarina, Brasil. Este site em Next.js funciona como a presença digital completa da ONG — de um blog repleto de jornadas reais de pacientes a um fluxo completo de doação que sustenta o cuidado contínuo."
+    ],
+    "features": [
+      {
+        "heading": "Blog com histórias reais de pacientes",
+        "body": "Um sistema de blog rico em conteúdo que mostra a missão da ONG por meio de depoimentos pessoais, fotos e atualizações do dia a dia."
+      },
+      {
+        "heading": "Fluxo de doação mensal",
+        "body": "Uma experiência de doação completa com opções únicas e recorrentes, telas de confirmação e um fluxo de pagamento estruturado."
+      },
+      {
+        "heading": "Navegação animada com submenu no mobile",
+        "body": "Um sistema de navegação caprichado, com um indicador em pílula deslizante no desktop e um menu mobile animado em camadas com suporte a submenus aninhados."
+      }
+    ]
+  },
+  "cmente": {
+    "name": "CMENTE — Incubadora & Coworking de Advogados",
+    "tagline": "A primeira incubadora e coworking privado do Brasil criado exclusivamente para advogados, combinando mentoria, desenvolvimento profissional e comunidade para ajudar empreendedores do direito a começar e crescer.",
+    "kicker": "// incubadora jurídica · coworking · são paulo",
+    "intro": "A primeira incubadora e coworking privado do Brasil criado exclusivamente para advogados — nascido de um mercado de 1 milhão de advogados e uma taxa de aprovação de 20% na OAB — entregando a mentoria, a comunidade e a infraestrutura que faltavam à profissão jurídica.",
+    "body": [
+      "A CMENTE foi fundada em São Paulo pela advogada e empreendedora Camila Gullo como resposta a uma lacuna estrutural no mercado jurídico brasileiro. Com mais de um milhão de advogados registrados, mais de 1.000 faculdades de direito e uma taxa de aprovação no Exame da OAB de apenas ~20%, os advogados recém-inscritos não tinham a quem recorrer para o suporte prático de negócios de que precisavam para construir uma carreira sustentável no direito.",
+      "O site institucional era a sede digital da CMENTE — o principal ponto de contato para potenciais membros, parceiros e imprensa. Ele comunicava os quatro pilares da startup: **Mentoria** (coaching orientado a metas para crescimento profissional e de negócios), **Coworking** (um espaço colaborativo que fomenta comunidade entre profissionais do direito), **Desenvolvimento Profissional** (cursos, seminários e meetups) e **Incubação** (suporte ponta a ponta — administrativo, contábil, financeiro e organizacional — para advogados autônomos e pequenos escritórios)."
+    ],
+    "features": [
+      {
+        "heading": "Implementação WordPress sob medida para uma startup nova",
+        "body": "entreguei um site institucional pronto para produção que serviu como a única presença digital da CMENTE no lançamento, permitindo que o time fundador tivesse autonomia total sobre o conteúdo desde o primeiro dia, sem depender de desenvolvedor."
+      },
+      {
+        "heading": "Blog multiautor com migração de conteúdo",
+        "body": "arquitetei um blog com taxonomia de categorias e migrei mais de 14 artigos originais do Medium para o CMS, construindo um arquivo de conteúdo pesquisável que impulsionou o alcance orgânico e posicionou a CMENTE como referência no empreendedorismo jurídico brasileiro."
+      },
+      {
+        "heading": "Landing pages de serviços que diversificaram a receita",
+        "body": "construí páginas dedicadas para as ofertas de Escritório Virtual e Capacitação Profissional, criando caminhos de conversão estruturados para cada fonte de receita e ampliando o mercado da CMENTE a advogados de todo o Brasil que precisavam de infraestrutura profissional sem uma sala física."
+      }
+    ]
+  },
+  "neotropiclab": {
+    "name": "Neotropic Lab",
+    "tagline": "Um site WordPress sob medida para a Neotropiclab, uma consultoria ambiental brasileira que oferece avaliação de biodiversidade, análise de dados e capacitação profissional a partir de Florianópolis.",
+    "kicker": "// consultoria ambiental · neotropiclab",
+    "intro": "Um site WordPress sob medida para a Neotropiclab, uma consultoria ambiental brasileira que oferece avaliação de biodiversidade, análise de dados e capacitação profissional a partir de Florianópolis.",
+    "body": [
+      "A Neotropiclab é uma consultoria em ciências ambientais sediada em Florianópolis, Santa Catarina, fundada por um grupo de profissionais de biodiversidade e ecologia. Sua missão: a conservação da biodiversidade e a manutenção das funções dos ecossistemas da Terra, fundamentada na legislação ambiental brasileira, no conhecimento científico e nas diretrizes dos órgãos reguladores ambientais.",
+      "O site foi construído em WordPress 4.8.2 usando um child theme fortemente customizado do framework Spark, com o WPBakery Page Builder (v5.3) para composição de layout flexível e o Revolution Slider (v5.4.5.2) para o hero animado em tela cheia da home. Cada uma das três áreas de serviço — Consultoria Ambiental, Análise de Dados e Cursos & Capacitação — recebeu sua própria landing page dedicada, com imagem de cabeçalho em largura total e formulário de orçamento embutido via Contact Form 7.",
+      "A home também trazia uma seção Coworking Lab e uma seção de equipe com perfis individuais dos cientistas fundadores. O rodapé levava as informações de contato do escritório de Florianópolis."
+    ],
+    "features": [
+      {
+        "heading": "Conteúdo autogerenciável",
+        "body": "um site de várias páginas que deu ao time da Neotropiclab total autonomia sobre o conteúdo, permitindo atualizar páginas de serviço, perfis da equipe e descrições de cursos sem envolvimento de desenvolvedor"
+      },
+      {
+        "heading": "Captação de leads por serviço",
+        "body": "um hero em tela cheia com landing pages dedicadas (Consultoria Ambiental, Análise de Dados, Capacitação), cada uma com seu próprio CTA de formulário de contato, encurtando o caminho do visitante ao lead qualificado"
+      },
+      {
+        "heading": "Design responsivo voltado à credibilidade",
+        "body": "um tema sob medida responsivo para mobile, com um sistema de cores consistente com a marca, garantindo que o site comunicasse credibilidade científica tanto a clientes do setor público quanto a parceiros de pesquisa"
+      },
+      {
+        "heading": "Consultoria Ambiental",
+        "body": "Gestão de reservatórios (espécies invasoras como *Limnoperna fortunei*), avaliação de flora e fauna aquáticas (macroinvertebrados, zooplâncton, fitoplâncton, peixes) e documentação de licenciamento ambiental (EIA, EAS, LAP, LAI, LAO)."
+      },
+      {
+        "heading": "Análise de Dados",
+        "body": "Estruturação e padronização de bancos de dados, consultoria estatística, análises exploratórias e multivariadas, séries temporais, índices de diversidade de espécies e modelagem ecológica de distribuição de espécies."
+      },
+      {
+        "heading": "Cursos e Capacitação",
+        "body": "Treinamento em identificação de organismos aquáticos e cursos de programação em R para profissionais da área ambiental."
+      }
+    ]
+  },
+  "ritmo-saude": {
+    "name": "Ritmo Saúde",
+    "tagline": "Um site para a Ritmo Saúde, revendedora brasileira de smartwatches Polar e estúdio de personal training que oferece bem-estar corporativo, parceria com academias e serviços de hidroterapia.",
+    "kicker": "// personal training · fitness corporativo & aquático",
+    "intro": "Um site WordPress para a Ritmo Saúde, um estúdio brasileiro de personal training que oferece bem-estar corporativo, parceria com academias e programas de hidroterapia — além de uma vitrine de varejo para equipamentos fitness da Polar.",
+    "body": [
+      "A Ritmo Saúde é um estúdio brasileiro de personal training construído em torno da ideia de que a atividade física precisa se encaixar no contexto em que é entregue — um escritório corporativo, uma academia parceira ou uma piscina. Este site WordPress, feito sobre um tema sob medida, deu ao negócio um único lar para três ofertas até então desconectadas: programas de bem-estar corporativo voltados a empresas cujos funcionários sofrem com trabalho sedentário e de alto estresse; parcerias com academias para a clientela de treino geral; e hidroterapia para clientes em recuperação de condições ortopédicas, neurológicas ou posturais. O site também funcionava como uma leve vitrine de varejo para monitores de frequência cardíaca e relógios esportivos com GPS da Polar, permitindo ao estúdio vender o equipamento que os próprios treinadores recomendam. O resultado é um pequeno negócio jogando acima do seu nível na internet: uma narrativa de marca coerente em vez de três discursos separados, e um canal de vendas de equipamentos que reforça a expertise do treinador em vez de competir com ela."
+    ],
+    "features": [
+      {
+        "heading": "Site de marca multissegmento",
+        "body": "um tema sob medida adaptado a um negócio fitness multissegmento, apresentando três linhas de serviço distintas (bem-estar corporativo, parcerias com academias, hidroterapia) sob uma marca coesa em vez de folhetos separados"
+      },
+      {
+        "heading": "Canal secundário de venda de produtos",
+        "body": "uma vitrine de monitores de frequência cardíaca Polar integrada ao site, transformando a presença web do estúdio em um canal extra de vendas de equipamentos fitness de marca ao lado de seus serviços de treino"
+      },
+      {
+        "heading": "Conteúdo estruturado para SEO",
+        "body": "uma arquitetura de conteúdo otimizada para busca (categorias, feeds, permalinks limpos) que permitiu a um pequeno estúdio de personal training competir por visibilidade em buscas locais contra grandes redes de academias"
+      }
+    ]
+  },
+  "ritmo-saude-ecommerce": {
+    "name": "RitmoSaúde E-commerce",
+    "tagline": "Uma loja WooCommerce sob medida construída para a RitmoSaúde, varejista brasileira tocada por um personal trainer, de monitores de frequência cardíaca e ciclocomputadores Polar, com suporte completo de checkout local para CPF/CNPJ, frete dos Correios e pagamentos PagSeguro.",
+    "kicker": "// e-commerce · varejo de equipamentos fitness Polar",
+    "intro": "Uma loja WooCommerce sob medida construída para a RitmoSaúde, varejista brasileira tocada por um personal trainer, de monitores de frequência cardíaca e ciclocomputadores Polar, com suporte completo de checkout local para CPF/CNPJ, frete dos Correios e pagamentos PagSeguro.",
+    "body": [
+      "A RitmoSaúde é uma loja de e-commerce brasileira de equipamentos de fitness e saúde, construída em WordPress e WooCommerce para um personal trainer (Professor Lauro Moraes, certificado pelo CREF) que expandia seu negócio de treino presencial para o varejo online. Este projeto é a segunda iteração da loja, sucedendo o site original ([llvasconcellos2/ritmo-saude](https://github.com/llvasconcellos2/ritmo-saude)) e reconstruindo-o sobre o WooCommerce para suportar um catálogo de produtos e um fluxo de checkout de verdade. O catálogo gira em torno de monitores de frequência cardíaca, ciclocomputadores e cintas transmissoras Polar, além das barras de cereais RipFibras.",
+      "A construção cobre todo o caminho da configuração da loja ao checkout: um tema WooCommerce customizado, catálogo de produtos e estrutura de categorias, e uma camada de encanamento de comércio específica do Brasil — integração com os Correios para cálculo de frete em tempo real por CEP, PagSeguro para processamento de pagamentos local e campos de CPF/CNPJ exigidos para o faturamento brasileiro. Um plugin `woocommerce-ritmo-saude` sob medida, integração de cadastro com o Mailchimp e um painel do Google Analytics completaram as necessidades de marketing e relatórios da loja.",
+      "O site foi lançado em outubro de 2017 e passou por correções iterativas (notadamente em torno do tratamento de CEP/endereço de entrega) até meados de 2018."
+    ],
+    "features": [
+      {
+        "heading": "Loja direta ao consumidor",
+        "body": "uma loja WooCommerce completa (configuração, customização de tema, catálogo de produtos) dando ao cliente um canal de vendas direto para equipamentos fitness em vez de depender só de marketplaces ou vendas presenciais"
+      },
+      {
+        "heading": "Checkout brasileiro localizado",
+        "body": "frete por CEP dos Correios em tempo real, pagamentos PagSeguro e campos de CPF/CNPJ no checkout, eliminando cotações manuais de frete e permitindo que os clientes concluam uma compra ponta a ponta por conta própria"
+      },
+      {
+        "heading": "Marketing e analytics automatizados",
+        "body": "um plugin de loja sob medida somado às integrações com Mailchimp e Google Analytics, dando ao negócio captação automática de e-mails e visibilidade do desempenho da loja sem aumentar equipe ou custo de ferramentas"
+      }
+    ]
+  },
+  "easy-clinic": {
+    "name": "Easy Clinic (Clínica Fácil)",
+    "tagline": "Um sistema completo de gestão de clínicas médicas cobrindo prontuários, agendamento de consultas, prescrições, acompanhamento de exames e análise de faturamento — feito para consultórios de saúde brasileiros.",
+    "kicker": "// sistema de gestão de clínicas · clínica fácil",
+    "intro": "O Easy Clinic é uma plataforma completa de gestão de clínicas médicas — prontuários, agendamento, prescrições, exames laboratoriais e análise de faturamento em um só sistema — disponível como um app Meteor multiusuário em tempo real ou como um PWA sem backend para profissionais autônomos.",
+    "body": [
+      "O Easy Clinic é uma plataforma completa de gestão de clínicas desenvolvida para consultórios médicos brasileiros. Ela cobre toda dimensão operacional de uma clínica de pequeno a médio porte: cadastro de pacientes com foto e validação de CPF, uma agenda de consultas em calendário com arrastar-e-soltar e visões de recurso por múltiplos médicos, um sistema completo de prontuário clínico com uma linha do tempo de atendimentos, e um motor de documentos para gerar prescrições, atestados médicos e pedidos de exame a partir de modelos reutilizáveis.",
+      "O módulo de prontuário vai além de simples anotações. Os médicos podem criar formulários de admissão personalizados usando um construtor visual de arrastar-e-soltar, solicitar exames de um catálogo autoaprendente que infere faixas de referência a partir de entradas em texto livre e as filtra por sexo e idade do paciente, e acompanhar a evolução do paciente ao longo do tempo — IMC, peso, pressão arterial, SpO₂ e frequência cardíaca — com gráficos de tendência renderizados via Chart.js.",
+      "No lado do negócio, o painel exibe KPIs ao vivo (total de pacientes, consultas no mês, faturamento mensal) e um gráfico de histórico de consultas de 12 meses. Três telas dedicadas de relatório cobrem volume de consultas, perfil demográfico dos pacientes (faixas etárias, distribuição por sexo) e faturamento de produção. Lembretes automáticos de consulta são enviados por e-mail e SMS por meio de um cron job em segundo plano.",
+      "O sistema é entregue em duas edições. A **edição paga** é uma aplicação reativa full-stack: multiusuário com controle de acesso por papéis (super-admin, medical_doctor, default), validação no servidor e sincronização de dados em tempo real via pub/sub. A **edição gratuita** (a pasta `rip/`) é um PWA sem backend que roda inteiramente no navegador — todas as coleções são carregadas de arquivos JSON planos para um armazenamento em memória, com persistência opcional em IndexedDB para usuários recorrentes. Ela expõe as mesmas telas e o mesmo conjunto de recursos da edição paga, o que a torna adequada para um profissional autônomo que não precisa de multiusuário ou sincronização em tempo real.",
+      "Ambas as edições são PWAs instaláveis que compartilham os mesmos ícones e identidade de aplicativo, e são totalmente responsivas — cada tela (painel, calendário, prontuários, formulários) se adapta com elegância a **desktops, tablets e celulares**, com uma gaveta de navegação off-canvas amigável ao toque em telas menores. Além da instalabilidade, cada PWA é ajustado ao que ele realmente é: o service worker da edição gratuita lhe dá acesso genuíno a dados offline (IndexedDB), enquanto a edição paga — um backend ao vivo e multiusuário — em vez disso destaca sua conexão em tempo real: um banner ao vivo de online/offline, um aviso não intrusivo de \"atualização disponível\" para hot code push e um badge no ícone da barra de tarefas refletindo os pacientes atualmente na espera.",
+      "Construído com **Meteor 1.4**, **MongoDB 3.2**, **Blaze** e **Bootstrap 3**. Implantado via Docker. A interface é em português do Brasil, com suporte a i18n em inglês e espanhol."
+    ],
+    "features": [
+      {
+        "heading": "Plataforma de clínica reativa full-stack",
+        "body": "Construí um sistema multiusuário de gestão de clínicas em Meteor + MongoDB cobrindo toda a jornada do paciente — cadastro, agendamento, prontuários, prescrições e faturamento — dando ao consultório uma única fonte de verdade para todas as operações do dia a dia."
+      },
+      {
+        "heading": "Motor de documentação clínica sob medida",
+        "body": "Desenvolvi um construtor de formulários por arrastar-e-soltar, modelos de prescrição e atestado em texto rico, e um catálogo de exames inteligente com faixas de referência aprendidas por máquina segundo sexo e idade do paciente — substituindo fluxos em papel e padronizando a documentação clínica em todo o consultório."
+      },
+      {
+        "heading": "Edição PWA sem infraestrutura",
+        "body": "Arquitetei uma edição gratuita autônoma que roda inteiramente no navegador via IndexedDB, sem necessidade de servidor ou banco de dados, para que profissionais autônomos tenham o conjunto completo de recursos — cada tela, cada relatório, com suporte offline — a custo de infraestrutura zero."
+      }
+    ]
+  },
+  "infinitepar": {
+    "name": "Infinitepar Investment Partners",
+    "tagline": "Uma plataforma WordPress sob medida conectando empreendedores brasileiros a mentores, investidores e um ecossistema curado de recursos para startups.",
+    "kicker": "// ecossistema de startups · investment partners",
+    "intro": "Uma plataforma WordPress sob medida conectando empreendedores brasileiros a mentores, investidores e recursos curados para startups — construída para o modelo de serviço de três trilhas da Infinitepar, abrangendo coaching, desenvolvimento de negócios e conteúdo multissetorial.",
+    "body": [
+      "A Infinitepar Investment Partners foi uma plataforma digital em português e inglês construída em 2016 para atender ao ecossistema de startups brasileiro. O site conectava empreendedores de alto impacto, startups em estágio inicial e investidores por meio de uma arquitetura de serviços estruturada — cada segmento de público chegando a páginas sob medida com pontos de entrada relevantes e chamadas para ação claras.",
+      "A plataforma era organizada em torno de três trilhas centrais de serviço:",
+      "**Coaching & Mentoria** — A seção \"Para Empreendedores de Alto Impacto\" guiava fundadores por programas de aceleração e redes de mentores, munindo-os da expertise para crescer de forma consistente. A página abria com um fundo de vídeo MP4 em loop em tela cheia, estabelecendo um tom de marca premium antes de uma palavra ser lida.",
+      "**Desenvolvimento de Negócios & Investimento** — A \"Biz & Expertises\" atendia investidores e profissionais de desenvolvimento de negócios ao lado de empreendedores de qualquer setor. Estruturada em um layout de duas colunas com CTAs distintos por segmento, ela qualificava visitantes por intenção sem atrito — encaminhando fundadores, investidores e operadores ao seu ponto de entrada relevante.",
+      "**Be Smart — Hub de Conteúdo** — A estratégia de conteúdo da Infinitepar morava aqui: artigos curados, ferramentas para startups, entrevistas e um funil de assinatura de newsletter. Publicando recursos como \"28 ferramentas pra lançar sua startup\" (ferramentas gratuitas curadas para fundadores) e conteúdo de mentalidade empreendedora, a seção fez a audiência própria da Infinitepar crescer muito além das visitas diretas ao site.",
+      "Sustentando esses pilares havia um **Startups Folio** exibindo as empresas do portfólio e uma seção **Network Partners** revelando os conselheiros, aceleradoras e instituições que davam à Infinitepar sua credibilidade junto a fundadores e investidores sérios.",
+      "A stack técnica era WordPress 4.5.3 sobre um tema sob medida com um page builder de arrastar-e-soltar e um slider avançado alimentando o hero em vídeo. Um tema sob medida construído sobre essa base — com tokens de cor, tipografia e layout específicos da marca — significava que a Infinitepar apresentava uma identidade visual distinta em vez de um visual WordPress de prateleira."
+    ],
+    "features": [
+      {
+        "heading": "Roteamento de público por intenção",
+        "body": "Uma arquitetura de serviços em três trilhas qualificava fundadores, investidores e operadores por intenção no instante em que chegavam, enviando cada segmento a páginas e chamadas para ação sob medida, sem atrito."
+      },
+      {
+        "heading": "Hub de conteúdo com audiência própria",
+        "body": "Uma biblioteca curada de artigos, ferramentas para startups e um funil de newsletter fez o alcance crescer muito além do tráfego direto ao site, transformando conteúdo em um canal de aquisição durável e de baixo custo."
+      },
+      {
+        "heading": "Vitrine de rede construtora de credibilidade",
+        "body": "As seções de empresas do portfólio e de parceiros revelavam os conselheiros, aceleradoras e instituições por trás da marca, dando a fundadores e investidores sérios a prova social para se engajar."
+      }
+    ]
+  },
+  "alue": {
+    "name": "Alue Esquadrias",
+    "tagline": "Site institucional e portfólio online da Alue Esquadrias de Alumínio, fabricante de esquadrias de alumínio de alto padrão e parceira oficial Alcoa, sediada em Joinville, Santa Catarina.",
+    "kicker": "// site institucional · parceira alcoa",
+    "intro": "Site institucional e portfólio em WordPress feito para a Alue Esquadrias de Alumínio — fabricante de esquadrias de alumínio de alto padrão e parceira oficial Alcoa, atendendo o mercado da construção em Joinville, Santa Catarina, desde 1994.",
+    "body": [
+      "A Alue Esquadrias de Alumínio precisava de uma presença web à altura do prestígio de sua linha de produtos certificada Alcoa e que desse à equipe de vendas um link confiável e compartilhável para novas conversas com clientes. Leonardo Vasconcellos projetou e construiu a solução completa — um tema WordPress sob medida apresentando as 12 linhas de produtos de alumínio da empresa, sua missão e seu portfólio em uma única página caprichada.",
+      "A fotografia sob encomenda e o carrossel de hero em tela cheia elevaram a autoridade visual da marca, enquanto o portfólio interativo — com obras concluídas como o Edifício Lafayette e o Residencial Zürich — dava aos potenciais clientes uma visão tangível do padrão elevado da Alue. O formulário de contato embutido e a integração com o Google Maps reduziram o atrito para os leads que chegavam, transformando o site em um canal ativo de parcerias comerciais com construtoras de Joinville e de Santa Catarina."
+    ],
+    "features": [
+      {
+        "heading": "Tema WordPress sob medida, codificado à mão do zero",
+        "body": "construí um carrossel de hero em tela cheia, navegação fixa e rolagem suave em página única por 5 seções, dando à Alue uma presença de marca sob medida à altura do prestígio de sua linha de produtos certificada Alcoa."
+      },
+      {
+        "heading": "Portfólio de obras interativo",
+        "body": "implementei uma grade de galeria expansível apoiada por um ensaio fotográfico sob encomenda de 7 obras concluídas, para que a equipe de vendas pudesse mostrar aos potenciais clientes provas tangíveis do padrão elevado da Alue."
+      },
+      {
+        "heading": "Pipeline de leads online completo",
+        "body": "entreguei um layout totalmente responsivo, um formulário de contato em PHP no servidor e a integração do showroom com o Google Maps, transformando o site em um canal ativo de novas parcerias com construtoras por toda Santa Catarina."
+      }
+    ]
+  },
+  "fullhouse": {
+    "name": "Full House Comunicação",
+    "tagline": "Site corporativo da Full House Comunicação, agência full-service de publicidade, PR e eventos que atua nacionalmente desde 2001 a partir de Joinville, SC.",
+    "kicker": "// agência de publicidade · full house comunicação",
+    "intro": "O site da própria agência de marketing é seu argumento de venda mais persuasivo. Esta construção em WordPress traduziu os 13 anos de trabalho criativo nacional da Full House Comunicação em uma presença digital capaz de disputar contas de nível corporativo em publicidade, PR e eventos.",
+    "body": [
+      "Uma agência de marketing que não consegue vender a si mesma vai penar para vender seus clientes. Para a Full House Comunicação — agência sediada em Joinville e atendendo o mercado nacional desde 2001 — o site de 2014 não era uma atualização cosmética. Era uma ferramenta de negócio construída para abrir portas no nível em que a agência já operava.",
+      "O posicionamento da Full House vai muito além do ciclo convencional de pesquisar, planejar, criar e anunciar. Sua abordagem começa mergulhando fundo no negócio de cada cliente: entendendo seus serviços, ouvindo o que têm a dizer, trocando ideias e construindo um relacionamento genuíno antes de produzir uma única peça de comunicação. Essa profundidade, e os resultados que ela entrega, precisavam ser sentidos no instante em que um prospect chegasse à home.",
+      "A construção foi uma implementação WordPress totalmente sob medida, moldada para refletir esse posicionamento. Seções de hero em parallax conduziam os visitantes pela história da agência em um ritmo deliberado. Uma grade de portfólio filtrável com Isotope permitia aos prospects navegar pelo trabalho por disciplina sem recarregar a página. Um carrossel rotativo de logos de clientes comunicava a amplitude de marcas que confiaram na agência, e lightboxes com fancybox mantinham a apresentação imersiva. Captação de leads por popup e minificação de CSS/JS no servidor garantiam que o site tivesse um desempenho tão limpo quanto sua aparência.",
+      "Entre os clientes que se beneficiaram da abordagem integrada da Full House estava a Gabivel Honda, uma das concessionárias mais proeminentes da região — uma conta de alto risco que exigia publicidade, PR e eventos rodando em conjunto, não em silos. A agência entregou, e um site que representasse com credibilidade suas capacidades foi central para esse relacionamento contínuo.",
+      "Um site de agência bem executado não apenas descreve o que a agência faz — ele demonstra. Este demonstrou."
+    ],
+    "features": [
+      {
+        "heading": "Vitrine de portfólio filtrável",
+        "body": "Um sistema de filtragem por disciplina permitia aos prospects navegar por trabalhos de publicidade, PR e eventos sem recarregar a página, mantendo visitantes de alto valor engajados por mais tempo e demonstrando a amplitude de uma só olhada."
+      },
+      {
+        "heading": "Home de storytelling imersivo",
+        "body": "Seções em parallax ritmavam deliberadamente o histórico nacional de 13 anos da agência, dando ao site o mesmo peso e credibilidade das contas corporativas que ele foi construído para atrair."
+      },
+      {
+        "heading": "Prova social e captação de leads integradas",
+        "body": "Um carrossel rotativo de logos de clientes somado à captação de leads por popup transformava a confiança na marca em um caminho direto para o contato, convertendo reputação em novas conversas de negócio."
+      }
+    ]
+  },
+  "tomio-studio": {
+    "name": "Tomio Studio",
+    "tagline": "Um site WordPress de página única feito para o Tomio Studio, produtora de vídeo brasileira, para exibir filmes corporativos e de casamento e transformar visitantes em contatos de clientes.",
+    "kicker": "// produção de vídeo · filmes corporativos & de casamento",
+    "intro": "Um site WordPress de página única para o Tomio Studio, produtora de vídeo brasileira, exibindo filmes corporativos e de casamento por meio de um portfólio filtrável, lightboxes de vídeo e um formulário de contato embutido para captação de leads.",
+    "body": [
+      "O Tomio Studio é uma produtora de vídeo brasileira especializada em duas linhas de serviço: vídeo corporativo — comerciais, vídeos institucionais e conteúdo de treinamento — e Wedding Day Films, resumos cinematográficos do dia do casamento de um casal.",
+      "Este projeto é o site público do estúdio: um site WordPress de página única, movido a parallax, construído sobre um tema sob medida, com uma grade de portfólio filtrável (Corporativo vs. Wedding Day Films), lightboxes de vídeo na própria página (embeds do YouTube via prettyPhoto), um blog usado para publicar projetos de clientes finalizados como estudos de caso, e uma seção de contato para captação de leads. Foi entregue em WordPress 4.7.1 com backend MySQL e interações movidas a jQuery (FlexSlider, rolagem em parallax, galerias prettyPhoto).",
+      "Este repositório é um snapshot de arquivo do site no ar — capturado via `wget` (veja `/rip`) — junto com os assets originais do tema, a mídia enviada e um export completo do banco de dados (`db/tomio.sql`), preservados para referência de portfólio."
+    ],
+    "features": [
+      {
+        "heading": "Portfólio de vídeo filtrável",
+        "body": "um site de página única em parallax com um reel filtrável (Corporativo / Wedding Day Films), permitindo aos potenciais clientes navegar por linha de serviço e pré-visualizar reels embutidos na página, encurtando o caminho da descoberta ao pedido de orçamento"
+      },
+      {
+        "heading": "Captação de leads sem atrito",
+        "body": "um formulário de contato sob medida com envio AJAX protegido por nonce, dando ao estúdio um canal de captação de leads diretamente na home em vez de depender de e-mail ou DMs de redes sociais"
+      },
+      {
+        "heading": "Blog de estudos de caso",
+        "body": "posts marcados por categoria dos trabalhos entregues a clientes (por exemplo, Caravana Librelato Joinville, RS Tennis Joinville), transformando cada projeto finalizado em um estudo de caso público que também serve de prova de trabalho amigável a SEO para novos prospects"
+      }
+    ]
+  },
+  "gabivel": {
+    "name": "Gabivel Honda",
+    "tagline": "Site institucional feito para a Gabivel Honda — a concessionária Honda de Joinville — combinando fundo de vídeo em página cheia, catálogo dinâmico de carros e agendamento de test drive para impulsionar conversões no showroom.",
+    "kicker": "// concessionária honda · gabivel · joinville",
+    "intro": "Site institucional em WordPress para a Gabivel Honda, concessionária de Joinville, SC — com fundo de vídeo em página cheia, catálogo dinâmico de carros e agendamento de test drive que convertia visitantes online em leads qualificados para o showroom.",
+    "body": [
+      "A Gabivel Honda é uma concessionária Honda sediada em Joinville, Santa Catarina. Em 2013, a concessionária precisava de uma presença online moderna que fizesse mais do que listar estoque estático — precisava converter visitantes curiosos em leads qualificados para o showroom.",
+      "O recurso característico do site é seu **fundo de vídeo em página cheia**: um reel em loop de veículos Honda que recebe os visitantes na chegada. Numa época em que a maioria dos sites de concessionária dependia de imagens de hero estáticas, essa abordagem imersiva comunicava o posicionamento premium da marca e mantinha o engajamento alto desde o primeiro segundo.",
+      "Construído sobre um tema WordPress sob medida desenvolvido exclusivamente para a Gabivel, o **catálogo dinâmico de carros** dá ao time de marketing da concessionária total controle editorial. Tanto os modelos novos quanto os veículos usados têm páginas de detalhe individuais, e todo o estoque pode ser atualizado sem envolvimento de desenvolvedor — crítico para um negócio em que o estoque muda de semana a semana.",
+      "Além da impressão de marca, a arquitetura do site foi construída em torno da conversão. Um **fluxo integrado de agendamento de test drive** e um guia de manutenção de rotina recomendada de fábrica atendem, cada um, uma etapa distinta da jornada do comprador, reduzindo a distância entre navegar online e agendar uma visita à concessionária.",
+      "O site também destaca a identidade institucional da Gabivel — missão, visão e valores — ao lado de uma seção de serviços que cobre a oferta de assistência técnica da concessionária. Cada página reforça que a Gabivel não é apenas um lugar para comprar um carro, mas um parceiro de confiança de longo prazo."
+    ],
+    "features": [
+      {
+        "heading": "Showroom em vídeo de página cheia",
+        "body": "Um reel de veículos em loop imersivo recebia cada visitante, projetando o posicionamento premium da concessionária desde o primeiro segundo e elevando o engajamento acima dos sites de imagem estática em que os concorrentes se apoiavam."
+      },
+      {
+        "heading": "Catálogo de veículos autogerenciável",
+        "body": "Páginas de detalhe individuais para o estoque novo e usado que o time de marketing podia atualizar sem envolvimento de desenvolvedor, mantendo o estoque preciso em um negócio em que o inventário gira semanalmente."
+      },
+      {
+        "heading": "Fluxo de agendamento de test drive",
+        "body": "Um caminho de agendamento integrado somado a um guia de manutenção de rotina encurtava a distância entre a navegação online e uma visita agendada ao showroom, alimentando leads qualificados direto para o salão de vendas."
+      }
+    ]
+  },
+  "devhouse-br.github.com": {
+    "name": "DevHouse Internet Software Development House",
+    "tagline": "O site landing público no GitHub Pages da DevHouse, empresa brasileira de desenvolvimento web, exibindo a identidade da empresa e apontando para seus projetos open source.",
+    "kicker": "// desenvolvimento web · devhouse",
+    "intro": "O site landing no GitHub Pages da DevHouse, um estúdio web brasileiro de código aberto fundado em 2012. Um hub de identidade em página única que conecta o site da empresa e seu primeiro projeto open source, o Robot.",
+    "body": [
+      "A DevHouse Internet Software Development House era a própria empresa de desenvolvimento web de Leonardo Vasconcellos, construída durante o crescimento inicial da indústria de tecnologia brasileira. Este repositório é a página landing organizacional no GitHub Pages — a primeira face pública que a DevHouse mostrou à comunidade de desenvolvedores.",
+      "A página é deliberadamente minimalista: um fundo atmosférico de sangria total, o logotipo da DevHouse centralizado na tela e dois links de âncora — um para o site da empresa e outro para o _Robot_, o primeiro projeto open source da DevHouse. Sem framework, sem etapa de build, sem CMS. Um documento HTML limpo entregue diretamente do GitHub Pages.",
+      "O que tornava isso significativo era o sinal que enviava: a DevHouse não era apenas uma casa de serviços para clientes — era uma empresa que construía de forma aberta, contribuía com o ecossistema de desenvolvedores e colocava sua organização no GitHub em primeiro plano. A página landing se tornou o aperto de mão entre a identidade comercial da empresa e suas ambições open source."
+    ],
+    "features": [
+      {
+        "heading": "Identidade organizacional voltada a desenvolvedores",
+        "body": "Estabeleceu a presença da organização da DevHouse no GitHub e sua identidade open source desde o primeiro dia, dando à empresa uma face voltada a desenvolvedores antes de o open source virar prática padrão para estúdios brasileiros — apoiando diretamente o desenvolvimento de negócios ao construir credibilidade com clientes e colaboradores técnicos."
+      },
+      {
+        "heading": "Hospedagem sempre no ar, a custo zero",
+        "body": "Entrega estática sem dependências via GitHub Pages eliminou completamente os custos de hospedagem e manteve a presença da empresa voltada a desenvolvedores sempre no ar, sem overhead operacional — uma decisão deliberada de infraestrutura que liberou orçamento para o trabalho de produto."
+      },
+      {
+        "heading": "Portal para os projetos open source",
+        "body": "Serviu como o portal para o Robot, o primeiro lançamento open source da DevHouse, canalizando o tráfego de desenvolvedores da organização no GitHub diretamente para o projeto e semeando a adoção inicial da comunidade em torno do trabalho da empresa."
+      }
+    ]
+  },
+  "vonmuller": {
+    "name": "VonMuller Estúdio Fotográfico",
+    "tagline": "Um tema WordPress e site sob medida para o VonMuller Estúdio Fotográfico, estúdio de fotografia de casamentos e eventos em Joinville, Brasil, em atividade desde 2004.",
+    "kicker": "// fotografia de casamentos & eventos · Joinville, Brasil",
+    "intro": "Uma construção WordPress sob medida para um estúdio de fotografia de casamentos e eventos de Joinville, Brasil, ativo desde 2004 — tema sob medida, galerias em lightbox, marca d'água nas fotos e reforço de segurança para um site de pequeno negócio exposto a ataques reais ao WordPress.",
+    "body": [
+      "O VonMuller Estúdio Fotográfico é um estúdio de fotografia de casamentos e eventos sediado em Joinville, Santa Catarina, Brasil, tocado pelo fotógrafo Wander Von Muller e ativo desde 2004. O site exibe o portfólio do estúdio em casamentos, eventos corporativos, convites e cartazes, e trabalhos de \"making of\" em vídeo e de locação, ao lado de um perfil da empresa e um canal de contato direto para reservas.",
+      "O projeto é uma construção WordPress totalmente sob medida: um tema exclusivo (`VonMuller`, v2.0.1) em vez de um template de prateleira, com galerias em lightbox movidas a Highslide para navegar pela fotografia de eventos, renderização de web-fonts com Cufon para as necessidades de tipografia customizada da época, e um plugin de marca d'água em imagens para proteger as fotos do estúdio de uso não autorizado. O código nesse arquivo também reflete manutenção contínua: uma atualização de 2016 para o WordPress 4.6.1 e a remoção do script `timthumb.php` depois de ele ser identificado como um vetor de ataque comum em sites WordPress daquele período, junto com o plugin Better WP Security para reforço contínuo.",
+      "Este repositório preserva o site como arquivado via `wget` (veja `rip/`), junto com a instalação original do WordPress (`www/`), o export do banco de dados (`db/vonmuller.sql`) e os assets de marca (`assets/`)."
+    ],
+    "features": [
+      {
+        "heading": "Tema exclusivo sob medida",
+        "body": "um tema totalmente sob medida construído do zero (sem page builder) com navegação exclusiva, galerias em lightbox e um sistema de tipografia customizado, dando ao estúdio uma presença distinta e alinhada à marca em vez do visual genérico de template que os concorrentes usavam"
+      },
+      {
+        "heading": "Marca d'água no portfólio",
+        "body": "marca d'água nas imagens em todas as galerias do portfólio, protegendo a fotografia de casamentos e eventos do estúdio de reuso não autorizado — uma preocupação real para fotógrafos cujo trabalho finalizado é seu produto"
+      },
+      {
+        "heading": "Plataforma segura e reforçada",
+        "body": "reforço de segurança (remoção do script vulnerável `timthumb.php`, uma versão de núcleo atual) que reduziu a exposição do estúdio às campanhas de exploração em massa que miravam exatamente esse tipo de site de pequeno negócio em meados dos anos 2010"
+      }
+    ]
+  },
+  "devhouse-wordpress": {
+    "name": "DevHouse — Internet Software Development House",
+    "tagline": "Um site institucional em WordPress para a DevHouse, uma internet software development house, unindo um site de marketing construído sob medida a um blog técnico de alto tráfego cobrindo Linux, mobile e desenvolvimento web.",
+    "kicker": "// devhouse.com.br · site institucional & blog técnico",
+    "intro": "O próprio site WordPress da DevHouse: um tema sob medida para suas páginas de serviços mais um blog técnico usado para gerar leads e demonstrar credibilidade de engenharia a potenciais clientes.",
+    "body": [
+      "A DevHouse era a face pública da DevHouse — Internet Software Development House, um estúdio de software que oferecia construção de sites, sistemas de internet sob medida e apps mobile. O site unia páginas de marketing dessas três linhas de serviço a um blog técnico ativo em português cobrindo administração Linux, root/ROMs em mobile, dicas de SQL Server/MySQL e desenvolvimento WordPress, usado tanto como canal de geração de leads quanto como um caderno público de engenharia.",
+      "O front-end rodava sobre um tema WordPress totalmente sob medida (DevHouse v2.3.1) construído internamente em vez de um template comprado, ao lado de uma stack de plugins curada que a empresa também recomendava aos clientes: Google Analytics/AdSense, Akismet e um CAPTCHA sob medida para controle de spam, Amazon SES para e-mail transacional, subdomínios automáticos e geração de sitemap XML."
+    ],
+    "features": [
+      {
+        "heading": "Tema sob medida",
+        "body": "Construído inteiramente internamente em vez de a partir de um template comprado, dando à empresa uma vitrine distinta para seus serviços em vez de um visual genérico."
+      },
+      {
+        "heading": "Blog técnico",
+        "body": "Um blog frequente, em português, cobrindo temas de sistemas e desenvolvimento, funcionando ao mesmo tempo como canal orgânico de geração de leads e construção de credibilidade com potenciais clientes."
+      },
+      {
+        "heading": "Stack de plugins comprovada em produção",
+        "body": "Analytics, proteção contra spam, e-mail transacional, subdomínios automáticos e sitemaps integrados e testados ao vivo, transformando o site da empresa em uma referência funcional do que era oferecido aos clientes."
+      }
+    ]
+  },
+  "lamode": {
+    "name": "La Mode — Moda Online",
+    "tagline": "E-commerce completo de moda feminina multimarca construído em Magento, com design sob medida de tema duplo, milhares de SKUs, um blog editorial e integração completa de checkout brasileiro.",
+    "kicker": "// e-commerce de moda · dmg digital agency",
+    "intro": "E-commerce completo de moda feminina multimarca construído em Magento, com design sob medida de tema duplo, milhares de SKUs, um blog editorial e integração completa de checkout brasileiro.",
+    "body": [
+      "A La Mode — Moda Online foi uma plataforma brasileira de e-commerce de moda feminina multimarca construída em Magento 1.x, desenvolvida na DMG Digital Agency e lançada em 2011.",
+      "A loja oferecia um catálogo curado abrangendo roupas (blusas, vestidos, saias, shorts, calças), bolsas, acessórios e calçados de várias marcas de moda — atendendo a mulher brasileira contemporânea em busca de qualidade a preços acessíveis.",
+      "O projeto envolveu construir dois temas Magento sob medida distintos, `lamode` (claro) e `lamode_dark`, do zero; integrar o PagSeguro para processamento de pagamentos brasileiro; e desenvolver uma seção de blog editorial autônoma chamada \"IN\", para servir como um hub de mídia de moda ao lado da loja principal. Outros recursos incluíam contas de cliente, lista de desejos, assinatura de newsletter, um guia de medidas e páginas de lookbook sazonal.",
+      "Lançada em 2011 como uma das primeiras implantações de e-commerce de moda baseadas em Magento no Brasil, a La Mode demonstrou como uma construção de plataforma bem executada podia dar a uma marca de moda boutique as mesmas capacidades de e-commerce dos grandes varejistas."
+    ],
+    "features": [
+      {
+        "heading": "Vitrine sob medida e com marca",
+        "body": "um tema totalmente sob medida construído do zero, substituindo a vitrine padrão por uma identidade visual de marca que diferenciava a loja e fortalecia a confiança do cliente"
+      },
+      {
+        "heading": "Catálogo de produtos escalável",
+        "body": "milhares de SKUs em roupas, bolsas, acessórios e calçados com navegação por categorias, guias de medidas e lookbooks sazonais, dando ao negócio uma base de catálogo construída para crescer"
+      },
+      {
+        "heading": "Checkout localizado e mídia própria",
+        "body": "checkout PagSeguro e PayPal para o mercado brasileiro ao lado de um blog editorial autônomo (\"IN\"), transformando a vitrine tanto em uma loja otimizada para conversão quanto em um canal de mídia próprio"
+      }
+    ]
+  },
+  "adhonep": {
+    "name": "ADHONEP Meetup System",
+    "tagline": "Uma aplicação desktop no navegador para gerenciar membros, agenda e recursos da associação ADHONEP.",
+    "kicker": "// gestão de associações · adhonep.org.br",
+    "intro": "Uma aplicação web em estilo desktop construída para a associação ADHONEP, oferecendo gestão de membros, agendamento de eventos e controle de acesso por meio de uma interface multijanela em ExtJS apoiada por uma API PHP em CodeIgniter.",
+    "body": [
+      "O ADHONEP Meetup System é uma aplicação web em estilo desktop, rodando no navegador, construída para a associação ADHONEP (adhonep.org.br). Ele oferece uma plataforma centralizada para gerenciar os membros, os eventos e as operações da associação.",
+      "O sistema foi projetado para dar à equipe do escritório uma experiência familiar de aplicação desktop dentro do navegador. A biblioteca de componentes do ExtJS 3.0 renderiza painéis multijanela, grids de dados ordenáveis e controles de formulário ricos — tudo sem recarregar a página. Cada interação permanece dentro de um shell de página única que se comporta como uma aplicação nativa.",
+      "O backend é uma aplicação PHP construída sobre o CodeIgniter 2.1.3, expondo uma API JSON consumida inteiramente pelo frontend em ExtJS. Os controllers cobrem cada domínio central: registros de membros (Pessoas), cidades e locais (Cidades, Locais), eventos agendados (Agenda), downloads de documentos, ideias compartilhadas e configuração de sistema. Uma camada de controle de acesso baseada em helpers exige sessões de login antes de servir qualquer recurso protegido.",
+      "Uma convenção de nomes rígida foi estabelecida para manter a grande base de código ExtJS organizada entre os módulos. IDs de formulário, IDs de coluna de grid, IDs de datastore, IDs de janela e chaves de tradução de campos seguem padrões previsíveis derivados do nome da entidade — por exemplo, `id-form-ins-pessoas`, `id-grid-pessoas`, `id-window-funcao-pessoas`. Isso tornou prático para uma pequena equipe manter e estender um número crescente de módulos ao longo de vários anos, sem overhead de coordenação.",
+      "O sistema foi originalmente implantado em 2009 e permaneceu em uso ativo até 2014."
+    ],
+    "features": [
+      {
+        "heading": "Framework de módulos reutilizável",
+        "body": "Construí um sistema de módulos base (`Module.js`, `ClassesBase.js`) somado a uma convenção de nomes rígida para que cada novo domínio — membros, eventos, cidades, downloads, ideias — pudesse ser gerado a partir de um template compartilhado de grid/formulário/datastore/janela. Isso permitiu a uma pequena equipe publicar e manter um conjunto crescente de módulos ao longo de cinco anos, sem retrabalho ou overhead de coordenação."
+      },
+      {
+        "heading": "Experiência de desktop no navegador",
+        "body": "Entreguei um shell ExtJS multijanela com barra de tarefas, menu iniciar, janelas arrastáveis e grids de dados ordenáveis que nunca recarrega a página. A equipe não técnica do escritório ganhou uma ferramenta familiar, com cara de nativa, o que encurtou o treinamento e manteve toda a administração diária de membros e eventos em um só lugar."
+      },
+      {
+        "heading": "Controle de acesso baseado em sessão",
+        "body": "Implementei uma camada de permissões movida a helpers (`accesscontrol_helper`, o módulo `permissoes`) que protege cada endpoint de API atrás de uma sessão autenticada. Isso manteve privados os dados pessoais dos membros e restringiu ações administrativas à equipe autorizada, protegendo os dados mais sensíveis da associação."
+      }
+    ]
+  },
+  "gerhacao": {
+    "name": "geRHação Gestão de Recursos Humanos",
+    "tagline": "Um portal web completo para uma empresa brasileira de RH que oferece vagas de emprego, cursos de capacitação profissional e vitrine de clientes",
+    "kicker": "// recursos humanos · geRHação",
+    "intro": "Um portal Joomla 1.5 construído em 2009 para a geRHação, uma consultoria brasileira de RH, unificando vagas de emprego, inscrição em cursos de capacitação profissional e uma vitrine de clientes corporativos em uma única presença digital de marca que o time do cliente podia gerenciar sem envolvimento de desenvolvedor.",
+    "body": [
+      "A geRHação Gestão de Recursos Humanos é uma consultoria brasileira de RH atuante em Joinville, Santa Catarina. A empresa precisava de uma presença web que fizesse trabalho de verdade — não apenas exibir um telefone, mas apoiar ativamente recrutamento, venda de cursos e desenvolvimento de negócios ao mesmo tempo. Este portal, lançado em 2009, foi construído em Joomla 1.5 para dar a um time não técnico total autonomia sobre cada seção do conteúdo.",
+      "**Vagas de Emprego**",
+      "Os candidatos navegavam por vagas em aberto publicadas em nome dos clientes corporativos da geRHação e enviavam candidaturas diretamente pelo portal. Centralizar a captação dessa forma reduziu o tempo de contratação e removeu o atrito das candidaturas por telefone — melhorias mensuráveis em uma atividade central de receita para qualquer empresa de recrutamento.",
+      "**Capacitação Profissional**",
+      "Uma seção estruturada de cursos apresentava as ofertas de desenvolvimento profissional da geRHação com descrições, cronogramas e chamadas para inscrição. Levar esse conteúdo para o online reduziu as ligações de qualificação para o time comercial e deu aos prospects tudo o que precisavam para decidir antes do primeiro contato — encurtando o ciclo de vendas.",
+      "**Vitrine de Clientes**",
+      "Uma seção curada exibindo a carteira de clientes corporativos da empresa funcionava como prova social silenciosa durante toda a visita. No RH B2B, a lista de clientes é muitas vezes o argumento de fechamento. Mantê-la no ar e atualizada via CMS colocou esse ativo diretamente nas mãos do time de marketing, sem dependência de desenvolvedor.",
+      "**Plataforma & Arquitetura**",
+      "Construído em Joomla 1.5 — o CMS PHP dominante daquela época — com um template sob medida alinhado à marca geRHação. Animações em Flash cuidavam do rotator do hero e da marca do logo (prática padrão em 2009). O MySQL sustentava o armazenamento de conteúdo. A arquitetura orientada a CMS foi a decisão de negócio central: deu à equipe não técnica do cliente controle direto sobre vagas, cronogramas de cursos, logos de clientes e conteúdo editorial desde o primeiro dia."
+    ],
+    "features": [
+      {
+        "heading": "Portal de vagas de emprego",
+        "body": "conectando candidatos aos clientes empregadores, impulsionando o volume de candidaturas e reduzindo o trabalho manual de gerenciar vagas em aberto por telefone e e-mail"
+      },
+      {
+        "heading": "Catálogo de cursos de capacitação profissional",
+        "body": "exibindo o currículo de desenvolvimento da geRHação — workshops, programas de soft skills e cursos de certificação — transformando o site em um canal ativo de geração de leads para o negócio de treinamento"
+      },
+      {
+        "heading": "Seção de vitrine de clientes e credibilidade corporativa",
+        "body": "exibindo a carteira de clientes B2B da empresa, dando aos prospects a prova social necessária para iniciar uma conversa no topo do funil de vendas"
+      }
+    ]
+  },
+  "maquel": {
+    "name": "Maquel Cosméticos",
+    "tagline": "Um site com CMS Joomla sob medida para a Maquel Estética Profissional, fabricante de cosméticos de Joinville, com catálogo de produtos, glossário de ativos e protocolos profissionais para esteticistas.",
+    "kicker": "// catálogo digital · beleza & estética · Joinville",
+    "intro": "Um site Joomla 1.0 sob medida para a Maquel Estética Profissional — fabricante de cosméticos de Joinville — com catálogo de produtos de marca, protocolos profissionais de estética e um glossário de ativos para esteticistas de todo o Brasil.",
+    "body": [
+      "O Maquel Cosméticos era o site oficial da Maquel Estética Profissional, fabricante de cosméticos sediada em Joinville, Brasil. Lançado em 2009, o site servia tanto como plataforma pública de marca quanto como central de recursos profissionais para os esteticistas que usavam produtos Maquel em sua prática.",
+      "Construído em Joomla! 1.0 — o principal CMS PHP de código aberto de sua época — o site tinha um template totalmente sob medida com uma paleta de marca em roxo e branco e a identidade visual da empresa. As seções cobriam a história, a missão e os selos de qualidade da empresa, ao lado de um catálogo de produtos movido a VirtueMart com páginas individuais de produto, imagens de alta qualidade e descrições detalhadas de formulação.",
+      "A seção \"Espaço Estética\" era um hub profissional dedicado: fornecia protocolos de aplicação passo a passo para esteticistas, um glossário de ativos explicando a ciência por trás de cada formulação, e uma biblioteca de downloads movida a DocMan para materiais de imprensa e documentos técnicos.",
+      "Um módulo de newsletter Acajoom permitia aos visitantes assinar as novidades de produtos Maquel, apoiando a retenção contínua de clientes. O site deu à Maquel uma presença digital completa — estendendo seu alcance das cadeias físicas de fornecimento de salões a uma comunidade online de esteticistas profissionais de todo o Brasil."
+    ],
+    "features": [
+      {
+        "heading": "Template de marca sob medida",
+        "body": "um template Joomla com paleta de marca em roxo e branco e layout baseado em tabelas, dando à Maquel uma presença online caprichada que esteticistas e distribuidores podiam navegar sem envolvimento de desenvolvedor"
+      },
+      {
+        "heading": "Catálogo de produtos e newsletter",
+        "body": "um catálogo VirtueMart somado às assinaturas de newsletter Acajoom, permitindo à Maquel exibir sua linha e manter comunicação direta por e-mail com clientes profissionais"
+      },
+      {
+        "heading": "Hub de autoridade técnica",
+        "body": "uma área \"Espaço Estética\" com protocolos de aplicação, uma biblioteca de mídia para download e um glossário de ativos, posicionando a Maquel como referência técnica para profissionais de beleza"
+      }
+    ]
+  },
+  "tlantic": {
+    "name": "Tlantic — Wireframe de Site Corporativo",
+    "tagline": "Um wireframe corporativo para a Tlantic, fornecedora B2B de tecnologia para o varejo, traduzindo todo o seu catálogo de serviços em um site institucional navegável com slideshow de hero, mega-menu e carrossel de notícias.",
+    "kicker": "// mockup de site institucional · tecnologia B2B para varejo",
+    "intro": "Um wireframe corporativo para a Tlantic, fornecedora B2B de tecnologia para o varejo, traduzindo todo o seu catálogo de serviços em um site institucional navegável com slideshow de hero, mega-menu e carrossel de notícias.",
+    "body": [
+      "Este projeto é um wireframe estático em HTML/CSS/jQuery para a Tlantic, uma empresa portuguesa de tecnologia para o varejo especializada em soluções de mobilidade, automação, business intelligence e e-business para o setor varejista. O briefing era traduzir o posicionamento institucional da Tlantic — \"Inovação e Tecnologia no Varejo\" — em um site corporativo capaz de apresentar quatro linhas de negócio distintas (Mobilidade, Automação, Inteligência, e-Business) ao lado da história da empresa, parceiros e cobertura de imprensa, sem sobrecarregar o visitante.",
+      "O wireframe se organiza em torno de um slideshow de hero e um mega-menu dropdown de múltiplos níveis, em que cada item de topo (Quem Somos, Soluções, Cases) se expande em quatro subseções com seu próprio texto descritivo — efetivamente um sitemap completo exposto no nível da navegação. Um carrossel secundário de autorrotação cuida de notícias e releases de imprensa de forma independente do hero. O rodapé repete toda a navegação como um sitemap plano, tanto por usabilidade quanto por rastreabilidade em mecanismos de busca — importante para um fornecedor B2B cujos compradores muitas vezes chegam por busca em vez de navegação direta.",
+      "O repositório preserva tanto o código-fonte original do site (`www/`) quanto um snapshot do site no ar rastreado por wget (`rip/`), mantidos para referência de arquivo."
+    ],
+    "features": [
+      {
+        "heading": "Navegação em mega-menu profundo",
+        "body": "um menu de múltiplos níveis (Quem Somos / Soluções / Cases) mapeando todo o catálogo de serviços da Tlantic — 4 unidades de negócio × 4 subpáginas cada — em uma única navegação por hover, para que os prospects encontrassem a oferta certa sem sair da home"
+      },
+      {
+        "heading": "Home que se atualiza sozinha",
+        "body": "um slideshow de hero e um carrossel de notícias de autorrotação que mantinham a home visualmente atual e permitiam à Tlantic destacar novos anúncios e imprensa sem envolvimento de backend"
+      },
+      {
+        "heading": "Sitemap amigável a SEO",
+        "body": "um sitemap completo em HTML no rodapé espelhando toda a estrutura do site, melhorando a rastreabilidade para uma empresa B2B cujo crescimento depende de ser encontrada por decisores de compras e de TI"
+      }
+    ]
+  },
+  "alfa-eletro": {
+    "name": "Alfa Eletro — Catálogo de Componentes Eletrônicos",
+    "tagline": "Site de e-commerce e catálogo de produtos para uma varejista de componentes de eletrônica e automação industrial.",
+    "kicker": "// joomla · eletrônica & automação industrial",
+    "intro": "Site de e-commerce e catálogo de produtos em Joomla 1.5 para a Alfa Eletro, varejista brasileira de eletrônica e automação industrial. Construído com VirtueMart, cobria resistores, sensores, conversores e mais.",
+    "body": [
+      "A Alfa Eletro era uma varejista brasileira especializada em componentes de eletrônica e automação industrial. Este projeto entregou toda a sua presença web: um catálogo de produtos voltado ao público, apoiado por um carrinho de compras VirtueMart, um fluxo de contato e orçamento, páginas da empresa e de localização de filiais, e uma seção \"Projetos Eletrônicos\".",
+      "A linha de produtos abrangia duas grandes áreas — componentes eletrônicos discretos e hardware de automação industrial. As categorias incluíam resistores, capacitores, diodos (through-hole e SMD), cabos, conectores, fontes de alimentação, relés de estado sólido, acopladores de relé, conversores de sinal, controladores de temperatura, sensores de temperatura, termopares, temporizadores, potenciômetros e ventiladores.",
+      "O site foi construído em Joomla! 1.5 com um template sob medida que fornecia um layout de três colunas: barra lateral esquerda para navegação por categorias, área central de conteúdo para listagens de produtos e uma coluna direita para promoções e banners. O MooTools alimentava os menus interativos e os lightboxes de imagem de produto (Slimbox). Um banco de dados MySQL sustentava todos os dados de produtos e pedidos, preservado no repositório como um dump SQL."
+    ],
+    "features": [
+      {
+        "heading": "Catálogo de produtos completo & fluxo de orçamento",
+        "body": "Estruturei todo o estoque da varejista em dezenas de categorias navegáveis (resistores, sensores, conversores, relés, controladores e mais) apoiadas por um carrinho VirtueMart e pedidos de orçamento por contato, dando à Alfa Eletro seu primeiro canal de vendas online além do telefone e do balcão, e permitindo aos clientes pesquisar produtos por conta própria a qualquer hora."
+      },
+      {
+        "heading": "CMS autogerenciável",
+        "body": "Construí um template de três colunas sob medida no CMS Joomla 1.5 para que a equipe não técnica pudesse adicionar produtos, trocar banners promocionais e publicar páginas da empresa pelo painel administrativo sem um desenvolvedor, reduzindo o tempo de atualização de conteúdo de dias para minutos e removendo um custo contínuo de manutenção do negócio."
+      },
+      {
+        "heading": "Roteamento de leads & hub de recursos técnicos",
+        "body": "Adicionei formulários de contato comercial por filial, uma área de downloads \"Projetos Eletrônicos\" (PhocaDownload) e páginas de localização/entrega, encaminhando cada consulta ao representante de vendas certo e posicionando a empresa como referência técnica que atraía leads B2B qualificados em vez de apenas tráfego de balcão."
+      }
+    ]
+  },
+  "aquitemjoinville": {
+    "name": "Aqui Tem Joinville",
+    "tagline": "Um portal web para toda a cidade de Joinville, SC, oferecendo notícias, eventos, classificados, guia de empresas, receitas e serviços locais — tudo em um só lugar.",
+    "kicker": "// portal da cidade · joinville, sc · 2008",
+    "intro": "Um portal web para toda a cidade de Joinville, SC, oferecendo notícias, eventos, classificados, guia de empresas, receitas e serviços locais. Lançado em 2008, funcionou como o hub digital da cidade conectando moradores a empresas locais.",
+    "body": [
+      "Fundado em 12 de dezembro de 2008, o **Aqui Tem Joinville** foi a resposta de Joinville a portais nacionais como UOL e Terra — um único destino onde os moradores da cidade e da região pudessem encontrar tudo o que era local, online.",
+      "A plataforma entregava um conjunto abrangente de serviços a partir de um único domínio:",
+      "Notícias & Conteúdo Editorial — artigos escritos localmente cobrindo eventos, saúde, moda e esportes, dando ao portal credibilidade editorial e tráfego recorrente.",
+      "Classificados & Guia de Empresas (Páginas Amarelas) — um banco de dados estruturado de empresas, comércio e serviços locais organizado por categoria, permitindo aos moradores encontrar e contatar fornecedores rapidamente. Para centenas de empresas locais, essa foi sua primeira presença digital.",
+      "Agenda de Eventos — uma listagem curada de eventos culturais e cívicos de Joinville, impulsionando o engajamento da comunidade e visitas recorrentes.",
+      "Receitas & Estilo de Vida — verticais de conteúdo que ampliavam a audiência do portal para além dos leitores de notícias e mantinham o tempo de permanência alto.",
+      "Links Úteis & Diretório Web — um índice curado de recursos web locais e relevantes, funcionando como uma porta de entrada regional para a internet.",
+      "Enquetes — recursos de participação da comunidade que aumentavam o engajamento e o tempo no site.",
+      "Publicidade em Banners Patrocinados — uma rede de publicidade em níveis com múltiplos espaços de banner por todo o site, gerando receita e dando às empresas locais um canal acessível e segmentado para alcançar o público online de Joinville.",
+      "O portal viabilizou diretamente o crescimento do comércio local em um momento decisivo — 2008, quando a adoção da internet acelerava nas cidades brasileiras de médio porte, mas plataformas online hiperlocais mal existiam. Ao oferecer um guia de empresas e uma plataforma de classificados sustentados por publicidade, o projeto criou um ROI mensurável para os anunciantes: seus anúncios e banners alcançavam um público geograficamente concentrado que os portais nacionais não conseguiam atender. Só o recurso de páginas amarelas deu a dezenas de empresas locais sua primeira presença online pesquisável. A rede de anúncios oferecia um ponto de entrada de baixa barreira para empresas sem nenhum orçamento prévio de publicidade digital.",
+      "Tecnicamente, o projeto combinava um backend PHP/CMS Mambo — responsável por gerenciar várias seções de conteúdo simultaneamente — com uma camada interativa movida a Adobe Flex que enriquecia a experiência de navegação além do que HTML/JavaScript puro podia oferecer em 2008. O motor de classificados e diretório apoiado em MySQL foi projetado para busca e filtragem eficientes, o caminho crítico para qualquer produto de páginas amarelas."
+    ],
+    "features": [
+      {
+        "heading": "Motor de páginas amarelas pesquisável",
+        "body": "Projetei um guia de empresas em MySQL orientado a categorias com busca e filtragem rápidas, dando a centenas de empresas locais sua primeira presença online e transformando o portal no lugar de referência da região para encontrar um serviço."
+      },
+      {
+        "heading": "Rede de anúncios em banners por níveis",
+        "body": "Construí um sistema de publicidade patrocinada de múltiplos espaços sobre o CMS Mambo, criando o motor de receita do site e um canal de baixa barreira e geograficamente segmentado que permitia a pequenas empresas de Joinville anunciar online pela primeira vez."
+      },
+      {
+        "heading": "Plataforma de conteúdo multivertical",
+        "body": "Unifiquei notícias, eventos, classificados, receitas, enquetes e um diretório web sob uma única base de código PHP/Flex, ampliando a audiência para além dos leitores de notícias e sustentando o tráfego recorrente e o tempo de permanência que tornavam o inventário de anúncios valioso."
+      }
+    ]
+  },
+  "managerconsulting-landing-page": {
+    "name": "Manager Consulting",
+    "tagline": "Uma landing page de 2008 para uma empresa de consultoria em TI de Joinville, integrando status de chat com atendente ao vivo, acesso remoto à área de trabalho e um portal de suporte para manter os clientes conectados enquanto um site completo estava em desenvolvimento.",
+    "kicker": "// landing page · manager consulting · joinville",
+    "intro": "Uma landing page de 2008 para uma empresa de consultoria em TI de Joinville, integrando status de chat com atendente ao vivo, acesso remoto à área de trabalho e um portal de suporte para manter os clientes conectados enquanto um site completo estava em desenvolvimento.",
+    "body": [
+      "A Manager Consulting era uma empresa de consultoria em TI e tecnologia de negócios com sede em Joinville, Santa Catarina, Brasil. Esta landing page — construída em 2008 — servia como presença web provisória da empresa enquanto um site completo estava em desenvolvimento.",
+      "Apesar do enquadramento de \"em breve\", a página não era um mero placeholder: expunha os três principais pontos de contato da empresa com o cliente em um só lugar. O iframe do MySuite exibia um indicador de status de atendente ao vivo em tempo real, mostrando se alguém estava disponível antes de o cliente entrar no fluxo de chat. Quem precisava de ajuda técnica prática podia ir direto a uma sessão de acesso remoto à área de trabalho. Um e-mail de vendas direto estava embutido inline para consultas assíncronas.",
+      "O bloco de endereço — Rua Dona Francisca, 1700, Platz Dona Francisca, Joinville — ancorava a presença física da empresa para clientes locais numa época em que os sinais de confiança na web ainda se apoiavam fortemente na legitimidade do endereço físico.",
+      "Tudo isso foi entregue como um único arquivo HTML autocontido com CSS inline e um trivial auxiliar de popup em JavaScript — sem framework, sem dependências, sem toolchain de build."
+    ],
+    "features": [
+      {
+        "heading": "Status de chat com atendente ao vivo embutido",
+        "body": "Integrei o indicador online/offline em tempo real do MySuite via iframe, para que os clientes vissem a disponibilidade do atendente de relance, reduzindo contatos de suporte perdidos antes mesmo de existir um site completo."
+      },
+      {
+        "heading": "CTA direto de acesso remoto",
+        "body": "Destaquei a ferramenta de acesso remoto da empresa como uma ação de primeira classe, permitindo aos clientes iniciar uma sessão técnica sem ligar ou navegar por um site separado."
+      },
+      {
+        "heading": "Entrega em arquivo único sem dependências",
+        "body": "Toda a experiência da landing coube em um arquivo HTML com CSS inline: sem etapa de build, sem backend, carregamento em menos de um segundo nas conexões discadas e de banda larga inicial comuns nos escritórios brasileiros de 2008."
+      }
+    ]
+  },
+  "mobtex": {
+    "name": "Mobtex Tecidos de Alto Desempenho",
+    "tagline": "Site corporativo em Joomla 1.0 construído em 2008 para a Mobtex, fabricante de Joinville de tecidos de alto desempenho e materiais para calçados em três linhas de produtos especializadas.",
+    "kicker": "// têxteis de alto desempenho · Mobtex, Joinville",
+    "intro": "Site corporativo em Joomla 1.0 construído em 2008 para a Mobtex, fabricante de Joinville de tecidos de alto desempenho e materiais para calçados em três linhas de produtos especializadas.",
+    "body": [
+      "A Mobtex é uma fabricante de Joinville, Santa Catarina, de têxteis técnicos de alto desempenho e materiais para calçados. Seu catálogo cobre três segmentos de mercado: **Fitness** (tecidos para vestuário esportivo), **Shoes** (materiais para a indústria calçadista) e **Diverse** (aplicações industriais em geral). O posicionamento de marca — \"Liberdade para Criar\" — apresentava a Mobtex não como fornecedora de commodities, mas como parceira de inovação, descrita internamente por quatro valores: Integradora, Próxima, Corajosa e Realizadora.",
+      "O site foi construído em 2008 em Joomla! 1.0 com um tema totalmente sob medida. O briefing de design veio da agência Inventiva; a implementação do front-end, o desenvolvimento do template e a configuração do CMS foram feitos inteiramente por Leonardo Vasconcellos. A linguagem visual escura e de alto contraste espelhava a seriedade industrial de um fornecedor B2B, enquanto cada linha de produto recebeu sua própria cor de destaque (laranja, verde-azulado, rosa) para orientar os compradores à primeira vista. A camada de CMS Joomla deu ao time da Mobtex total controle editorial sobre descrições de produtos e notícias da empresa sem envolvimento de desenvolvedor — um benefício operacional significativo para uma pequena fabricante em 2008."
+    ],
+    "features": [
+      {
+        "heading": "Template sob medida orientado à marca",
+        "body": "um template totalmente sob medida construído a partir de um briefing de agência de design, traduzindo a identidade de marca \"Liberdade para Criar\" da Mobtex em uma presença web escura e de nível industrial que se destacava no mercado B2B de 2008"
+      },
+      {
+        "heading": "Linhas de produtos com código de cores",
+        "body": "três seções de catálogo (Fitness, Shoes, Diverse) com fotografia de produto contextual, dando aos compradores um caminho visual imediato até a categoria de material certa, sem atrito de vendas"
+      },
+      {
+        "heading": "Navegação animada e compacta",
+        "body": "um menu acordeão animado que mantinha a barra lateral compacta e navegável dentro das limitações de navegador da época, reduzindo o tempo de carregamento e melhorando a usabilidade no hardware do período"
+      }
+    ]
+  },
+  "nr-10": {
+    "name": "NR-10 — Segurança em Eletricidade",
+    "tagline": "Um portal educacional em Joomla que entrega o texto regulatório completo da NR-10 de segurança em eletricidade, listagens de cursos de treinamento e uma área do aluno exclusiva para membros — atendendo eletricistas e profissionais de segurança brasileiros obrigados a cumprir a lei federal.",
+    "kicker": "// segurança elétrica · portal NR-10",
+    "intro": "Um portal educacional em Joomla que entrega o texto regulatório completo da NR-10 de segurança em eletricidade, listagens de cursos de treinamento e uma área do aluno exclusiva para membros — atendendo eletricistas e profissionais de segurança brasileiros obrigados a cumprir a lei federal.",
+    "body": [
+      "O NR-10 era um portal educacional em Joomla no www.nr-10.com dedicado à Norma Regulamentadora Nº 10 do Brasil — a norma federal que define os requisitos de segurança para instalações e serviços em eletricidade em todo local de trabalho que gera, transmite, distribui ou consome energia elétrica.",
+      "O site atendia eletricistas, engenheiros de segurança e empresas obrigadas a cumprir a norma: publicava o texto regulatório completo da NR-10 (Portaria nº 598/2004 e alterações posteriores), catalogava as normas técnicas ABNT pertinentes (NBR-5410, NBR-14039) e as portarias ministeriais do MTE, e listava o Curso Básico de 40 horas e o Curso Complementar SEP de 40 horas obrigatórios para a autorização do trabalhador.",
+      "Além de uma biblioteca de referência, o portal incluía um sistema de cadastro e login de usuários que dava aos alunos matriculados acesso a uma Sala dos Alunos protegida por senha — uma área exclusiva para membros participantes dos cursos. O site, de tema verde e com XHTML validado, oferecia exportação em PDF e visões de impressão para cada artigo regulatório, e trazia um feed RSS para que os assinantes acompanhassem as atualizações das normas.",
+      "O projeto foi construído para um provedor brasileiro de treinamento em segurança elétrica em 2008, usando Joomla 1.0.x em uma hospedagem PHP/MySQL compartilhada, e foi a primeira implantação de CMS do desenvolvedor."
+    ],
+    "features": [
+      {
+        "heading": "Biblioteca regulatória oficial",
+        "body": "um portal CMS completo publicando o texto regulatório oficial completo da NR-10 e as normas ABNT/MTE, dando aos eletricistas do Brasil acesso instantâneo aos requisitos de segurança legalmente obrigatórios que regem sua autorização de trabalho"
+      },
+      {
+        "heading": "Área do aluno exclusiva para membros",
+        "body": "cadastro e login de usuários protegendo uma \"Sala dos Alunos\", permitindo aos provedores de treinamento trancar materiais premium de curso atrás de uma assinatura e transformar conteúdo de conformidade em um produto"
+      },
+      {
+        "heading": "Template sob medida em conformidade com padrões",
+        "body": "um template com marca verde, navegação animada, marcação validada pela W3C, galerias em lightbox e exportações em PDF/impressão, atendendo aos padrões profissionais esperados por reguladores de segurança e clientes institucionais"
+      }
+    ]
+  },
+  "supercarwash": {
+    "name": "Super Car Wash",
+    "tagline": "Uma construção com CMS Joomla 1.5 sob medida para uma lavagem de carros a seco e ecológica, unindo um template exclusivo a um portal de membros para acompanhamento de serviços e descontos.",
+    "kicker": "// cms joomla · lavagem de carros ecológica",
+    "intro": "Um template Joomla sob medida e portal de membros construído para uma estética automotiva brasileira de \"lavagem a seco\" ecológica, transformando um site de folheto estático em uma ferramenta de retenção com acompanhamento de serviços e descontos protegidos por login.",
+    "body": [
+      "A Super Car Wash é uma estética automotiva brasileira construída em torno da tecnologia de \"lavagem a seco\" — uma alternativa ecológica à lavagem tradicional com água, desenvolvida em resposta às crescentes preocupações com a escassez de água. O site foi construído em Joomla! 1.5 com um template totalmente sob medida projetado do zero: um logo exclusivo, um tema CSS feito à mão e um layout adaptado, em vez de uma skin Joomla de prateleira.",
+      "Além do catálogo de serviços voltado ao público — cobrindo de lavagem externa/interna à hidratação de estofados, higienização de ar-condicionado, reparo de amassados sem pintura (\"Martelinho de Ouro\") e correção de pintura especializada — o site inclui uma área de membros sob medida. Clientes cadastrados podiam fazer login para acompanhar o serviço realizado em seu veículo e acessar descontos exclusivos, dando ao negócio uma ferramenta de retenção de clientes para além de uma única visita.",
+      "A home abre com o posicionamento ambiental do negócio: um módulo de slider de notícias explicando a lógica ecológica por trás da tecnologia de lavagem a seco e seus benefícios de economia de água, reforçando o diferencial \"verde\" da marca em um mercado local competitivo."
+    ],
+    "features": [
+      {
+        "heading": "Template de marca exclusivo",
+        "body": "um template totalmente sob medida construído do zero (logo, layout e CSS) em vez de um tema de prateleira, dando ao negócio uma identidade de marca distinta em vez de um site com cara de template genérico"
+      },
+      {
+        "heading": "Área de fidelidade para membros",
+        "body": "uma área de login/cadastro permitindo aos clientes acompanhar o histórico de serviços de seu veículo e liberar descontos, transformando o site de um folheto estático em uma ferramenta de retenção e fidelidade"
+      },
+      {
+        "heading": "Catálogo de serviços editável",
+        "body": "o catálogo completo de 14 ofertas (da lavagem a seco à hidratação de couro e à correção de pintura) modelado como conteúdo estruturado e editável, permitindo à equipe não técnica gerenciar ofertas e preços sem tocar em código"
+      }
+    ]
+  },
+  "century-eventos": {
+    "name": "Century Foto e Vídeo",
+    "tagline": "Um site e CMS em PHP para um estúdio profissional de fotografia de casamentos e eventos em Joinville, Brasil.",
+    "kicker": "// fotografia de casamentos & eventos · Century Foto e Vídeo",
+    "intro": "Um site e CMS em PHP para um estúdio profissional de fotografia de casamentos e eventos em Joinville, Brasil.",
+    "body": [
+      "A Century Foto e Vídeo é um estúdio profissional de fotografia e videografia sediado em Joinville, Santa Catarina, atendendo o mercado brasileiro de casamentos e eventos. Numa época em que a maioria dos pequenos estúdios dependia de sites HTML estáticos ou de soluções de prateleira caras, este projeto entregou uma presença web totalmente sob medida — incluindo um CMS exclusivo — construída do zero.",
+      "A peça central do site era uma galeria de fotos imersiva: nove imagens em alta resolução alternando sessão a sessão ao fundo, com uma trilha de miniaturas para navegação direta. Clicar em uma miniatura disparava uma troca de imagem suave e tocava um clique de áudio — um modelo de interação genuinamente à frente de seu tempo em 2007. Um logo animado em Flash completava a estética premium que o cliente queria projetar.",
+      "Por trás do front-end, um CMS PHP/MySQL feito sob medida dava ao dono do estúdio controle total sobre seu conteúdo. O painel administrativo incluía um editor de texto rico WYSIWYG para o texto das páginas, um assistente de gestão de eventos para acompanhar reservas e um uploader de imagens que aplicava automaticamente uma marca d'água para proteger a propriedade intelectual das fotografias do estúdio. Nenhum envolvimento de desenvolvedor era necessário para as atualizações do dia a dia — um ganho operacional relevante para um pequeno empresário gerenciando um portfólio em uma agenda apertada."
+    ],
+    "features": [
+      {
+        "heading": "CMS sob medida",
+        "body": "a edição WYSIWYG e a gestão de eventos davam ao dono do estúdio controle total sobre conteúdo e reservas, eliminando a necessidade de um desenvolvedor para fazer atualizações de rotina"
+      },
+      {
+        "heading": "Uploads de imagem com marca d'água",
+        "body": "a marca d'água automática em cada foto enviada protegia a propriedade intelectual das fotografias do estúdio sem adicionar trabalho manual ao processo de publicação"
+      },
+      {
+        "heading": "Galeria de fotos interativa",
+        "body": "navegação por miniaturas, alternância de fundo e efeitos de clique com som entregavam uma experiência de navegação premium, com qualidade de produção, que ajudou o estúdio a se destacar em 2007"
+      }
+    ]
+  },
+  "e-profissionalizando": {
+    "name": "E-Profissionalizando — Cursos Profissionalizantes Online",
+    "tagline": "Portal online que oferece cursos profissionalizantes com certificação nacional a preços acessíveis para estudantes de todo o Brasil.",
+    "kicker": "// cursos profissionalizantes · plataforma de e-learning",
+    "intro": "O E-Profissionalizando foi um dos primeiros portais de e-learning do Brasil para certificação profissional — oferecendo cursos legalmente reconhecidos entregues inteiramente online e acessíveis a estudantes dos 26 estados desde 2007.",
+    "body": [
+      "O E-Profissionalizando foi lançado em 2007 como um dos primeiros marketplaces de e-learning dedicados à certificação profissional no Brasil. Numa época em que o acesso à internet se expandia rapidamente pelo país, mas a educação profissional acessível permanecia fora do alcance da maioria dos brasileiros, a plataforma preencheu uma lacuna crítica: cursos legalmente certificados, entregues inteiramente online e acessíveis de qualquer canto do país.",
+      "A plataforma foi construída pela mesma equipe por trás do **INGLESCURSO**, então o curso de inglês online mais popular do Brasil — trazendo expertise comprovada em e-commerce e entrega de conteúdo para o espaço mais amplo da educação profissional. Essa linhagem significava que o produto já nascia com uma infraestrutura testada em batalha para lidar com vendas de cursos em alto volume, emissão de certificados e gestão de alunos desde o primeiro dia.",
+      "Cada curso do E-Profissionalizando — desenvolvido internamente ou por instituições parceiras — tinha validade legal reconhecida em todo o território brasileiro. Os certificados eram enviados aos alunos em qualquer lugar do Brasil sem custo adicional, removendo a última barreira prática para os estudantes de estados remotos e cidades menores, onde escolas profissionalizantes tradicionais simplesmente não existiam.",
+      "A plataforma abrangia dezenas de categorias de cursos — saúde, serviço social, negócios, tecnologia e mais — e operava como um marketplace para instituições parceiras ao lado de seu próprio catálogo. Em seu auge, o E-Profissionalizando foi um dos destinos mais visitados para certificação profissional acessível no Brasil."
+    ],
+    "features": [
+      {
+        "heading": "Fluxo de checkout de e-commerce",
+        "body": "construí o pipeline de compra de cursos online, permitindo ao negócio transformar a demanda nacional por certificação profissional em receita direta e self-service."
+      },
+      {
+        "heading": "Entrega de certificados de reconhecimento nacional",
+        "body": "integrei um sistema de certificação e envio postal para que cada curso concluído tivesse validade legal em qualquer lugar do Brasil, removendo uma barreira-chave de confiança à conversão."
+      },
+      {
+        "heading": "Escala multiestadual",
+        "body": "arquitetei a plataforma para atender estudantes dos 26 estados brasileiros, estendendo o alcance do negócio a regiões sem escolas profissionalizantes locais."
+      }
+    ]
+  },
+  "first-personal-website": {
+    "name": "Leonardo Vasconcellos — Primeiro Site",
+    "tagline": "Minha história na web!",
+    "kicker": "// site pessoal · portfólio · 2007",
+    "intro": "Um site pessoal bilíngue codificado à mão de 2007, catalogando mais de 13 plataformas PHP/MySQL construídas para clientes — um cartão de visitas montado antes de full-stack ser um cargo e antes de o GitHub ser um portfólio.",
+    "body": [
+      "Este foi o primeiro rastro de Leonardo na web — um site pessoal bilíngue construído à mão em 2007, antes de o GitHub existir como plataforma de portfólio e antes de \"marca pessoal\" entrar no vocabulário dos desenvolvedores. Ele o montou em HTML e CSS puros porque já havia entregue trabalho suficiente para clientes a ponto de precisar de uma vitrine, e porque a forma mais direta de ter um site é construir um.",
+      "**Bilíngue desde o primeiro dia.** O site funciona em inglês e português por meio de árvores de diretórios paralelas (`en/` e `br/`), cada uma com estruturas de página espelhadas e um sistema de design compartilhado. Sem bibliotecas de i18n, sem etapas de build — apenas uma separação estrutural limpa que permitia a clientes brasileiros e internacionais navegar em seu próprio idioma. O requisito bilíngue foi incorporado à arquitetura desde o início, não acoplado depois.",
+      "**Um catálogo vivo de trabalhos para clientes.** A seção de portfólio documenta cada sistema em produção que Leonardo havia entregue até 2007: plataformas CMS PHP/MySQL sob medida construídas para clientes que precisavam gerenciar o próprio conteúdo sem equipe técnica; um sistema de e-commerce com gestão completa de estoque, integração de pagamento por boleto bancário e busca com tecnologia Google; um motor de e-mail marketing (Reacher WebMailer) com segmentação de público, um editor de templates WYSIWYG e envios em lote agendados por CRON que entregavam e-mails personalizados — não disparos em massa — para escapar dos filtros de spam; um sistema de registros de assistência social do governo (Secretaria do Bem Estar Social) substituindo arquivos de papel por cadastros familiares digitais, acompanhamento de programas e relatórios impressos em HTML; e uma ferramenta de web analytics adaptada de código aberto e estendida com dados geográficos regionais brasileiros.",
+      "A maioria das entradas credita autoria única: design, análise e implementação por Leonardo. Para os clientes, isso significava um único ponto de contato do briefing à implantação — projetos mais enxutos, sem repasses, sem incompatibilidades de versão e sem overhead de comunicação entre designer e desenvolvedor.",
+      "**Um histórico profissional completo.** A seção de currículo se lê como a história de origem de um engenheiro de sistemas: administração de redes Windows NT a partir de 1996, Linux (cursos oficiais da Conectiva), Oracle, SQL Server, ASP, configuração de servidor MacOS X na Quantic Solutions, um sistema B2B Oracle/SSI para a Franke Douat e quatro anos de desenvolvimento web independente. Sua certificação MCP (Microsoft Certified Professional, Windows NT4) datava de 2000 — quando muitos desenvolvedores da sua idade ainda estavam aprendendo HTML.",
+      "**O design em si.** Fundo preto, texto de corpo em verde `#00FF00`, estados de hover em amarelo ácido. Era 2007, e a estética era deliberada — paleta de terminal, contraste máximo, sem cantos arredondados, sem gradientes. O layout era baseado em tabelas (a abordagem cross-browser correta antes de o posicionamento em CSS ser confiável), com cabeçalhos fatiados em imagens e um filtro de sombra do Microsoft IE para dar profundidade. Uma implementação tecnicamente correta da web como ela existia na época."
+    ],
+    "features": [
+      {
+        "heading": "Experiência de navegação totalmente bilíngue (EN/PT-BR)",
+        "body": "árvores de diretórios paralelas e estruturas de página espelhadas permitiam a clientes brasileiros e internacionais navegar em seu próprio idioma, anos antes de existirem bibliotecas de internacionalização, ampliando o alcance de uma prática de uma só pessoa."
+      },
+      {
+        "heading": "Um catálogo vivo de mais de 13 plataformas de clientes",
+        "body": "sistemas de CMS, e-commerce, e-mail marketing e registros governamentais entregues para clientes reais, transformados em um portfólio que se atualiza sozinho e que vendia antes mesmo de uma primeira reunião."
+      },
+      {
+        "heading": "Construção codificada à mão, sem frameworks",
+        "body": "layout baseado em tabelas, cabeçalhos fatiados em imagens e efeitos de profundidade cross-browser entregavam um site tecnicamente correto sem ferramentas ou dependências, comprovando domínio direto da plataforma bruta."
+      }
+    ]
+  },
+  "simple-squid-proxy-user-admin": {
+    "name": "Console de Usuários do Proxy Squid",
+    "tagline": "Um console web em PHP/MySQL que permite ao dono de um negócio provisionar, hierarquizar e expirar logins do proxy Squid, importar em massa uma base de usuários existente e gerenciar uma blacklist de sites — sem nunca tocar num terminal.",
+    "kicker": "// proxy squid · controle de acesso",
+    "intro": "Um console web em PHP/MySQL que permite ao dono de um negócio provisionar, hierarquizar e expirar logins do proxy Squid, importar em massa uma base de usuários existente e gerenciar uma blacklist de sites — sem nunca tocar num terminal.",
+    "body": [
+      "Este projeto é um console web interno leve, construído para colocar a administração do proxy Squid nas mãos de um dono de negócio não técnico. Antes desta ferramenta, gerenciar quem podia usar a conexão de internet da empresa significava dar SSH no servidor de proxy e editar à mão arquivos `htpasswd` e arquivos de texto de ACL do Squid para cada novo funcionário, cada mudança de acesso e cada site a bloquear.",
+      "O console organiza os usuários do proxy em três níveis de acesso — Restrito, Pleno e Master — cada um apoiado por seu próprio arquivo de ACL do Squid, com datas de expiração por usuário para que acessos temporários ou de terceiros caduquem automaticamente em vez de persistirem como um risco de segurança. Salvar um usuário pelo formulário chama de forma transparente o `htpasswd` e dispara `squid -k reconfigure`, de modo que as mudanças entram em vigor no proxy ao vivo imediatamente.",
+      "Para a implantação inicial, uma tela de importação em massa aceita o arquivo `passwd` de sistema existente do negócio e atribui um nível de acesso ao lote inteiro de uma vez, evitando a reentrada manual de cada conta existente. Um editor de blacklist expõe a ACL de bloqueio de sites do Squid como um simples campo de texto, e uma visão embutida de relatório SARG dá ao dono visibilidade direta de quem está usando quanta banda — transformando um servidor de que o negócio dependia, mas que não conseguia enxergar, em algo que ele podia de fato gerenciar no dia a dia."
+    ],
+    "features": [
+      {
+        "heading": "Console de provisionamento self-service",
+        "body": "um console no navegador que permite à equipe não técnica criar três níveis de acesso ao proxy (Restrito/Pleno/Master) com datas de expiração automáticas, enquanto o backend roda `htpasswd` e `squid -k reconfigure` diretamente — removendo a necessidade de a TI dar SSH no servidor de proxy a cada nova contratação ou terceiro"
+      },
+      {
+        "heading": "Importação de usuários em massa",
+        "body": "uma ferramenta que ingere um arquivo `passwd` de sistema existente e atribui níveis de acesso em uma só passada, permitindo ao cliente integrar toda a sua base de funcionários existente em minutos, em vez de redigitar cada conta à mão"
+      },
+      {
+        "heading": "Relatórios de uso no próprio console",
+        "body": "relatórios de tráfego SARG embutidos ao lado de um editor de blacklist, dando ao dono do negócio visibilidade do uso de internet e a capacidade de bloquear sites que distraem ou são inapropriados sem abrir um terminal"
+      }
+    ]
+  },
+  "jbc": {
+    "name": "JBC — Joinville Business Center",
+    "tagline": "Um site corporativo visualmente imersivo construído com Adobe Flash e PHP para o Joinville Business Center, com uma metáfora de navegação por mesa de escritório animada e um CMS feito sob medida para converter potenciais locatários de coworking no lançamento do negócio.",
+    "kicker": "// escritório virtual · joinville business center",
+    "intro": "Lançamento completo de marca e web para o Joinville Business Center: navegação em Flash com metáfora animada de mesa de escritório mais um CMS em PHP para que o cliente pudesse atualizar todas as cinco seções de conteúdo sem nenhum envolvimento de desenvolvedor.",
+    "body": [
+      "O Joinville Business Center (JBC) era um escritório virtual e espaço de coworking em Joinville, Santa Catarina, Brasil — uma das primeiras operações do tipo na região. Este site foi a presença digital da empresa desde sua fundação em 2006.",
+      "O site era um híbrido deliberado: um shell em Adobe Flash entregava a experiência de marca — uma cena de mesa de escritório totalmente animada em que cinco post-its atuavam como botões de navegação, cada um revelando um painel de conteúdo para Início, Estrutura, Serviços, Vantagens e Contatos. Uma vez terminada a animação de introdução, um filme Flash lateral secundário e dois iframes transparentes carregavam o conteúdo movido a PHP, mantendo o shell animado intacto enquanto tornava o conteúdo das páginas dinâmico e gerenciável.",
+      "As páginas em PHP eram servidas por um CMS sob medida construído especificamente para este projeto, permitindo à equipe do JBC editar o texto de todas as cinco seções por uma interface de navegador sem modificar código. O editor WYSIWYG (baseado no InnovaEditor) estava integrado diretamente ao back-end administrativo.",
+      "Toda a identidade de marca — logo, paleta de cores e tipografia — foi projetada junto com o site. Múltiplas iterações do logo (as versões 993 a 1202 estão arquivadas no repositório) mostram o processo de refinamento que levou à marca final, que combinava uma tipografia sob medida com uma paleta quente de dourado sobre escuro combinando com a estética do site."
+    ],
+    "features": [
+      {
+        "heading": "Pacote completo de lançamento de marca",
+        "body": "logo, identidade visual e site entregues juntos, permitindo ao JBC ir ao mercado com uma presença profissional coerente desde o primeiro dia"
+      },
+      {
+        "heading": "CMS sob medida autoeditável",
+        "body": "uma arquitetura híbrida Flash + PHP permitindo ao cliente atualizar todas as cinco seções de conteúdo sem envolvimento de desenvolvedor, reduzindo o custo contínuo de manutenção"
+      },
+      {
+        "heading": "Interface animada memorável",
+        "body": "uma UI de mesa de escritório com cinco hotspots de post-it (Início, Estrutura, Serviços, Vantagens, Contatos) que guiavam os visitantes pelo funil de vendas em uma única interação"
+      }
+    ]
+  },
+  "powermedia": {
+    "name": "PowerMedia Organizer",
+    "tagline": "O PowerMedia Organizer é um sistema de catálogo e produção de impressão em PHP/MySQL construído para um cliente gerenciar uma grande coleção de mídia em CD/DVD, do cadastro de títulos a catálogos e rótulos de disco imprimíveis.",
+    "kicker": "// catalogação de mídia · projeto para cliente",
+    "intro": "O PowerMedia Organizer é um sistema em PHP/MySQL construído para um cliente catalogar uma grande biblioteca de CD/DVD, transformando os registros em catálogos e rótulos de disco imprimíveis.",
+    "body": [
+      "O PowerMedia Organizer é um sistema de catálogo e produção de impressão construído em PHP e MySQL para um cliente que gerenciava uma grande biblioteca física de CD/DVD. Ele cuida de todo o ciclo de vida de um catálogo de mídia: cadastrar títulos com artes de capa frontal e traseira, agrupá-los sob tipos de mídia configuráveis e navegar/pesquisar a coleção por uma lista paginada e ordenável ou uma grade de ícones.",
+      "O problema de negócio central que ele resolvia era o overhead de produção: gerar catálogos impressos e rótulos de disco à mão para uma coleção grande e em crescimento. O PowerMedia substituiu isso por um pipeline de impressão configurável — layout de página, dimensões da capa, tamanhos de fonte e itens por página são todos ajustáveis — para que catálogos e rótulos pudessem ser regerados sob demanda em vez de refeitos manualmente a cada vez. Um fluxo dedicado de impressão de capas permitia à equipe selecionar em lote quais capas iam para impressão, e uma tela de \"gravação\" (fila de gravação) acompanhava quais títulos estavam na fila para serem gravados em disco. Um endpoint de redimensionamento dinâmico de imagem servia cada capa em qualquer tamanho que uma tela precisasse a partir de um único arquivo armazenado, e um visualizador em Flash permitia à equipe inspecionar a arte de capa de perto antes de imprimir."
+    ],
+    "features": [
+      {
+        "heading": "Catálogo de mídia pesquisável",
+        "body": "um sistema CRUD completo para títulos, tipos de mídia e artes de capa que substituiu o controle manual de uma grande biblioteca de mídia física (mais de 980 títulos nos dados de amostra) por um banco de dados pesquisável, ordenável e paginado"
+      },
+      {
+        "heading": "Pipeline de impressão configurável",
+        "body": "um sistema de impressão de catálogo e rótulos com tamanhos de página, dimensões de capa, tamanhos de fonte e itens por linha personalizados, transformando uma tarefa de produção manual recorrente em um fluxo repetível de poucos cliques"
+      },
+      {
+        "heading": "Renderização de capa a partir de uma única imagem",
+        "body": "um endpoint de redimensionamento dinâmico de imagem somado a um visualizador de zoom de capa, para que uma única capa armazenada por título renderize corretamente em miniaturas, layouts de impressão e visões de detalhe, cortando o overhead de armazenamento e o preparo manual de imagens"
+      }
+    ]
+  },
+  "devhouse": {
+    "name": "DevHouse — Internet Software Development House",
+    "tagline": "A DevHouse era um estúdio boutique de desenvolvimento web que projetava e construía sites sob medida, plataformas CMS e experiências interativas para empresas de Joinville, Brasil.",
+    "kicker": "// software house · 2004–2020",
+    "intro": "A DevHouse era um estúdio web de Joinville, Brasil, que construía sites com CMS sob medida, sistemas de e-commerce e experiências interativas para empresas locais em mais de 8 projetos de clientes, de 2004 a 2020.",
+    "body": [
+      "A DevHouse era uma internet software development house sediada em Joinville, Santa Catarina, Brasil, lançada em 2005 por Leonardo Vasconcellos. O próprio site do estúdio era uma vitrine de página única movida a MooTools — uma \"dock fisheye\" no estilo do Mac OS para navegação e uma galeria em lightbox para navegar por trabalhos anteriores — apoiada por widgets de contato de Skype, MSN e e-mail, típicos das pequenas agências web da época.",
+      "O portfólio abrangia uma ampla gama de necessidades de clientes: uma vitrine de e-commerce reaproveitada como sistema de pedidos de orçamento para a Alfa Eletro; um portal educacional completo para a Oficina dos Sonhos; um portal de empregos e capacitação para a empresa de RH geRHação; um site corporativo em Adobe Flash/PHP com uma metáfora animada de navegação por escritório para o Joinville Business Center; um CMS Joomla sob medida para a marca de cosméticos Maquel, completo com catálogo de produtos e glossário de ativos; um portal de casamentos/eventos em Joomla para o Núcleo do Evento (ativo de 2004 a 2017) com loja online e chat ao vivo; um tema WordPress sob medida para o estúdio de fotografia VonMuller; e uma plataforma de corretagem de negócios para a Investim.",
+      "Ao longo desses projetos, a DevHouse combinava plataformas CMS de prateleira (Joomla, WordPress) com sistemas construídos à mão sempre que o negócio exigia algo que um template não podia oferecer — fluxos de orçamento, glossários de conteúdo ou experiências animadas de geração de leads."
+    ],
+    "features": [
+      {
+        "heading": "Sites sob medida para clientes em escala",
+        "body": "mais de 8 construções sob medida abrangendo e-commerce, recrutamento de RH, varejo de cosméticos, serviços de eventos/casamentos e corretagem B2B, cada uma mapeada ao funil real de vendas ou de geração de leads do cliente, em vez de um template tamanho-único."
+      },
+      {
+        "heading": "CMS sob medida com catálogo de produtos",
+        "body": "um CMS baseado em Joomla para a Maquel Cosméticos com catálogo completo de produtos e glossário de ativos, permitindo à equipe não técnica gerenciar conteúdo sem envolvimento de desenvolvedor."
+      },
+      {
+        "heading": "Experiência interativa de geração de leads",
+        "body": "um site de navegação por escritório em Adobe Flash + PHP para o Joinville Business Center, usando uma metáfora de mesa animada e um CMS sob medida para converter potenciais locatários de coworking durante o lançamento do negócio."
+      }
+    ]
+  },
+  "ldi": {
+    "name": "LDI Eletrônica Industrial",
+    "tagline": "Uma plataforma de e-commerce e catálogo de produtos em PHP/MySQL para um distribuidor de eletrônica industrial, com um catálogo navegável de 20 categorias, cadastro de clientes e carrinho de consulta, e um painel administrativo de CMS sob medida.",
+    "kicker": "// automação industrial · LDI Eletrônica · CMS sob medida",
+    "intro": "Uma plataforma dinâmica em PHP/MySQL construída para um distribuidor de eletrônica industrial — catálogo completo de produtos em mais de 20 categorias, admin de CMS sob medida, cadastro de clientes, carrinho de consulta e uma tela de abertura animada em Flash, tudo entregue em 2005.",
+    "body": [
+      "A LDI Eletrônica Industrial é uma distribuidora e fabricante de Joinville (Santa Catarina, Brasil) de componentes de automação industrial e eletrônica. Sua linha de produtos abrange mais de 20 categorias — relés de estado sólido, temporizadores digitais, controladores de temperatura e refrigeração, controladores de processo, indicadores e contadores digitais, conversores de sinal, transformadores de corrente, sensores de presença e de temperatura, filtros de surto, fusíveis e painéis de gerenciamento de filas — atendendo clientes industriais de todo o Brasil.",
+      "O site, lançado em 2005, foi construído para substituir uma presença de folheto estático por uma plataforma totalmente dinâmica. Em seu núcleo está um catálogo de produtos apoiado em MySQL organizado em \"famílias\" categorizadas, com listagens paginadas, imagens de produto com ampliação em pop-up, folhas de dados em PDF e uma busca em texto completo cobrindo código, nome e descrição do produto.",
+      "O front-end abria com uma tela de abertura animada em Flash (agora reproduzível via Ruffle.js). A navegação usava menus fly-out movidos a JavaScript gerados a partir do banco de dados, de modo que novas categorias apareciam no menu automaticamente assim que um administrador as adicionava. Uma barra lateral esquerda exibia a lista completa de categorias e um resumo ao vivo do carrinho.",
+      "O painel administrativo sob medida (`/admin`) permitia à equipe não técnica gerenciar cada peça de conteúdo — produtos, categorias, páginas de texto, links de parceiros, diretórios de contato e configuração do site — por formulários no navegador com upload de imagem e geração de miniaturas. Os clientes podiam se cadastrar por um assistente de quatro etapas, fazer login e montar um cesto de consulta. Um recurso de recomendação de produtos permitia aos usuários encaminhar páginas de produto por e-mail, e um sistema de newsletter apoiava o marketing de saída.",
+      "Stack: PHP 5 + MySQL 5.0, JavaScript puro (auxiliares DHTML da era Dreamweaver MX) e Macromedia Flash para a introdução animada."
+    ],
+    "features": [
+      {
+        "heading": "Catálogo de produtos orientado a banco de dados",
+        "body": "Um catálogo pesquisável e categorizado abrangendo mais de 20 famílias de produtos com folhas de dados e ampliação de imagem substituiu um site de folheto estático, permitindo aos compradores industriais encontrar componentes exatos rapidamente."
+      },
+      {
+        "heading": "Administração de conteúdo self-service",
+        "body": "Um painel administrativo no navegador permitia à equipe não técnica gerenciar produtos, categorias e páginas — novas categorias até apareciam na navegação automaticamente — removendo a dependência contínua de um desenvolvedor."
+      },
+      {
+        "heading": "Cadastro de clientes e carrinho de consulta",
+        "body": "Um assistente de cadastro guiado somado a um cesto de consulta e ao encaminhamento de produtos por e-mail transformava a navegação do catálogo em leads B2B capturados e um canal de marketing de saída."
+      }
+    ]
+  },
+  "oficina-dos-sonhos": {
+    "name": "Escola Oficina dos Sonhos",
+    "tagline": "O portal online completo da Escola Oficina dos Sonhos — uma escola cristã de ensino fundamental em Joinville, Brasil — entregando programas acadêmicos, notícias, galerias de fotos e comunicação com as famílias desde 2005.",
+    "kicker": "// site de escola · oficina dos sonhos",
+    "intro": "Um portal escolar fortemente customizado para a Escola Oficina dos Sonhos — uma escola cristã de ensino fundamental em Joinville, Brasil — servindo notícias, programas acadêmicos, galerias de fotos e comunicação com as famílias desde 2005.",
+    "body": [
+      "A Oficina dos Sonhos é uma escola evangélica cristã em Joinville, Santa Catarina, Brasil, atendendo famílias da Educação Infantil ao Ensino Fundamental.",
+      "Numa época em que poucas pequenas escolas privadas no Brasil tinham qualquer presença online significativa, a Oficina dos Sonhos lançou um portal institucional completo construído sobre um CMS fortemente customizado. Em vez de usar a plataforma de forma pronta, o site foi extensivamente adaptado — templates sob medida, componentes de terceiros integrados e módulos feitos sob medida — para combinar com a identidade da escola e atender às necessidades específicas de sua comunidade.",
+      "Páginas institucionais — cobrindo a história da escola, sua liderança, seus princípios e valores cristãos, e sua estrutura física",
+      "Seções acadêmicas — tanto para o Ensino Fundamental quanto para a Educação Infantil, com propostas pedagógicas, recomendações de leitura e calendários acadêmicos anuais",
+      "Notícias e eventos — mantendo as famílias atualizadas sobre atividades escolares, avisos e ocasiões próximas",
+      "Recursos práticos para as famílias — listas de material escolar, detalhes de transporte e horários de atividades extracurriculares — publicados online em vez de enviados para casa em papel",
+      "Galeria de fotos — exibindo eventos escolares, a vida em sala de aula e ocasiões especiais como a visita da Patati Patatá",
+      "Agenda de eventos — com programação mensal e listagem de atividades para cada nível de turma",
+      "Barra lateral com devocional diário — (\"Maná Diário\") reforçando a identidade cristã da escola em cada página",
+      "Enquete dos alunos e engajamento da comunidade — recursos que faziam o site parecer vivo e interativo",
+      "O site funcionou como o principal ponto de contato digital da escola por anos, modernizando a forma como a instituição se comunicava com as famílias e posicionando a Oficina dos Sonhos como uma escola inovadora e profissionalmente gerida em sua comunidade — numa época em que esse nível de presença web era genuinamente raro entre as pequenas escolas privadas brasileiras."
+    ],
+    "features": [
+      {
+        "heading": "Portal institucional completo",
+        "body": "um CMS fortemente customizado apresentando online a identidade, o ensino e os valores da escola quando poucas pequenas escolas privadas brasileiras tinham qualquer presença web, posicionando-a como inovadora e profissionalmente gerida"
+      },
+      {
+        "heading": "Recursos self-service para as famílias",
+        "body": "listas de material, detalhes de transporte, calendários e horários de atividades publicados online em vez de enviados para casa em papel, cortando a comunicação em papel e mantendo as famílias consistentemente informadas"
+      },
+      {
+        "heading": "Recursos de engajamento da comunidade",
+        "body": "uma galeria de fotos, um devocional diário, uma agenda de eventos e enquetes dos alunos que faziam do site um ponto de contato ativo, ao qual se retornava, reforçando a identidade da escola com sua comunidade"
+      }
+    ]
+  },
+  "oriente": {
+    "name": "Oriente Limpeza, Conservação e Dedetização",
+    "tagline": "Um site corporativo construído em Joomla para o Grupo Oriente, empresa brasileira de serviços de facilities, exibindo ofertas de limpeza, conservação e controle de pragas ao lado de portais de captação de leads e recrutamento.",
+    "kicker": "// serviços de facilities · limpeza, conservação & controle de pragas",
+    "intro": "Site corporativo para o Grupo Oriente, empresa brasileira de serviços de facilities, construído em Joomla para transformar o marketing de limpeza, conservação e controle de pragas em um canal ativo de geração de leads e recrutamento, em vez de um folheto estático.",
+    "body": [
+      "Fundado em maio de 2005, o Grupo Oriente é uma empresa brasileira de serviços de facilities construída sobre o desenvolvimento de pessoas para entregar serviços de conservação, manutenção, limpeza, higienização, controle de pragas e recrutamento/mão de obra temporária. O site foi construído em Joomla 1.5 com um tema sob medida e serve como o principal ponto de contato comercial da empresa: potenciais clientes solicitam orçamentos (\"Faça um orçamento\") e visitas técnicas diretamente pela home, candidatos a vagas se inscrevem por um fluxo dedicado de Recrutamento e Seleção, e clientes existentes acessam por conta própria certidões de conformidade (FGTS, INSS, regularidade fiscal estadual) sem contatar o back office. A página \"Vantagens\" explicita o argumento de terceirização — eliminando risco trabalhista, custos rescisórios, aquisição de equipamentos/uniformes e cobertura de faltas ao delegar esses fardos operacionais à Oriente. Este repositório preserva aquela construção original da era de 2005, rodando sobre uma stack dockerizada de PHP 5.6/MySQL 5.6 correspondente à implantação original em Joomla 1.5.18."
+    ],
+    "features": [
+      {
+        "heading": "Formulários de geração de leads",
+        "body": "formulários de orçamento, recrutamento e solicitação de visita conectados diretamente aos fluxos de vendas e RH da empresa, transformando o site em um canal ativo de geração de leads em vez de um folheto estático"
+      },
+      {
+        "heading": "Documentos de conformidade self-service",
+        "body": "documentação de due diligence para clientes disponível para download (certidões de FGTS, INSS, tributos estaduais) nas páginas Certidões e Clientes, reduzindo as solicitações manuais de documentos de conformidade ao back office"
+      },
+      {
+        "heading": "Stack legada em contêiner",
+        "body": "a stack original Joomla 1.5 / PHP 5.6 / MySQL 5.6 empacotada com Docker para que um CMS da era de 2010 ainda possa ser rodado e demonstrado de forma confiável hoje, preservando o site e seus fluxos para referência de arquivo"
+      }
+    ]
+  },
+  "reacher": {
+    "name": "Re@cher WebMailer",
+    "tagline": "Uma plataforma completa de e-mail marketing e CRM com pré-checagens de spam-score movidas a SpamAssassin, segmentação de público e um editor de campanhas HTML embutido.",
+    "kicker": "// e-mail marketing · CRM para campanhas de mala direta",
+    "intro": "Uma plataforma completa de e-mail marketing em PHP/MySQL com pré-checagens de spam-score via SpamAssassin, segmentação de público, um editor de campanhas HTML embutido e rastreamento automático de aberturas/retornos — construída em 2005, à frente de seu tempo.",
+    "body": [
+      "O Re@cher WebMailer é uma plataforma completa de e-mail marketing e CRM, construída do zero em PHP e MySQL a partir de 2005 — um dos sistemas caseiros mais antigos de seu tipo, anterior à maioria das plataformas de e-mail SaaS de hoje. Ele permitia a um negócio gerenciar seus contatos como um banco de dados estruturado — pessoas ligadas a instituições, instituições ligadas a segmentos de mercado — para que uma única campanha (\"mala direta\") pudesse ser direcionada com precisão a um segmento em vez de disparada para a lista inteira.",
+      "Antes de uma campanha sair do prédio, ela passava por uma integração com o SpamAssassin: cada mensagem era pontuada contra o conjunto de regras heurísticas do SpamAssassin (o mesmo motor que muitos servidores de e-mail usam para filtrar spam de entrada) e sinalizada se sua pontuação cruzasse o limiar associado a cair na pasta de spam. Isso permitia ao time de marketing pegar padrões que matam a entregabilidade — frases com cara de spam, cabeçalhos ausentes, densidade suspeita de links — antes de enviar, em vez de descobrir depois que uma campanha havia sumido silenciosamente nas pastas de spam dos destinatários.",
+      "As campanhas eram compostas em um editor HTML WYSIWYG sob medida no navegador (com caminhos de código separados para Internet Explorer e Mozilla, refletindo a época), salvas como templates reutilizáveis e agendadas para uma data de envio futura. Um motor em segundo plano pegava as campanhas vencidas, personalizava cada e-mail com o nome do destinatário e os entregava em lotes — com um caminho alternativo para enviar pelo Microsoft Outlook em execuções pontuais. O sistema também cuidava de tarefas de CRM do dia a dia: e-mails automáticos de aniversário, lembretes recorrentes e um pipeline de importação de contatos para fazer a lista crescer.",
+      "No lado da medição, cada campanha enviada embutia um pixel de rastreamento para registrar aberturas (com contagem de visualizações únicas) e era verificada contra uma caixa de retornos dedicada via IMAP — endereços com hard bounce eram automaticamente sinalizados e excluídos de envios futuros. Junto com a pré-checagem do SpamAssassin, isso dava ao negócio um ciclo fechado: pontuar, segmentar, enviar, medir e limpar — anos antes de \"entregabilidade de e-mail\" ser um item de orçamento para a maioria das empresas."
+    ],
+    "features": [
+      {
+        "heading": "Checagens de spam-score antes do envio",
+        "body": "Cada campanha era pontuada contra um conjunto de regras heurísticas de filtro de spam antes do envio, pegando padrões que matam a entregabilidade de antemão para que as mensagens chegassem à caixa de entrada em vez da pasta de spam."
+      },
+      {
+        "heading": "Segmentação de campanhas",
+        "body": "Um banco de dados estruturado de contatos ligando pessoas a instituições e segmentos de mercado permitia que uma única mala direta atingisse um público preciso em vez de um disparo geral, elevando a relevância e a resposta."
+      },
+      {
+        "heading": "Rastreamento em ciclo fechado e higiene de lista",
+        "body": "O rastreamento de aberturas e o tratamento automático de retornos sinalizavam e excluíam endereços mortos por conta própria, dando ao negócio um ciclo de medir e limpar anos à frente do mercado."
+      }
+    ]
+  },
+  "sbes": {
+    "name": "Projeto Social Futura",
+    "tagline": "Um sistema de registros e gestão de casos em PHP/MySQL construído para a Secretaria do Bem Estar Social da Prefeitura de Joinville, substituindo cadastros familiares em papel por domicílios digitais pesquisáveis, acompanhamento de benefícios e relatórios impressos prontos para auditoria.",
+    "kicker": "// registros governamentais · Secretaria do Bem Estar Social",
+    "intro": "Um sistema de registros em PHP/MySQL construído para a Secretaria do Bem Estar Social da Prefeitura de Joinville, substituindo cadastros familiares em papel por domicílios pesquisáveis, acompanhamento de benefícios e relatórios impressos prontos para auditoria.",
+    "body": [
+      "O SBES (Secretaria do Bem Estar Social) é um sistema de registros e gestão de casos construído para a Secretaria do Bem Estar Social do município de Joinville. Batizado internamente de \"Projeto Social Futura — Gestão Social\", ele substituiu um processo de arquivamento em papel para acompanhar famílias inscritas em programas municipais de assistência social.",
+      "O sistema gira em torno de dois registros centrais: o Domicílio (residência) e a Pessoa, cada um vinculado a um endereço físico e a um perfil socioeconômico. A partir daí, os assistentes sociais inscrevem um domicílio em um ou mais Programas Sociais (assistência alimentar, vale-gás, etc.), registram Benefícios (repasses de benefícios) contra essa inscrição e mantêm um Histórico corrente (histórico de caso) para cada família.",
+      "O acesso é dividido em quatro papéis — Operador, Assistente Social, Secretário e Administrador — cada um apresentado como sua própria aba no painel inicial, de modo que um assistente social de linha de frente e o secretário da pasta veem apenas as ações relevantes ao seu trabalho. Dois relatórios imprimíveis fecham o ciclo com os requisitos de auditoria da prefeitura: uma Ficha de Usuário (ficha de caso por família) e um Recebimento de Benefício (comprovante de recebimento de benefício), ambos renderizados como HTML pronto para impressão diretamente do banco de dados.",
+      "Construído em PHP 4 sobre um backend MySQL, o sistema foi desenvolvido e implantado para a Prefeitura de Joinville em 2005. Este repositório preserva um arquivo do aplicativo no ar rastreado por wget (`rip/`) ao lado do código-fonte PHP original (`www/`) e do esquema do banco de dados (`db/sbes.sql`)."
+    ],
+    "features": [
+      {
+        "heading": "Cadastro digital pesquisável",
+        "body": "um banco de dados digital de domicílios e pessoas substituindo os cadastros familiares em papel, reduzindo o tempo que os assistentes sociais gastavam para localizar o histórico de uma família, do arquivamento manual a uma única busca"
+      },
+      {
+        "heading": "Fluxo de trabalho da equipe por papéis",
+        "body": "acesso em níveis (Operador, Assistente Social, Secretário, Administrador) para que cada nível da equipe da prefeitura visse apenas as ações relevantes ao seu trabalho, reduzindo o overhead de treinamento e os erros de digitação"
+      },
+      {
+        "heading": "Relatórios de auditoria prontos para impressão",
+        "body": "fichas de caso por família e comprovantes de recebimento de benefício gerados direto do banco de dados, dando à secretaria registros auditáveis sem transcrição manual"
+      }
+    ]
+  },
+  "monumento-ao-voluntario": {
+    "name": "Monumento ao Voluntário Rotary Club",
+    "tagline": "Um site de campanha dinâmico em PHP construído em 2004 para impulsionar patrocínios corporativos e apoio da comunidade à construção de um monumento ao voluntário de 16,2 metros em aço em Joinville, Brasil, levando o projeto do Rotary Club da arrecadação à inauguração em menos de três meses.",
+    "kicker": "// campanha cívica · Rotary Club Joinville",
+    "intro": "Um site de campanha dinâmico em PHP construído em 2004 para impulsionar patrocínios corporativos e apoio da comunidade a um monumento ao voluntário de 16,2 metros em aço em Joinville, Brasil — da arrecadação à inauguração em menos de três meses.",
+    "body": [
+      "Os Rotary Clubs de Joinville encomendaram este site no fim de 2004 para apoiar seu projeto comunitário do centenário: erguer um monumento de 16,2 metros em aço patinável COR-420 na praça da Arena Joinville, como um tributo permanente ao voluntariado e um marco do 100º aniversário do Rotary International (23 de fevereiro de 2005).",
+      "Construído por Leonardo Vasconcellos (UDESC) e Sandro Marcos da Silva (Hannover Info), o site foi lançado junto com o pontapé inicial público da campanha em novembro de 2004 e serviu como a principal presença digital do projeto até a inauguração do monumento, apenas três meses depois.",
+      "O site é uma aplicação PHP com funções de template compartilhadas renderizando cabeçalho, navegação e rodapé de forma consistente entre as páginas. O menu de navegação horizontal em JavaScript usava fundos baseados em imagens e eventos de mouseover para os submenus institucionais.",
+      "**Seções:** A home apresentava os objetivos do projeto, um feed lateral de notícias e as especificações completas de engenharia do monumento (materiais, dimensões, peso, acabamento). A seção de notícias preservava cinco artigos datados — incluindo recortes de imprensa do jornal *A Notícia* — documentando marcos do anúncio à inauguração. A página de patrocínio entregava uma carta formal de proposta corporativa com direitos de nome na placa do monumento.",
+      "**Resultado:** A campanha arrecadou cerca de R$120.000 de parceiros corporativos (Engepasa, Vega do Sul), da Prefeitura Municipal e do Governo do Estado de Santa Catarina, viabilizando que a estrutura de 7 toneladas fosse construída e inaugurada no prazo.",
+      "**Preservação:** A animação de inauguração em Flash foi posteriormente restaurada usando o Ruffle.rs (reprodutor Flash em WebAssembly), garantindo que o arquivo permaneça totalmente funcional em navegadores modernos."
+    ],
+    "features": [
+      {
+        "heading": "Sistema de notícias self-service",
+        "body": "um módulo de notícias dinâmico que permitia ao time do Rotary publicar atualizações datadas de marcos — recortes de imprensa, cerimônia da pedra fundamental, fotos da inauguração — sem tocar em código, mantendo doadores e público informados durante toda a campanha"
+      },
+      {
+        "heading": "Página de captação de patrocinadores",
+        "body": "uma proposta formal a doadores com reconhecimento nominal na placa do monumento, apoiando diretamente a meta de arrecadação de ~R$120.000 que trouxe parceiros corporativos (Engepasa, Vega do Sul) e a prefeitura para o projeto"
+      },
+      {
+        "heading": "Banner de campanha animado",
+        "body": "um banner em Flash com uma flag de visita repetida baseada em cookie, uma mecânica de personalização precoce que dava à campanha uma presença caprichada enquanto controlava a experiência nas visitas de retorno"
+      }
+    ]
+  },
+  "nucleo-do-evento": {
+    "name": "Núcleo do Evento!",
+    "tagline": "Um portal de casamentos e eventos movido a Joomla para Joinville, Brasil — com loja de e-commerce, editorial de fotografia, chat ao vivo e ferramentas de comunidade, no ar de 2004 a 2017.",
+    "kicker": "// portal de eventos · fotos de casamento",
+    "intro": "O Núcleo do Evento! era um portal de casamentos e eventos movido a Joomla para Joinville, Brasil — com loja de e-commerce, editorial de fotografia, chat ao vivo e ferramentas de comunidade, no ar de 2004 a 2017.",
+    "body": [
+      "O Núcleo do Evento! era um portal web brasileiro de casamentos e eventos atendendo Joinville e a região do entorno em Santa Catarina. Lançado em 2004, foi projetado como um destino único para casais, fotógrafos de casamento, organizadores de eventos e fornecedores envolvidos em casamentos, festas de 15 anos (debutantes) e eventos corporativos.",
+      "Construído sobre o CMS Joomla 1.x com um template totalmente sob medida e logo animado em Flash, o site integrava uma loja online VirtueMart vendendo artigos para casamento (fantasias, acessórios de festa e decorações), um blog editorial com dicas de fotografia e artigos de planejamento para noivas, uma sala de chat ao vivo, o Google Maps para descoberta de locais e feeds RSS em múltiplos formatos para manter os assinantes atualizados sobre novos conteúdos de fotografia e produtos.",
+      "A plataforma funcionava também como um veículo de SEO regional: a home cobria praticamente todo termo de busca em português relacionado a casamentos, fotografia de casamento e eventos em Joinville — impulsionando a descoberta orgânica para o diretório de fornecedores e para a loja. Construído e mantido por Leonardo Lima de Vasconcellos, o site permaneceu no ar de 2004 a 2017, mais de uma década na mesma instalação Joomla. Este repositório é uma versão arquivada do site no ar, preservada por rastreamento wget ao lado da árvore de código-fonte original do Joomla.",
+      "**Principais recursos — o que foi construído e por que importou:**"
+    ],
+    "features": [
+      {
+        "heading": "Hub regional de casamentos e eventos",
+        "body": "um portal com template sob medida para Joinville agregando fotógrafos, fornecedores e conteúdo editorial, dando a casais e organizadores um único destino de planejamento e poupando os fornecedores de manter sites próprios"
+      },
+      {
+        "heading": "Loja de e-commerce integrada",
+        "body": "categorias de produtos VirtueMart (fantasias, acessórios de casamento, decorações) com busca e carrinho, permitindo a venda direta online de artigos de eventos e casamentos ao lado do conteúdo editorial"
+      },
+      {
+        "heading": "Plataforma de engajamento da comunidade",
+        "body": "chat ao vivo, mapas, cadastro, enquetes de público e feeds RSS em múltiplos formatos que serviram noivas, fotógrafos e fornecedores ao longo dos 13 anos de vida do site"
+      }
+    ]
+  },
+  "resgate": {
+    "name": "Resgate Construções",
+    "tagline": "Um site de marketing para a Resgate Construções, construtora de casas em concreto pré-moldado em Joinville, Brasil, exibindo modelos de casas, projetos concluídos e opções de financiamento governamental para futuros proprietários.",
+    "kicker": "// construção · casas em concreto pré-moldado",
+    "intro": "Um site de marketing baseado em Joomla para a Resgate Construções, construtora de casas em concreto pré-moldado em Joinville, Brasil, exibindo modelos de casas, construções finalizadas e opções de financiamento para futuros proprietários.",
+    "body": [
+      "A Resgate Construções constrói casas em concreto pré-moldado em Joinville, Santa Catarina, Brasil, sob a responsabilidade técnica do engenheiro civil Cláudio Barreto (CREA-SC 59203-9). Este site serviu como a vitrine digital da empresa: um site com CMS Joomla 1.5 apresentando a missão da empresa, modelos de casas (Compacto, com Varanda, Personalizado), galerias de fotos de construções concluídas e em andamento, e opções de financiamento vinculadas ao programa Minha Casa Minha Vida da Caixa Econômica Federal.",
+      "O projeto é preservado aqui como um arquivo: a base de código original em Joomla 1.5 / PHP 5.6 roda dentro de um contêiner Docker (PHP 5.6 + Apache, MySQL 5.7) para que o site legado ainda possa ser reconstruído e visualizado localmente, com um diretório `rip/` guardando um snapshot estático do site no ar rastreado por HTTrack para referência."
+    ],
+    "features": [
+      {
+        "heading": "Catálogo online profissional",
+        "body": "um site com template totalmente sob medida dando a uma pequena construtora de casas pré-moldadas um catálogo profissional e um canal de leads para além do boca a boca"
+      },
+      {
+        "heading": "Galerias visuais de projetos",
+        "body": "conjuntos de fotos de construções concluídas e em andamento que davam aos potenciais compradores prova visual da qualidade estrutural antes de solicitar um orçamento"
+      },
+      {
+        "heading": "Credenciais que constroem confiança",
+        "body": "detalhes de financiamento (Caixa Econômica Federal / Minha Casa Minha Vida) e o registro no CREA do engenheiro responsável exibidos diretamente no site, reduzindo o atrito para compradores atentos ao orçamento"
+      }
+    ]
+  },
+  "agenda-ead": {
+    "name": "Agenda EAD",
+    "tagline": "Uma aplicação web em PHP/MySQL para gerenciar cronogramas acadêmicos, compromissos e atividades em um ambiente de ensino a distância (EAD).",
+    "kicker": "// calendário acadêmico · plataforma de ensino a distância",
+    "intro": "Uma aplicação web em PHP/MySQL para gerenciar cronogramas acadêmicos, compromissos e atividades em um ambiente de ensino a distância (EAD).",
+    "body": [
+      "O E-Learning Scheduler é uma plataforma de gestão acadêmica no navegador construída para instituições de ensino a distância (EAD). Ela dá a professores e alunos um ambiente compartilhado de agendamento em que três tipos de atividades acadêmicas — compromissos, tarefas e eventos — são acompanhados em um calendário navegável.",
+      "O calendário suporta visões diária, semanal e mensal. Os dias com itens agendados são destacados; clicar em qualquer data marcada revela as atividades previstas para aquele dia ou semana. Um script motor em segundo plano cuida dos lembretes automáticos por e-mail, disparando notificações aos usuários antes de seus compromissos agendados.",
+      "O acesso é governado por um sistema de papéis de três níveis: administradores configuram a plataforma e gerenciam todos os usuários; professores criam e atribuem atividades vinculadas a cursos e turmas específicos; e alunos veem apenas as atividades relevantes à sua matrícula e ao seu grupo. Listas de contatos pessoais e um painel de ajuda de perguntas e respostas embutido completam o conjunto de recursos.",
+      "O esquema MySQL cobre sete entidades — compromissos, tarefas, eventos, usuários, cursos, turmas e grupos de contatos — todas ligadas por identificadores de curso e turma para que as atividades cheguem precisamente ao público certo."
+    ],
+    "features": [
+      {
+        "heading": "Motor de lembretes automáticos por e-mail",
+        "body": "Construí um script de fundo autônomo (`motor.php`) que varre a agenda e dispara e-mails de lembrete antes de cada prazo, reduzindo compromissos perdidos e liberando a equipe de cobrar os alunos manualmente."
+      },
+      {
+        "heading": "Controle de acesso por papel",
+        "body": "Implementei um sistema de permissões de três níveis (admin, professor, aluno) para que cada usuário veja apenas as atividades vinculadas a seus cursos, turmas e grupos, mantendo a plataforma confiável em escala institucional e reduzindo o overhead de suporte."
+      },
+      {
+        "heading": "Calendário multivisão com atividades direcionadas por curso",
+        "body": "Projetei um calendário diário/semanal/mensal que destaca os dias ativos e vincula compromissos, tarefas e eventos a identificadores de curso e turma, para que os avisos cheguem exatamente ao público certo e aumentem o engajamento dos alunos."
+      }
+    ]
+  },
+  "quantic-solutions": {
+    "name": "Quantic Solutions Portal & CMS",
+    "tagline": "Um CMS bilíngue e portal corporativo construídos do zero para a Quantic Solutions, uma fornecedora brasileira de software de pré-impressão — dando à equipe não técnica controle total sobre conteúdo, leads e vagas de emprego sem tocar em código.",
+    "kicker": "// cms sob medida · software para a indústria gráfica",
+    "intro": "CMS bilíngue e site corporativo construídos sob medida para a Quantic Solutions, uma fornecedora brasileira de software de pré-impressão — permitindo à equipe não técnica gerenciar conteúdo, notícias, parceiros, vagas de emprego e leads de clientes sem nunca tocar em código.",
+    "body": [
+      "A Quantic Solutions (juridicamente Quantic Softwares e Informática Ltda.) é uma empresa brasileira de tecnologia que fornece software profissional de pré-impressão e prova remota para a indústria gráfica. Seus produtos principais, o **Octopus** (um servidor modular de fluxo de pré-impressão apoiado em SQL que acompanha os trabalhos da criação à entrega) e o **Cyan eProof** (prova remota), atendiam gráficas, agências de publicidade e bureaus de serviços gráficos de todo o Brasil — um setor que o próprio site descreve como faturando mais de R$6 bilhões/ano, concentrado majoritariamente no Sudeste e no Sul.",
+      "Este repositório é o site corporativo e o CMS sob medida construído para operá-lo: um site público bilíngue (PT/EN) (home, história da empresa, clientes, soluções, serviços, parceiros, imprensa, carreiras, contato) apoiado por um painel administrativo totalmente sob medida para a equipe não técnica — permissões de usuário/grupo, publicação de notícias e releases de imprensa, gestão de parceiros e clientes, publicação de vagas com candidaturas online, uma biblioteca de imagens/arquivos e captação de newsletter. Tudo, do texto das páginas aos logos de clientes e às listagens de vagas, podia ser atualizado pela própria equipe da Quantic, com zero envolvimento de desenvolvedor após o lançamento."
+    ],
+    "features": [
+      {
+        "heading": "CMS administrativo totalmente sob medida",
+        "body": "um back office construído do zero (usuários, permissões, notícias, parceiros, vagas de emprego, portal do cliente) que permitia à equipe da Quantic gerenciar o site inteiro sem nunca chamar um desenvolvedor"
+      },
+      {
+        "heading": "Captação de leads self-service",
+        "body": "um sistema de newsletter e captação de leads conectado diretamente ao site público, transformando cada visitante em um lead rastreável para o pipeline de vendas B2B da empresa"
+      },
+      {
+        "heading": "Extranet de clientes/parceiros",
+        "body": "uma \"área exclusiva para clientes, colaboradores e parceiros\" dando aos clientes acesso direto a serviços e documentos, cortando o overhead de suporte e reforçando uma imagem inovadora em um setor tradicionalmente analógico"
+      }
+    ]
+  },
+  "suleventos": {
+    "name": "Sul Eventos",
+    "tagline": "Um portal de eventos em PHP/MySQL construído sob medida para Joinville, SC — conectando casais e frequentadores de eventos a fornecedores, locais e anunciantes por meio de um único CMS white-label.",
+    "kicker": "// portal de eventos · diretório de casamentos & fornecedores, Joinville-SC",
+    "intro": "Um portal de eventos construído do zero para Joinville, SC, centrado em casamentos — unindo um calendário público de eventos a um diretório de fornecedores, banners de anunciantes e um cartão de fidelidade imprimível que transformava as listagens de parceiros em um canal direto de receita.",
+    "body": [
+      "O Sul Eventos era um portal de eventos construído do zero atendendo Joinville e a região mais ampla de Santa Catarina, centrado em casamentos e celebrações marcantes. Além de um calendário de eventos voltado ao público, a plataforma funcionava também como um pequeno marketplace de negócios locais: um diretório categorizado de fornecedores (fotógrafos, lojas de vestidos, locais, buffets), cada um com sua própria galeria de fotos e página de contato, um sistema de anunciantes/banners para inserções pagas, e um cartão de fidelidade de parceiros imprimível que dava aos portadores descontos por toda a rede — monetizando diretamente as relações de parceria que o site curava. Também incluía uma lista de presentes de casamento, diretórios de igrejas e cartórios para ajudar os casais a navegar pela logística da cerimônia, uma seção de enquetes/dicas e uma sala de chat ao vivo. Tudo — do site público ao painel administrativo usado para gerenciar eventos, parceiros e anúncios — foi construído sob medida em PHP/MySQL, e o mesmo motor foi reaproveitado para dar vida a pelo menos duas outras implantações de clientes, a Century Eventos e a Fer Eventos."
+    ],
+    "features": [
+      {
+        "heading": "CMS totalmente sob medida",
+        "body": "um painel administrativo construído do zero com assistentes de conteúdo, para que a equipe não técnica pudesse gerenciar eventos, fornecedores e anúncios sem tocar em código"
+      },
+      {
+        "heading": "Diretório de fornecedores e programa de fidelidade",
+        "body": "um diretório somado a um cartão de descontos imprimível para anunciantes, transformando o site em um canal direto de receita via listagens pagas e banners de anúncio"
+      },
+      {
+        "heading": "Plataforma reutilizável white-label",
+        "body": "uma base de código projetada para ser re-skinada em múltiplos sites de clientes (Century Eventos, Fer Eventos), multiplicando o retorno de uma única construção"
+      }
+    ]
+  },
+  "websolutions": {
+    "name": "Web Solutions (Vasconcellos & Marcucci)",
+    "tagline": "Um site de marketing construído do zero para a Web Solutions, uma parceria freelance de início de carreira oferecendo webdesign, portais web e desenvolvimento de sistemas sob medida.",
+    "kicker": "// webdesign · parceria freelance",
+    "intro": "Um site de marketing construído do zero para a Web Solutions, uma parceria freelance de início de carreira oferecendo webdesign, portais web e desenvolvimento de sistemas sob medida.",
+    "body": [
+      "A Web Solutions era uma parceria freelance de início de carreira entre Leonardo Lima de Vasconcellos e Fernando Marcucci, oferecendo serviços de webdesign, portais web e desenvolvimento de sistemas sob medida. Este repositório preserva o próprio site de marketing da parceria — um portfólio HTML baseado em tabelas e auto-hospedado, típico da web do início dos anos 2000 — construído para exibir trabalhos concluídos para clientes e fornecer dados de contato diretos para novos negócios.",
+      "O portfólio incorporava três projetos reais: o Flundi, um site de comunidade para uma mailing list de música eletrônica; uma ferramenta no navegador para editar atributos CSS online; e um site corporativo para a Alpen, uma fabricante têxtil. Juntos, eles mostram a amplitude do trabalho que a parceria assumia, de sites de comunidade a ferramentas internas e presenças web corporativas.",
+      "Este arquivo preserva o site exatamente como era servido — os arquivos `.htm` originais, as imagens embutidas e os arquivos-fonte do CorelDraw usados no design do site e em um cartão de visitas combinando — mantidos apenas para referência histórica."
+    ],
+    "features": [
+      {
+        "heading": "Portfólio de trabalhos para clientes",
+        "body": "Uma vitrine curada de projetos concluídos — um site de comunidade, um editor de estilos no navegador e um site corporativo têxtil — demonstrava a amplitude da parceria e construía credibilidade com potenciais clientes."
+      },
+      {
+        "heading": "Caminho de contato direto para leads",
+        "body": "Dados de contato colocados ao lado dos trabalhos davam aos visitantes interessados uma rota imediata para iniciar novos negócios, o propósito central de um site de marketing freelance."
+      },
+      {
+        "heading": "Presença de marca produzida internamente",
+        "body": "Uma identidade visual coesa carregada por todo o site e em um cartão de visitas combinando, produzida internamente, sinalizava capacidade de design aos prospects antes de discutir um único briefing."
+      }
+    ]
+  },
+  "www.leonardovasconcellos.tk": {
+    "name": "Leonardo Vasconcellos — Soluções em TI",
+    "tagline": "Um site pessoal arquivado do início dos anos 2000 de Leonardo Vasconcellos — consultor de TI freelance — combinando um currículo online, um folheto de serviços e uma introdução em Flash, restaurado para rodar em navegadores modernos via Ruffle.",
+    "kicker": "// portfólio pessoal · arquivado em 2002",
+    "intro": "Um site pessoal arquivado do início dos anos 2000 do consultor de TI freelance Leonardo Vasconcellos — currículo, folheto de serviços e uma introdução em Flash, revivido para rodar em navegadores modernos via o emulador Ruffle.",
+    "body": [
+      "Este é um arquivo de um dos primeiros sites pessoais de Leonardo Vasconcellos, originalmente hospedado no host gratuito brasileiro llv.brturbo.com e depois apontado para leonardovasconcellos.tk. Na época, Leonardo trabalhava como consultor de TI freelance e técnico de suporte em Santa Catarina, Brasil — administrando servidores Windows NT e Linux, executando trabalhos de cabeamento estruturado e construindo pequenos sites em HTML/ASP/PHP para empresas locais.",
+      "O site em si funcionava tanto como um CV quanto como um folheto de vendas: uma página \"Curriculum Vitae\" listando sua certificação MCP e uma série de cargos de suporte/sysadmin (Microprint, Dualline, SCTEL, Quantic Solutions, Impacto Tecnologias), uma página \"Serviços\" anunciando desenvolvimento web, montagem de redes e administração Linux/Windows, e uma página \"Soluções\" com um diagrama em Flash feito à mão explicando o compartilhamento de conexão de internet (NAT, proxy, firewall) a potenciais clientes. Tudo abre com uma introdução em Flash movida a ActionScript — preservada aqui e tornada reproduzível em navegadores modernos por meio do emulador Ruffle, já que o próprio Flash está morto desde 2020."
+    ],
+    "features": [
+      {
+        "heading": "Currículo e folheto auto-hospedados",
+        "body": "um CV e site de serviços online (Home, Curriculum Vitae, Serviços, Soluções) permitindo a um consultor de TI freelance oferecer desenvolvimento web, administração de redes e trabalho de infraestrutura a clientes de pequeno porte sem um time de vendas"
+      },
+      {
+        "heading": "Introdução interativa e explicativa",
+        "body": "uma introdução animada e um diagrama de rede interativo explicando o compartilhamento de conexão ADSL, transformando um conceito técnico difícil de vender em algo que um cliente não técnico podia entender e aprovar"
+      },
+      {
+        "heading": "Artefato preservado e revivido",
+        "body": "o site original de ~2002 resgatado de um rastreamento wget com o emulador Ruffle acoplado, fazendo uma introdução em Flash de mais de 20 anos rodar nativamente nos navegadores de hoje sem plugins"
+      }
+    ]
+  }
+}

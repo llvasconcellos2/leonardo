@@ -9,6 +9,7 @@
     "lint": "eslint",
     "migrate:blog": "tsx scripts/migrate-blog/index.ts",
     "slugify": "tsx scripts/slugify.ts",
+    "build:works": "node scripts/build-works.mjs",
     "screenshot": "node scripts/screenshot.js"
   },
   "dependencies": {
