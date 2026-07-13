@@ -150,9 +150,224 @@
   text-align: right;
 }
 
+/* ── Tech badges (icon + name + version) ────────────────────── */
+.lv-ec-tech-lab {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-right: 2px;
+}
+.lv-ec-tech .lv-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.lv-ec-tech-ver {
+  color: var(--text-muted);
+  padding-left: 6px;
+  margin-left: 2px;
+  border-left: 1px solid var(--border);
+}
+
+/* ── Inline-markdown marks in prose ─────────────────────────── */
+.lv-ec strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.lv-ec code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 1px 5px;
+  color: var(--text-primary);
+}
+
+/* ── Section blocks ─────────────────────────────────────────── */
+.lv-ec-block {
+  margin-bottom: clamp(2.75rem, 6vw, 4.5rem);
+}
+.lv-ec-block > .lv-ec-h2 {
+  margin-bottom: 22px;
+}
+
+.lv-ec-para {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+.lv-ec-para:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Highlights (key features) ──────────────────────────────── */
+.lv-ec-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.lv-ec-highlight {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+}
+.lv-ec-highlight-h {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.12rem;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0 0 10px;
+}
+.lv-ec-highlight-b {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Detailed features by category ──────────────────────────── */
+.lv-ec-cats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.lv-ec-cat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px 6px;
+}
+.lv-ec-cat-h {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.lv-ec-cat-rows {
+  margin: 0;
+}
+.lv-ec-cat-row {
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+.lv-ec-cat-row:first-child {
+  border-top: none;
+}
+.lv-ec-cat-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.lv-ec-cat-desc {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.lv-ec-paid {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-bg);
+  color: var(--accent-on-dim);
+  border: 1px solid color-mix(in oklab, var(--accent) 38%, transparent);
+}
+
+/* ── Free vs Paid comparison table ──────────────────────────── */
+.lv-ec-cmp-intro {
+  max-width: 72ch;
+  margin-bottom: 22px;
+}
+.lv-ec-cmp-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.lv-ec-cmp {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.lv-ec-cmp thead th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 13px 18px;
+  background: var(--raised);
+  border-bottom: 1px solid var(--border);
+}
+.lv-ec-cmp-col {
+  text-align: center;
+  width: 22%;
+}
+.lv-ec-cmp tbody tr {
+  border-top: 1px solid var(--border);
+}
+.lv-ec-cmp tbody tr:nth-child(even) {
+  background: color-mix(in oklab, var(--surface) 42%, transparent);
+}
+.lv-ec-cmp-feat {
+  text-align: left;
+  font-weight: 500;
+  color: var(--text-primary);
+  padding: 11px 18px;
+}
+.lv-ec-cmp td {
+  padding: 11px 18px;
+  vertical-align: middle;
+}
+.lv-ec-cmp-cell {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.lv-ec-cmp-yes {
+  color: var(--accent-bright);
+}
+.lv-ec-cmp-no {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+.lv-ec-cmp-warn {
+  color: oklch(0.78 0.13 80);
+}
+.lv-ec-cmp-note {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+.lv-ec-cmp-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
 @media (max-width: 860px) {
   .lv-ec-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+  .lv-ec-highlights {
+    grid-template-columns: 1fr;
   }
 }

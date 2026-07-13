@@ -1,0 +1,275 @@
+/* ── Reusable screenshot gallery ────────────────────────────── */
+.lv-gallery {
+  margin: 0;
+}
+
+/* Navy-framed exhibit — mirrors the .lv-ec-frame treatment. */
+.lv-gallery-frame {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--brand-deep);
+  box-shadow: var(--shadow-md);
+}
+
+.lv-gallery-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  background: var(--raised);
+}
+.lv-gallery-bar-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: var(--tracking-mono);
+}
+.lv-gallery-bar-label svg {
+  color: var(--accent-bright);
+}
+.lv-gallery-count {
+  color: var(--text-muted);
+}
+
+.lv-gallery-viewport {
+  position: relative;
+}
+
+/* The snap track — native touch/trackpad swipe lives here. */
+.lv-gallery-track {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.lv-gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.lv-gallery-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(280px, 52vh, 560px);
+  padding: 0;
+  border: none;
+  background: var(--brand-deep);
+  cursor: zoom-in;
+  position: relative;
+}
+.lv-gallery-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.lv-gallery-zoom {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: inline-flex;
+  padding: 7px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in oklab, var(--dark) 62%, transparent);
+  color: var(--text-primary);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-spring);
+}
+.lv-gallery-slide:hover .lv-gallery-zoom,
+.lv-gallery-slide:focus-visible .lv-gallery-zoom {
+  opacity: 1;
+}
+
+/* Prev / next controls */
+.lv-gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--surface) 82%, transparent);
+  color: var(--text-primary);
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition:
+    background var(--dur-fast) var(--ease-spring),
+    border-color var(--dur-fast) var(--ease-spring),
+    opacity var(--dur-fast) var(--ease-spring);
+}
+.lv-gallery-nav:hover {
+  border-color: var(--accent-bright);
+  color: var(--accent-bright);
+}
+.lv-gallery-nav:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+.lv-gallery-nav-prev {
+  left: 12px;
+}
+.lv-gallery-nav-next {
+  right: 12px;
+}
+
+/* Thumbnail rail */
+.lv-gallery-thumbs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 2px 4px;
+  scrollbar-width: thin;
+}
+.lv-gallery-thumb {
+  flex: 0 0 auto;
+  width: 92px;
+  height: 60px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--brand-deep);
+  cursor: pointer;
+  opacity: 0.55;
+  transition:
+    opacity var(--dur-fast) var(--ease-spring),
+    border-color var(--dur-fast) var(--ease-spring);
+}
+.lv-gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lv-gallery-thumb:hover {
+  opacity: 0.85;
+}
+.lv-gallery-thumb.is-active {
+  opacity: 1;
+  border-color: var(--accent-bright);
+}
+
+/* ── Lightbox ───────────────────────────────────────────────── */
+.lv-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+  background: color-mix(in oklab, var(--dark) 88%, transparent);
+  backdrop-filter: blur(6px);
+  animation: lv-lightbox-in var(--dur-base) var(--ease-spring);
+}
+@keyframes lv-lightbox-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lv-lightbox-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px clamp(16px, 4vw, 28px);
+}
+.lv-lightbox-count {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.lv-lightbox-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-spring),
+    color var(--dur-fast) var(--ease-spring);
+}
+.lv-lightbox-close:hover {
+  border-color: var(--accent-bright);
+  color: var(--accent-bright);
+}
+
+.lv-lightbox-img {
+  max-width: min(1200px, 92vw);
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+.lv-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--surface) 82%, transparent);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-spring),
+    color var(--dur-fast) var(--ease-spring),
+    opacity var(--dur-fast) var(--ease-spring);
+}
+.lv-lightbox-nav:hover {
+  border-color: var(--accent-bright);
+  color: var(--accent-bright);
+}
+.lv-lightbox-nav:disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
+.lv-lightbox-nav-prev {
+  left: clamp(12px, 3vw, 32px);
+}
+.lv-lightbox-nav-next {
+  right: clamp(12px, 3vw, 32px);
+}
+
+@media (max-width: 860px) {
+  .lv-gallery-nav {
+    width: 36px;
+    height: 36px;
+  }
+  .lv-lightbox-nav {
+    width: 44px;
+    height: 44px;
+  }
+}
