@@ -5,6 +5,7 @@
   line-height: var(--leading-prose);
   color: var(--text-secondary);
   max-width: var(--measure-prose);
+  margin: auto;
 }
 .lv-md > :first-child {
   margin-top: 0;

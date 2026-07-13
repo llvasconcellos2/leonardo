@@ -1,7 +1,13 @@
 /* ── BLOG ARTICLE (tier-3 detail) ───────────────────────────── */
 .lv-article {
-  max-width: 48rem;
-  padding-top: clamp(1rem, 2vw, 2rem);
+  /* max-width: 48rem;
+  padding-top: clamp(1rem, 2vw, 2rem); */
+  margin: 0 auto;
+  /* padding: clamp(4rem, 9vw, 7rem) clamp(20px, 4vw, 40px); */
+  /* padding: clamp(4rem, 9vw, 7rem) clamp(1vw, 1vw, 10vw); */
+  /* padding: clamp(3rem, 9vw, 5rem) clamp(1rem, 8vw, 10rem); */
+  padding: clamp(3rem, 9vw, 5rem) clamp(1rem, calc(-3rem + 12vw), 12rem);
+  /* padding: 0 200px; */
 }
 
 .lv-article-head {
