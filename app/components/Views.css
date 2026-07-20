@@ -44,6 +44,95 @@
   border: 1px solid var(--border);
   margin-bottom: 36px;
 }
+.lv-detail-tech-ver {
+  color: var(--text-muted);
+  padding-left: 6px;
+  margin-left: 2px;
+  border-left: 1px solid var(--border);
+}
+.lv-detail-cta {
+  margin-bottom: 36px;
+}
+/* Framed featured screenshot */
+.lv-detail-shot {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 14px);
+  overflow: hidden;
+  background: var(--brand-deep);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 44px;
+}
+.lv-detail-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Section blocks (screenshots · overview · highlights) */
+.lv-detail-block {
+  margin-bottom: clamp(2.75rem, 6vw, 4.5rem);
+}
+.lv-detail-h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin: 0 0 22px;
+}
+.lv-detail-h2 svg {
+  color: var(--accent-bright);
+}
+.lv-detail-para {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 72ch;
+  margin: 0 0 16px;
+}
+.lv-detail-para:last-child {
+  margin-bottom: 0;
+}
+.lv-detail strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.lv-detail code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 1px 5px;
+  color: var(--text-primary);
+}
+.lv-detail-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.lv-detail-highlight {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 14px);
+  padding: 22px 24px;
+}
+.lv-detail-highlight-h {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.12rem;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0 0 10px;
+}
+.lv-detail-highlight-b {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
 .lv-detail-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
@@ -115,6 +204,14 @@
 .lv-tile:hover {
   border-color: var(--border-strong);
 }
+.lv-tile-shot {
+  display: block;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  object-position: top center;
+  background: var(--brand-deep);
+}
 .lv-tile-body {
   padding: 12px 14px;
   display: flex;
@@ -139,6 +236,9 @@
 
 @media (max-width: 860px) {
   .lv-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .lv-detail-highlights {
     grid-template-columns: 1fr;
   }
   .lv-archive-grid {

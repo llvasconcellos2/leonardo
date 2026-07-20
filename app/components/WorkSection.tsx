@@ -1,48 +1,54 @@
 import "./WorkSection.css";
 
 import Link from "next/link";
-import { ArrowRight, ShieldAlert, Check } from "lucide-react";
-import { Kicker, TechChip } from "./Primitives";
+import { ArrowRight, Check } from "lucide-react";
+import { Kicker } from "./Primitives";
 import { LowPolyField } from "./LowPolyField";
-import { PROJECTS, T } from "@/data/data";
+import { WORKS } from "@/data/work";
+import type { Work } from "@/data/work";
+import { T } from "@/data/data";
 import type { Lang } from "@/data/data";
 
-function WorkRow({
-  p,
-  lang,
-  flip,
-}: {
-  p: (typeof PROJECTS)[number];
-  lang: Lang;
-  flip: boolean;
-}) {
+/** Deterministic seed from a slug — fallback art for works with no screenshot. */
+function seedFromSlug(slug: string): number {
+  let n = 0;
+  for (let i = 0; i < slug.length; i++) n = (n * 31 + slug.charCodeAt(i)) >>> 0;
+  return n % 997;
+}
+
+function WorkRow({ w, lang, flip }: { w: Work; lang: Lang; flip: boolean }) {
   const t = T[lang];
+  const shot = w.screenshots.find((s) => s.featured) ?? w.screenshots[0];
+  const bullets = w.features.slice(0, 3).map((f) => f.heading[lang]);
   return (
     <article className={`lv-row ${flip ? "is-flip" : ""}`}>
       <Link
-        href={`/${lang}/work/${p.id}`}
+        href={`/${lang}/work/${w.slug}`}
         className="lv-row-media"
-        aria-label={`View ${p.title[lang]}`}
+        aria-label={`View ${w.name[lang]}`}
       >
-        <LowPolyField
-          seed={p.seed}
-          label={p.year}
-          style={{ position: "absolute", inset: 0 }}
-        />
+        {shot ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            className="lv-row-shot"
+            src={shot.src}
+            alt={`${w.name[lang]} screenshot`}
+            loading="lazy"
+          />
+        ) : (
+          <LowPolyField
+            seed={seedFromSlug(w.slug)}
+            label={w.year}
+            style={{ position: "absolute", inset: 0 }}
+          />
+        )}
       </Link>
       <div className="lv-row-body">
-        <Kicker as="p">{p.kicker[lang]}</Kicker>
-        <h3 className="lv-row-title">
-          {p.stakes && (
-            <span className="lv-stakes" title="mission-critical">
-              <ShieldAlert size={20} />
-            </span>
-          )}
-          {p.title[lang]}
-        </h3>
-        <p className="lv-row-desc">{p.desc[lang]}</p>
+        <Kicker as="p">{w.kicker[lang]}</Kicker>
+        <h3 className="lv-row-title">{w.name[lang]}</h3>
+        <p className="lv-row-desc">{w.tagline[lang]}</p>
         <ul className="lv-row-bullets">
-          {p.bullets[lang].map((b, i) => (
+          {bullets.map((b, i) => (
             <li key={i}>
               <Check size={16} />
               {b}
@@ -51,11 +57,26 @@ function WorkRow({
         </ul>
         <div className="lv-row-tech">
           <span className="lv-row-tech-lab">{t.engineeredWith}</span>
-          {p.tech.map((x) => (
-            <TechChip key={x}>{x}</TechChip>
+          {w.tech.slice(0, 5).map((tech) => (
+            <span
+              key={tech.name}
+              className={`lv-chip ${tech.icon ? "has-logo" : ""}`}
+            >
+              {tech.icon && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className="lv-chip-logo"
+                  src={tech.icon}
+                  alt=""
+                  width={14}
+                  height={14}
+                />
+              )}
+              {tech.name}
+            </span>
           ))}
         </div>
-        <Link href={`/${lang}/work/${p.id}`} className="lv-link-arrow">
+        <Link href={`/${lang}/work/${w.slug}`} className="lv-link-arrow">
           {t.viewDetails} <ArrowRight size={15} />
         </Link>
       </div>
@@ -65,6 +86,7 @@ function WorkRow({
 
 export function WorkSection({ lang }: { lang: Lang }) {
   const t = T[lang];
+  const works = WORKS.filter((w) => w.frontPage);
   return (
     <section className="lv-section" id="work">
       <div className="lv-section-head">
@@ -75,8 +97,8 @@ export function WorkSection({ lang }: { lang: Lang }) {
         </Link>
       </div>
       <div className="lv-rows">
-        {PROJECTS.map((p, i) => (
-          <WorkRow key={p.id} p={p} lang={lang} flip={i % 2 === 1} />
+        {works.map((w, i) => (
+          <WorkRow key={w.slug} w={w} lang={lang} flip={i % 2 === 1} />
         ))}
       </div>
     </section>

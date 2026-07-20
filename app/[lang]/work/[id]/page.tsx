@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { PROJECTS } from "@/data/data";
-import { ProjectDetail } from "@/app/components/Views";
+import { WORKS } from "@/data/work";
+import { WorkDetail } from "@/app/components/Views";
 import { MiniFooter } from "@/app/components/ContactFooter";
 import type { Lang } from "@/data/data";
 
 export function generateStaticParams() {
-  return PROJECTS.map((p) => ({ id: p.id }));
+  return WORKS.map((w) => ({ id: w.slug }));
 }
 
 export async function generateMetadata({
@@ -14,11 +14,11 @@ export async function generateMetadata({
   params: Promise<{ lang: string; id: string }>;
 }): Promise<Metadata> {
   const { lang, id } = await params;
-  const p = PROJECTS.find((x) => x.id === id) || PROJECTS[0];
+  const w = WORKS.find((x) => x.slug === id) || WORKS[0];
   const l = lang as Lang;
   return {
-    title: `${p.title[l]} — Leonardo Vasconcellos`,
-    description: p.desc[l],
+    title: `${w.name[l]} — Leonardo Vasconcellos`,
+    description: w.tagline[l],
   };
 }
 
@@ -30,7 +30,7 @@ export default async function ProjectPage({
   const { lang, id } = await params;
   return (
     <>
-      <ProjectDetail lang={lang as Lang} id={id} />
+      <WorkDetail lang={lang as Lang} id={id} />
       <MiniFooter />
     </>
   );

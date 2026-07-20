@@ -23,6 +23,7 @@ export interface Work {
   slug: string;
   year: string;
   pinned: boolean;
+  frontPage: boolean;
   liveUrl?: string;
   logo?: string; // image path "/projects/<slug>/<slug>-logo.<ext>", or an emoji when isLogoEmoji
   isLogoEmoji?: boolean; // when true, logo is an emoji to render as text, not an <img> src
@@ -38,2229 +39,2258 @@ export interface Work {
 
 export const WORKS: Work[] = [
   {
-    "slug": "juca",
-    "year": "2026",
-    "pinned": false,
-    "liveUrl": "https://juca.vercel.app/",
-    "logo": "/projects/juca/juca-logo.svg",
-    "name": {
-      "en": "Histórias do Juca",
-      "pt": "Histórias do Juca"
+    slug: "juca",
+    year: "2026",
+    pinned: false,
+    frontPage: true,
+    liveUrl: "https://juca.vercel.app/",
+    logo: "/projects/juca/juca-logo.svg",
+    name: {
+      en: "Histórias do Juca",
+      pt: "Histórias do Juca",
     },
-    "tagline": {
-      "en": "Choice-based interactive fiction, engineered to actually work with screen readers — the same adventure, alive for readers who see and readers who don't.",
-      "pt": "Ficção interativa baseada em escolhas, projetada para funcionar de verdade com leitores de tela — a mesma aventura, viva para quem enxerga e para quem não enxerga."
+    tagline: {
+      en: "Choice-based interactive fiction, engineered to actually work with screen readers — the same adventure, alive for readers who see and readers who don't.",
+      pt: "Ficção interativa baseada em escolhas, projetada para funcionar de verdade com leitores de tela — a mesma aventura, viva para quem enxerga e para quem não enxerga.",
     },
-    "kicker": {
-      "en": "// accessible interactive fiction · inclusion for blind readers",
-      "pt": "// ficção interativa acessível · inclusão para leitores cegos"
+    kicker: {
+      en: "// accessible interactive fiction · inclusion for blind readers",
+      pt: "// ficção interativa acessível · inclusão para leitores cegos",
     },
-    "intro": {
-      "en": "**Histórias do Juca** is a choice-based interactive fiction platform for a social project on blind inclusion — built so a screen-reader user can actually finish the adventure alone, yet fun for everyone.",
-      "pt": "**Histórias do Juca** é uma plataforma de ficção interativa baseada em escolhas para um projeto social de inclusão de pessoas cegas — feita para que quem usa leitor de tela consiga de fato terminar a aventura sozinho, e ainda assim divertida para todos."
+    intro: {
+      en: "**Histórias do Juca** is a choice-based interactive fiction platform for a social project on blind inclusion — built so a screen-reader user can actually finish the adventure alone, yet fun for everyone.",
+      pt: "**Histórias do Juca** é uma plataforma de ficção interativa baseada em escolhas para um projeto social de inclusão de pessoas cegas — feita para que quem usa leitor de tela consiga de fato terminar a aventura sozinho, e ainda assim divertida para todos.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "The reader reads _or listens to_ a scene and picks, with real buttons, what happens next; each story is a branching graph of nodes with different endings. The hero is **Juca**, a young, blind alligator from the Cachoeira River in Joinville, Brazil, who finds treasures using smell and hearing — the protagonist himself mirrors the audience the project wants to welcome.",
         "The first story, _Juca e a Caça ao Tesouro do Rio_, branches into two paths and two endings. The second, _Juca e a Corrida do Churrasco_, introduces **lightweight state** (money and time) that changes as you choose and unlocks or hides options — a race against the clock (and hunger) to reach a barbecue across town.",
-        "The non-negotiable premise is **accessibility first**: the experience must _genuinely work_ with screen readers (NVDA, JAWS, VoiceOver, Narrator) and keyboard navigation — not merely \"be compatible.\" Choices are real buttons reachable by Tab and fired with Enter/Space; on every scene change, focus moves to the new text so the screen reader announces it; there is a skip link, high contrast, an always-visible focus ring, and no information conveyed by color alone. In-browser narration (Web Speech API, pt-BR) with speed control, a native share button, and per-scene illustrations round out the experience.",
-        "Architecturally, the **engine is fully separated from the content**: the React components are generic and story-agnostic, while each story is self-contained under `stories/<slug>/` (a JSON node graph, cover art, and the source script). A graph validator (`pnpm validate-stories`) guarantees no node is unreachable, choice-less, or missing image alt text — keeping accessibility verifiable with every new story that ships."
+        'The non-negotiable premise is **accessibility first**: the experience must _genuinely work_ with screen readers (NVDA, JAWS, VoiceOver, Narrator) and keyboard navigation — not merely "be compatible." Choices are real buttons reachable by Tab and fired with Enter/Space; on every scene change, focus moves to the new text so the screen reader announces it; there is a skip link, high contrast, an always-visible focus ring, and no information conveyed by color alone. In-browser narration (Web Speech API, pt-BR) with speed control, a native share button, and per-scene illustrations round out the experience.',
+        "Architecturally, the **engine is fully separated from the content**: the React components are generic and story-agnostic, while each story is self-contained under `stories/<slug>/` (a JSON node graph, cover art, and the source script). A graph validator (`pnpm validate-stories`) guarantees no node is unreachable, choice-less, or missing image alt text — keeping accessibility verifiable with every new story that ships.",
       ],
-      "pt": [
+      pt: [
         "O leitor lê _ou ouve_ uma cena e escolhe, com botões de verdade, o que acontece a seguir; cada história é um grafo ramificado de nós com finais diferentes. O herói é o **Juca**, um jacaré jovem e cego do Rio Cachoeira, em Joinville, Brasil, que encontra tesouros usando o olfato e a audição — o próprio protagonista espelha o público que o projeto quer acolher.",
         "A primeira história, _Juca e a Caça ao Tesouro do Rio_, se ramifica em dois caminhos e dois finais. A segunda, _Juca e a Corrida do Churrasco_, introduz **estado leve** (dinheiro e tempo) que muda conforme você escolhe e libera ou esconde opções — uma corrida contra o relógio (e contra a fome) para chegar a um churrasco do outro lado da cidade.",
-        "A premissa inegociável é **acessibilidade em primeiro lugar**: a experiência precisa _funcionar de verdade_ com leitores de tela (NVDA, JAWS, VoiceOver, Narrator) e navegação por teclado — não apenas \"ser compatível\". As escolhas são botões reais alcançáveis por Tab e acionados com Enter/Espaço; a cada troca de cena, o foco vai para o novo texto para que o leitor de tela o anuncie; há link de pular conteúdo, alto contraste, um anel de foco sempre visível e nenhuma informação transmitida apenas por cor. Narração no navegador (Web Speech API, pt-BR) com controle de velocidade, um botão nativo de compartilhar e ilustrações por cena completam a experiência.",
-        "Arquiteturalmente, o **motor é totalmente separado do conteúdo**: os componentes React são genéricos e agnósticos de história, enquanto cada história é autocontida em `stories/<slug>/` (um grafo de nós em JSON, arte de capa e o roteiro-fonte). Um validador de grafo (`pnpm validate-stories`) garante que nenhum nó fique inalcançável, sem escolhas ou sem texto alternativo de imagem — mantendo a acessibilidade verificável a cada nova história publicada."
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Built an accessibility-first engine, verified against real screen readers",
-          "pt": "Construí um motor com acessibilidade em primeiro lugar, verificado contra leitores de tela reais"
-        },
-        "body": {
-          "en": "(NVDA, JAWS, VoiceOver, Narrator) and keyboard-only navigation with automated Playwright walkthroughs — turning \"screen-reader compatible\" into a product a blind child can actually finish alone, which is the entire reach of this social project.",
-          "pt": "(NVDA, JAWS, VoiceOver, Narrator) e navegação somente por teclado, com percursos automatizados em Playwright — transformando \"compatível com leitor de tela\" em um produto que uma criança cega consegue de fato terminar sozinha, que é todo o alcance deste projeto social."
-        }
-      },
-      {
-        "heading": {
-          "en": "Decoupled a content-agnostic story engine from JSON-defined story graphs",
-          "pt": "Desacoplei um motor de histórias agnóstico de conteúdo de grafos definidos em JSON"
-        },
-        "body": {
-          "en": "(plus optional lightweight state like money and time), so authors can ship a new branching story — and even new game mechanics — without touching a line of engine code, driving the cost of each new story toward zero.",
-          "pt": "(além de estado leve opcional, como dinheiro e tempo), para que autores publiquem uma nova história ramificada — e até novas mecânicas de jogo — sem tocar em uma linha do código do motor, levando o custo de cada nova história para perto de zero."
-        }
-      },
-      {
-        "heading": {
-          "en": "Made every scene work hands-free and shareable out of the box",
-          "pt": "Fiz cada cena funcionar sem as mãos e pronta para compartilhar, de imediato"
-        },
-        "body": {
-          "en": "in-browser narration (Web Speech API) with speed control, per-scene AI illustrations, and native share with a copy-link fallback — so the stories reach kids with no app install and no paid TTS bill.",
-          "pt": "narração no navegador (Web Speech API) com controle de velocidade, ilustrações por cena geradas por IA e compartilhamento nativo com fallback de copiar link — para que as histórias cheguem às crianças sem instalar app e sem conta de TTS paga."
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "TypeScript",
-        "version": "5.x",
-        "icon": "/devicons/typescript-original.svg"
-      },
-      {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "Next.js",
-        "version": "16.2.7",
-        "icon": "/devicons/nextjs-original.svg"
-      },
-      {
-        "name": "React",
-        "version": "19.2.4",
-        "icon": "/devicons/react-original.svg"
-      },
-      {
-        "name": "Tailwind CSS",
-        "version": "4.x",
-        "icon": "/devicons/tailwindcss-original.svg"
-      },
-      {
-        "name": "Node.js",
-        "version": "scripts",
-        "icon": "/devicons/nodejs-original.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/juca/screenshots/06-historias-do-juca.png"
-      },
-      {
-        "src": "/projects/juca/screenshots/01-historias-do-juca.png"
-      },
-      {
-        "src": "/projects/juca/screenshots/02-historias-do-juca.png"
-      },
-      {
-        "src": "/projects/juca/screenshots/03-historias-do-juca.png"
-      },
-      {
-        "src": "/projects/juca/screenshots/04-historias-do-juca.png"
-      },
-      {
-        "src": "/projects/juca/screenshots/05-historias-do-juca.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "semprecomvoce-next",
-    "year": "2026",
-    "pinned": false,
-    "liveUrl": "https://semprecomvoce-novo.vercel.app/",
-    "logo": "/projects/semprecomvoce-next/semprecomvoce-next-logo.svg",
-    "name": {
-      "en": "Instituto do Câncer Sempre Com Você",
-      "pt": "Instituto do Câncer Sempre Com Você"
-    },
-    "tagline": {
-      "en": "The official website for a cancer care NGO in Joinville, Brazil.",
-      "pt": "O site oficial de uma ONG de apoio a pacientes com câncer em Joinville, Brasil."
-    },
-    "kicker": {
-      "en": "// nonprofit website · instituto do câncer",
-      "pt": "// site sem fins lucrativos · instituto do câncer"
-    },
-    "intro": {
-      "en": "The official website for Instituto do Câncer Sempre Com Você, a cancer care NGO in Joinville, Brazil — connecting patients to support, amplifying their stories, and making donations effortless.",
-      "pt": "O site oficial do Instituto do Câncer Sempre Com Você, uma ONG de apoio a pacientes com câncer em Joinville, Brasil — conectando pacientes ao suporte, amplificando suas histórias e tornando as doações simples."
-    },
-    "body": {
-      "en": [
-        "Instituto do Câncer Sempre Com Você is a nonprofit organization dedicated to improving the lives of cancer patients and their families across Santa Catarina, Brazil. This Next.js website serves as the NGO's complete digital presence — from a blog filled with real patient journeys, to a full donation flow that supports ongoing care."
+        'A premissa inegociável é **acessibilidade em primeiro lugar**: a experiência precisa _funcionar de verdade_ com leitores de tela (NVDA, JAWS, VoiceOver, Narrator) e navegação por teclado — não apenas "ser compatível". As escolhas são botões reais alcançáveis por Tab e acionados com Enter/Espaço; a cada troca de cena, o foco vai para o novo texto para que o leitor de tela o anuncie; há link de pular conteúdo, alto contraste, um anel de foco sempre visível e nenhuma informação transmitida apenas por cor. Narração no navegador (Web Speech API, pt-BR) com controle de velocidade, um botão nativo de compartilhar e ilustrações por cena completam a experiência.',
+        "Arquiteturalmente, o **motor é totalmente separado do conteúdo**: os componentes React são genéricos e agnósticos de história, enquanto cada história é autocontida em `stories/<slug>/` (um grafo de nós em JSON, arte de capa e o roteiro-fonte). Um validador de grafo (`pnpm validate-stories`) garante que nenhum nó fique inalcançável, sem escolhas ou sem texto alternativo de imagem — mantendo a acessibilidade verificável a cada nova história publicada.",
       ],
-      "pt": [
-        "O Instituto do Câncer Sempre Com Você é uma organização sem fins lucrativos dedicada a melhorar a vida de pacientes com câncer e de suas famílias em Santa Catarina, Brasil. Este site em Next.js funciona como a presença digital completa da ONG — de um blog repleto de jornadas reais de pacientes a um fluxo completo de doação que sustenta o cuidado contínuo."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Blog with real patient stories",
-          "pt": "Blog com histórias reais de pacientes"
+        heading: {
+          en: "Built an accessibility-first engine, verified against real screen readers",
+          pt: "Construí um motor com acessibilidade em primeiro lugar, verificado contra leitores de tela reais",
         },
-        "body": {
-          "en": "A content-rich blog system showcasing the NGO's mission through personal testimonials, photos, and updates from the field.",
-          "pt": "Um sistema de blog rico em conteúdo que mostra a missão da ONG por meio de depoimentos pessoais, fotos e atualizações do dia a dia."
-        }
+        body: {
+          en: '(NVDA, JAWS, VoiceOver, Narrator) and keyboard-only navigation with automated Playwright walkthroughs — turning "screen-reader compatible" into a product a blind child can actually finish alone, which is the entire reach of this social project.',
+          pt: '(NVDA, JAWS, VoiceOver, Narrator) e navegação somente por teclado, com percursos automatizados em Playwright — transformando "compatível com leitor de tela" em um produto que uma criança cega consegue de fato terminar sozinha, que é todo o alcance deste projeto social.',
+        },
       },
       {
-        "heading": {
-          "en": "Monthly donation flow",
-          "pt": "Fluxo de doação mensal"
+        heading: {
+          en: "Decoupled a content-agnostic story engine from JSON-defined story graphs",
+          pt: "Desacoplei um motor de histórias agnóstico de conteúdo de grafos definidos em JSON",
         },
-        "body": {
-          "en": "A complete donation experience with one-time and recurring options, confirmation screens, and structured payment flow.",
-          "pt": "Uma experiência de doação completa com opções únicas e recorrentes, telas de confirmação e um fluxo de pagamento estruturado."
-        }
+        body: {
+          en: "(plus optional lightweight state like money and time), so authors can ship a new branching story — and even new game mechanics — without touching a line of engine code, driving the cost of each new story toward zero.",
+          pt: "(além de estado leve opcional, como dinheiro e tempo), para que autores publiquem uma nova história ramificada — e até novas mecânicas de jogo — sem tocar em uma linha do código do motor, levando o custo de cada nova história para perto de zero.",
+        },
       },
       {
-        "heading": {
-          "en": "Animated navigation with mobile submenu",
-          "pt": "Navegação animada com submenu no mobile"
+        heading: {
+          en: "Made every scene work hands-free and shareable out of the box",
+          pt: "Fiz cada cena funcionar sem as mãos e pronta para compartilhar, de imediato",
         },
-        "body": {
-          "en": "A polished navigation system with a sliding pill indicator on desktop and a layered, animated mobile menu with nested submenu support.",
-          "pt": "Um sistema de navegação caprichado, com um indicador em pílula deslizante no desktop e um menu mobile animado em camadas com suporte a submenus aninhados."
-        }
-      }
+        body: {
+          en: "in-browser narration (Web Speech API) with speed control, per-scene AI illustrations, and native share with a copy-link fallback — so the stories reach kids with no app install and no paid TTS bill.",
+          pt: "narração no navegador (Web Speech API) com controle de velocidade, ilustrações por cena geradas por IA e compartilhamento nativo com fallback de copiar link — para que as histórias cheguem às crianças sem instalar app e sem conta de TTS paga.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "TypeScript",
-        "version": "5.x",
-        "icon": "/devicons/typescript-original.svg"
+        name: "TypeScript",
+        version: "5.x",
+        icon: "/devicons/typescript-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES2022",
-        "icon": "/devicons/javascript-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "Next.js",
+        version: "16.2.7",
+        icon: "/devicons/nextjs-original.svg",
       },
       {
-        "name": "Python",
-        "version": "3.x",
-        "icon": "/devicons/python-original.svg"
+        name: "React",
+        version: "19.2.4",
+        icon: "/devicons/react-original.svg",
       },
       {
-        "name": "Node.js",
-        "version": "scripts",
-        "icon": "/devicons/nodejs-original.svg"
+        name: "Tailwind CSS",
+        version: "4.x",
+        icon: "/devicons/tailwindcss-original.svg",
       },
       {
-        "name": "Next.js",
-        "version": "16.2.4",
-        "icon": "/devicons/nextjs-original.svg"
+        name: "Node.js",
+        version: "scripts",
+        icon: "/devicons/nodejs-original.svg",
       },
-      {
-        "name": "React",
-        "version": "19.2.4",
-        "icon": "/devicons/react-original.svg"
-      },
-      {
-        "name": "Tailwind CSS",
-        "version": "4.x",
-        "icon": "/devicons/tailwindcss-original.svg"
-      }
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/semprecomvoce-next/screenshots/captura-de-tela-2026-06-07-100757.png",
-        "featured": true
+        src: "/projects/juca/screenshots/06-historias-do-juca.png",
       },
       {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-1.png"
+        src: "/projects/juca/screenshots/01-historias-do-juca.png",
       },
       {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-4-programs.png"
+        src: "/projects/juca/screenshots/02-historias-do-juca.png",
       },
       {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-4-section-full.png"
+        src: "/projects/juca/screenshots/03-historias-do-juca.png",
       },
       {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-5-hover-test.png"
+        src: "/projects/juca/screenshots/04-historias-do-juca.png",
       },
       {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-6-final.png"
+        src: "/projects/juca/screenshots/05-historias-do-juca.png",
+        featured: true,
       },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-6-section-top.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-8-footer-links.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-8-section-areas.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-9-section-gratidao.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-10-gallery.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-10-mobile-fixed.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-16-mobile-cta-correct.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/localhost-3000.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/captura-de-tela-2026-06-07-100915.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/captura-de-tela-2026-06-07-101008.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/captura-de-tela-2026-06-07-101041.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/localhost-3000-iphone-14-pro-max.png"
-      },
-      {
-        "src": "/projects/semprecomvoce-next/screenshots/screenshot-2-blog-post.png"
-      }
-    ]
+    ],
   },
   {
-    "slug": "cmente",
-    "year": "2017",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/cmente",
-    "logo": "/projects/cmente/cmente-logo.png",
-    "name": {
-      "en": "CMENTE — Incubadora & Coworking de Advogados",
-      "pt": "CMENTE — Incubadora & Coworking de Advogados"
+    slug: "semprecomvoce-next",
+    year: "2026",
+    pinned: false,
+    frontPage: true,
+    liveUrl: "https://semprecomvoce-novo.vercel.app/",
+    logo: "/projects/semprecomvoce-next/semprecomvoce-next-logo.svg",
+    name: {
+      en: "Instituto do Câncer Sempre Com Você",
+      pt: "Instituto do Câncer Sempre Com Você",
     },
-    "tagline": {
-      "en": "Brazil's first private incubator and coworking space built exclusively for lawyers, combining mentorship, professional development, and community to help legal entrepreneurs launch and grow.",
-      "pt": "A primeira incubadora e coworking privado do Brasil criado exclusivamente para advogados, combinando mentoria, desenvolvimento profissional e comunidade para ajudar empreendedores do direito a começar e crescer."
+    tagline: {
+      en: "The official website for a cancer care NGO in Joinville, Brazil.",
+      pt: "O site oficial de uma ONG de apoio a pacientes com câncer em Joinville, Brasil.",
     },
-    "kicker": {
-      "en": "// legal incubator · coworking · são paulo",
-      "pt": "// incubadora jurídica · coworking · são paulo"
+    kicker: {
+      en: "// nonprofit website · instituto do câncer",
+      pt: "// site sem fins lucrativos · instituto do câncer",
     },
-    "intro": {
-      "en": "Brazil's first private incubator and coworking built exclusively for lawyers — born from a market of 1 million attorneys and a 20% OAB pass rate — delivering the mentorship, community, and infrastructure the legal profession was missing.",
-      "pt": "A primeira incubadora e coworking privado do Brasil criado exclusivamente para advogados — nascido de um mercado de 1 milhão de advogados e uma taxa de aprovação de 20% na OAB — entregando a mentoria, a comunidade e a infraestrutura que faltavam à profissão jurídica."
+    intro: {
+      en: "The official website for Instituto do Câncer Sempre Com Você, a cancer care NGO in Joinville, Brazil — connecting patients to support, amplifying their stories, and making donations effortless.",
+      pt: "O site oficial do Instituto do Câncer Sempre Com Você, uma ONG de apoio a pacientes com câncer em Joinville, Brasil — conectando pacientes ao suporte, amplificando suas histórias e tornando as doações simples.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
+        "Instituto do Câncer Sempre Com Você is a nonprofit organization dedicated to improving the lives of cancer patients and their families across Santa Catarina, Brazil. This Next.js website serves as the NGO's complete digital presence — from a blog filled with real patient journeys, to a full donation flow that supports ongoing care.",
+      ],
+      pt: [
+        "O Instituto do Câncer Sempre Com Você é uma organização sem fins lucrativos dedicada a melhorar a vida de pacientes com câncer e de suas famílias em Santa Catarina, Brasil. Este site em Next.js funciona como a presença digital completa da ONG — de um blog repleto de jornadas reais de pacientes a um fluxo completo de doação que sustenta o cuidado contínuo.",
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Blog with real patient stories",
+          pt: "Blog com histórias reais de pacientes",
+        },
+        body: {
+          en: "A content-rich blog system showcasing the NGO's mission through personal testimonials, photos, and updates from the field.",
+          pt: "Um sistema de blog rico em conteúdo que mostra a missão da ONG por meio de depoimentos pessoais, fotos e atualizações do dia a dia.",
+        },
+      },
+      {
+        heading: {
+          en: "Monthly donation flow",
+          pt: "Fluxo de doação mensal",
+        },
+        body: {
+          en: "A complete donation experience with one-time and recurring options, confirmation screens, and structured payment flow.",
+          pt: "Uma experiência de doação completa com opções únicas e recorrentes, telas de confirmação e um fluxo de pagamento estruturado.",
+        },
+      },
+      {
+        heading: {
+          en: "Animated navigation with mobile submenu",
+          pt: "Navegação animada com submenu no mobile",
+        },
+        body: {
+          en: "A polished navigation system with a sliding pill indicator on desktop and a layered, animated mobile menu with nested submenu support.",
+          pt: "Um sistema de navegação caprichado, com um indicador em pílula deslizante no desktop e um menu mobile animado em camadas com suporte a submenus aninhados.",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "TypeScript",
+        version: "5.x",
+        icon: "/devicons/typescript-original.svg",
+      },
+      {
+        name: "JavaScript",
+        version: "ES2022",
+        icon: "/devicons/javascript-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "Python",
+        version: "3.x",
+        icon: "/devicons/python-original.svg",
+      },
+      {
+        name: "Node.js",
+        version: "scripts",
+        icon: "/devicons/nodejs-original.svg",
+      },
+      {
+        name: "Next.js",
+        version: "16.2.4",
+        icon: "/devicons/nextjs-original.svg",
+      },
+      {
+        name: "React",
+        version: "19.2.4",
+        icon: "/devicons/react-original.svg",
+      },
+      {
+        name: "Tailwind CSS",
+        version: "4.x",
+        icon: "/devicons/tailwindcss-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/semprecomvoce-next/screenshots/captura-de-tela-2026-06-07-100757.png",
+        featured: true,
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-1.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-4-programs.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-4-section-full.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-5-hover-test.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-6-final.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-6-section-top.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-8-footer-links.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-8-section-areas.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-9-section-gratidao.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-10-gallery.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-10-mobile-fixed.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-16-mobile-cta-correct.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/localhost-3000.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/captura-de-tela-2026-06-07-100915.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/captura-de-tela-2026-06-07-101008.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/captura-de-tela-2026-06-07-101041.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/localhost-3000-iphone-14-pro-max.png",
+      },
+      {
+        src: "/projects/semprecomvoce-next/screenshots/screenshot-2-blog-post.png",
+      },
+    ],
+  },
+  {
+    slug: "cmente",
+    year: "2017",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://webarchive.leonardolimadevasconcellos.workers.dev/cmente",
+    logo: "/projects/cmente/cmente-logo.png",
+    name: {
+      en: "CMENTE — Incubadora & Coworking de Advogados",
+      pt: "CMENTE — Incubadora & Coworking de Advogados",
+    },
+    tagline: {
+      en: "Brazil's first private incubator and coworking space built exclusively for lawyers, combining mentorship, professional development, and community to help legal entrepreneurs launch and grow.",
+      pt: "A primeira incubadora e coworking privado do Brasil criado exclusivamente para advogados, combinando mentoria, desenvolvimento profissional e comunidade para ajudar empreendedores do direito a começar e crescer.",
+    },
+    kicker: {
+      en: "// legal incubator · coworking · são paulo",
+      pt: "// incubadora jurídica · coworking · são paulo",
+    },
+    intro: {
+      en: "Brazil's first private incubator and coworking built exclusively for lawyers — born from a market of 1 million attorneys and a 20% OAB pass rate — delivering the mentorship, community, and infrastructure the legal profession was missing.",
+      pt: "A primeira incubadora e coworking privado do Brasil criado exclusivamente para advogados — nascido de um mercado de 1 milhão de advogados e uma taxa de aprovação de 20% na OAB — entregando a mentoria, a comunidade e a infraestrutura que faltavam à profissão jurídica.",
+    },
+    body: {
+      en: [
         "CMENTE was founded in São Paulo by attorney and entrepreneur Camila Gullo as a response to a structural gap in the Brazilian legal market. With over one million registered lawyers, more than 1,000 law schools, and an OAB bar exam pass rate of only ~20%, newly admitted attorneys had nowhere to turn for the practical business support they needed to build a sustainable career in law.",
-        "The institutional website was CMENTE's digital headquarters — the primary point of contact for prospective members, partners, and press. It communicated the startup's four pillars: **Mentorship** (goal-oriented coaching for professional and business growth), **Coworking** (a collaborative workspace fostering community among legal professionals), **Professional Development** (courses, seminars, and meetups), and **Incubation** (end-to-end support — administrative, accounting, financial, and organizational — for solo practitioners and small firms)."
+        "The institutional website was CMENTE's digital headquarters — the primary point of contact for prospective members, partners, and press. It communicated the startup's four pillars: **Mentorship** (goal-oriented coaching for professional and business growth), **Coworking** (a collaborative workspace fostering community among legal professionals), **Professional Development** (courses, seminars, and meetups), and **Incubation** (end-to-end support — administrative, accounting, financial, and organizational — for solo practitioners and small firms).",
       ],
-      "pt": [
+      pt: [
         "A CMENTE foi fundada em São Paulo pela advogada e empreendedora Camila Gullo como resposta a uma lacuna estrutural no mercado jurídico brasileiro. Com mais de um milhão de advogados registrados, mais de 1.000 faculdades de direito e uma taxa de aprovação no Exame da OAB de apenas ~20%, os advogados recém-inscritos não tinham a quem recorrer para o suporte prático de negócios de que precisavam para construir uma carreira sustentável no direito.",
-        "O site institucional era a sede digital da CMENTE — o principal ponto de contato para potenciais membros, parceiros e imprensa. Ele comunicava os quatro pilares da startup: **Mentoria** (coaching orientado a metas para crescimento profissional e de negócios), **Coworking** (um espaço colaborativo que fomenta comunidade entre profissionais do direito), **Desenvolvimento Profissional** (cursos, seminários e meetups) e **Incubação** (suporte ponta a ponta — administrativo, contábil, financeiro e organizacional — para advogados autônomos e pequenos escritórios)."
-      ]
+        "O site institucional era a sede digital da CMENTE — o principal ponto de contato para potenciais membros, parceiros e imprensa. Ele comunicava os quatro pilares da startup: **Mentoria** (coaching orientado a metas para crescimento profissional e de negócios), **Coworking** (um espaço colaborativo que fomenta comunidade entre profissionais do direito), **Desenvolvimento Profissional** (cursos, seminários e meetups) e **Incubação** (suporte ponta a ponta — administrativo, contábil, financeiro e organizacional — para advogados autônomos e pequenos escritórios).",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Custom WordPress implementation for a brand-new startup",
-          "pt": "Implementação WordPress sob medida para uma startup nova"
+        heading: {
+          en: "Custom WordPress implementation for a brand-new startup",
+          pt: "Implementação WordPress sob medida para uma startup nova",
         },
-        "body": {
-          "en": "delivered a production-ready institutional site that served as CMENTE's sole digital presence at launch, enabling the founding team to own and update content independently from day one without developer dependency.",
-          "pt": "entreguei um site institucional pronto para produção que serviu como a única presença digital da CMENTE no lançamento, permitindo que o time fundador tivesse autonomia total sobre o conteúdo desde o primeiro dia, sem depender de desenvolvedor."
-        }
+        body: {
+          en: "delivered a production-ready institutional site that served as CMENTE's sole digital presence at launch, enabling the founding team to own and update content independently from day one without developer dependency.",
+          pt: "entreguei um site institucional pronto para produção que serviu como a única presença digital da CMENTE no lançamento, permitindo que o time fundador tivesse autonomia total sobre o conteúdo desde o primeiro dia, sem depender de desenvolvedor.",
+        },
       },
       {
-        "heading": {
-          "en": "Multi-author blog with content migration",
-          "pt": "Blog multiautor com migração de conteúdo"
+        heading: {
+          en: "Multi-author blog with content migration",
+          pt: "Blog multiautor com migração de conteúdo",
         },
-        "body": {
-          "en": "architected a category-taxonomy blog and migrated 14+ original articles from Medium into the CMS, building a searchable content archive that drove organic reach and positioned CMENTE as a thought leader in Brazilian legal entrepreneurship.",
-          "pt": "arquitetei um blog com taxonomia de categorias e migrei mais de 14 artigos originais do Medium para o CMS, construindo um arquivo de conteúdo pesquisável que impulsionou o alcance orgânico e posicionou a CMENTE como referência no empreendedorismo jurídico brasileiro."
-        }
+        body: {
+          en: "architected a category-taxonomy blog and migrated 14+ original articles from Medium into the CMS, building a searchable content archive that drove organic reach and positioned CMENTE as a thought leader in Brazilian legal entrepreneurship.",
+          pt: "arquitetei um blog com taxonomia de categorias e migrei mais de 14 artigos originais do Medium para o CMS, construindo um arquivo de conteúdo pesquisável que impulsionou o alcance orgânico e posicionou a CMENTE como referência no empreendedorismo jurídico brasileiro.",
+        },
       },
       {
-        "heading": {
-          "en": "Service landing pages driving revenue diversification",
-          "pt": "Landing pages de serviços que diversificaram a receita"
+        heading: {
+          en: "Service landing pages driving revenue diversification",
+          pt: "Landing pages de serviços que diversificaram a receita",
         },
-        "body": {
-          "en": "built dedicated pages for the Escritório Virtual and Capacitação Profissional offerings, creating structured conversion paths for each revenue stream and extending CMENTE's addressable market to lawyers across Brazil who needed professional infrastructure without a physical seat.",
-          "pt": "construí páginas dedicadas para as ofertas de Escritório Virtual e Capacitação Profissional, criando caminhos de conversão estruturados para cada fonte de receita e ampliando o mercado da CMENTE a advogados de todo o Brasil que precisavam de infraestrutura profissional sem uma sala física."
-        }
-      }
+        body: {
+          en: "built dedicated pages for the Escritório Virtual and Capacitação Profissional offerings, creating structured conversion paths for each revenue stream and extending CMENTE's addressable market to lawyers across Brazil who needed professional infrastructure without a physical seat.",
+          pt: "construí páginas dedicadas para as ofertas de Escritório Virtual e Capacitação Profissional, criando caminhos de conversão estruturados para cada fonte de receita e ampliando o mercado da CMENTE a advogados de todo o Brasil que precisavam de infraestrutura profissional sem uma sala física.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "WordPress",
-        "version": "4.x",
-        "icon": "/devicons/wordpress-original.svg"
-      }
+        name: "WordPress",
+        version: "4.x",
+        icon: "/devicons/wordpress-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/cmente/screenshots/blog-cmente.png"
+        src: "/projects/cmente/screenshots/blog-cmente.png",
       },
       {
-        "src": "/projects/cmente/screenshots/como-se-organizar-em-2017-cmente.png"
+        src: "/projects/cmente/screenshots/como-se-organizar-em-2017-cmente.png",
       },
       {
-        "src": "/projects/cmente/screenshots/escritorio-virtual-cmente.png"
+        src: "/projects/cmente/screenshots/escritorio-virtual-cmente.png",
       },
       {
-        "src": "/projects/cmente/screenshots/cmente-incubadora-coworking-de-advogados.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/cmente/screenshots/cmente-incubadora-coworking-de-advogados.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "neotropiclab",
-    "year": "2017",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/neotropiclab",
-    "logo": "/projects/neotropiclab/neotropiclab-logo.png",
-    "name": {
-      "en": "Neotropic Lab",
-      "pt": "Neotropic Lab"
+    slug: "neotropiclab",
+    year: "2017",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/neotropiclab",
+    logo: "/projects/neotropiclab/neotropiclab-logo.png",
+    name: {
+      en: "Neotropic Lab",
+      pt: "Neotropic Lab",
     },
-    "tagline": {
-      "en": "A custom WordPress website for Neotropiclab, a Brazilian environmental consultancy offering biodiversity assessment, data analysis, and professional training services from Florianópolis.",
-      "pt": "Um site WordPress sob medida para a Neotropiclab, uma consultoria ambiental brasileira que oferece avaliação de biodiversidade, análise de dados e capacitação profissional a partir de Florianópolis."
+    tagline: {
+      en: "A custom WordPress website for Neotropiclab, a Brazilian environmental consultancy offering biodiversity assessment, data analysis, and professional training services from Florianópolis.",
+      pt: "Um site WordPress sob medida para a Neotropiclab, uma consultoria ambiental brasileira que oferece avaliação de biodiversidade, análise de dados e capacitação profissional a partir de Florianópolis.",
     },
-    "kicker": {
-      "en": "// environmental consulting · neotropiclab",
-      "pt": "// consultoria ambiental · neotropiclab"
+    kicker: {
+      en: "// environmental consulting · neotropiclab",
+      pt: "// consultoria ambiental · neotropiclab",
     },
-    "intro": {
-      "en": "A custom WordPress website for Neotropiclab, a Brazilian environmental consultancy offering biodiversity assessment, data analysis, and professional training services from Florianópolis.",
-      "pt": "Um site WordPress sob medida para a Neotropiclab, uma consultoria ambiental brasileira que oferece avaliação de biodiversidade, análise de dados e capacitação profissional a partir de Florianópolis."
+    intro: {
+      en: "A custom WordPress website for Neotropiclab, a Brazilian environmental consultancy offering biodiversity assessment, data analysis, and professional training services from Florianópolis.",
+      pt: "Um site WordPress sob medida para a Neotropiclab, uma consultoria ambiental brasileira que oferece avaliação de biodiversidade, análise de dados e capacitação profissional a partir de Florianópolis.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "Neotropiclab is an environmental science consultancy based in Florianópolis, Santa Catarina, founded by a group of biodiversity and ecology professionals. Their mission: conservation of biodiversity and maintenance of Earth's ecosystem functions, grounded in Brazilian Environmental Law, scientific knowledge, and guidelines from environmental regulatory bodies.",
         "The site was built on WordPress 4.8.2 using a heavily customized child theme of the Spark framework, with WPBakery Page Builder (v5.3) for flexible layout composition and Revolution Slider (v5.4.5.2) for the animated fullscreen homepage hero. Each of the three service areas — Environmental Consulting, Data Analysis, and Courses & Training — received its own dedicated landing page with a full-width header image and inline quote-request form via Contact Form 7.",
-        "The homepage also featured a Coworking Lab section and a team section with individual profiles for the founding scientists. The footer carried contact information for the Florianópolis office."
+        "The homepage also featured a Coworking Lab section and a team section with individual profiles for the founding scientists. The footer carried contact information for the Florianópolis office.",
       ],
-      "pt": [
+      pt: [
         "A Neotropiclab é uma consultoria em ciências ambientais sediada em Florianópolis, Santa Catarina, fundada por um grupo de profissionais de biodiversidade e ecologia. Sua missão: a conservação da biodiversidade e a manutenção das funções dos ecossistemas da Terra, fundamentada na legislação ambiental brasileira, no conhecimento científico e nas diretrizes dos órgãos reguladores ambientais.",
         "O site foi construído em WordPress 4.8.2 usando um child theme fortemente customizado do framework Spark, com o WPBakery Page Builder (v5.3) para composição de layout flexível e o Revolution Slider (v5.4.5.2) para o hero animado em tela cheia da home. Cada uma das três áreas de serviço — Consultoria Ambiental, Análise de Dados e Cursos & Capacitação — recebeu sua própria landing page dedicada, com imagem de cabeçalho em largura total e formulário de orçamento embutido via Contact Form 7.",
-        "A home também trazia uma seção Coworking Lab e uma seção de equipe com perfis individuais dos cientistas fundadores. O rodapé levava as informações de contato do escritório de Florianópolis."
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Self-managed content",
-          "pt": "Conteúdo autogerenciável"
-        },
-        "body": {
-          "en": "a multi-page site giving the Neotropiclab team full content ownership, so they could update service pages, team profiles, and course descriptions without developer involvement",
-          "pt": "um site de várias páginas que deu ao time da Neotropiclab total autonomia sobre o conteúdo, permitindo atualizar páginas de serviço, perfis da equipe e descrições de cursos sem envolvimento de desenvolvedor"
-        }
-      },
-      {
-        "heading": {
-          "en": "Per-service lead capture",
-          "pt": "Captação de leads por serviço"
-        },
-        "body": {
-          "en": "a fullscreen hero with dedicated landing pages (Environmental Consulting, Data Analysis, Training), each with its own contact-form CTA that shortened the path from visitor to qualified lead",
-          "pt": "um hero em tela cheia com landing pages dedicadas (Consultoria Ambiental, Análise de Dados, Capacitação), cada uma com seu próprio CTA de formulário de contato, encurtando o caminho do visitante ao lead qualificado"
-        }
-      },
-      {
-        "heading": {
-          "en": "Credibility-driven responsive design",
-          "pt": "Design responsivo voltado à credibilidade"
-        },
-        "body": {
-          "en": "a mobile-responsive custom theme with a brand-consistent color system, ensuring the site communicated scientific credibility to both public-sector clients and research partners",
-          "pt": "um tema sob medida responsivo para mobile, com um sistema de cores consistente com a marca, garantindo que o site comunicasse credibilidade científica tanto a clientes do setor público quanto a parceiros de pesquisa"
-        }
-      },
-      {
-        "heading": {
-          "en": "Consultoria Ambiental",
-          "pt": "Consultoria Ambiental"
-        },
-        "body": {
-          "en": "Reservoir management (invasive species such as *Limnoperna fortunei*), aquatic flora and fauna assessment (macroinvertebrates, zooplankton, phytoplankton, fish), and environmental licensing documentation (EIA, EAS, LAP, LAI, LAO).",
-          "pt": "Gestão de reservatórios (espécies invasoras como *Limnoperna fortunei*), avaliação de flora e fauna aquáticas (macroinvertebrados, zooplâncton, fitoplâncton, peixes) e documentação de licenciamento ambiental (EIA, EAS, LAP, LAI, LAO)."
-        }
-      },
-      {
-        "heading": {
-          "en": "Análise de Dados",
-          "pt": "Análise de Dados"
-        },
-        "body": {
-          "en": "Database structuring and standardization, statistical consulting, exploratory and multivariate analyses, time series, species diversity indices, and ecological species distribution modeling.",
-          "pt": "Estruturação e padronização de bancos de dados, consultoria estatística, análises exploratórias e multivariadas, séries temporais, índices de diversidade de espécies e modelagem ecológica de distribuição de espécies."
-        }
-      },
-      {
-        "heading": {
-          "en": "Cursos e Capacitação",
-          "pt": "Cursos e Capacitação"
-        },
-        "body": {
-          "en": "Aquatic organism identification training and R programming courses for environmental professionals.",
-          "pt": "Treinamento em identificação de organismos aquáticos e cursos de programação em R para profissionais da área ambiental."
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "PHP",
-        "version": "7.x",
-        "icon": "/devicons/php-original.svg"
-      },
-      {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
-      },
-      {
-        "name": "MySQL",
-        "version": "5.0",
-        "icon": "/devicons/mysql-original.svg"
-      },
-      {
-        "name": "WordPress",
-        "version": "4.8.2",
-        "icon": "/devicons/wordpress-original.svg"
-      },
-      {
-        "name": "jQuery",
-        "version": "1.12.4",
-        "icon": "/devicons/jquery-original.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/neotropiclab/screenshots/screencapture-neotropiclab-br-consultoria-ambiental-1509051365441.png"
-      },
-      {
-        "src": "/projects/neotropiclab/screenshots/screencapture-neotropiclab-br-analise-de-dados-1509051404131.png"
-      },
-      {
-        "src": "/projects/neotropiclab/screenshots/screencapture-neotropiclab-br-cursos-e-capacitacao-1509051419276.png"
-      },
-      {
-        "src": "/projects/neotropiclab/screenshots/screencapture-neotropiclab-br-time-luis-carlos-pinto-de-macedo-soares-1509051341716.png"
-      },
-      {
-        "src": "/projects/neotropiclab/screenshots/localhost-8080-index-html.png"
-      },
-      {
-        "src": "/projects/neotropiclab/screenshots/home.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "ritmo-saude",
-    "year": "2017",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/ritmo-saude",
-    "logo": "/projects/ritmo-saude/ritmo-saude-logo.png",
-    "name": {
-      "en": "Ritmo Saúde",
-      "pt": "Ritmo Saúde"
-    },
-    "tagline": {
-      "en": "A website for Ritmo Saúde, a Brazilian Polar SmartWatches reseller and personal-training studio offering corporate wellness, gym partnership, and aquatic-therapy services.",
-      "pt": "Um site para a Ritmo Saúde, revendedora brasileira de smartwatches Polar e estúdio de personal training que oferece bem-estar corporativo, parceria com academias e serviços de hidroterapia."
-    },
-    "kicker": {
-      "en": "// personal training · corporate & aquatic fitness",
-      "pt": "// personal training · fitness corporativo & aquático"
-    },
-    "intro": {
-      "en": "A WordPress site for Ritmo Saúde, a Brazilian personal-training studio offering corporate wellness, gym partnership, and aquatic-therapy programs — plus a retail front for Polar fitness hardware.",
-      "pt": "Um site WordPress para a Ritmo Saúde, um estúdio brasileiro de personal training que oferece bem-estar corporativo, parceria com academias e programas de hidroterapia — além de uma vitrine de varejo para equipamentos fitness da Polar."
-    },
-    "body": {
-      "en": [
-        "Ritmo Saúde is a Brazilian personal-training studio built around the idea that fitness has to fit the context it's delivered in — a corporate office, a partner gym, or a pool. This WordPress site, built on a custom made theme, gave the business a single home for three otherwise disconnected offerings: corporate wellness programs aimed at companies whose employees suffer from sedentary, high-stress work; partnerships with academias (gyms) for general training clientele; and aquatic therapy for clients recovering from orthopedic, neurological, or postural conditions. The site also doubled as a light retail front for Polar heart-rate monitors and GPS sports watches, letting the studio sell the hardware its own trainers recommend. The result is a small business punching above its weight online: one coherent brand story instead of three separate pitches, and a sales channel for hardware that reinforces the trainer's expertise rather than competing with it."
+        "A home também trazia uma seção Coworking Lab e uma seção de equipe com perfis individuais dos cientistas fundadores. O rodapé levava as informações de contato do escritório de Florianópolis.",
       ],
-      "pt": [
-        "A Ritmo Saúde é um estúdio brasileiro de personal training construído em torno da ideia de que a atividade física precisa se encaixar no contexto em que é entregue — um escritório corporativo, uma academia parceira ou uma piscina. Este site WordPress, feito sobre um tema sob medida, deu ao negócio um único lar para três ofertas até então desconectadas: programas de bem-estar corporativo voltados a empresas cujos funcionários sofrem com trabalho sedentário e de alto estresse; parcerias com academias para a clientela de treino geral; e hidroterapia para clientes em recuperação de condições ortopédicas, neurológicas ou posturais. O site também funcionava como uma leve vitrine de varejo para monitores de frequência cardíaca e relógios esportivos com GPS da Polar, permitindo ao estúdio vender o equipamento que os próprios treinadores recomendam. O resultado é um pequeno negócio jogando acima do seu nível na internet: uma narrativa de marca coerente em vez de três discursos separados, e um canal de vendas de equipamentos que reforça a expertise do treinador em vez de competir com ela."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Multi-segment brand site",
-          "pt": "Site de marca multissegmento"
+        heading: {
+          en: "Self-managed content",
+          pt: "Conteúdo autogerenciável",
         },
-        "body": {
-          "en": "a custom theme tailored to a multi-segment fitness business, presenting three distinct service lines (corporate wellness, gym partnerships, aquatic therapy) under one cohesive brand instead of separate flyers",
-          "pt": "um tema sob medida adaptado a um negócio fitness multissegmento, apresentando três linhas de serviço distintas (bem-estar corporativo, parcerias com academias, hidroterapia) sob uma marca coesa em vez de folhetos separados"
-        }
+        body: {
+          en: "a multi-page site giving the Neotropiclab team full content ownership, so they could update service pages, team profiles, and course descriptions without developer involvement",
+          pt: "um site de várias páginas que deu ao time da Neotropiclab total autonomia sobre o conteúdo, permitindo atualizar páginas de serviço, perfis da equipe e descrições de cursos sem envolvimento de desenvolvedor",
+        },
       },
       {
-        "heading": {
-          "en": "Secondary product sales channel",
-          "pt": "Canal secundário de venda de produtos"
+        heading: {
+          en: "Per-service lead capture",
+          pt: "Captação de leads por serviço",
         },
-        "body": {
-          "en": "a Polar heart-rate monitor showcase built into the site, turning the studio's web presence into an extra sales channel for branded fitness hardware alongside its training services",
-          "pt": "uma vitrine de monitores de frequência cardíaca Polar integrada ao site, transformando a presença web do estúdio em um canal extra de vendas de equipamentos fitness de marca ao lado de seus serviços de treino"
-        }
+        body: {
+          en: "a fullscreen hero with dedicated landing pages (Environmental Consulting, Data Analysis, Training), each with its own contact-form CTA that shortened the path from visitor to qualified lead",
+          pt: "um hero em tela cheia com landing pages dedicadas (Consultoria Ambiental, Análise de Dados, Capacitação), cada uma com seu próprio CTA de formulário de contato, encurtando o caminho do visitante ao lead qualificado",
+        },
       },
       {
-        "heading": {
-          "en": "SEO-structured content",
-          "pt": "Conteúdo estruturado para SEO"
+        heading: {
+          en: "Credibility-driven responsive design",
+          pt: "Design responsivo voltado à credibilidade",
         },
-        "body": {
-          "en": "a search-optimised content architecture (categories, feeds, clean permalinks) that let a small personal-training business compete for local search visibility against larger gym chains",
-          "pt": "uma arquitetura de conteúdo otimizada para busca (categorias, feeds, permalinks limpos) que permitiu a um pequeno estúdio de personal training competir por visibilidade em buscas locais contra grandes redes de academias"
-        }
-      }
+        body: {
+          en: "a mobile-responsive custom theme with a brand-consistent color system, ensuring the site communicated scientific credibility to both public-sector clients and research partners",
+          pt: "um tema sob medida responsivo para mobile, com um sistema de cores consistente com a marca, garantindo que o site comunicasse credibilidade científica tanto a clientes do setor público quanto a parceiros de pesquisa",
+        },
+      },
+      {
+        heading: {
+          en: "Consultoria Ambiental",
+          pt: "Consultoria Ambiental",
+        },
+        body: {
+          en: "Reservoir management (invasive species such as *Limnoperna fortunei*), aquatic flora and fauna assessment (macroinvertebrates, zooplankton, phytoplankton, fish), and environmental licensing documentation (EIA, EAS, LAP, LAI, LAO).",
+          pt: "Gestão de reservatórios (espécies invasoras como *Limnoperna fortunei*), avaliação de flora e fauna aquáticas (macroinvertebrados, zooplâncton, fitoplâncton, peixes) e documentação de licenciamento ambiental (EIA, EAS, LAP, LAI, LAO).",
+        },
+      },
+      {
+        heading: {
+          en: "Análise de Dados",
+          pt: "Análise de Dados",
+        },
+        body: {
+          en: "Database structuring and standardization, statistical consulting, exploratory and multivariate analyses, time series, species diversity indices, and ecological species distribution modeling.",
+          pt: "Estruturação e padronização de bancos de dados, consultoria estatística, análises exploratórias e multivariadas, séries temporais, índices de diversidade de espécies e modelagem ecológica de distribuição de espécies.",
+        },
+      },
+      {
+        heading: {
+          en: "Cursos e Capacitação",
+          pt: "Cursos e Capacitação",
+        },
+        body: {
+          en: "Aquatic organism identification training and R programming courses for environmental professionals.",
+          pt: "Treinamento em identificação de organismos aquáticos e cursos de programação em R para profissionais da área ambiental.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.6.20",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "7.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "WordPress",
-        "version": "4.7.1",
-        "icon": "/devicons/wordpress-plain.svg"
+        name: "MySQL",
+        version: "5.0",
+        icon: "/devicons/mysql-original.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.5.52",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "WordPress",
+        version: "4.8.2",
+        icon: "/devicons/wordpress-original.svg",
+      },
+      {
+        name: "jQuery",
+        version: "1.12.4",
+        icon: "/devicons/jquery-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/ritmo-saude/screenshots/contato-ritmo-saude.png"
+        src: "/projects/neotropiclab/screenshots/screencapture-neotropiclab-br-consultoria-ambiental-1509051365441.png",
       },
       {
-        "src": "/projects/ritmo-saude/screenshots/ritmo-saude-seu-treino-mais-inteligente-1.png"
+        src: "/projects/neotropiclab/screenshots/screencapture-neotropiclab-br-analise-de-dados-1509051404131.png",
       },
       {
-        "src": "/projects/ritmo-saude/screenshots/ritmo-saude-seu-treino-mais-inteligente-2.png"
+        src: "/projects/neotropiclab/screenshots/screencapture-neotropiclab-br-cursos-e-capacitacao-1509051419276.png",
       },
       {
-        "src": "/projects/ritmo-saude/screenshots/ritmo-saude-seu-treino-mais-inteligente-3.png"
+        src: "/projects/neotropiclab/screenshots/screencapture-neotropiclab-br-time-luis-carlos-pinto-de-macedo-soares-1509051341716.png",
       },
       {
-        "src": "/projects/ritmo-saude/screenshots/ritmo-saude-seu-treino-mais-inteligente-4.png"
+        src: "/projects/neotropiclab/screenshots/localhost-8080-index-html.png",
       },
       {
-        "src": "/projects/ritmo-saude/screenshots/ritmo-saude-seu-treino-mais-inteligente.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/neotropiclab/screenshots/home.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "ritmo-saude-ecommerce",
-    "year": "2017",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/ritmo-saude-ecommerce",
-    "logo": "/projects/ritmo-saude-ecommerce/ritmo-saude-ecommerce-logo.svg",
-    "name": {
-      "en": "RitmoSaúde E-commerce",
-      "pt": "RitmoSaúde E-commerce"
+    slug: "ritmo-saude",
+    year: "2017",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/ritmo-saude",
+    logo: "/projects/ritmo-saude/ritmo-saude-logo.png",
+    name: {
+      en: "Ritmo Saúde",
+      pt: "Ritmo Saúde",
     },
-    "tagline": {
-      "en": "A custom WooCommerce storefront built for RitmoSaúde, a Brazilian personal-trainer-run retailer of Polar heart-rate monitors and cycling computers, with full local checkout support for CPF/CNPJ, Correios shipping, and PagSeguro payments.",
-      "pt": "Uma loja WooCommerce sob medida construída para a RitmoSaúde, varejista brasileira tocada por um personal trainer, de monitores de frequência cardíaca e ciclocomputadores Polar, com suporte completo de checkout local para CPF/CNPJ, frete dos Correios e pagamentos PagSeguro."
+    tagline: {
+      en: "A website for Ritmo Saúde, a Brazilian Polar SmartWatches reseller and personal-training studio offering corporate wellness, gym partnership, and aquatic-therapy services.",
+      pt: "Um site para a Ritmo Saúde, revendedora brasileira de smartwatches Polar e estúdio de personal training que oferece bem-estar corporativo, parceria com academias e serviços de hidroterapia.",
     },
-    "kicker": {
-      "en": "// e-commerce · Polar fitness gear retailer",
-      "pt": "// e-commerce · varejo de equipamentos fitness Polar"
+    kicker: {
+      en: "// personal training · corporate & aquatic fitness",
+      pt: "// personal training · fitness corporativo & aquático",
     },
-    "intro": {
-      "en": "A custom WooCommerce storefront built for RitmoSaúde, a Brazilian personal-trainer-run retailer of Polar heart-rate monitors and cycling computers, with full local checkout support for CPF/CNPJ, Correios shipping, and PagSeguro payments.",
-      "pt": "Uma loja WooCommerce sob medida construída para a RitmoSaúde, varejista brasileira tocada por um personal trainer, de monitores de frequência cardíaca e ciclocomputadores Polar, com suporte completo de checkout local para CPF/CNPJ, frete dos Correios e pagamentos PagSeguro."
+    intro: {
+      en: "A WordPress site for Ritmo Saúde, a Brazilian personal-training studio offering corporate wellness, gym partnership, and aquatic-therapy programs — plus a retail front for Polar fitness hardware.",
+      pt: "Um site WordPress para a Ritmo Saúde, um estúdio brasileiro de personal training que oferece bem-estar corporativo, parceria com academias e programas de hidroterapia — além de uma vitrine de varejo para equipamentos fitness da Polar.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
+        "Ritmo Saúde is a Brazilian personal-training studio built around the idea that fitness has to fit the context it's delivered in — a corporate office, a partner gym, or a pool. This WordPress site, built on a custom made theme, gave the business a single home for three otherwise disconnected offerings: corporate wellness programs aimed at companies whose employees suffer from sedentary, high-stress work; partnerships with academias (gyms) for general training clientele; and aquatic therapy for clients recovering from orthopedic, neurological, or postural conditions. The site also doubled as a light retail front for Polar heart-rate monitors and GPS sports watches, letting the studio sell the hardware its own trainers recommend. The result is a small business punching above its weight online: one coherent brand story instead of three separate pitches, and a sales channel for hardware that reinforces the trainer's expertise rather than competing with it.",
+      ],
+      pt: [
+        "A Ritmo Saúde é um estúdio brasileiro de personal training construído em torno da ideia de que a atividade física precisa se encaixar no contexto em que é entregue — um escritório corporativo, uma academia parceira ou uma piscina. Este site WordPress, feito sobre um tema sob medida, deu ao negócio um único lar para três ofertas até então desconectadas: programas de bem-estar corporativo voltados a empresas cujos funcionários sofrem com trabalho sedentário e de alto estresse; parcerias com academias para a clientela de treino geral; e hidroterapia para clientes em recuperação de condições ortopédicas, neurológicas ou posturais. O site também funcionava como uma leve vitrine de varejo para monitores de frequência cardíaca e relógios esportivos com GPS da Polar, permitindo ao estúdio vender o equipamento que os próprios treinadores recomendam. O resultado é um pequeno negócio jogando acima do seu nível na internet: uma narrativa de marca coerente em vez de três discursos separados, e um canal de vendas de equipamentos que reforça a expertise do treinador em vez de competir com ela.",
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Multi-segment brand site",
+          pt: "Site de marca multissegmento",
+        },
+        body: {
+          en: "a custom theme tailored to a multi-segment fitness business, presenting three distinct service lines (corporate wellness, gym partnerships, aquatic therapy) under one cohesive brand instead of separate flyers",
+          pt: "um tema sob medida adaptado a um negócio fitness multissegmento, apresentando três linhas de serviço distintas (bem-estar corporativo, parcerias com academias, hidroterapia) sob uma marca coesa em vez de folhetos separados",
+        },
+      },
+      {
+        heading: {
+          en: "Secondary product sales channel",
+          pt: "Canal secundário de venda de produtos",
+        },
+        body: {
+          en: "a Polar heart-rate monitor showcase built into the site, turning the studio's web presence into an extra sales channel for branded fitness hardware alongside its training services",
+          pt: "uma vitrine de monitores de frequência cardíaca Polar integrada ao site, transformando a presença web do estúdio em um canal extra de vendas de equipamentos fitness de marca ao lado de seus serviços de treino",
+        },
+      },
+      {
+        heading: {
+          en: "SEO-structured content",
+          pt: "Conteúdo estruturado para SEO",
+        },
+        body: {
+          en: "a search-optimised content architecture (categories, feeds, clean permalinks) that let a small personal-training business compete for local search visibility against larger gym chains",
+          pt: "uma arquitetura de conteúdo otimizada para busca (categorias, feeds, permalinks limpos) que permitiu a um pequeno estúdio de personal training competir por visibilidade em buscas locais contra grandes redes de academias",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "PHP",
+        version: "5.6.20",
+        icon: "/devicons/php-original.svg",
+      },
+      {
+        name: "JavaScript",
+        version: "5",
+        icon: "/devicons/javascript-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "WordPress",
+        version: "4.7.1",
+        icon: "/devicons/wordpress-plain.svg",
+      },
+      {
+        name: "MySQL",
+        version: "5.5.52",
+        icon: "/devicons/mysql-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/ritmo-saude/screenshots/contato-ritmo-saude.png",
+      },
+      {
+        src: "/projects/ritmo-saude/screenshots/ritmo-saude-seu-treino-mais-inteligente-1.png",
+      },
+      {
+        src: "/projects/ritmo-saude/screenshots/ritmo-saude-seu-treino-mais-inteligente-2.png",
+      },
+      {
+        src: "/projects/ritmo-saude/screenshots/ritmo-saude-seu-treino-mais-inteligente-3.png",
+      },
+      {
+        src: "/projects/ritmo-saude/screenshots/ritmo-saude-seu-treino-mais-inteligente-4.png",
+      },
+      {
+        src: "/projects/ritmo-saude/screenshots/ritmo-saude-seu-treino-mais-inteligente.png",
+        featured: true,
+      },
+    ],
+  },
+  {
+    slug: "ritmo-saude-ecommerce",
+    year: "2017",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/ritmo-saude-ecommerce",
+    logo: "/projects/ritmo-saude-ecommerce/ritmo-saude-ecommerce-logo.svg",
+    name: {
+      en: "RitmoSaúde E-commerce",
+      pt: "RitmoSaúde E-commerce",
+    },
+    tagline: {
+      en: "A custom WooCommerce storefront built for RitmoSaúde, a Brazilian personal-trainer-run retailer of Polar heart-rate monitors and cycling computers, with full local checkout support for CPF/CNPJ, Correios shipping, and PagSeguro payments.",
+      pt: "Uma loja WooCommerce sob medida construída para a RitmoSaúde, varejista brasileira tocada por um personal trainer, de monitores de frequência cardíaca e ciclocomputadores Polar, com suporte completo de checkout local para CPF/CNPJ, frete dos Correios e pagamentos PagSeguro.",
+    },
+    kicker: {
+      en: "// e-commerce · Polar fitness gear retailer",
+      pt: "// e-commerce · varejo de equipamentos fitness Polar",
+    },
+    intro: {
+      en: "A custom WooCommerce storefront built for RitmoSaúde, a Brazilian personal-trainer-run retailer of Polar heart-rate monitors and cycling computers, with full local checkout support for CPF/CNPJ, Correios shipping, and PagSeguro payments.",
+      pt: "Uma loja WooCommerce sob medida construída para a RitmoSaúde, varejista brasileira tocada por um personal trainer, de monitores de frequência cardíaca e ciclocomputadores Polar, com suporte completo de checkout local para CPF/CNPJ, frete dos Correios e pagamentos PagSeguro.",
+    },
+    body: {
+      en: [
         "RitmoSaúde is a Brazilian e-commerce store for fitness and health equipment, built on WordPress and WooCommerce for a personal trainer (Professor Lauro Moraes, CREF-certified) expanding his in-person training business into online retail. This project is the second iteration of the store, succeeding the original site ([llvasconcellos2/ritmo-saude](https://github.com/llvasconcellos2/ritmo-saude)) and rebuilding it on WooCommerce to support a proper product catalog and checkout flow. The catalog centers on Polar heart-rate monitors, cycling computers, and chest-strap transmitters, alongside RipFibras cereal bars.",
         "The build covers the full path from store setup to checkout: a customized WooCommerce theme, product catalog and category structure, and a layer of Brazil-specific commerce plumbing — Correios integration for live CEP-based shipping rates, PagSeguro for local payment processing, and CPF/CNPJ fields required for Brazilian invoicing. A custom `woocommerce-ritmo-saude` plugin, Mailchimp signup integration, and a Google Analytics dashboard rounded out the store's marketing and reporting needs.",
-        "The site launched in October 2017 and went through iterative fixes (notably around CEP/shipping address handling) through mid-2018."
+        "The site launched in October 2017 and went through iterative fixes (notably around CEP/shipping address handling) through mid-2018.",
       ],
-      "pt": [
+      pt: [
         "A RitmoSaúde é uma loja de e-commerce brasileira de equipamentos de fitness e saúde, construída em WordPress e WooCommerce para um personal trainer (Professor Lauro Moraes, certificado pelo CREF) que expandia seu negócio de treino presencial para o varejo online. Este projeto é a segunda iteração da loja, sucedendo o site original ([llvasconcellos2/ritmo-saude](https://github.com/llvasconcellos2/ritmo-saude)) e reconstruindo-o sobre o WooCommerce para suportar um catálogo de produtos e um fluxo de checkout de verdade. O catálogo gira em torno de monitores de frequência cardíaca, ciclocomputadores e cintas transmissoras Polar, além das barras de cereais RipFibras.",
         "A construção cobre todo o caminho da configuração da loja ao checkout: um tema WooCommerce customizado, catálogo de produtos e estrutura de categorias, e uma camada de encanamento de comércio específica do Brasil — integração com os Correios para cálculo de frete em tempo real por CEP, PagSeguro para processamento de pagamentos local e campos de CPF/CNPJ exigidos para o faturamento brasileiro. Um plugin `woocommerce-ritmo-saude` sob medida, integração de cadastro com o Mailchimp e um painel do Google Analytics completaram as necessidades de marketing e relatórios da loja.",
-        "O site foi lançado em outubro de 2017 e passou por correções iterativas (notadamente em torno do tratamento de CEP/endereço de entrega) até meados de 2018."
-      ]
+        "O site foi lançado em outubro de 2017 e passou por correções iterativas (notadamente em torno do tratamento de CEP/endereço de entrega) até meados de 2018.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Direct-to-consumer storefront",
-          "pt": "Loja direta ao consumidor"
+        heading: {
+          en: "Direct-to-consumer storefront",
+          pt: "Loja direta ao consumidor",
         },
-        "body": {
-          "en": "a complete WooCommerce store (setup, theme customization, product catalog) giving the client a direct sales channel for fitness equipment instead of relying on marketplaces or in-person sales alone",
-          "pt": "uma loja WooCommerce completa (configuração, customização de tema, catálogo de produtos) dando ao cliente um canal de vendas direto para equipamentos fitness em vez de depender só de marketplaces ou vendas presenciais"
-        }
+        body: {
+          en: "a complete WooCommerce store (setup, theme customization, product catalog) giving the client a direct sales channel for fitness equipment instead of relying on marketplaces or in-person sales alone",
+          pt: "uma loja WooCommerce completa (configuração, customização de tema, catálogo de produtos) dando ao cliente um canal de vendas direto para equipamentos fitness em vez de depender só de marketplaces ou vendas presenciais",
+        },
       },
       {
-        "heading": {
-          "en": "Localized Brazilian checkout",
-          "pt": "Checkout brasileiro localizado"
+        heading: {
+          en: "Localized Brazilian checkout",
+          pt: "Checkout brasileiro localizado",
         },
-        "body": {
-          "en": "Correios real-time CEP shipping rates, PagSeguro payments, and CPF/CNPJ checkout fields, removing manual shipping quotes and letting customers complete a purchase end-to-end on their own",
-          "pt": "frete por CEP dos Correios em tempo real, pagamentos PagSeguro e campos de CPF/CNPJ no checkout, eliminando cotações manuais de frete e permitindo que os clientes concluam uma compra ponta a ponta por conta própria"
-        }
+        body: {
+          en: "Correios real-time CEP shipping rates, PagSeguro payments, and CPF/CNPJ checkout fields, removing manual shipping quotes and letting customers complete a purchase end-to-end on their own",
+          pt: "frete por CEP dos Correios em tempo real, pagamentos PagSeguro e campos de CPF/CNPJ no checkout, eliminando cotações manuais de frete e permitindo que os clientes concluam uma compra ponta a ponta por conta própria",
+        },
       },
       {
-        "heading": {
-          "en": "Automated marketing and analytics",
-          "pt": "Marketing e analytics automatizados"
+        heading: {
+          en: "Automated marketing and analytics",
+          pt: "Marketing e analytics automatizados",
         },
-        "body": {
-          "en": "a custom store plugin plus Mailchimp and Google Analytics integrations, giving the business automated email capture and store-performance visibility without added headcount or tooling cost",
-          "pt": "um plugin de loja sob medida somado às integrações com Mailchimp e Google Analytics, dando ao negócio captação automática de e-mails e visibilidade do desempenho da loja sem aumentar equipe ou custo de ferramentas"
-        }
-      }
+        body: {
+          en: "a custom store plugin plus Mailchimp and Google Analytics integrations, giving the business automated email capture and store-performance visibility without added headcount or tooling cost",
+          pt: "um plugin de loja sob medida somado às integrações com Mailchimp e Google Analytics, dando ao negócio captação automática de e-mails e visibilidade do desempenho da loja sem aumentar equipe ou custo de ferramentas",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "7.2",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "7.2",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "WordPress",
-        "version": "4.9.7",
-        "icon": "/devicons/wordpress-original.svg"
+        name: "WordPress",
+        version: "4.9.7",
+        icon: "/devicons/wordpress-original.svg",
       },
       {
-        "name": "WooCommerce",
-        "version": "3.4.3",
-        "icon": "/devicons/woocommerce-original.svg"
+        name: "WooCommerce",
+        version: "3.4.3",
+        icon: "/devicons/woocommerce-original.svg",
       },
       {
-        "name": "MariaDB",
-        "version": "10.2",
-        "icon": "/devicons/mariadb-original.svg"
-      }
+        name: "MariaDB",
+        version: "10.2",
+        icon: "/devicons/mariadb-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/ritmo-saude-ecommerce/screenshots/contato-ritmosaude.png"
+        src: "/projects/ritmo-saude-ecommerce/screenshots/contato-ritmosaude.png",
       },
       {
-        "src": "/projects/ritmo-saude-ecommerce/screenshots/mobile.png"
+        src: "/projects/ritmo-saude-ecommerce/screenshots/mobile.png",
       },
       {
-        "src": "/projects/ritmo-saude-ecommerce/screenshots/polar-m400-ritmosaude.png"
+        src: "/projects/ritmo-saude-ecommerce/screenshots/polar-m400-ritmosaude.png",
       },
       {
-        "src": "/projects/ritmo-saude-ecommerce/screenshots/produtos-ritmosaude.png"
+        src: "/projects/ritmo-saude-ecommerce/screenshots/produtos-ritmosaude.png",
       },
       {
-        "src": "/projects/ritmo-saude-ecommerce/screenshots/sobre-nos-ritmosaude.png"
+        src: "/projects/ritmo-saude-ecommerce/screenshots/sobre-nos-ritmosaude.png",
       },
       {
-        "src": "/projects/ritmo-saude-ecommerce/screenshots/ritmosaude-treine-forte-treine-bem-treine-ritmosaude.png"
+        src: "/projects/ritmo-saude-ecommerce/screenshots/ritmosaude-treine-forte-treine-bem-treine-ritmosaude.png",
       },
       {
-        "src": "/projects/ritmo-saude-ecommerce/screenshots/ritmosaude-treine-forte-treine-bem-treine-ritmosaude-1.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/ritmo-saude-ecommerce/screenshots/ritmosaude-treine-forte-treine-bem-treine-ritmosaude-1.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "easy-clinic",
-    "year": "2016",
-    "pinned": false,
-    "liveUrl": "https://leonardo-vasconcellos.vercel.app/portfolio/easy-clinic",
-    "logo": "/projects/easy-clinic/easy-clinic-logo.svg",
-    "name": {
-      "en": "Easy Clinic (Clínica Fácil)",
-      "pt": "Easy Clinic (Clínica Fácil)"
+    slug: "easy-clinic",
+    year: "2016",
+    pinned: false,
+    frontPage: true,
+    liveUrl: "https://leonardo-vasconcellos.vercel.app/portfolio/easy-clinic",
+    logo: "/projects/easy-clinic/easy-clinic-logo.svg",
+    name: {
+      en: "Easy Clinic (Clínica Fácil)",
+      pt: "Easy Clinic (Clínica Fácil)",
     },
-    "tagline": {
-      "en": "A full-featured medical clinic management system covering patient records, appointment scheduling, prescriptions, exam tracking, and billing analytics — built for Brazilian healthcare practices.",
-      "pt": "Um sistema completo de gestão de clínicas médicas cobrindo prontuários, agendamento de consultas, prescrições, acompanhamento de exames e análise de faturamento — feito para consultórios de saúde brasileiros."
+    tagline: {
+      en: "A full-featured medical clinic management system covering patient records, appointment scheduling, prescriptions, exam tracking, and billing analytics — built for Brazilian healthcare practices.",
+      pt: "Um sistema completo de gestão de clínicas médicas cobrindo prontuários, agendamento de consultas, prescrições, acompanhamento de exames e análise de faturamento — feito para consultórios de saúde brasileiros.",
     },
-    "kicker": {
-      "en": "// clinic management system · clínica fácil",
-      "pt": "// sistema de gestão de clínicas · clínica fácil"
+    kicker: {
+      en: "// clinic management system · clínica fácil",
+      pt: "// sistema de gestão de clínicas · clínica fácil",
     },
-    "intro": {
-      "en": "Easy Clinic is a complete medical clinic management platform — patient records, scheduling, prescriptions, lab exams, and billing analytics in one system — available as a real-time multi-user Meteor app or a zero-backend PWA for solo practitioners.",
-      "pt": "O Easy Clinic é uma plataforma completa de gestão de clínicas médicas — prontuários, agendamento, prescrições, exames laboratoriais e análise de faturamento em um só sistema — disponível como um app Meteor multiusuário em tempo real ou como um PWA sem backend para profissionais autônomos."
+    intro: {
+      en: "Easy Clinic is a complete medical clinic management platform — patient records, scheduling, prescriptions, lab exams, and billing analytics in one system — available as a real-time multi-user Meteor app or a zero-backend PWA for solo practitioners.",
+      pt: "O Easy Clinic é uma plataforma completa de gestão de clínicas médicas — prontuários, agendamento, prescrições, exames laboratoriais e análise de faturamento em um só sistema — disponível como um app Meteor multiusuário em tempo real ou como um PWA sem backend para profissionais autônomos.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "Easy Clinic is a complete clinic management platform developed for Brazilian medical practices. It covers every operational dimension of a small-to-medium clinic: patient registration with photo and CPF validation, a calendar appointment scheduler with drag-and-drop and multi-doctor resource views, a full patient clinical record system with a timeline of visits, and a document engine for generating prescriptions, medical certificates, and exam requests from reusable templates.",
         "The clinical record module goes beyond simple note-taking. Doctors can design custom intake forms using a visual drag-and-drop form builder, order exams from a self-learning catalog that infers reference ranges from free-text entries and filters them by patient gender and age, and track patient evolution over time — BMI, weight, blood pressure, SpO₂, and heart rate — with trend charts rendered via Chart.js.",
         "On the business side, the dashboard surfaces live KPIs (total patients, appointments this month, monthly billing) and a 12-month appointment history chart. Three dedicated report screens cover appointment volume, patient demographics (age groups, gender distribution), and production billing. Automated appointment reminders are sent by email and SMS via a background cron job.",
         "The system ships in two editions. The **paid edition** is a full-stack reactive application: multi-user with role-based access control (super-admin, medical_doctor, default), server-side validation, and real-time pub/sub data sync. The **free edition** (the `rip/` folder) is a zero-backend PWA that runs entirely in the browser — all collections are loaded from flat JSON files into an in-memory store, with optional IndexedDB persistence for returning users. It exposes the same screens and feature surface as the paid edition, making it suitable for a solo practitioner who doesn't need multi-user or real-time sync.",
-        "Both editions are installable PWAs sharing the same icons and app identity, and are fully responsive — every screen (dashboard, calendar, patient records, forms) adapts cleanly across **desktops, tablets, and phones**, with a touch-friendly off-canvas navigation drawer on smaller viewports. Beyond installability, each PWA is tuned to what it actually is: the free edition's service worker gives it genuine offline data access (IndexedDB), while the paid edition — a live, multi-user backend — instead surfaces its real-time connection: a live online/offline banner, a non-disruptive \"update available\" prompt for hot code push, and a taskbar icon badge reflecting patients currently waiting.",
-        "Built with **Meteor 1.4**, **MongoDB 3.2**, **Blaze**, and **Bootstrap 3**. Deployed via Docker. The UI is in Brazilian Portuguese with English and Spanish i18n support."
+        'Both editions are installable PWAs sharing the same icons and app identity, and are fully responsive — every screen (dashboard, calendar, patient records, forms) adapts cleanly across **desktops, tablets, and phones**, with a touch-friendly off-canvas navigation drawer on smaller viewports. Beyond installability, each PWA is tuned to what it actually is: the free edition\'s service worker gives it genuine offline data access (IndexedDB), while the paid edition — a live, multi-user backend — instead surfaces its real-time connection: a live online/offline banner, a non-disruptive "update available" prompt for hot code push, and a taskbar icon badge reflecting patients currently waiting.',
+        "Built with **Meteor 1.4**, **MongoDB 3.2**, **Blaze**, and **Bootstrap 3**. Deployed via Docker. The UI is in Brazilian Portuguese with English and Spanish i18n support.",
       ],
-      "pt": [
+      pt: [
         "O Easy Clinic é uma plataforma completa de gestão de clínicas desenvolvida para consultórios médicos brasileiros. Ela cobre toda dimensão operacional de uma clínica de pequeno a médio porte: cadastro de pacientes com foto e validação de CPF, uma agenda de consultas em calendário com arrastar-e-soltar e visões de recurso por múltiplos médicos, um sistema completo de prontuário clínico com uma linha do tempo de atendimentos, e um motor de documentos para gerar prescrições, atestados médicos e pedidos de exame a partir de modelos reutilizáveis.",
         "O módulo de prontuário vai além de simples anotações. Os médicos podem criar formulários de admissão personalizados usando um construtor visual de arrastar-e-soltar, solicitar exames de um catálogo autoaprendente que infere faixas de referência a partir de entradas em texto livre e as filtra por sexo e idade do paciente, e acompanhar a evolução do paciente ao longo do tempo — IMC, peso, pressão arterial, SpO₂ e frequência cardíaca — com gráficos de tendência renderizados via Chart.js.",
         "No lado do negócio, o painel exibe KPIs ao vivo (total de pacientes, consultas no mês, faturamento mensal) e um gráfico de histórico de consultas de 12 meses. Três telas dedicadas de relatório cobrem volume de consultas, perfil demográfico dos pacientes (faixas etárias, distribuição por sexo) e faturamento de produção. Lembretes automáticos de consulta são enviados por e-mail e SMS por meio de um cron job em segundo plano.",
         "O sistema é entregue em duas edições. A **edição paga** é uma aplicação reativa full-stack: multiusuário com controle de acesso por papéis (super-admin, medical_doctor, default), validação no servidor e sincronização de dados em tempo real via pub/sub. A **edição gratuita** (a pasta `rip/`) é um PWA sem backend que roda inteiramente no navegador — todas as coleções são carregadas de arquivos JSON planos para um armazenamento em memória, com persistência opcional em IndexedDB para usuários recorrentes. Ela expõe as mesmas telas e o mesmo conjunto de recursos da edição paga, o que a torna adequada para um profissional autônomo que não precisa de multiusuário ou sincronização em tempo real.",
-        "Ambas as edições são PWAs instaláveis que compartilham os mesmos ícones e identidade de aplicativo, e são totalmente responsivas — cada tela (painel, calendário, prontuários, formulários) se adapta com elegância a **desktops, tablets e celulares**, com uma gaveta de navegação off-canvas amigável ao toque em telas menores. Além da instalabilidade, cada PWA é ajustado ao que ele realmente é: o service worker da edição gratuita lhe dá acesso genuíno a dados offline (IndexedDB), enquanto a edição paga — um backend ao vivo e multiusuário — em vez disso destaca sua conexão em tempo real: um banner ao vivo de online/offline, um aviso não intrusivo de \"atualização disponível\" para hot code push e um badge no ícone da barra de tarefas refletindo os pacientes atualmente na espera.",
-        "Construído com **Meteor 1.4**, **MongoDB 3.2**, **Blaze** e **Bootstrap 3**. Implantado via Docker. A interface é em português do Brasil, com suporte a i18n em inglês e espanhol."
-      ]
+        'Ambas as edições são PWAs instaláveis que compartilham os mesmos ícones e identidade de aplicativo, e são totalmente responsivas — cada tela (painel, calendário, prontuários, formulários) se adapta com elegância a **desktops, tablets e celulares**, com uma gaveta de navegação off-canvas amigável ao toque em telas menores. Além da instalabilidade, cada PWA é ajustado ao que ele realmente é: o service worker da edição gratuita lhe dá acesso genuíno a dados offline (IndexedDB), enquanto a edição paga — um backend ao vivo e multiusuário — em vez disso destaca sua conexão em tempo real: um banner ao vivo de online/offline, um aviso não intrusivo de "atualização disponível" para hot code push e um badge no ícone da barra de tarefas refletindo os pacientes atualmente na espera.',
+        "Construído com **Meteor 1.4**, **MongoDB 3.2**, **Blaze** e **Bootstrap 3**. Implantado via Docker. A interface é em português do Brasil, com suporte a i18n em inglês e espanhol.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Full-stack reactive clinic platform",
-          "pt": "Plataforma de clínica reativa full-stack"
+        heading: {
+          en: "Full-stack reactive clinic platform",
+          pt: "Plataforma de clínica reativa full-stack",
         },
-        "body": {
-          "en": "Built a multi-user clinic management system on Meteor + MongoDB covering the complete patient journey — registration, scheduling, clinical records, prescriptions, and billing — giving a medical practice a single source of truth for all daily operations.",
-          "pt": "Construí um sistema multiusuário de gestão de clínicas em Meteor + MongoDB cobrindo toda a jornada do paciente — cadastro, agendamento, prontuários, prescrições e faturamento — dando ao consultório uma única fonte de verdade para todas as operações do dia a dia."
-        }
+        body: {
+          en: "Built a multi-user clinic management system on Meteor + MongoDB covering the complete patient journey — registration, scheduling, clinical records, prescriptions, and billing — giving a medical practice a single source of truth for all daily operations.",
+          pt: "Construí um sistema multiusuário de gestão de clínicas em Meteor + MongoDB cobrindo toda a jornada do paciente — cadastro, agendamento, prontuários, prescrições e faturamento — dando ao consultório uma única fonte de verdade para todas as operações do dia a dia.",
+        },
       },
       {
-        "heading": {
-          "en": "Custom clinical documentation engine",
-          "pt": "Motor de documentação clínica sob medida"
+        heading: {
+          en: "Custom clinical documentation engine",
+          pt: "Motor de documentação clínica sob medida",
         },
-        "body": {
-          "en": "Engineered a drag-and-drop form designer, rich-text prescription and certificate templates, and an intelligent exam catalog with machine-learned reference ranges by patient gender and age — replacing paper-based workflows and standardizing clinical documentation across the practice.",
-          "pt": "Desenvolvi um construtor de formulários por arrastar-e-soltar, modelos de prescrição e atestado em texto rico, e um catálogo de exames inteligente com faixas de referência aprendidas por máquina segundo sexo e idade do paciente — substituindo fluxos em papel e padronizando a documentação clínica em todo o consultório."
-        }
+        body: {
+          en: "Engineered a drag-and-drop form designer, rich-text prescription and certificate templates, and an intelligent exam catalog with machine-learned reference ranges by patient gender and age — replacing paper-based workflows and standardizing clinical documentation across the practice.",
+          pt: "Desenvolvi um construtor de formulários por arrastar-e-soltar, modelos de prescrição e atestado em texto rico, e um catálogo de exames inteligente com faixas de referência aprendidas por máquina segundo sexo e idade do paciente — substituindo fluxos em papel e padronizando a documentação clínica em todo o consultório.",
+        },
       },
       {
-        "heading": {
-          "en": "Zero-infrastructure PWA edition",
-          "pt": "Edição PWA sem infraestrutura"
+        heading: {
+          en: "Zero-infrastructure PWA edition",
+          pt: "Edição PWA sem infraestrutura",
         },
-        "body": {
-          "en": "Architected a standalone free edition that runs entirely in the browser via IndexedDB with no server or database required, so solo practitioners get the full feature set — every screen, every report, offline-capable — at zero infrastructure cost.",
-          "pt": "Arquitetei uma edição gratuita autônoma que roda inteiramente no navegador via IndexedDB, sem necessidade de servidor ou banco de dados, para que profissionais autônomos tenham o conjunto completo de recursos — cada tela, cada relatório, com suporte offline — a custo de infraestrutura zero."
-        }
-      }
+        body: {
+          en: "Architected a standalone free edition that runs entirely in the browser via IndexedDB with no server or database required, so solo practitioners get the full feature set — every screen, every report, offline-capable — at zero infrastructure cost.",
+          pt: "Arquitetei uma edição gratuita autônoma que roda inteiramente no navegador via IndexedDB, sem necessidade de servidor ou banco de dados, para que profissionais autônomos tenham o conjunto completo de recursos — cada tela, cada relatório, com suporte offline — a custo de infraestrutura zero.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "JavaScript",
-        "version": "ES5 / ES2015",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES5 / ES2015",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS / LESS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS / LESS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "Meteor",
-        "version": "1.4.1.3",
-        "icon": "/devicons/meteor-original.svg"
+        name: "Meteor",
+        version: "1.4.1.3",
+        icon: "/devicons/meteor-original.svg",
       },
       {
-        "name": "MongoDB",
-        "version": "3.2",
-        "icon": "/devicons/mongodb-original.svg"
+        name: "MongoDB",
+        version: "3.2",
+        icon: "/devicons/mongodb-original.svg",
       },
       {
-        "name": "Bootstrap",
-        "version": "3.x",
-        "icon": "/devicons/bootstrap-original.svg"
+        name: "Bootstrap",
+        version: "3.x",
+        icon: "/devicons/bootstrap-original.svg",
       },
       {
-        "name": "jQuery",
-        "version": "1.11.x",
-        "icon": "/devicons/jquery-original.svg"
+        name: "jQuery",
+        version: "1.11.x",
+        icon: "/devicons/jquery-original.svg",
       },
       {
-        "name": "Chart.js",
-        "version": "2.x",
-        "icon": "/devicons/chartjs-original.svg"
+        name: "Chart.js",
+        version: "2.x",
+        icon: "/devicons/chartjs-original.svg",
       },
       {
-        "name": "Handlebars",
-        "version": "4.0.x",
-        "icon": "/devicons/handlebars-original.svg"
+        name: "Handlebars",
+        version: "4.0.x",
+        icon: "/devicons/handlebars-original.svg",
       },
       {
-        "name": "Docker",
-        "icon": "/devicons/docker-original.svg"
-      }
+        name: "Docker",
+        icon: "/devicons/docker-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/easy-clinic/screenshots/05-patient-evolution.png"
+        src: "/projects/easy-clinic/screenshots/05-patient-evolution.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/06-patient-timeline.png"
+        src: "/projects/easy-clinic/screenshots/06-patient-timeline.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/04-login.png"
+        src: "/projects/easy-clinic/screenshots/04-login.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/02-dashboard.png"
+        src: "/projects/easy-clinic/screenshots/02-dashboard.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/03-scheduel.png"
+        src: "/projects/easy-clinic/screenshots/03-scheduel.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/rip-patient-list.png"
+        src: "/projects/easy-clinic/screenshots/rip-patient-list.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/rip-doctors.png"
+        src: "/projects/easy-clinic/screenshots/rip-doctors.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/report-patients.png"
+        src: "/projects/easy-clinic/screenshots/report-patients.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/report-production.png"
+        src: "/projects/easy-clinic/screenshots/report-production.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/exam-catalog.png"
+        src: "/projects/easy-clinic/screenshots/exam-catalog.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/document-models.png"
+        src: "/projects/easy-clinic/screenshots/document-models.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/form-models.png"
+        src: "/projects/easy-clinic/screenshots/form-models.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/orig-ipad.png"
+        src: "/projects/easy-clinic/screenshots/orig-ipad.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/v-patients-mobile.png"
+        src: "/projects/easy-clinic/screenshots/v-patients-mobile.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/v-patients-drawer.png"
+        src: "/projects/easy-clinic/screenshots/v-patients-drawer.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/v-schedule-mobile.png"
+        src: "/projects/easy-clinic/screenshots/v-schedule-mobile.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/v-mobile-open.png"
+        src: "/projects/easy-clinic/screenshots/v-mobile-open.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/v-patient-photos.png"
+        src: "/projects/easy-clinic/screenshots/v-patient-photos.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/v-drawer-submenu.png"
+        src: "/projects/easy-clinic/screenshots/v-drawer-submenu.png",
       },
       {
-        "src": "/projects/easy-clinic/screenshots/01-patient.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/easy-clinic/screenshots/01-patient.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "infinitepar",
-    "year": "2016",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/infinitepar",
-    "logo": "/projects/infinitepar/infinitepar-logo.svg",
-    "name": {
-      "en": "Infinitepar Investment Partners",
-      "pt": "Infinitepar Investment Partners"
+    slug: "infinitepar",
+    year: "2016",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/infinitepar",
+    logo: "/projects/infinitepar/infinitepar-logo.svg",
+    name: {
+      en: "Infinitepar Investment Partners",
+      pt: "Infinitepar Investment Partners",
     },
-    "tagline": {
-      "en": "A custom WordPress platform connecting Brazilian entrepreneurs with mentors, investors, and a curated startup resource ecosystem.",
-      "pt": "Uma plataforma WordPress sob medida conectando empreendedores brasileiros a mentores, investidores e um ecossistema curado de recursos para startups."
+    tagline: {
+      en: "A custom WordPress platform connecting Brazilian entrepreneurs with mentors, investors, and a curated startup resource ecosystem.",
+      pt: "Uma plataforma WordPress sob medida conectando empreendedores brasileiros a mentores, investidores e um ecossistema curado de recursos para startups.",
     },
-    "kicker": {
-      "en": "// startup ecosystem · investment partners",
-      "pt": "// ecossistema de startups · investment partners"
+    kicker: {
+      en: "// startup ecosystem · investment partners",
+      pt: "// ecossistema de startups · investment partners",
     },
-    "intro": {
-      "en": "A custom WordPress platform connecting Brazilian entrepreneurs with mentors, investors, and curated startup resources — built for Infinitepar's three-track service model spanning coaching, business development, and cross-industry content.",
-      "pt": "Uma plataforma WordPress sob medida conectando empreendedores brasileiros a mentores, investidores e recursos curados para startups — construída para o modelo de serviço de três trilhas da Infinitepar, abrangendo coaching, desenvolvimento de negócios e conteúdo multissetorial."
+    intro: {
+      en: "A custom WordPress platform connecting Brazilian entrepreneurs with mentors, investors, and curated startup resources — built for Infinitepar's three-track service model spanning coaching, business development, and cross-industry content.",
+      pt: "Uma plataforma WordPress sob medida conectando empreendedores brasileiros a mentores, investidores e recursos curados para startups — construída para o modelo de serviço de três trilhas da Infinitepar, abrangendo coaching, desenvolvimento de negócios e conteúdo multissetorial.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "Infinitepar Investment Partners was a Portuguese and English-language digital platform built in 2016 to serve the Brazilian startup ecosystem. The site connected high-impact entrepreneurs, early-stage startups, and investors through a structured service architecture — each audience segment arriving at tailored pages with relevant entry points and clear calls to action.",
         "The platform was organized around three core service tracks:",
-        "**Coaching & Mentoring** — The \"Para Empreendedores de Alto Impacto\" section guided founders through accelerator programs and mentor networks, equipping them with the expertise to grow consistently. The page led with a full-screen looping MP4 video background, establishing a premium brand tone before a word was read.",
-        "**Business Development & Investment** — \"Biz & Expertises\" served investors and business development professionals alongside entrepreneurs from any industry. Structured in a two-column layout with distinct CTAs per segment, it qualified visitors by intent without friction — routing founders, investors, and operators to their relevant entry point.",
+        '**Coaching & Mentoring** — The "Para Empreendedores de Alto Impacto" section guided founders through accelerator programs and mentor networks, equipping them with the expertise to grow consistently. The page led with a full-screen looping MP4 video background, establishing a premium brand tone before a word was read.',
+        '**Business Development & Investment** — "Biz & Expertises" served investors and business development professionals alongside entrepreneurs from any industry. Structured in a two-column layout with distinct CTAs per segment, it qualified visitors by intent without friction — routing founders, investors, and operators to their relevant entry point.',
         "**Be Smart — Content Hub** — Infinitepar's content strategy lived here: curated articles, startup tools, interviews, and a newsletter subscription pipeline. Publishing resources like \"28 ferramentas pra lançar sua startup\" (curated free tools for founders) and entrepreneurship mindset content, the section grew Infinitepar's owned audience well beyond direct site visits.",
         "Supporting these pillars were a **Startups Folio** showcasing portfolio companies and a **Network Partners** section surfacing the advisors, accelerators, and institutions that gave Infinitepar its credibility with serious founders and investors.",
-        "The technical stack was WordPress 4.5.3 on a custom theme with a drag-and-drop page builder and revolutionary slider powering the video hero. A custom theme built on top of this foundation — with brand-specific color tokens, typography, and layout — meant Infinitepar presented a distinct visual identity rather than an off-the-shelf WordPress look."
+        "The technical stack was WordPress 4.5.3 on a custom theme with a drag-and-drop page builder and revolutionary slider powering the video hero. A custom theme built on top of this foundation — with brand-specific color tokens, typography, and layout — meant Infinitepar presented a distinct visual identity rather than an off-the-shelf WordPress look.",
       ],
-      "pt": [
+      pt: [
         "A Infinitepar Investment Partners foi uma plataforma digital em português e inglês construída em 2016 para atender ao ecossistema de startups brasileiro. O site conectava empreendedores de alto impacto, startups em estágio inicial e investidores por meio de uma arquitetura de serviços estruturada — cada segmento de público chegando a páginas sob medida com pontos de entrada relevantes e chamadas para ação claras.",
         "A plataforma era organizada em torno de três trilhas centrais de serviço:",
-        "**Coaching & Mentoria** — A seção \"Para Empreendedores de Alto Impacto\" guiava fundadores por programas de aceleração e redes de mentores, munindo-os da expertise para crescer de forma consistente. A página abria com um fundo de vídeo MP4 em loop em tela cheia, estabelecendo um tom de marca premium antes de uma palavra ser lida.",
-        "**Desenvolvimento de Negócios & Investimento** — A \"Biz & Expertises\" atendia investidores e profissionais de desenvolvimento de negócios ao lado de empreendedores de qualquer setor. Estruturada em um layout de duas colunas com CTAs distintos por segmento, ela qualificava visitantes por intenção sem atrito — encaminhando fundadores, investidores e operadores ao seu ponto de entrada relevante.",
-        "**Be Smart — Hub de Conteúdo** — A estratégia de conteúdo da Infinitepar morava aqui: artigos curados, ferramentas para startups, entrevistas e um funil de assinatura de newsletter. Publicando recursos como \"28 ferramentas pra lançar sua startup\" (ferramentas gratuitas curadas para fundadores) e conteúdo de mentalidade empreendedora, a seção fez a audiência própria da Infinitepar crescer muito além das visitas diretas ao site.",
+        '**Coaching & Mentoria** — A seção "Para Empreendedores de Alto Impacto" guiava fundadores por programas de aceleração e redes de mentores, munindo-os da expertise para crescer de forma consistente. A página abria com um fundo de vídeo MP4 em loop em tela cheia, estabelecendo um tom de marca premium antes de uma palavra ser lida.',
+        '**Desenvolvimento de Negócios & Investimento** — A "Biz & Expertises" atendia investidores e profissionais de desenvolvimento de negócios ao lado de empreendedores de qualquer setor. Estruturada em um layout de duas colunas com CTAs distintos por segmento, ela qualificava visitantes por intenção sem atrito — encaminhando fundadores, investidores e operadores ao seu ponto de entrada relevante.',
+        '**Be Smart — Hub de Conteúdo** — A estratégia de conteúdo da Infinitepar morava aqui: artigos curados, ferramentas para startups, entrevistas e um funil de assinatura de newsletter. Publicando recursos como "28 ferramentas pra lançar sua startup" (ferramentas gratuitas curadas para fundadores) e conteúdo de mentalidade empreendedora, a seção fez a audiência própria da Infinitepar crescer muito além das visitas diretas ao site.',
         "Sustentando esses pilares havia um **Startups Folio** exibindo as empresas do portfólio e uma seção **Network Partners** revelando os conselheiros, aceleradoras e instituições que davam à Infinitepar sua credibilidade junto a fundadores e investidores sérios.",
-        "A stack técnica era WordPress 4.5.3 sobre um tema sob medida com um page builder de arrastar-e-soltar e um slider avançado alimentando o hero em vídeo. Um tema sob medida construído sobre essa base — com tokens de cor, tipografia e layout específicos da marca — significava que a Infinitepar apresentava uma identidade visual distinta em vez de um visual WordPress de prateleira."
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Intent-based audience routing",
-          "pt": "Roteamento de público por intenção"
-        },
-        "body": {
-          "en": "A three-track service architecture qualified founders, investors, and operators by intent the moment they landed, sending each segment to tailored pages and calls to action without friction.",
-          "pt": "Uma arquitetura de serviços em três trilhas qualificava fundadores, investidores e operadores por intenção no instante em que chegavam, enviando cada segmento a páginas e chamadas para ação sob medida, sem atrito."
-        }
-      },
-      {
-        "heading": {
-          "en": "Owned-audience content hub",
-          "pt": "Hub de conteúdo com audiência própria"
-        },
-        "body": {
-          "en": "A curated library of articles, startup tools, and a newsletter pipeline grew reach well beyond direct site traffic, turning content into a durable, low-cost acquisition channel.",
-          "pt": "Uma biblioteca curada de artigos, ferramentas para startups e um funil de newsletter fez o alcance crescer muito além do tráfego direto ao site, transformando conteúdo em um canal de aquisição durável e de baixo custo."
-        }
-      },
-      {
-        "heading": {
-          "en": "Credibility-building network showcase",
-          "pt": "Vitrine de rede construtora de credibilidade"
-        },
-        "body": {
-          "en": "Portfolio company and partner sections surfaced the advisors, accelerators, and institutions behind the brand, giving serious founders and investors the social proof to engage.",
-          "pt": "As seções de empresas do portfólio e de parceiros revelavam os conselheiros, aceleradoras e instituições por trás da marca, dando a fundadores e investidores sérios a prova social para se engajar."
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "PHP",
-        "version": "5.6",
-        "icon": "/devicons/php-plain.svg"
-      },
-      {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
-      },
-      {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "WordPress",
-        "version": "4.5.3",
-        "icon": "/devicons/wordpress-original.svg"
-      },
-      {
-        "name": "jQuery",
-        "version": "1.12.4",
-        "icon": "/devicons/jquery-original.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/infinitepar/screenshots/be-smart-infinitepar.png"
-      },
-      {
-        "src": "/projects/infinitepar/screenshots/biz-expertises-infinitepar.png"
-      },
-      {
-        "src": "/projects/infinitepar/screenshots/mind-set-infinitepar.png"
-      },
-      {
-        "src": "/projects/infinitepar/screenshots/network-partners-infinitepar.png"
-      },
-      {
-        "src": "/projects/infinitepar/screenshots/para-empreendedores-de-alto-impacto-infinitepar.png"
-      },
-      {
-        "src": "/projects/infinitepar/screenshots/startups-folio-infinitepar.png"
-      },
-      {
-        "src": "/projects/infinitepar/screenshots/infinitepar-investiment-partners.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "alue",
-    "year": "2014",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/alue",
-    "logo": "/projects/alue/alue-logo.png",
-    "name": {
-      "en": "Alue Esquadrias",
-      "pt": "Alue Esquadrias"
-    },
-    "tagline": {
-      "en": "Institutional website and online portfolio for Alue Esquadrias de Alumínio, a premium aluminium frames manufacturer and official Alcoa partner based in Joinville, Santa Catarina.",
-      "pt": "Site institucional e portfólio online da Alue Esquadrias de Alumínio, fabricante de esquadrias de alumínio de alto padrão e parceira oficial Alcoa, sediada em Joinville, Santa Catarina."
-    },
-    "kicker": {
-      "en": "// institutional website · alcoa partner",
-      "pt": "// site institucional · parceira alcoa"
-    },
-    "intro": {
-      "en": "WordPress institutional site and portfolio built for Alue Esquadrias de Alumínio — a premium aluminium frames manufacturer and official Alcoa partner serving the construction market in Joinville, Santa Catarina since 1994.",
-      "pt": "Site institucional e portfólio em WordPress feito para a Alue Esquadrias de Alumínio — fabricante de esquadrias de alumínio de alto padrão e parceira oficial Alcoa, atendendo o mercado da construção em Joinville, Santa Catarina, desde 1994."
-    },
-    "body": {
-      "en": [
-        "Alue Esquadrias de Alumínio needed a web presence that matched the prestige of their Alcoa-certified product line and gave their sales team a credible, shareable link for new client conversations. Leonardo Vasconcellos designed and built the full solution — a custom WordPress theme presenting the company's 12 aluminium product lines, mission, and portfolio in a single polished page.",
-        "The commissioned photography and fullscreen hero carousel elevated the brand's visual authority, while the interactive portfolio — featuring completed works like Edifício Lafayette and Residencial Zürich — gave prospective clients a tangible view of Alue's high-standard output. The embedded contact form and Google Maps integration reduced friction for incoming leads, turning the website into an active channel for commercial partnerships with construction firms across Joinville and Santa Catarina."
+        "A stack técnica era WordPress 4.5.3 sobre um tema sob medida com um page builder de arrastar-e-soltar e um slider avançado alimentando o hero em vídeo. Um tema sob medida construído sobre essa base — com tokens de cor, tipografia e layout específicos da marca — significava que a Infinitepar apresentava uma identidade visual distinta em vez de um visual WordPress de prateleira.",
       ],
-      "pt": [
-        "A Alue Esquadrias de Alumínio precisava de uma presença web à altura do prestígio de sua linha de produtos certificada Alcoa e que desse à equipe de vendas um link confiável e compartilhável para novas conversas com clientes. Leonardo Vasconcellos projetou e construiu a solução completa — um tema WordPress sob medida apresentando as 12 linhas de produtos de alumínio da empresa, sua missão e seu portfólio em uma única página caprichada.",
-        "A fotografia sob encomenda e o carrossel de hero em tela cheia elevaram a autoridade visual da marca, enquanto o portfólio interativo — com obras concluídas como o Edifício Lafayette e o Residencial Zürich — dava aos potenciais clientes uma visão tangível do padrão elevado da Alue. O formulário de contato embutido e a integração com o Google Maps reduziram o atrito para os leads que chegavam, transformando o site em um canal ativo de parcerias comerciais com construtoras de Joinville e de Santa Catarina."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Custom WordPress theme, hand-coded from scratch",
-          "pt": "Tema WordPress sob medida, codificado à mão do zero"
+        heading: {
+          en: "Intent-based audience routing",
+          pt: "Roteamento de público por intenção",
         },
-        "body": {
-          "en": "built a fullscreen hero carousel, sticky navigation, and smooth single-page scroll across 5 sections, giving Alue a bespoke brand presence that matched the prestige of their Alcoa-certified product line.",
-          "pt": "construí um carrossel de hero em tela cheia, navegação fixa e rolagem suave em página única por 5 seções, dando à Alue uma presença de marca sob medida à altura do prestígio de sua linha de produtos certificada Alcoa."
-        }
+        body: {
+          en: "A three-track service architecture qualified founders, investors, and operators by intent the moment they landed, sending each segment to tailored pages and calls to action without friction.",
+          pt: "Uma arquitetura de serviços em três trilhas qualificava fundadores, investidores e operadores por intenção no instante em que chegavam, enviando cada segmento a páginas e chamadas para ação sob medida, sem atrito.",
+        },
       },
       {
-        "heading": {
-          "en": "Interactive project portfolio",
-          "pt": "Portfólio de obras interativo"
+        heading: {
+          en: "Owned-audience content hub",
+          pt: "Hub de conteúdo com audiência própria",
         },
-        "body": {
-          "en": "implemented an expandable gallery grid backed by a commissioned photo shoot of 7 completed works, so the sales team could show prospective clients tangible proof of Alue's high-standard output.",
-          "pt": "implementei uma grade de galeria expansível apoiada por um ensaio fotográfico sob encomenda de 7 obras concluídas, para que a equipe de vendas pudesse mostrar aos potenciais clientes provas tangíveis do padrão elevado da Alue."
-        }
+        body: {
+          en: "A curated library of articles, startup tools, and a newsletter pipeline grew reach well beyond direct site traffic, turning content into a durable, low-cost acquisition channel.",
+          pt: "Uma biblioteca curada de artigos, ferramentas para startups e um funil de newsletter fez o alcance crescer muito além do tráfego direto ao site, transformando conteúdo em um canal de aquisição durável e de baixo custo.",
+        },
       },
       {
-        "heading": {
-          "en": "Complete online lead pipeline",
-          "pt": "Pipeline de leads online completo"
+        heading: {
+          en: "Credibility-building network showcase",
+          pt: "Vitrine de rede construtora de credibilidade",
         },
-        "body": {
-          "en": "delivered a fully responsive layout, a server-side PHP contact form, and Google Maps showroom integration, turning the website into an active channel for new construction-firm partnerships across Santa Catarina.",
-          "pt": "entreguei um layout totalmente responsivo, um formulário de contato em PHP no servidor e a integração do showroom com o Google Maps, transformando o site em um canal ativo de novas parcerias com construtoras por toda Santa Catarina."
-        }
-      }
+        body: {
+          en: "Portfolio company and partner sections surfaced the advisors, accelerators, and institutions behind the brand, giving serious founders and investors the social proof to engage.",
+          pt: "As seções de empresas do portfólio e de parceiros revelavam os conselheiros, aceleradoras e instituições por trás da marca, dando a fundadores e investidores sérios a prova social para se engajar.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.6",
+        icon: "/devicons/php-plain.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "WordPress",
-        "version": "3.9.16",
-        "icon": "/devicons/wordpress-original.svg"
+        name: "WordPress",
+        version: "4.5.3",
+        icon: "/devicons/wordpress-original.svg",
       },
       {
-        "name": "Bootstrap",
-        "version": "2.x",
-        "icon": "/devicons/bootstrap-original.svg"
+        name: "jQuery",
+        version: "1.12.4",
+        icon: "/devicons/jquery-original.svg",
       },
-      {
-        "name": "jQuery",
-        "version": "1.11.x",
-        "icon": "/devicons/jquery-original.svg"
-      }
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-1.png"
+        src: "/projects/infinitepar/screenshots/be-smart-infinitepar.png",
       },
       {
-        "src": "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-2.png"
+        src: "/projects/infinitepar/screenshots/biz-expertises-infinitepar.png",
       },
       {
-        "src": "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-3.png"
+        src: "/projects/infinitepar/screenshots/mind-set-infinitepar.png",
       },
       {
-        "src": "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-4.png"
+        src: "/projects/infinitepar/screenshots/network-partners-infinitepar.png",
       },
       {
-        "src": "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-5.png"
+        src: "/projects/infinitepar/screenshots/para-empreendedores-de-alto-impacto-infinitepar.png",
       },
       {
-        "src": "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-6.png"
+        src: "/projects/infinitepar/screenshots/startups-folio-infinitepar.png",
       },
       {
-        "src": "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-7.png"
+        src: "/projects/infinitepar/screenshots/infinitepar-investiment-partners.png",
+        featured: true,
       },
-      {
-        "src": "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-8.png"
-      },
-      {
-        "src": "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa.png",
-        "featured": true
-      }
-    ]
+    ],
   },
   {
-    "slug": "fullhouse",
-    "year": "2014",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/fullhouse",
-    "logo": "/projects/fullhouse/fullhouse-logo.png",
-    "name": {
-      "en": "Full House Comunicação",
-      "pt": "Full House Comunicação"
+    slug: "alue",
+    year: "2014",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://webarchive.leonardolimadevasconcellos.workers.dev/alue",
+    logo: "/projects/alue/alue-logo.png",
+    name: {
+      en: "Alue Esquadrias",
+      pt: "Alue Esquadrias",
     },
-    "tagline": {
-      "en": "Corporate website for Full House Comunicação, a full-service advertising, PR, and events agency operating nationally since 2001 out of Joinville, SC.",
-      "pt": "Site corporativo da Full House Comunicação, agência full-service de publicidade, PR e eventos que atua nacionalmente desde 2001 a partir de Joinville, SC."
+    tagline: {
+      en: "Institutional website and online portfolio for Alue Esquadrias de Alumínio, a premium aluminium frames manufacturer and official Alcoa partner based in Joinville, Santa Catarina.",
+      pt: "Site institucional e portfólio online da Alue Esquadrias de Alumínio, fabricante de esquadrias de alumínio de alto padrão e parceira oficial Alcoa, sediada em Joinville, Santa Catarina.",
     },
-    "kicker": {
-      "en": "// advertising agency · full house comunicação",
-      "pt": "// agência de publicidade · full house comunicação"
+    kicker: {
+      en: "// institutional website · alcoa partner",
+      pt: "// site institucional · parceira alcoa",
     },
-    "intro": {
-      "en": "A marketing agency's own website is its most persuasive pitch. This WordPress build translated Full House Comunicação's 13 years of national creative work into a digital presence capable of competing for enterprise-level accounts across advertising, PR, and events.",
-      "pt": "O site da própria agência de marketing é seu argumento de venda mais persuasivo. Esta construção em WordPress traduziu os 13 anos de trabalho criativo nacional da Full House Comunicação em uma presença digital capaz de disputar contas de nível corporativo em publicidade, PR e eventos."
+    intro: {
+      en: "WordPress institutional site and portfolio built for Alue Esquadrias de Alumínio — a premium aluminium frames manufacturer and official Alcoa partner serving the construction market in Joinville, Santa Catarina since 1994.",
+      pt: "Site institucional e portfólio em WordPress feito para a Alue Esquadrias de Alumínio — fabricante de esquadrias de alumínio de alto padrão e parceira oficial Alcoa, atendendo o mercado da construção em Joinville, Santa Catarina, desde 1994.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
+        "Alue Esquadrias de Alumínio needed a web presence that matched the prestige of their Alcoa-certified product line and gave their sales team a credible, shareable link for new client conversations. Leonardo Vasconcellos designed and built the full solution — a custom WordPress theme presenting the company's 12 aluminium product lines, mission, and portfolio in a single polished page.",
+        "The commissioned photography and fullscreen hero carousel elevated the brand's visual authority, while the interactive portfolio — featuring completed works like Edifício Lafayette and Residencial Zürich — gave prospective clients a tangible view of Alue's high-standard output. The embedded contact form and Google Maps integration reduced friction for incoming leads, turning the website into an active channel for commercial partnerships with construction firms across Joinville and Santa Catarina.",
+      ],
+      pt: [
+        "A Alue Esquadrias de Alumínio precisava de uma presença web à altura do prestígio de sua linha de produtos certificada Alcoa e que desse à equipe de vendas um link confiável e compartilhável para novas conversas com clientes. Leonardo Vasconcellos projetou e construiu a solução completa — um tema WordPress sob medida apresentando as 12 linhas de produtos de alumínio da empresa, sua missão e seu portfólio em uma única página caprichada.",
+        "A fotografia sob encomenda e o carrossel de hero em tela cheia elevaram a autoridade visual da marca, enquanto o portfólio interativo — com obras concluídas como o Edifício Lafayette e o Residencial Zürich — dava aos potenciais clientes uma visão tangível do padrão elevado da Alue. O formulário de contato embutido e a integração com o Google Maps reduziram o atrito para os leads que chegavam, transformando o site em um canal ativo de parcerias comerciais com construtoras de Joinville e de Santa Catarina.",
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Custom WordPress theme, hand-coded from scratch",
+          pt: "Tema WordPress sob medida, codificado à mão do zero",
+        },
+        body: {
+          en: "built a fullscreen hero carousel, sticky navigation, and smooth single-page scroll across 5 sections, giving Alue a bespoke brand presence that matched the prestige of their Alcoa-certified product line.",
+          pt: "construí um carrossel de hero em tela cheia, navegação fixa e rolagem suave em página única por 5 seções, dando à Alue uma presença de marca sob medida à altura do prestígio de sua linha de produtos certificada Alcoa.",
+        },
+      },
+      {
+        heading: {
+          en: "Interactive project portfolio",
+          pt: "Portfólio de obras interativo",
+        },
+        body: {
+          en: "implemented an expandable gallery grid backed by a commissioned photo shoot of 7 completed works, so the sales team could show prospective clients tangible proof of Alue's high-standard output.",
+          pt: "implementei uma grade de galeria expansível apoiada por um ensaio fotográfico sob encomenda de 7 obras concluídas, para que a equipe de vendas pudesse mostrar aos potenciais clientes provas tangíveis do padrão elevado da Alue.",
+        },
+      },
+      {
+        heading: {
+          en: "Complete online lead pipeline",
+          pt: "Pipeline de leads online completo",
+        },
+        body: {
+          en: "delivered a fully responsive layout, a server-side PHP contact form, and Google Maps showroom integration, turning the website into an active channel for new construction-firm partnerships across Santa Catarina.",
+          pt: "entreguei um layout totalmente responsivo, um formulário de contato em PHP no servidor e a integração do showroom com o Google Maps, transformando o site em um canal ativo de novas parcerias com construtoras por toda Santa Catarina.",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
+      },
+      {
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "WordPress",
+        version: "3.9.16",
+        icon: "/devicons/wordpress-original.svg",
+      },
+      {
+        name: "Bootstrap",
+        version: "2.x",
+        icon: "/devicons/bootstrap-original.svg",
+      },
+      {
+        name: "jQuery",
+        version: "1.11.x",
+        icon: "/devicons/jquery-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-1.png",
+      },
+      {
+        src: "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-2.png",
+      },
+      {
+        src: "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-3.png",
+      },
+      {
+        src: "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-4.png",
+      },
+      {
+        src: "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-5.png",
+      },
+      {
+        src: "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-6.png",
+      },
+      {
+        src: "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-7.png",
+      },
+      {
+        src: "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa-8.png",
+      },
+      {
+        src: "/projects/alue/screenshots/alue-esquadrias-de-aluminio-esquadrias-de-aluminio-de-alto-padrao-parceiro-alcoa.png",
+        featured: true,
+      },
+    ],
+  },
+  {
+    slug: "fullhouse",
+    year: "2014",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/fullhouse",
+    logo: "/projects/fullhouse/fullhouse-logo.png",
+    name: {
+      en: "Full House Comunicação",
+      pt: "Full House Comunicação",
+    },
+    tagline: {
+      en: "Corporate website for Full House Comunicação, a full-service advertising, PR, and events agency operating nationally since 2001 out of Joinville, SC.",
+      pt: "Site corporativo da Full House Comunicação, agência full-service de publicidade, PR e eventos que atua nacionalmente desde 2001 a partir de Joinville, SC.",
+    },
+    kicker: {
+      en: "// advertising agency · full house comunicação",
+      pt: "// agência de publicidade · full house comunicação",
+    },
+    intro: {
+      en: "A marketing agency's own website is its most persuasive pitch. This WordPress build translated Full House Comunicação's 13 years of national creative work into a digital presence capable of competing for enterprise-level accounts across advertising, PR, and events.",
+      pt: "O site da própria agência de marketing é seu argumento de venda mais persuasivo. Esta construção em WordPress traduziu os 13 anos de trabalho criativo nacional da Full House Comunicação em uma presença digital capaz de disputar contas de nível corporativo em publicidade, PR e eventos.",
+    },
+    body: {
+      en: [
         "A marketing agency that cannot sell itself will struggle to sell its clients. For Full House Comunicação — a Joinville-based agency serving the national market since 2001 — the 2014 website was not a cosmetic update. It was a business tool built to open doors at the level the agency was already operating.",
         "Full House's positioning goes well beyond the conventional cycle of research, plan, create, and announce. Their approach starts by going deep into each client's business: understanding their services, listening to what they have to say, exchanging ideas, and building a genuine relationship before a single piece of communication is produced. That depth, and the results it delivers, needed to be felt the moment a prospect landed on the homepage.",
         "The build was a full custom WordPress implementation theme, shaped to reflect that positioning. Parallax hero sections guided visitors through the agency's story at a deliberate pace. An Isotope-powered filterable portfolio grid let prospects browse work by discipline without a page reload. A rotating client logo carousel communicated the breadth of brands that had trusted the agency, and fancybox-powered lightboxes kept the presentation immersive. Popup-based lead capture and server-side CSS/JS minification ensured the site performed as cleanly as it looked.",
         "Among the clients that benefited from Full House's integrated approach was Gabivel Honda, one of the region's most prominent automotive dealerships — a high-stakes account requiring advertising, PR, and events to run in concert, not in silos. The agency delivered, and a website that credibly represented their capabilities was central to that ongoing relationship.",
-        "A well-executed agency website does not just describe what the agency does — it demonstrates it. This one did."
+        "A well-executed agency website does not just describe what the agency does — it demonstrates it. This one did.",
       ],
-      "pt": [
+      pt: [
         "Uma agência de marketing que não consegue vender a si mesma vai penar para vender seus clientes. Para a Full House Comunicação — agência sediada em Joinville e atendendo o mercado nacional desde 2001 — o site de 2014 não era uma atualização cosmética. Era uma ferramenta de negócio construída para abrir portas no nível em que a agência já operava.",
         "O posicionamento da Full House vai muito além do ciclo convencional de pesquisar, planejar, criar e anunciar. Sua abordagem começa mergulhando fundo no negócio de cada cliente: entendendo seus serviços, ouvindo o que têm a dizer, trocando ideias e construindo um relacionamento genuíno antes de produzir uma única peça de comunicação. Essa profundidade, e os resultados que ela entrega, precisavam ser sentidos no instante em que um prospect chegasse à home.",
         "A construção foi uma implementação WordPress totalmente sob medida, moldada para refletir esse posicionamento. Seções de hero em parallax conduziam os visitantes pela história da agência em um ritmo deliberado. Uma grade de portfólio filtrável com Isotope permitia aos prospects navegar pelo trabalho por disciplina sem recarregar a página. Um carrossel rotativo de logos de clientes comunicava a amplitude de marcas que confiaram na agência, e lightboxes com fancybox mantinham a apresentação imersiva. Captação de leads por popup e minificação de CSS/JS no servidor garantiam que o site tivesse um desempenho tão limpo quanto sua aparência.",
         "Entre os clientes que se beneficiaram da abordagem integrada da Full House estava a Gabivel Honda, uma das concessionárias mais proeminentes da região — uma conta de alto risco que exigia publicidade, PR e eventos rodando em conjunto, não em silos. A agência entregou, e um site que representasse com credibilidade suas capacidades foi central para esse relacionamento contínuo.",
-        "Um site de agência bem executado não apenas descreve o que a agência faz — ele demonstra. Este demonstrou."
-      ]
+        "Um site de agência bem executado não apenas descreve o que a agência faz — ele demonstra. Este demonstrou.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Filterable portfolio showcase",
-          "pt": "Vitrine de portfólio filtrável"
+        heading: {
+          en: "Filterable portfolio showcase",
+          pt: "Vitrine de portfólio filtrável",
         },
-        "body": {
-          "en": "A discipline-based filtering system let prospects browse advertising, PR, and events work without a page reload, keeping high-value visitors engaged longer and demonstrating range at a glance.",
-          "pt": "Um sistema de filtragem por disciplina permitia aos prospects navegar por trabalhos de publicidade, PR e eventos sem recarregar a página, mantendo visitantes de alto valor engajados por mais tempo e demonstrando a amplitude de uma só olhada."
-        }
+        body: {
+          en: "A discipline-based filtering system let prospects browse advertising, PR, and events work without a page reload, keeping high-value visitors engaged longer and demonstrating range at a glance.",
+          pt: "Um sistema de filtragem por disciplina permitia aos prospects navegar por trabalhos de publicidade, PR e eventos sem recarregar a página, mantendo visitantes de alto valor engajados por mais tempo e demonstrando a amplitude de uma só olhada.",
+        },
       },
       {
-        "heading": {
-          "en": "Immersive storytelling homepage",
-          "pt": "Home de storytelling imersivo"
+        heading: {
+          en: "Immersive storytelling homepage",
+          pt: "Home de storytelling imersivo",
         },
-        "body": {
-          "en": "Parallax-driven sections paced the agency's 13-year national track record deliberately, giving the site the same weight and credibility as the enterprise accounts it was built to attract.",
-          "pt": "Seções em parallax ritmavam deliberadamente o histórico nacional de 13 anos da agência, dando ao site o mesmo peso e credibilidade das contas corporativas que ele foi construído para atrair."
-        }
+        body: {
+          en: "Parallax-driven sections paced the agency's 13-year national track record deliberately, giving the site the same weight and credibility as the enterprise accounts it was built to attract.",
+          pt: "Seções em parallax ritmavam deliberadamente o histórico nacional de 13 anos da agência, dando ao site o mesmo peso e credibilidade das contas corporativas que ele foi construído para atrair.",
+        },
       },
       {
-        "heading": {
-          "en": "Integrated social proof and lead capture",
-          "pt": "Prova social e captação de leads integradas"
+        heading: {
+          en: "Integrated social proof and lead capture",
+          pt: "Prova social e captação de leads integradas",
         },
-        "body": {
-          "en": "A rotating client logo carousel paired with popup-based lead capture turned brand trust into a direct path to inquiry, converting reputation into new business conversations.",
-          "pt": "Um carrossel rotativo de logos de clientes somado à captação de leads por popup transformava a confiança na marca em um caminho direto para o contato, convertendo reputação em novas conversas de negócio."
-        }
-      }
+        body: {
+          en: "A rotating client logo carousel paired with popup-based lead capture turned brand trust into a direct path to inquiry, converting reputation into new business conversations.",
+          pt: "Um carrossel rotativo de logos de clientes somado à captação de leads por popup transformava a confiança na marca em um caminho direto para o contato, convertendo reputação em novas conversas de negócio.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "WordPress",
-        "version": "4.5.5",
-        "icon": "/devicons/wordpress-original.svg"
+        name: "WordPress",
+        version: "4.5.5",
+        icon: "/devicons/wordpress-original.svg",
       },
       {
-        "name": "jQuery",
-        "version": "1.x",
-        "icon": "/devicons/jquery-original.svg"
-      }
+        name: "jQuery",
+        version: "1.x",
+        icon: "/devicons/jquery-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/fullhouse/screenshots/fullhouse-47-4009-9440-america-joinville-1.png"
+        src: "/projects/fullhouse/screenshots/fullhouse-47-4009-9440-america-joinville-1.png",
       },
       {
-        "src": "/projects/fullhouse/screenshots/fullhouse-47-4009-9440-america-joinville-2.png"
+        src: "/projects/fullhouse/screenshots/fullhouse-47-4009-9440-america-joinville-2.png",
       },
       {
-        "src": "/projects/fullhouse/screenshots/fullhouse-47-4009-9440-america-joinville.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/fullhouse/screenshots/fullhouse-47-4009-9440-america-joinville.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "tomio-studio",
-    "year": "2014",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/tomio-studio",
-    "logo": "/projects/tomio-studio/tomio-studio-logo.png",
-    "name": {
-      "en": "Tomio Studio",
-      "pt": "Tomio Studio"
+    slug: "tomio-studio",
+    year: "2014",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/tomio-studio",
+    logo: "/projects/tomio-studio/tomio-studio-logo.png",
+    name: {
+      en: "Tomio Studio",
+      pt: "Tomio Studio",
     },
-    "tagline": {
-      "en": "A one-page WordPress site built for Tomio Studio, a Brazilian video production house, to showcase corporate and wedding films and turn visitors into client inquiries.",
-      "pt": "Um site WordPress de página única feito para o Tomio Studio, produtora de vídeo brasileira, para exibir filmes corporativos e de casamento e transformar visitantes em contatos de clientes."
+    tagline: {
+      en: "A one-page WordPress site built for Tomio Studio, a Brazilian video production house, to showcase corporate and wedding films and turn visitors into client inquiries.",
+      pt: "Um site WordPress de página única feito para o Tomio Studio, produtora de vídeo brasileira, para exibir filmes corporativos e de casamento e transformar visitantes em contatos de clientes.",
     },
-    "kicker": {
-      "en": "// video production · corporate & wedding films",
-      "pt": "// produção de vídeo · filmes corporativos & de casamento"
+    kicker: {
+      en: "// video production · corporate & wedding films",
+      pt: "// produção de vídeo · filmes corporativos & de casamento",
     },
-    "intro": {
-      "en": "A one-page WordPress site for Tomio Studio, a Brazilian video production house, showcasing corporate and wedding films through a filterable portfolio, video lightboxes, and a built-in lead-capture contact form.",
-      "pt": "Um site WordPress de página única para o Tomio Studio, produtora de vídeo brasileira, exibindo filmes corporativos e de casamento por meio de um portfólio filtrável, lightboxes de vídeo e um formulário de contato embutido para captação de leads."
+    intro: {
+      en: "A one-page WordPress site for Tomio Studio, a Brazilian video production house, showcasing corporate and wedding films through a filterable portfolio, video lightboxes, and a built-in lead-capture contact form.",
+      pt: "Um site WordPress de página única para o Tomio Studio, produtora de vídeo brasileira, exibindo filmes corporativos e de casamento por meio de um portfólio filtrável, lightboxes de vídeo e um formulário de contato embutido para captação de leads.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "Tomio Studio is a Brazilian video production company specializing in two service lines: corporate video — commercials, institutional videos, and training content — and Wedding Day Films, cinematic recaps of a couple's wedding day.",
         "This project is the studio's public-facing website: a single-page, parallax-driven WordPress site built on with a custom theme, with a filterable portfolio grid (Corporativo vs. Wedding Day Films), in-page video lightboxes (YouTube embeds via prettyPhoto), a blog used to publish finished client projects as case studies, and a contact section for lead capture. It shipped on WordPress 4.7.1 with a MySQL backend and jQuery-driven interactions (FlexSlider, parallax scrolling, prettyPhoto galleries).",
-        "This repository is an archival snapshot of the live site — captured via `wget` (see `/rip`) — along with the original theme assets, uploaded media, and a full database export (`db/tomio.sql`), preserved for portfolio reference."
+        "This repository is an archival snapshot of the live site — captured via `wget` (see `/rip`) — along with the original theme assets, uploaded media, and a full database export (`db/tomio.sql`), preserved for portfolio reference.",
       ],
-      "pt": [
+      pt: [
         "O Tomio Studio é uma produtora de vídeo brasileira especializada em duas linhas de serviço: vídeo corporativo — comerciais, vídeos institucionais e conteúdo de treinamento — e Wedding Day Films, resumos cinematográficos do dia do casamento de um casal.",
         "Este projeto é o site público do estúdio: um site WordPress de página única, movido a parallax, construído sobre um tema sob medida, com uma grade de portfólio filtrável (Corporativo vs. Wedding Day Films), lightboxes de vídeo na própria página (embeds do YouTube via prettyPhoto), um blog usado para publicar projetos de clientes finalizados como estudos de caso, e uma seção de contato para captação de leads. Foi entregue em WordPress 4.7.1 com backend MySQL e interações movidas a jQuery (FlexSlider, rolagem em parallax, galerias prettyPhoto).",
-        "Este repositório é um snapshot de arquivo do site no ar — capturado via `wget` (veja `/rip`) — junto com os assets originais do tema, a mídia enviada e um export completo do banco de dados (`db/tomio.sql`), preservados para referência de portfólio."
-      ]
+        "Este repositório é um snapshot de arquivo do site no ar — capturado via `wget` (veja `/rip`) — junto com os assets originais do tema, a mídia enviada e um export completo do banco de dados (`db/tomio.sql`), preservados para referência de portfólio.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Filterable video portfolio",
-          "pt": "Portfólio de vídeo filtrável"
+        heading: {
+          en: "Filterable video portfolio",
+          pt: "Portfólio de vídeo filtrável",
         },
-        "body": {
-          "en": "a one-page parallax site with a filterable reel (Corporativo / Wedding Day Films), letting prospective clients browse by service line and preview embedded reels in-page, shortening the path from discovery to quote request",
-          "pt": "um site de página única em parallax com um reel filtrável (Corporativo / Wedding Day Films), permitindo aos potenciais clientes navegar por linha de serviço e pré-visualizar reels embutidos na página, encurtando o caminho da descoberta ao pedido de orçamento"
-        }
+        body: {
+          en: "a one-page parallax site with a filterable reel (Corporativo / Wedding Day Films), letting prospective clients browse by service line and preview embedded reels in-page, shortening the path from discovery to quote request",
+          pt: "um site de página única em parallax com um reel filtrável (Corporativo / Wedding Day Films), permitindo aos potenciais clientes navegar por linha de serviço e pré-visualizar reels embutidos na página, encurtando o caminho da descoberta ao pedido de orçamento",
+        },
       },
       {
-        "heading": {
-          "en": "Frictionless lead capture",
-          "pt": "Captação de leads sem atrito"
+        heading: {
+          en: "Frictionless lead capture",
+          pt: "Captação de leads sem atrito",
         },
-        "body": {
-          "en": "a custom contact form with nonce-protected AJAX submission, giving the studio a lead-capture channel directly on the homepage instead of relying on email or social DMs",
-          "pt": "um formulário de contato sob medida com envio AJAX protegido por nonce, dando ao estúdio um canal de captação de leads diretamente na home em vez de depender de e-mail ou DMs de redes sociais"
-        }
+        body: {
+          en: "a custom contact form with nonce-protected AJAX submission, giving the studio a lead-capture channel directly on the homepage instead of relying on email or social DMs",
+          pt: "um formulário de contato sob medida com envio AJAX protegido por nonce, dando ao estúdio um canal de captação de leads diretamente na home em vez de depender de e-mail ou DMs de redes sociais",
+        },
       },
       {
-        "heading": {
-          "en": "Case-study blog",
-          "pt": "Blog de estudos de caso"
+        heading: {
+          en: "Case-study blog",
+          pt: "Blog de estudos de caso",
         },
-        "body": {
-          "en": "category-tagged posts for delivered client work (e.g. Caravana Librelato Joinville, RS Tennis Joinville), turning each finished project into a public case study that doubles as SEO-friendly proof of work for new prospects",
-          "pt": "posts marcados por categoria dos trabalhos entregues a clientes (por exemplo, Caravana Librelato Joinville, RS Tennis Joinville), transformando cada projeto finalizado em um estudo de caso público que também serve de prova de trabalho amigável a SEO para novos prospects"
-        }
-      }
+        body: {
+          en: "category-tagged posts for delivered client work (e.g. Caravana Librelato Joinville, RS Tennis Joinville), turning each finished project into a public case study that doubles as SEO-friendly proof of work for new prospects",
+          pt: "posts marcados por categoria dos trabalhos entregues a clientes (por exemplo, Caravana Librelato Joinville, RS Tennis Joinville), transformando cada projeto finalizado em um estudo de caso público que também serve de prova de trabalho amigável a SEO para novos prospects",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "PHP",
-        "version": "5.6",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.6",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "WordPress",
-        "version": "4.7.1",
-        "icon": "/devicons/wordpress-plain.svg"
+        name: "WordPress",
+        version: "4.7.1",
+        icon: "/devicons/wordpress-plain.svg",
       },
       {
-        "name": "jQuery",
-        "version": "1.12.4",
-        "icon": "/devicons/jquery-plain.svg"
+        name: "jQuery",
+        version: "1.12.4",
+        icon: "/devicons/jquery-plain.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.7",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        version: "5.7",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/tomio-studio/screenshots/tomio-studio-video-makers-1.png"
+        src: "/projects/tomio-studio/screenshots/tomio-studio-video-makers-1.png",
       },
       {
-        "src": "/projects/tomio-studio/screenshots/tomio-studio-video-makers-2.png"
+        src: "/projects/tomio-studio/screenshots/tomio-studio-video-makers-2.png",
       },
       {
-        "src": "/projects/tomio-studio/screenshots/tomio-studio-video-makers-3.png"
+        src: "/projects/tomio-studio/screenshots/tomio-studio-video-makers-3.png",
       },
       {
-        "src": "/projects/tomio-studio/screenshots/tomio-studio-video-makers-4.png"
+        src: "/projects/tomio-studio/screenshots/tomio-studio-video-makers-4.png",
       },
       {
-        "src": "/projects/tomio-studio/screenshots/tomio-studio-video-makers-5.png"
+        src: "/projects/tomio-studio/screenshots/tomio-studio-video-makers-5.png",
       },
       {
-        "src": "/projects/tomio-studio/screenshots/tomio-studio-video-makers.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/tomio-studio/screenshots/tomio-studio-video-makers.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "gabivel",
-    "year": "2013",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/gabivel",
-    "logo": "/projects/gabivel/gabivel-logo.png",
-    "name": {
-      "en": "Gabivel Honda",
-      "pt": "Gabivel Honda"
+    slug: "gabivel",
+    year: "2013",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/gabivel",
+    logo: "/projects/gabivel/gabivel-logo.png",
+    name: {
+      en: "Gabivel Honda",
+      pt: "Gabivel Honda",
     },
-    "tagline": {
-      "en": "Institutional website built for Gabivel Honda — Joinville's Honda dealership — combining a full-page video background, dynamic car catalog, and test drive scheduling to drive showroom conversions.",
-      "pt": "Site institucional feito para a Gabivel Honda — a concessionária Honda de Joinville — combinando fundo de vídeo em página cheia, catálogo dinâmico de carros e agendamento de test drive para impulsionar conversões no showroom."
+    tagline: {
+      en: "Institutional website built for Gabivel Honda — Joinville's Honda dealership — combining a full-page video background, dynamic car catalog, and test drive scheduling to drive showroom conversions.",
+      pt: "Site institucional feito para a Gabivel Honda — a concessionária Honda de Joinville — combinando fundo de vídeo em página cheia, catálogo dinâmico de carros e agendamento de test drive para impulsionar conversões no showroom.",
     },
-    "kicker": {
-      "en": "// honda dealership · gabivel · joinville",
-      "pt": "// concessionária honda · gabivel · joinville"
+    kicker: {
+      en: "// honda dealership · gabivel · joinville",
+      pt: "// concessionária honda · gabivel · joinville",
     },
-    "intro": {
-      "en": "Institutional WordPress website for Gabivel Honda, a dealership in Joinville, SC — featuring a full-page video background, dynamic car catalog, and test drive scheduling that converted online visitors into qualified showroom leads.",
-      "pt": "Site institucional em WordPress para a Gabivel Honda, concessionária de Joinville, SC — com fundo de vídeo em página cheia, catálogo dinâmico de carros e agendamento de test drive que convertia visitantes online em leads qualificados para o showroom."
+    intro: {
+      en: "Institutional WordPress website for Gabivel Honda, a dealership in Joinville, SC — featuring a full-page video background, dynamic car catalog, and test drive scheduling that converted online visitors into qualified showroom leads.",
+      pt: "Site institucional em WordPress para a Gabivel Honda, concessionária de Joinville, SC — com fundo de vídeo em página cheia, catálogo dinâmico de carros e agendamento de test drive que convertia visitantes online em leads qualificados para o showroom.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "Gabivel Honda is a Honda dealership based in Joinville, Santa Catarina. In 2013, the dealership needed a modern online presence that could do more than list static inventory — it needed to convert curious visitors into qualified showroom leads.",
         "The site's signature feature is its **full-page video background**: a looping reel of Honda vehicles that greets visitors on arrival. At a time when most dealership sites relied on static hero images, this immersive approach communicated the brand's premium positioning and kept engagement high from the very first second.",
         "Built on a custom WordPress theme developed exclusively for Gabivel, the **dynamic car catalog** gives the dealership's marketing team full editorial control. Both new models and used vehicles have individual detail pages, and the entire inventory can be updated without developer involvement — critical for a business where stock changes week to week.",
         "Beyond brand impression, the site's architecture was built around conversion. An **integrated test drive scheduling flow** and a factory-recommended routine maintenance guide each serve a distinct stage in the buyer's journey, reducing the distance between browsing online and booking a dealership visit.",
-        "The site also surfaces Gabivel's institutional identity — mission, vision, and values — alongside a services section covering the dealership's technical assistance offering. Every page reinforces that Gabivel is not just a place to buy a car, but a trusted long-term partner."
+        "The site also surfaces Gabivel's institutional identity — mission, vision, and values — alongside a services section covering the dealership's technical assistance offering. Every page reinforces that Gabivel is not just a place to buy a car, but a trusted long-term partner.",
       ],
-      "pt": [
+      pt: [
         "A Gabivel Honda é uma concessionária Honda sediada em Joinville, Santa Catarina. Em 2013, a concessionária precisava de uma presença online moderna que fizesse mais do que listar estoque estático — precisava converter visitantes curiosos em leads qualificados para o showroom.",
         "O recurso característico do site é seu **fundo de vídeo em página cheia**: um reel em loop de veículos Honda que recebe os visitantes na chegada. Numa época em que a maioria dos sites de concessionária dependia de imagens de hero estáticas, essa abordagem imersiva comunicava o posicionamento premium da marca e mantinha o engajamento alto desde o primeiro segundo.",
         "Construído sobre um tema WordPress sob medida desenvolvido exclusivamente para a Gabivel, o **catálogo dinâmico de carros** dá ao time de marketing da concessionária total controle editorial. Tanto os modelos novos quanto os veículos usados têm páginas de detalhe individuais, e todo o estoque pode ser atualizado sem envolvimento de desenvolvedor — crítico para um negócio em que o estoque muda de semana a semana.",
         "Além da impressão de marca, a arquitetura do site foi construída em torno da conversão. Um **fluxo integrado de agendamento de test drive** e um guia de manutenção de rotina recomendada de fábrica atendem, cada um, uma etapa distinta da jornada do comprador, reduzindo a distância entre navegar online e agendar uma visita à concessionária.",
-        "O site também destaca a identidade institucional da Gabivel — missão, visão e valores — ao lado de uma seção de serviços que cobre a oferta de assistência técnica da concessionária. Cada página reforça que a Gabivel não é apenas um lugar para comprar um carro, mas um parceiro de confiança de longo prazo."
-      ]
+        "O site também destaca a identidade institucional da Gabivel — missão, visão e valores — ao lado de uma seção de serviços que cobre a oferta de assistência técnica da concessionária. Cada página reforça que a Gabivel não é apenas um lugar para comprar um carro, mas um parceiro de confiança de longo prazo.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Full-page video showroom",
-          "pt": "Showroom em vídeo de página cheia"
+        heading: {
+          en: "Full-page video showroom",
+          pt: "Showroom em vídeo de página cheia",
         },
-        "body": {
-          "en": "An immersive looping vehicle reel greeted every visitor, projecting the dealership's premium positioning from the first second and lifting engagement over the static-image sites competitors relied on.",
-          "pt": "Um reel de veículos em loop imersivo recebia cada visitante, projetando o posicionamento premium da concessionária desde o primeiro segundo e elevando o engajamento acima dos sites de imagem estática em que os concorrentes se apoiavam."
-        }
+        body: {
+          en: "An immersive looping vehicle reel greeted every visitor, projecting the dealership's premium positioning from the first second and lifting engagement over the static-image sites competitors relied on.",
+          pt: "Um reel de veículos em loop imersivo recebia cada visitante, projetando o posicionamento premium da concessionária desde o primeiro segundo e elevando o engajamento acima dos sites de imagem estática em que os concorrentes se apoiavam.",
+        },
       },
       {
-        "heading": {
-          "en": "Self-managed vehicle catalog",
-          "pt": "Catálogo de veículos autogerenciável"
+        heading: {
+          en: "Self-managed vehicle catalog",
+          pt: "Catálogo de veículos autogerenciável",
         },
-        "body": {
-          "en": "Individual detail pages for new and used inventory that the marketing team could update without developer involvement, keeping stock accurate in a business where inventory turns over weekly.",
-          "pt": "Páginas de detalhe individuais para o estoque novo e usado que o time de marketing podia atualizar sem envolvimento de desenvolvedor, mantendo o estoque preciso em um negócio em que o inventário gira semanalmente."
-        }
+        body: {
+          en: "Individual detail pages for new and used inventory that the marketing team could update without developer involvement, keeping stock accurate in a business where inventory turns over weekly.",
+          pt: "Páginas de detalhe individuais para o estoque novo e usado que o time de marketing podia atualizar sem envolvimento de desenvolvedor, mantendo o estoque preciso em um negócio em que o inventário gira semanalmente.",
+        },
       },
       {
-        "heading": {
-          "en": "Test drive scheduling flow",
-          "pt": "Fluxo de agendamento de test drive"
+        heading: {
+          en: "Test drive scheduling flow",
+          pt: "Fluxo de agendamento de test drive",
         },
-        "body": {
-          "en": "An integrated booking path paired with a routine-maintenance guide shortened the distance from online browsing to a booked showroom visit, feeding qualified leads straight to the sales floor.",
-          "pt": "Um caminho de agendamento integrado somado a um guia de manutenção de rotina encurtava a distância entre a navegação online e uma visita agendada ao showroom, alimentando leads qualificados direto para o salão de vendas."
-        }
-      }
+        body: {
+          en: "An integrated booking path paired with a routine-maintenance guide shortened the distance from online browsing to a booked showroom visit, feeding qualified leads straight to the sales floor.",
+          pt: "Um caminho de agendamento integrado somado a um guia de manutenção de rotina encurtava a distância entre a navegação online e uma visita agendada ao showroom, alimentando leads qualificados direto para o salão de vendas.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "WordPress",
-        "version": "3.6.1",
-        "icon": "/devicons/wordpress-original.svg"
+        name: "WordPress",
+        version: "3.6.1",
+        icon: "/devicons/wordpress-original.svg",
       },
       {
-        "name": "jQuery",
-        "version": "1.10.2",
-        "icon": "/devicons/jquery-original.svg"
-      }
+        name: "jQuery",
+        version: "1.10.2",
+        icon: "/devicons/jquery-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/gabivel/screenshots/a-gabivel-gabivel.png"
+        src: "/projects/gabivel/screenshots/a-gabivel-gabivel.png",
       },
       {
-        "src": "/projects/gabivel/screenshots/fale-conosco-gabivel.png"
+        src: "/projects/gabivel/screenshots/fale-conosco-gabivel.png",
       },
       {
-        "src": "/projects/gabivel/screenshots/gabivel-tudo-que-voce-quer.png"
+        src: "/projects/gabivel/screenshots/gabivel-tudo-que-voce-quer.png",
       },
       {
-        "src": "/projects/gabivel/screenshots/test-drive-gabivel.png"
+        src: "/projects/gabivel/screenshots/test-drive-gabivel.png",
       },
       {
-        "src": "/projects/gabivel/screenshots/veiculos-gabivel.png"
+        src: "/projects/gabivel/screenshots/veiculos-gabivel.png",
       },
       {
-        "src": "/projects/gabivel/screenshots/volkswagen-fox-gabivel.png"
+        src: "/projects/gabivel/screenshots/volkswagen-fox-gabivel.png",
       },
       {
-        "src": "/projects/gabivel/screenshots/home-gabivel.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/gabivel/screenshots/home-gabivel.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "devhouse-br.github.com",
-    "year": "2012",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/devhouse-br.github.com",
-    "logo": "/projects/devhouse-br.github.com/devhouse-br.github.com-logo.png",
-    "name": {
-      "en": "DevHouse Internet Software Development House",
-      "pt": "DevHouse Internet Software Development House"
+    slug: "devhouse-br.github.com",
+    year: "2012",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/devhouse-br.github.com",
+    logo: "/projects/devhouse-br.github.com/devhouse-br.github.com-logo.png",
+    name: {
+      en: "DevHouse Internet Software Development House",
+      pt: "DevHouse Internet Software Development House",
     },
-    "tagline": {
-      "en": "The public GitHub Pages landing site for DevHouse, a Brazilian web development company, displaying the company identity and linking to its open-source projects.",
-      "pt": "O site landing público no GitHub Pages da DevHouse, empresa brasileira de desenvolvimento web, exibindo a identidade da empresa e apontando para seus projetos open source."
+    tagline: {
+      en: "The public GitHub Pages landing site for DevHouse, a Brazilian web development company, displaying the company identity and linking to its open-source projects.",
+      pt: "O site landing público no GitHub Pages da DevHouse, empresa brasileira de desenvolvimento web, exibindo a identidade da empresa e apontando para seus projetos open source.",
     },
-    "kicker": {
-      "en": "// web development · devhouse",
-      "pt": "// desenvolvimento web · devhouse"
+    kicker: {
+      en: "// web development · devhouse",
+      pt: "// desenvolvimento web · devhouse",
     },
-    "intro": {
-      "en": "The GitHub Pages landing site for DevHouse, a Brazilian open-source web studio founded in 2012. A single-page identity hub linking the company website and its first open-source project, Robot.",
-      "pt": "O site landing no GitHub Pages da DevHouse, um estúdio web brasileiro de código aberto fundado em 2012. Um hub de identidade em página única que conecta o site da empresa e seu primeiro projeto open source, o Robot."
+    intro: {
+      en: "The GitHub Pages landing site for DevHouse, a Brazilian open-source web studio founded in 2012. A single-page identity hub linking the company website and its first open-source project, Robot.",
+      pt: "O site landing no GitHub Pages da DevHouse, um estúdio web brasileiro de código aberto fundado em 2012. Um hub de identidade em página única que conecta o site da empresa e seu primeiro projeto open source, o Robot.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "DevHouse Internet Software Development House was Leonardo Vasconcellos's own web development company, built during the early growth of Brazil's tech industry. This repository is the GitHub Pages organizational landing page — the first public face DevHouse showed to the developer community.",
         "The page is deliberately minimal: a full-bleed atmospheric background, the DevHouse logotype centered on screen, and two anchor links — one to the company website and one to _Robot_, DevHouse's first open-source project. No framework, no build step, no CMS. A clean HTML document delivered directly from GitHub Pages.",
-        "What made this meaningful was the signal it sent: DevHouse wasn't just a client services shop — it was a company that built in the open, contributed to the developer ecosystem, and put its GitHub organization front and center. The landing page became the handshake between the company's commercial identity and its open-source ambitions."
+        "What made this meaningful was the signal it sent: DevHouse wasn't just a client services shop — it was a company that built in the open, contributed to the developer ecosystem, and put its GitHub organization front and center. The landing page became the handshake between the company's commercial identity and its open-source ambitions.",
       ],
-      "pt": [
+      pt: [
         "A DevHouse Internet Software Development House era a própria empresa de desenvolvimento web de Leonardo Vasconcellos, construída durante o crescimento inicial da indústria de tecnologia brasileira. Este repositório é a página landing organizacional no GitHub Pages — a primeira face pública que a DevHouse mostrou à comunidade de desenvolvedores.",
         "A página é deliberadamente minimalista: um fundo atmosférico de sangria total, o logotipo da DevHouse centralizado na tela e dois links de âncora — um para o site da empresa e outro para o _Robot_, o primeiro projeto open source da DevHouse. Sem framework, sem etapa de build, sem CMS. Um documento HTML limpo entregue diretamente do GitHub Pages.",
-        "O que tornava isso significativo era o sinal que enviava: a DevHouse não era apenas uma casa de serviços para clientes — era uma empresa que construía de forma aberta, contribuía com o ecossistema de desenvolvedores e colocava sua organização no GitHub em primeiro plano. A página landing se tornou o aperto de mão entre a identidade comercial da empresa e suas ambições open source."
-      ]
+        "O que tornava isso significativo era o sinal que enviava: a DevHouse não era apenas uma casa de serviços para clientes — era uma empresa que construía de forma aberta, contribuía com o ecossistema de desenvolvedores e colocava sua organização no GitHub em primeiro plano. A página landing se tornou o aperto de mão entre a identidade comercial da empresa e suas ambições open source.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Developer-first organizational identity",
-          "pt": "Identidade organizacional voltada a desenvolvedores"
+        heading: {
+          en: "Developer-first organizational identity",
+          pt: "Identidade organizacional voltada a desenvolvedores",
         },
-        "body": {
-          "en": "Established DevHouse's GitHub organization presence and open-source identity from day one, giving the company a developer-first face before open-source became standard practice for Brazilian studios — directly supporting business development by building credibility with technical clients and collaborators.",
-          "pt": "Estabeleceu a presença da organização da DevHouse no GitHub e sua identidade open source desde o primeiro dia, dando à empresa uma face voltada a desenvolvedores antes de o open source virar prática padrão para estúdios brasileiros — apoiando diretamente o desenvolvimento de negócios ao construir credibilidade com clientes e colaboradores técnicos."
-        }
+        body: {
+          en: "Established DevHouse's GitHub organization presence and open-source identity from day one, giving the company a developer-first face before open-source became standard practice for Brazilian studios — directly supporting business development by building credibility with technical clients and collaborators.",
+          pt: "Estabeleceu a presença da organização da DevHouse no GitHub e sua identidade open source desde o primeiro dia, dando à empresa uma face voltada a desenvolvedores antes de o open source virar prática padrão para estúdios brasileiros — apoiando diretamente o desenvolvimento de negócios ao construir credibilidade com clientes e colaboradores técnicos.",
+        },
       },
       {
-        "heading": {
-          "en": "Zero-cost, always-on hosting",
-          "pt": "Hospedagem sempre no ar, a custo zero"
+        heading: {
+          en: "Zero-cost, always-on hosting",
+          pt: "Hospedagem sempre no ar, a custo zero",
         },
-        "body": {
-          "en": "Zero-dependency static delivery via GitHub Pages eliminated hosting costs entirely and kept the company's developer-facing presence always-on with no operational overhead — a deliberate infrastructure decision that freed budget for product work.",
-          "pt": "Entrega estática sem dependências via GitHub Pages eliminou completamente os custos de hospedagem e manteve a presença da empresa voltada a desenvolvedores sempre no ar, sem overhead operacional — uma decisão deliberada de infraestrutura que liberou orçamento para o trabalho de produto."
-        }
+        body: {
+          en: "Zero-dependency static delivery via GitHub Pages eliminated hosting costs entirely and kept the company's developer-facing presence always-on with no operational overhead — a deliberate infrastructure decision that freed budget for product work.",
+          pt: "Entrega estática sem dependências via GitHub Pages eliminou completamente os custos de hospedagem e manteve a presença da empresa voltada a desenvolvedores sempre no ar, sem overhead operacional — uma decisão deliberada de infraestrutura que liberou orçamento para o trabalho de produto.",
+        },
       },
       {
-        "heading": {
-          "en": "Open-source project gateway",
-          "pt": "Portal para os projetos open source"
+        heading: {
+          en: "Open-source project gateway",
+          pt: "Portal para os projetos open source",
         },
-        "body": {
-          "en": "Served as the gateway to Robot, DevHouse's first open-source release, channeling developer traffic from the GitHub org directly to the project and seeding early community adoption around the company's work.",
-          "pt": "Serviu como o portal para o Robot, o primeiro lançamento open source da DevHouse, canalizando o tráfego de desenvolvedores da organização no GitHub diretamente para o projeto e semeando a adoção inicial da comunidade em torno do trabalho da empresa."
-        }
-      }
+        body: {
+          en: "Served as the gateway to Robot, DevHouse's first open-source release, channeling developer traffic from the GitHub org directly to the project and seeding early community adoption around the company's work.",
+          pt: "Serviu como o portal para o Robot, o primeiro lançamento open source da DevHouse, canalizando o tráfego de desenvolvedores da organização no GitHub diretamente para o projeto e semeando a adoção inicial da comunidade em torno do trabalho da empresa.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      }
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/devhouse-br.github.com/screenshots/captura-de-tela-2026-06-07-094153.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/devhouse-br.github.com/screenshots/captura-de-tela-2026-06-07-094153.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "vonmuller",
-    "year": "2012",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/vonmuller",
-    "logo": "/projects/vonmuller/vonmuller-logo.png",
-    "name": {
-      "en": "VonMuller Estúdio Fotográfico",
-      "pt": "VonMuller Estúdio Fotográfico"
+    slug: "vonmuller",
+    year: "2012",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/vonmuller",
+    logo: "/projects/vonmuller/vonmuller-logo.png",
+    name: {
+      en: "VonMuller Estúdio Fotográfico",
+      pt: "VonMuller Estúdio Fotográfico",
     },
-    "tagline": {
-      "en": "A custom WordPress theme and site for VonMuller Estúdio Fotográfico, a wedding and event photography studio in Joinville, Brazil operating since 2004.",
-      "pt": "Um tema WordPress e site sob medida para o VonMuller Estúdio Fotográfico, estúdio de fotografia de casamentos e eventos em Joinville, Brasil, em atividade desde 2004."
+    tagline: {
+      en: "A custom WordPress theme and site for VonMuller Estúdio Fotográfico, a wedding and event photography studio in Joinville, Brazil operating since 2004.",
+      pt: "Um tema WordPress e site sob medida para o VonMuller Estúdio Fotográfico, estúdio de fotografia de casamentos e eventos em Joinville, Brasil, em atividade desde 2004.",
     },
-    "kicker": {
-      "en": "// wedding & event photography · Joinville, Brazil",
-      "pt": "// fotografia de casamentos & eventos · Joinville, Brasil"
+    kicker: {
+      en: "// wedding & event photography · Joinville, Brazil",
+      pt: "// fotografia de casamentos & eventos · Joinville, Brasil",
     },
-    "intro": {
-      "en": "A custom WordPress build for a Joinville, Brazil wedding and event photography studio active since 2004 — bespoke theme, lightbox galleries, photo watermarking, and security hardening for a small-business site exposed to real-world WordPress attacks.",
-      "pt": "Uma construção WordPress sob medida para um estúdio de fotografia de casamentos e eventos de Joinville, Brasil, ativo desde 2004 — tema sob medida, galerias em lightbox, marca d'água nas fotos e reforço de segurança para um site de pequeno negócio exposto a ataques reais ao WordPress."
+    intro: {
+      en: "A custom WordPress build for a Joinville, Brazil wedding and event photography studio active since 2004 — bespoke theme, lightbox galleries, photo watermarking, and security hardening for a small-business site exposed to real-world WordPress attacks.",
+      pt: "Uma construção WordPress sob medida para um estúdio de fotografia de casamentos e eventos de Joinville, Brasil, ativo desde 2004 — tema sob medida, galerias em lightbox, marca d'água nas fotos e reforço de segurança para um site de pequeno negócio exposto a ataques reais ao WordPress.",
     },
-    "body": {
-      "en": [
-        "VonMuller Estúdio Fotográfico is a wedding and event photography studio based in Joinville, Santa Catarina, Brazil, run by photographer Wander Von Muller and active since 2004. The site showcases the studio's portfolio across weddings, corporate events, invitations and posters, and behind-the-scenes \"making of\" video and location work, alongside a company profile and direct contact channel for booking.",
+    body: {
+      en: [
+        'VonMuller Estúdio Fotográfico is a wedding and event photography studio based in Joinville, Santa Catarina, Brazil, run by photographer Wander Von Muller and active since 2004. The site showcases the studio\'s portfolio across weddings, corporate events, invitations and posters, and behind-the-scenes "making of" video and location work, alongside a company profile and direct contact channel for booking.',
         "The project is a fully custom WordPress build: a bespoke theme (`VonMuller`, v2.0.1) rather than an off-the-shelf template, with Highslide-powered lightbox galleries for browsing event photography, Cufon web-font rendering for the era's custom typography needs, and an image-watermarking plugin to protect the studio's photos from unauthorized use. The codebase in this archive also reflects ongoing maintenance: a 2016 upgrade to WordPress 4.6.1 and the removal of the `timthumb.php` script after it was identified as a common attack vector across WordPress sites of that period, paired with the Better WP Security plugin for ongoing hardening.",
-        "This repository preserves the site as archived via `wget` (see `rip/`), along with the original WordPress installation (`www/`), database export (`db/vonmuller.sql`), and brand assets (`assets/`)."
+        "This repository preserves the site as archived via `wget` (see `rip/`), along with the original WordPress installation (`www/`), database export (`db/vonmuller.sql`), and brand assets (`assets/`).",
       ],
-      "pt": [
-        "O VonMuller Estúdio Fotográfico é um estúdio de fotografia de casamentos e eventos sediado em Joinville, Santa Catarina, Brasil, tocado pelo fotógrafo Wander Von Muller e ativo desde 2004. O site exibe o portfólio do estúdio em casamentos, eventos corporativos, convites e cartazes, e trabalhos de \"making of\" em vídeo e de locação, ao lado de um perfil da empresa e um canal de contato direto para reservas.",
+      pt: [
+        'O VonMuller Estúdio Fotográfico é um estúdio de fotografia de casamentos e eventos sediado em Joinville, Santa Catarina, Brasil, tocado pelo fotógrafo Wander Von Muller e ativo desde 2004. O site exibe o portfólio do estúdio em casamentos, eventos corporativos, convites e cartazes, e trabalhos de "making of" em vídeo e de locação, ao lado de um perfil da empresa e um canal de contato direto para reservas.',
         "O projeto é uma construção WordPress totalmente sob medida: um tema exclusivo (`VonMuller`, v2.0.1) em vez de um template de prateleira, com galerias em lightbox movidas a Highslide para navegar pela fotografia de eventos, renderização de web-fonts com Cufon para as necessidades de tipografia customizada da época, e um plugin de marca d'água em imagens para proteger as fotos do estúdio de uso não autorizado. O código nesse arquivo também reflete manutenção contínua: uma atualização de 2016 para o WordPress 4.6.1 e a remoção do script `timthumb.php` depois de ele ser identificado como um vetor de ataque comum em sites WordPress daquele período, junto com o plugin Better WP Security para reforço contínuo.",
-        "Este repositório preserva o site como arquivado via `wget` (veja `rip/`), junto com a instalação original do WordPress (`www/`), o export do banco de dados (`db/vonmuller.sql`) e os assets de marca (`assets/`)."
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Bespoke custom theme",
-          "pt": "Tema exclusivo sob medida"
-        },
-        "body": {
-          "en": "a fully custom theme built from scratch (no page builder) with bespoke navigation, lightbox galleries, and a custom typography system, giving the studio a distinctive, on-brand presence instead of the generic template look competitors were using",
-          "pt": "um tema totalmente sob medida construído do zero (sem page builder) com navegação exclusiva, galerias em lightbox e um sistema de tipografia customizado, dando ao estúdio uma presença distinta e alinhada à marca em vez do visual genérico de template que os concorrentes usavam"
-        }
-      },
-      {
-        "heading": {
-          "en": "Portfolio watermarking",
-          "pt": "Marca d'água no portfólio"
-        },
-        "body": {
-          "en": "image watermarking across the portfolio galleries, protecting the studio's wedding and event photography from unauthorized reuse — a real concern for photographers whose finished work is their product",
-          "pt": "marca d'água nas imagens em todas as galerias do portfólio, protegendo a fotografia de casamentos e eventos do estúdio de reuso não autorizado — uma preocupação real para fotógrafos cujo trabalho finalizado é seu produto"
-        }
-      },
-      {
-        "heading": {
-          "en": "Hardened, secure platform",
-          "pt": "Plataforma segura e reforçada"
-        },
-        "body": {
-          "en": "security hardening (removal of the vulnerable `timthumb.php` script, a current core version) that reduced the studio's exposure to the mass exploit campaigns targeting exactly this kind of small-business site in the mid-2010s",
-          "pt": "reforço de segurança (remoção do script vulnerável `timthumb.php`, uma versão de núcleo atual) que reduziu a exposição do estúdio às campanhas de exploração em massa que miravam exatamente esse tipo de site de pequeno negócio em meados dos anos 2010"
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "icon": "/devicons/javascript-original.svg"
-      },
-      {
-        "name": "HTML5",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS3",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "WordPress",
-        "version": "4.6.1",
-        "icon": "/devicons/wordpress-plain.svg"
-      },
-      {
-        "name": "jQuery",
-        "version": "1.6.1",
-        "icon": "/devicons/jquery-original.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-contato.png"
-      },
-      {
-        "src": "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-eventos-1.png"
-      },
-      {
-        "src": "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-eventos.png"
-      },
-      {
-        "src": "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-making-of-externo.png"
-      },
-      {
-        "src": "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-produtos.png"
-      },
-      {
-        "src": "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-servicos.png"
-      },
-      {
-        "src": "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-video-clipe.png"
-      },
-      {
-        "src": "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-wander-von-muller.png"
-      },
-      {
-        "src": "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "devhouse-wordpress",
-    "year": "2011",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/devhouse-wordpress",
-    "logo": "/projects/devhouse-wordpress/devhouse-wordpress-logo.png",
-    "name": {
-      "en": "DevHouse — Internet Software Development House",
-      "pt": "DevHouse — Internet Software Development House"
-    },
-    "tagline": {
-      "en": "A WordPress-powered company website for DevHouse, an internet software development house, pairing a custom-built marketing site with a high-traffic technical blog covering Linux, mobile, and web development.",
-      "pt": "Um site institucional em WordPress para a DevHouse, uma internet software development house, unindo um site de marketing construído sob medida a um blog técnico de alto tráfego cobrindo Linux, mobile e desenvolvimento web."
-    },
-    "kicker": {
-      "en": "// devhouse.com.br · company site & tech blog",
-      "pt": "// devhouse.com.br · site institucional & blog técnico"
-    },
-    "intro": {
-      "en": "DevHouse's own WordPress site: a custom theme for its services pages plus a technical blog used to generate leads and showcase engineering credibility to prospective clients.",
-      "pt": "O próprio site WordPress da DevHouse: um tema sob medida para suas páginas de serviços mais um blog técnico usado para gerar leads e demonstrar credibilidade de engenharia a potenciais clientes."
-    },
-    "body": {
-      "en": [
-        "DevHouse was the public face of DevHouse — Internet Software Development House, a software studio offering website builds, custom internet systems, and mobile apps. The site paired marketing pages for those three service lines with an active Portuguese-language technical blog covering Linux administration, mobile rooting/ROMs, SQL Server/MySQL tips, and WordPress development, used as both a lead-generation channel and a public engineering notebook.",
-        "The front end ran on a fully custom WordPress theme (DevHouse v2.3.1) built in-house rather than a purchased template, alongside a curated plugin stack the company also recommended to clients: Google Analytics/AdSense, Akismet and a custom CAPTCHA for spam control, Amazon SES for transactional mail, automatic subdomains, and XML sitemap generation."
+        "Este repositório preserva o site como arquivado via `wget` (veja `rip/`), junto com a instalação original do WordPress (`www/`), o export do banco de dados (`db/vonmuller.sql`) e os assets de marca (`assets/`).",
       ],
-      "pt": [
-        "A DevHouse era a face pública da DevHouse — Internet Software Development House, um estúdio de software que oferecia construção de sites, sistemas de internet sob medida e apps mobile. O site unia páginas de marketing dessas três linhas de serviço a um blog técnico ativo em português cobrindo administração Linux, root/ROMs em mobile, dicas de SQL Server/MySQL e desenvolvimento WordPress, usado tanto como canal de geração de leads quanto como um caderno público de engenharia.",
-        "O front-end rodava sobre um tema WordPress totalmente sob medida (DevHouse v2.3.1) construído internamente em vez de um template comprado, ao lado de uma stack de plugins curada que a empresa também recomendava aos clientes: Google Analytics/AdSense, Akismet e um CAPTCHA sob medida para controle de spam, Amazon SES para e-mail transacional, subdomínios automáticos e geração de sitemap XML."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Custom theme",
-          "pt": "Tema sob medida"
+        heading: {
+          en: "Bespoke custom theme",
+          pt: "Tema exclusivo sob medida",
         },
-        "body": {
-          "en": "Built entirely in-house rather than from a purchased template, giving the company a distinct storefront for its services instead of a generic look.",
-          "pt": "Construído inteiramente internamente em vez de a partir de um template comprado, dando à empresa uma vitrine distinta para seus serviços em vez de um visual genérico."
-        }
+        body: {
+          en: "a fully custom theme built from scratch (no page builder) with bespoke navigation, lightbox galleries, and a custom typography system, giving the studio a distinctive, on-brand presence instead of the generic template look competitors were using",
+          pt: "um tema totalmente sob medida construído do zero (sem page builder) com navegação exclusiva, galerias em lightbox e um sistema de tipografia customizado, dando ao estúdio uma presença distinta e alinhada à marca em vez do visual genérico de template que os concorrentes usavam",
+        },
       },
       {
-        "heading": {
-          "en": "Technical blog",
-          "pt": "Blog técnico"
+        heading: {
+          en: "Portfolio watermarking",
+          pt: "Marca d'água no portfólio",
         },
-        "body": {
-          "en": "A frequent, Portuguese-language blog covering systems and development topics, doubling as an organic lead-generation channel and building credibility with prospective clients.",
-          "pt": "Um blog frequente, em português, cobrindo temas de sistemas e desenvolvimento, funcionando ao mesmo tempo como canal orgânico de geração de leads e construção de credibilidade com potenciais clientes."
-        }
+        body: {
+          en: "image watermarking across the portfolio galleries, protecting the studio's wedding and event photography from unauthorized reuse — a real concern for photographers whose finished work is their product",
+          pt: "marca d'água nas imagens em todas as galerias do portfólio, protegendo a fotografia de casamentos e eventos do estúdio de reuso não autorizado — uma preocupação real para fotógrafos cujo trabalho finalizado é seu produto",
+        },
       },
       {
-        "heading": {
-          "en": "Production-proven plugin stack",
-          "pt": "Stack de plugins comprovada em produção"
+        heading: {
+          en: "Hardened, secure platform",
+          pt: "Plataforma segura e reforçada",
         },
-        "body": {
-          "en": "Analytics, spam protection, transactional email, automatic subdomains, and sitemaps integrated and tested live, turning the company site into a working reference for what was offered to clients.",
-          "pt": "Analytics, proteção contra spam, e-mail transacional, subdomínios automáticos e sitemaps integrados e testados ao vivo, transformando o site da empresa em uma referência funcional do que era oferecido aos clientes."
-        }
-      }
+        body: {
+          en: "security hardening (removal of the vulnerable `timthumb.php` script, a current core version) that reduced the studio's exposure to the mass exploit campaigns targeting exactly this kind of small-business site in the mid-2010s",
+          pt: "reforço de segurança (remoção do script vulnerável `timthumb.php`, uma versão de núcleo atual) que reduziu a exposição do estúdio às campanhas de exploração em massa que miravam exatamente esse tipo de site de pequeno negócio em meados dos anos 2010",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.6",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML5",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS3",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "WordPress",
-        "version": "4.8.14",
-        "icon": "/devicons/wordpress-original.svg"
+        name: "WordPress",
+        version: "4.6.1",
+        icon: "/devicons/wordpress-plain.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.7",
-        "icon": "/devicons/mysql-original.svg"
+        name: "jQuery",
+        version: "1.6.1",
+        icon: "/devicons/jquery-original.svg",
       },
-      {
-        "name": "Docker",
-        "version": "Compose",
-        "icon": "/devicons/docker-original.svg"
-      }
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/devhouse-wordpress/screenshots/02-blog.png"
+        src: "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-contato.png",
       },
       {
-        "src": "/projects/devhouse-wordpress/screenshots/03-blog-post.png"
+        src: "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-eventos-1.png",
       },
       {
-        "src": "/projects/devhouse-wordpress/screenshots/devhouse-com-br.png"
+        src: "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-eventos.png",
       },
       {
-        "src": "/projects/devhouse-wordpress/screenshots/devhouse-client-side-image-resize.png"
+        src: "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-making-of-externo.png",
       },
       {
-        "src": "/projects/devhouse-wordpress/screenshots/devhouse-instalacao-do-debian-linux-no-galaxy-tab-10-1.png"
+        src: "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-produtos.png",
       },
       {
-        "src": "/projects/devhouse-wordpress/screenshots/01-home.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-servicos.png",
+      },
+      {
+        src: "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-video-clipe.png",
+      },
+      {
+        src: "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico-wander-von-muller.png",
+      },
+      {
+        src: "/projects/vonmuller/screenshots/fotografo-joinville-vonmuller-estudio-fotografico.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "lamode",
-    "year": "2011",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/lamode",
-    "logo": "/projects/lamode/lamode-logo.png",
-    "name": {
-      "en": "La Mode — Moda Online",
-      "pt": "La Mode — Moda Online"
+    slug: "devhouse-wordpress",
+    year: "2011",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/devhouse-wordpress",
+    logo: "/projects/devhouse-wordpress/devhouse-wordpress-logo.png",
+    name: {
+      en: "DevHouse — Internet Software Development House",
+      pt: "DevHouse — Internet Software Development House",
     },
-    "tagline": {
-      "en": "Full-featured multi-brand women's fashion e-commerce built on Magento, with a custom dual-theme design, thousands of SKUs, an editorial blog, and full Brazilian checkout integration.",
-      "pt": "E-commerce completo de moda feminina multimarca construído em Magento, com design sob medida de tema duplo, milhares de SKUs, um blog editorial e integração completa de checkout brasileiro."
+    tagline: {
+      en: "A WordPress-powered company website for DevHouse, an internet software development house, pairing a custom-built marketing site with a high-traffic technical blog covering Linux, mobile, and web development.",
+      pt: "Um site institucional em WordPress para a DevHouse, uma internet software development house, unindo um site de marketing construído sob medida a um blog técnico de alto tráfego cobrindo Linux, mobile e desenvolvimento web.",
     },
-    "kicker": {
-      "en": "// fashion e-commerce · dmg digital agency",
-      "pt": "// e-commerce de moda · dmg digital agency"
+    kicker: {
+      en: "// devhouse.com.br · company site & tech blog",
+      pt: "// devhouse.com.br · site institucional & blog técnico",
     },
-    "intro": {
-      "en": "Full-featured multi-brand women's fashion e-commerce built on Magento, with a custom dual-theme design, thousands of SKUs, an editorial blog, and full Brazilian checkout integration.",
-      "pt": "E-commerce completo de moda feminina multimarca construído em Magento, com design sob medida de tema duplo, milhares de SKUs, um blog editorial e integração completa de checkout brasileiro."
+    intro: {
+      en: "DevHouse's own WordPress site: a custom theme for its services pages plus a technical blog used to generate leads and showcase engineering credibility to prospective clients.",
+      pt: "O próprio site WordPress da DevHouse: um tema sob medida para suas páginas de serviços mais um blog técnico usado para gerar leads e demonstrar credibilidade de engenharia a potenciais clientes.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
+        "DevHouse was the public face of DevHouse — Internet Software Development House, a software studio offering website builds, custom internet systems, and mobile apps. The site paired marketing pages for those three service lines with an active Portuguese-language technical blog covering Linux administration, mobile rooting/ROMs, SQL Server/MySQL tips, and WordPress development, used as both a lead-generation channel and a public engineering notebook.",
+        "The front end ran on a fully custom WordPress theme (DevHouse v2.3.1) built in-house rather than a purchased template, alongside a curated plugin stack the company also recommended to clients: Google Analytics/AdSense, Akismet and a custom CAPTCHA for spam control, Amazon SES for transactional mail, automatic subdomains, and XML sitemap generation.",
+      ],
+      pt: [
+        "A DevHouse era a face pública da DevHouse — Internet Software Development House, um estúdio de software que oferecia construção de sites, sistemas de internet sob medida e apps mobile. O site unia páginas de marketing dessas três linhas de serviço a um blog técnico ativo em português cobrindo administração Linux, root/ROMs em mobile, dicas de SQL Server/MySQL e desenvolvimento WordPress, usado tanto como canal de geração de leads quanto como um caderno público de engenharia.",
+        "O front-end rodava sobre um tema WordPress totalmente sob medida (DevHouse v2.3.1) construído internamente em vez de um template comprado, ao lado de uma stack de plugins curada que a empresa também recomendava aos clientes: Google Analytics/AdSense, Akismet e um CAPTCHA sob medida para controle de spam, Amazon SES para e-mail transacional, subdomínios automáticos e geração de sitemap XML.",
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Custom theme",
+          pt: "Tema sob medida",
+        },
+        body: {
+          en: "Built entirely in-house rather than from a purchased template, giving the company a distinct storefront for its services instead of a generic look.",
+          pt: "Construído inteiramente internamente em vez de a partir de um template comprado, dando à empresa uma vitrine distinta para seus serviços em vez de um visual genérico.",
+        },
+      },
+      {
+        heading: {
+          en: "Technical blog",
+          pt: "Blog técnico",
+        },
+        body: {
+          en: "A frequent, Portuguese-language blog covering systems and development topics, doubling as an organic lead-generation channel and building credibility with prospective clients.",
+          pt: "Um blog frequente, em português, cobrindo temas de sistemas e desenvolvimento, funcionando ao mesmo tempo como canal orgânico de geração de leads e construção de credibilidade com potenciais clientes.",
+        },
+      },
+      {
+        heading: {
+          en: "Production-proven plugin stack",
+          pt: "Stack de plugins comprovada em produção",
+        },
+        body: {
+          en: "Analytics, spam protection, transactional email, automatic subdomains, and sitemaps integrated and tested live, turning the company site into a working reference for what was offered to clients.",
+          pt: "Analytics, proteção contra spam, e-mail transacional, subdomínios automáticos e sitemaps integrados e testados ao vivo, transformando o site da empresa em uma referência funcional do que era oferecido aos clientes.",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "PHP",
+        version: "5.6",
+        icon: "/devicons/php-original.svg",
+      },
+      {
+        name: "JavaScript",
+        icon: "/devicons/javascript-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "WordPress",
+        version: "4.8.14",
+        icon: "/devicons/wordpress-original.svg",
+      },
+      {
+        name: "MySQL",
+        version: "5.7",
+        icon: "/devicons/mysql-original.svg",
+      },
+      {
+        name: "Docker",
+        version: "Compose",
+        icon: "/devicons/docker-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/devhouse-wordpress/screenshots/02-blog.png",
+      },
+      {
+        src: "/projects/devhouse-wordpress/screenshots/03-blog-post.png",
+      },
+      {
+        src: "/projects/devhouse-wordpress/screenshots/devhouse-com-br.png",
+      },
+      {
+        src: "/projects/devhouse-wordpress/screenshots/devhouse-client-side-image-resize.png",
+      },
+      {
+        src: "/projects/devhouse-wordpress/screenshots/devhouse-instalacao-do-debian-linux-no-galaxy-tab-10-1.png",
+      },
+      {
+        src: "/projects/devhouse-wordpress/screenshots/01-home.png",
+        featured: true,
+      },
+    ],
+  },
+  {
+    slug: "lamode",
+    year: "2011",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://webarchive.leonardolimadevasconcellos.workers.dev/lamode",
+    logo: "/projects/lamode/lamode-logo.png",
+    name: {
+      en: "La Mode — Moda Online",
+      pt: "La Mode — Moda Online",
+    },
+    tagline: {
+      en: "Full-featured multi-brand women's fashion e-commerce built on Magento, with a custom dual-theme design, thousands of SKUs, an editorial blog, and full Brazilian checkout integration.",
+      pt: "E-commerce completo de moda feminina multimarca construído em Magento, com design sob medida de tema duplo, milhares de SKUs, um blog editorial e integração completa de checkout brasileiro.",
+    },
+    kicker: {
+      en: "// fashion e-commerce · dmg digital agency",
+      pt: "// e-commerce de moda · dmg digital agency",
+    },
+    intro: {
+      en: "Full-featured multi-brand women's fashion e-commerce built on Magento, with a custom dual-theme design, thousands of SKUs, an editorial blog, and full Brazilian checkout integration.",
+      pt: "E-commerce completo de moda feminina multimarca construído em Magento, com design sob medida de tema duplo, milhares de SKUs, um blog editorial e integração completa de checkout brasileiro.",
+    },
+    body: {
+      en: [
         "La Mode — Moda Online was a Brazilian multi-brand women's fashion e-commerce platform built on Magento 1.x, developed at DMG Digital Agency and launched in 2011.",
         "The store offered a curated catalog spanning clothing (blusas, vestidos, saias, shorts, calças), bags, accessories, and footwear from multiple fashion brands — catering to contemporary Brazilian women looking for quality at accessible prices.",
-        "The project involved building two distinct custom Magento themes, `lamode` (light) and `lamode_dark`, from the ground up; integrating PagSeguro for Brazilian payment processing; and developing a standalone editorial blog section called \"IN\" to serve as a fashion media hub alongside the main storefront. Other features included customer accounts, wishlist, newsletter subscription, a sizing guide (guia de medidas), and seasonal lookbook pages.",
-        "Launched in 2011 as one of the early Magento-based fashion e-commerce deployments in Brazil, La Mode demonstrated how a well-executed platform build could give a boutique fashion brand the same e-commerce capabilities as large retailers."
+        'The project involved building two distinct custom Magento themes, `lamode` (light) and `lamode_dark`, from the ground up; integrating PagSeguro for Brazilian payment processing; and developing a standalone editorial blog section called "IN" to serve as a fashion media hub alongside the main storefront. Other features included customer accounts, wishlist, newsletter subscription, a sizing guide (guia de medidas), and seasonal lookbook pages.',
+        "Launched in 2011 as one of the early Magento-based fashion e-commerce deployments in Brazil, La Mode demonstrated how a well-executed platform build could give a boutique fashion brand the same e-commerce capabilities as large retailers.",
       ],
-      "pt": [
+      pt: [
         "A La Mode — Moda Online foi uma plataforma brasileira de e-commerce de moda feminina multimarca construída em Magento 1.x, desenvolvida na DMG Digital Agency e lançada em 2011.",
         "A loja oferecia um catálogo curado abrangendo roupas (blusas, vestidos, saias, shorts, calças), bolsas, acessórios e calçados de várias marcas de moda — atendendo a mulher brasileira contemporânea em busca de qualidade a preços acessíveis.",
-        "O projeto envolveu construir dois temas Magento sob medida distintos, `lamode` (claro) e `lamode_dark`, do zero; integrar o PagSeguro para processamento de pagamentos brasileiro; e desenvolver uma seção de blog editorial autônoma chamada \"IN\", para servir como um hub de mídia de moda ao lado da loja principal. Outros recursos incluíam contas de cliente, lista de desejos, assinatura de newsletter, um guia de medidas e páginas de lookbook sazonal.",
-        "Lançada em 2011 como uma das primeiras implantações de e-commerce de moda baseadas em Magento no Brasil, a La Mode demonstrou como uma construção de plataforma bem executada podia dar a uma marca de moda boutique as mesmas capacidades de e-commerce dos grandes varejistas."
-      ]
+        'O projeto envolveu construir dois temas Magento sob medida distintos, `lamode` (claro) e `lamode_dark`, do zero; integrar o PagSeguro para processamento de pagamentos brasileiro; e desenvolver uma seção de blog editorial autônoma chamada "IN", para servir como um hub de mídia de moda ao lado da loja principal. Outros recursos incluíam contas de cliente, lista de desejos, assinatura de newsletter, um guia de medidas e páginas de lookbook sazonal.',
+        "Lançada em 2011 como uma das primeiras implantações de e-commerce de moda baseadas em Magento no Brasil, a La Mode demonstrou como uma construção de plataforma bem executada podia dar a uma marca de moda boutique as mesmas capacidades de e-commerce dos grandes varejistas.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Custom branded storefront",
-          "pt": "Vitrine sob medida e com marca"
+        heading: {
+          en: "Custom branded storefront",
+          pt: "Vitrine sob medida e com marca",
         },
-        "body": {
-          "en": "a fully custom theme built from scratch, replacing the default storefront with a branded visual identity that set the store apart and strengthened customer trust",
-          "pt": "um tema totalmente sob medida construído do zero, substituindo a vitrine padrão por uma identidade visual de marca que diferenciava a loja e fortalecia a confiança do cliente"
-        }
+        body: {
+          en: "a fully custom theme built from scratch, replacing the default storefront with a branded visual identity that set the store apart and strengthened customer trust",
+          pt: "um tema totalmente sob medida construído do zero, substituindo a vitrine padrão por uma identidade visual de marca que diferenciava a loja e fortalecia a confiança do cliente",
+        },
       },
       {
-        "heading": {
-          "en": "Scalable product catalog",
-          "pt": "Catálogo de produtos escalável"
+        heading: {
+          en: "Scalable product catalog",
+          pt: "Catálogo de produtos escalável",
         },
-        "body": {
-          "en": "thousands of SKUs across clothing, bags, accessories, and footwear with category navigation, sizing guides, and seasonal lookbooks, giving the business a catalog foundation built to grow",
-          "pt": "milhares de SKUs em roupas, bolsas, acessórios e calçados com navegação por categorias, guias de medidas e lookbooks sazonais, dando ao negócio uma base de catálogo construída para crescer"
-        }
+        body: {
+          en: "thousands of SKUs across clothing, bags, accessories, and footwear with category navigation, sizing guides, and seasonal lookbooks, giving the business a catalog foundation built to grow",
+          pt: "milhares de SKUs em roupas, bolsas, acessórios e calçados com navegação por categorias, guias de medidas e lookbooks sazonais, dando ao negócio uma base de catálogo construída para crescer",
+        },
       },
       {
-        "heading": {
-          "en": "Localized checkout and owned media",
-          "pt": "Checkout localizado e mídia própria"
+        heading: {
+          en: "Localized checkout and owned media",
+          pt: "Checkout localizado e mídia própria",
         },
-        "body": {
-          "en": "PagSeguro and PayPal checkout for the Brazilian market alongside a standalone editorial blog (\"IN\"), turning the storefront into both a conversion-optimised shop and an owned media channel",
-          "pt": "checkout PagSeguro e PayPal para o mercado brasileiro ao lado de um blog editorial autônomo (\"IN\"), transformando a vitrine tanto em uma loja otimizada para conversão quanto em um canal de mídia próprio"
-        }
-      }
+        body: {
+          en: 'PagSeguro and PayPal checkout for the Brazilian market alongside a standalone editorial blog ("IN"), turning the storefront into both a conversion-optimised shop and an owned media channel',
+          pt: 'checkout PagSeguro e PayPal para o mercado brasileiro ao lado de um blog editorial autônomo ("IN"), transformando a vitrine tanto em uma loja otimizada para conversão quanto em um canal de mídia próprio',
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "Python",
-        "icon": "/devicons/python-original.svg"
+        name: "Python",
+        icon: "/devicons/python-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "JavaScript",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "Magento",
-        "version": "1.4.1.1",
-        "icon": "/devicons/magento-original.svg"
+        name: "Magento",
+        version: "1.4.1.1",
+        icon: "/devicons/magento-original.svg",
       },
       {
-        "name": "MySQL",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/lamode/screenshots/la-mode-in.png"
+        src: "/projects/lamode/screenshots/la-mode-in.png",
       },
       {
-        "src": "/projects/lamode/screenshots/mini-saia-gode-vestario.png"
+        src: "/projects/lamode/screenshots/mini-saia-gode-vestario.png",
       },
       {
-        "src": "/projects/lamode/screenshots/vestario.png"
+        src: "/projects/lamode/screenshots/vestario.png",
       },
       {
-        "src": "/projects/lamode/screenshots/la-mode.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/lamode/screenshots/la-mode.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "adhonep",
-    "year": "2009",
-    "pinned": false,
-    "liveUrl": "https://leonardo-vasconcellos.vercel.app/portfolio/adhonep",
-    "logo": "/projects/adhonep/adhonep-logo.png",
-    "name": {
-      "en": "ADHONEP Meetup System",
-      "pt": "ADHONEP Meetup System"
+    slug: "adhonep",
+    year: "2009",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://leonardo-vasconcellos.vercel.app/portfolio/adhonep",
+    logo: "/projects/adhonep/adhonep-logo.png",
+    name: {
+      en: "ADHONEP Meetup System",
+      pt: "ADHONEP Meetup System",
     },
-    "tagline": {
-      "en": "A browser-based desktop application for managing members, agenda, and resources for the ADHONEP association.",
-      "pt": "Uma aplicação desktop no navegador para gerenciar membros, agenda e recursos da associação ADHONEP."
+    tagline: {
+      en: "A browser-based desktop application for managing members, agenda, and resources for the ADHONEP association.",
+      pt: "Uma aplicação desktop no navegador para gerenciar membros, agenda e recursos da associação ADHONEP.",
     },
-    "kicker": {
-      "en": "// association management · adhonep.org.br",
-      "pt": "// gestão de associações · adhonep.org.br"
+    kicker: {
+      en: "// association management · adhonep.org.br",
+      pt: "// gestão de associações · adhonep.org.br",
     },
-    "intro": {
-      "en": "A desktop-style web application built for the ADHONEP association, providing member management, event scheduling, and access control through a multi-window ExtJS interface backed by a CodeIgniter PHP API.",
-      "pt": "Uma aplicação web em estilo desktop construída para a associação ADHONEP, oferecendo gestão de membros, agendamento de eventos e controle de acesso por meio de uma interface multijanela em ExtJS apoiada por uma API PHP em CodeIgniter."
+    intro: {
+      en: "A desktop-style web application built for the ADHONEP association, providing member management, event scheduling, and access control through a multi-window ExtJS interface backed by a CodeIgniter PHP API.",
+      pt: "Uma aplicação web em estilo desktop construída para a associação ADHONEP, oferecendo gestão de membros, agendamento de eventos e controle de acesso por meio de uma interface multijanela em ExtJS apoiada por uma API PHP em CodeIgniter.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "ADHONEP Meetup System is a browser-based, desktop-style web application built for the ADHONEP association (adhonep.org.br). It provides a centralized platform for managing the association's members, events, and operations.",
         "The system was designed to give office staff a familiar desktop-application experience inside the browser. ExtJS 3.0's component library renders multi-window panels, sortable data grids, and rich form controls — all without page reloads. Every interaction stays within a single-page shell that behaves like a native application.",
         "The backend is a PHP application built on CodeIgniter 2.1.3, exposing a JSON API consumed entirely by the ExtJS frontend. Controllers cover every core domain: member records (Pessoas), cities and locations (Cidades, Locais), scheduled events (Agenda), document downloads, shared ideas, and system-level configuration. A helper-based access control layer enforces login sessions before any protected resource is served.",
         "A strict naming convention was established to keep the large ExtJS codebase organized across modules. Form IDs, grid column IDs, datastore IDs, window IDs, and field translation keys all follow predictable patterns derived from the entity name — for example, `id-form-ins-pessoas`, `id-grid-pessoas`, `id-window-funcao-pessoas`. This made it practical for a small team to maintain and extend a growing number of modules over several years without coordination overhead.",
-        "The system was originally deployed in 2009 and remained in active use through 2014."
+        "The system was originally deployed in 2009 and remained in active use through 2014.",
       ],
-      "pt": [
+      pt: [
         "O ADHONEP Meetup System é uma aplicação web em estilo desktop, rodando no navegador, construída para a associação ADHONEP (adhonep.org.br). Ele oferece uma plataforma centralizada para gerenciar os membros, os eventos e as operações da associação.",
         "O sistema foi projetado para dar à equipe do escritório uma experiência familiar de aplicação desktop dentro do navegador. A biblioteca de componentes do ExtJS 3.0 renderiza painéis multijanela, grids de dados ordenáveis e controles de formulário ricos — tudo sem recarregar a página. Cada interação permanece dentro de um shell de página única que se comporta como uma aplicação nativa.",
         "O backend é uma aplicação PHP construída sobre o CodeIgniter 2.1.3, expondo uma API JSON consumida inteiramente pelo frontend em ExtJS. Os controllers cobrem cada domínio central: registros de membros (Pessoas), cidades e locais (Cidades, Locais), eventos agendados (Agenda), downloads de documentos, ideias compartilhadas e configuração de sistema. Uma camada de controle de acesso baseada em helpers exige sessões de login antes de servir qualquer recurso protegido.",
         "Uma convenção de nomes rígida foi estabelecida para manter a grande base de código ExtJS organizada entre os módulos. IDs de formulário, IDs de coluna de grid, IDs de datastore, IDs de janela e chaves de tradução de campos seguem padrões previsíveis derivados do nome da entidade — por exemplo, `id-form-ins-pessoas`, `id-grid-pessoas`, `id-window-funcao-pessoas`. Isso tornou prático para uma pequena equipe manter e estender um número crescente de módulos ao longo de vários anos, sem overhead de coordenação.",
-        "O sistema foi originalmente implantado em 2009 e permaneceu em uso ativo até 2014."
-      ]
+        "O sistema foi originalmente implantado em 2009 e permaneceu em uso ativo até 2014.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Reusable module framework",
-          "pt": "Framework de módulos reutilizável"
+        heading: {
+          en: "Reusable module framework",
+          pt: "Framework de módulos reutilizável",
         },
-        "body": {
-          "en": "I built a base module system (`Module.js`, `ClassesBase.js`) paired with a strict naming convention so each new domain — members, events, cities, downloads, ideas — could be scaffolded from a shared grid/form/datastore/window template. This let a small team ship and maintain a growing set of modules over five years without rework or coordination overhead.",
-          "pt": "Construí um sistema de módulos base (`Module.js`, `ClassesBase.js`) somado a uma convenção de nomes rígida para que cada novo domínio — membros, eventos, cidades, downloads, ideias — pudesse ser gerado a partir de um template compartilhado de grid/formulário/datastore/janela. Isso permitiu a uma pequena equipe publicar e manter um conjunto crescente de módulos ao longo de cinco anos, sem retrabalho ou overhead de coordenação."
-        }
+        body: {
+          en: "I built a base module system (`Module.js`, `ClassesBase.js`) paired with a strict naming convention so each new domain — members, events, cities, downloads, ideas — could be scaffolded from a shared grid/form/datastore/window template. This let a small team ship and maintain a growing set of modules over five years without rework or coordination overhead.",
+          pt: "Construí um sistema de módulos base (`Module.js`, `ClassesBase.js`) somado a uma convenção de nomes rígida para que cada novo domínio — membros, eventos, cidades, downloads, ideias — pudesse ser gerado a partir de um template compartilhado de grid/formulário/datastore/janela. Isso permitiu a uma pequena equipe publicar e manter um conjunto crescente de módulos ao longo de cinco anos, sem retrabalho ou overhead de coordenação.",
+        },
       },
       {
-        "heading": {
-          "en": "Desktop-in-the-browser experience",
-          "pt": "Experiência de desktop no navegador"
+        heading: {
+          en: "Desktop-in-the-browser experience",
+          pt: "Experiência de desktop no navegador",
         },
-        "body": {
-          "en": "I delivered a multi-window ExtJS shell with a taskbar, start menu, draggable windows, and sortable data grids that never reloads the page. Non-technical office staff got a familiar, native-feeling tool, which shortened onboarding and kept all day-to-day member and event administration in one place.",
-          "pt": "Entreguei um shell ExtJS multijanela com barra de tarefas, menu iniciar, janelas arrastáveis e grids de dados ordenáveis que nunca recarrega a página. A equipe não técnica do escritório ganhou uma ferramenta familiar, com cara de nativa, o que encurtou o treinamento e manteve toda a administração diária de membros e eventos em um só lugar."
-        }
+        body: {
+          en: "I delivered a multi-window ExtJS shell with a taskbar, start menu, draggable windows, and sortable data grids that never reloads the page. Non-technical office staff got a familiar, native-feeling tool, which shortened onboarding and kept all day-to-day member and event administration in one place.",
+          pt: "Entreguei um shell ExtJS multijanela com barra de tarefas, menu iniciar, janelas arrastáveis e grids de dados ordenáveis que nunca recarrega a página. A equipe não técnica do escritório ganhou uma ferramenta familiar, com cara de nativa, o que encurtou o treinamento e manteve toda a administração diária de membros e eventos em um só lugar.",
+        },
       },
       {
-        "heading": {
-          "en": "Session-based access control",
-          "pt": "Controle de acesso baseado em sessão"
+        heading: {
+          en: "Session-based access control",
+          pt: "Controle de acesso baseado em sessão",
         },
-        "body": {
-          "en": "I implemented a helper-driven permissions layer (`accesscontrol_helper`, the `permissoes` module) that gates every protected API endpoint behind an authenticated session. This kept members' personal records private and restricted administrative actions to authorized staff, protecting the association's most sensitive data.",
-          "pt": "Implementei uma camada de permissões movida a helpers (`accesscontrol_helper`, o módulo `permissoes`) que protege cada endpoint de API atrás de uma sessão autenticada. Isso manteve privados os dados pessoais dos membros e restringiu ações administrativas à equipe autorizada, protegendo os dados mais sensíveis da associação."
-        }
-      }
+        body: {
+          en: "I implemented a helper-driven permissions layer (`accesscontrol_helper`, the `permissoes` module) that gates every protected API endpoint behind an authenticated session. This kept members' personal records private and restricted administrative actions to authorized staff, protecting the association's most sensitive data.",
+          pt: "Implementei uma camada de permissões movida a helpers (`accesscontrol_helper`, o módulo `permissoes`) que protege cada endpoint de API atrás de uma sessão autenticada. Isso manteve privados os dados pessoais dos membros e restringiu ações administrativas à equipe autorizada, protegendo os dados mais sensíveis da associação.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "CodeIgniter",
-        "version": "2.1.3",
-        "icon": "/devicons/codeigniter-plain.svg"
+        name: "CodeIgniter",
+        version: "2.1.3",
+        icon: "/devicons/codeigniter-plain.svg",
       },
       {
-        "name": "Ext JS",
-        "version": "3.0.0",
-        "icon": "/devicons/ExtJS_logo_svg.svg"
+        name: "Ext JS",
+        version: "3.0.0",
+        icon: "/devicons/ExtJS_logo_svg.svg",
       },
       {
-        "name": "MySQL",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-2018-07-20-16-35-54.png"
+        src: "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-2018-07-20-16-35-54.png",
       },
       {
-        "src": "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-desktop-html-2018-07-20-16-36-51.png"
+        src: "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-desktop-html-2018-07-20-16-36-51.png",
       },
       {
-        "src": "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-desktop-html-2018-07-20-16-37-18.png"
+        src: "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-desktop-html-2018-07-20-16-37-18.png",
       },
       {
-        "src": "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-desktop-html-2018-07-20-16-37-38.png"
+        src: "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-desktop-html-2018-07-20-16-37-38.png",
       },
       {
-        "src": "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-desktop-html-2018-07-20-16-39-30.png"
+        src: "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-desktop-html-2018-07-20-16-39-30.png",
       },
       {
-        "src": "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-desktop-html-2018-07-20-16-38-33.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/adhonep/screenshots/screencapture-house-devhouse-br-showcase-adhonep-desktop-html-2018-07-20-16-38-33.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "gerhacao",
-    "year": "2009",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/gerhacao",
-    "logo": "/projects/gerhacao/gerhacao-logo.png",
-    "name": {
-      "en": "geRHação Gestão de Recursos Humanos",
-      "pt": "geRHação Gestão de Recursos Humanos"
+    slug: "gerhacao",
+    year: "2009",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/gerhacao",
+    logo: "/projects/gerhacao/gerhacao-logo.png",
+    name: {
+      en: "geRHação Gestão de Recursos Humanos",
+      pt: "geRHação Gestão de Recursos Humanos",
     },
-    "tagline": {
-      "en": "A full-featured web portal for a Brazilian HR firm offering job listings, professional training courses, and client showcases",
-      "pt": "Um portal web completo para uma empresa brasileira de RH que oferece vagas de emprego, cursos de capacitação profissional e vitrine de clientes"
+    tagline: {
+      en: "A full-featured web portal for a Brazilian HR firm offering job listings, professional training courses, and client showcases",
+      pt: "Um portal web completo para uma empresa brasileira de RH que oferece vagas de emprego, cursos de capacitação profissional e vitrine de clientes",
     },
-    "kicker": {
-      "en": "// human resources · geRHação",
-      "pt": "// recursos humanos · geRHação"
+    kicker: {
+      en: "// human resources · geRHação",
+      pt: "// recursos humanos · geRHação",
     },
-    "intro": {
-      "en": "A Joomla 1.5 portal built in 2009 for geRHação, a Brazilian HR consultancy, unifying job listings, professional training enrollment, and a corporate client showcase into a single branded digital presence that the client team could manage without developer involvement.",
-      "pt": "Um portal Joomla 1.5 construído em 2009 para a geRHação, uma consultoria brasileira de RH, unificando vagas de emprego, inscrição em cursos de capacitação profissional e uma vitrine de clientes corporativos em uma única presença digital de marca que o time do cliente podia gerenciar sem envolvimento de desenvolvedor."
+    intro: {
+      en: "A Joomla 1.5 portal built in 2009 for geRHação, a Brazilian HR consultancy, unifying job listings, professional training enrollment, and a corporate client showcase into a single branded digital presence that the client team could manage without developer involvement.",
+      pt: "Um portal Joomla 1.5 construído em 2009 para a geRHação, uma consultoria brasileira de RH, unificando vagas de emprego, inscrição em cursos de capacitação profissional e uma vitrine de clientes corporativos em uma única presença digital de marca que o time do cliente podia gerenciar sem envolvimento de desenvolvedor.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "geRHação Gestão de Recursos Humanos is a Brazilian HR consultancy operating in Joinville, Santa Catarina. The firm needed a web presence that could do real work — not just display a phone number, but actively support recruitment, course sales, and business development simultaneously. This portal, launched in 2009, was built on Joomla 1.5 to give a non-technical team full content ownership over every section.",
         "**Job Listings**",
         "Candidates browsed open positions posted on behalf of geRHação's corporate clients and submitted applications directly through the portal. Centralising intake this way reduced time-to-hire and removed the friction of phone-based applications — measurable improvements to a core revenue activity for any staffing firm.",
@@ -2269,9 +2299,9 @@ export const WORKS: Work[] = [
         "**Client Showcase**",
         "A curated section displaying the firm's corporate client roster served as silent social proof throughout the site visit. In B2B HR, the client list is often the closing argument. Keeping it live and up to date via the CMS put that asset directly in the hands of the marketing team, with no developer dependency.",
         "**Platform & Architecture**",
-        "Built on Joomla 1.5 — the dominant PHP CMS of that era — with a custom template aligned to the geRHação brand. Flash-based animations handled the hero rotator and logo mark (standard practice in 2009). MySQL backed the content store. The CMS-driven architecture was the central business decision: it gave the client's non-technical staff direct control over job listings, course schedules, client logos, and editorial content from day one."
+        "Built on Joomla 1.5 — the dominant PHP CMS of that era — with a custom template aligned to the geRHação brand. Flash-based animations handled the hero rotator and logo mark (standard practice in 2009). MySQL backed the content store. The CMS-driven architecture was the central business decision: it gave the client's non-technical staff direct control over job listings, course schedules, client logos, and editorial content from day one.",
       ],
-      "pt": [
+      pt: [
         "A geRHação Gestão de Recursos Humanos é uma consultoria brasileira de RH atuante em Joinville, Santa Catarina. A empresa precisava de uma presença web que fizesse trabalho de verdade — não apenas exibir um telefone, mas apoiar ativamente recrutamento, venda de cursos e desenvolvimento de negócios ao mesmo tempo. Este portal, lançado em 2009, foi construído em Joomla 1.5 para dar a um time não técnico total autonomia sobre cada seção do conteúdo.",
         "**Vagas de Emprego**",
         "Os candidatos navegavam por vagas em aberto publicadas em nome dos clientes corporativos da geRHação e enviavam candidaturas diretamente pelo portal. Centralizar a captação dessa forma reduziu o tempo de contratação e removeu o atrito das candidaturas por telefone — melhorias mensuráveis em uma atividade central de receita para qualquer empresa de recrutamento.",
@@ -2280,457 +2310,464 @@ export const WORKS: Work[] = [
         "**Vitrine de Clientes**",
         "Uma seção curada exibindo a carteira de clientes corporativos da empresa funcionava como prova social silenciosa durante toda a visita. No RH B2B, a lista de clientes é muitas vezes o argumento de fechamento. Mantê-la no ar e atualizada via CMS colocou esse ativo diretamente nas mãos do time de marketing, sem dependência de desenvolvedor.",
         "**Plataforma & Arquitetura**",
-        "Construído em Joomla 1.5 — o CMS PHP dominante daquela época — com um template sob medida alinhado à marca geRHação. Animações em Flash cuidavam do rotator do hero e da marca do logo (prática padrão em 2009). O MySQL sustentava o armazenamento de conteúdo. A arquitetura orientada a CMS foi a decisão de negócio central: deu à equipe não técnica do cliente controle direto sobre vagas, cronogramas de cursos, logos de clientes e conteúdo editorial desde o primeiro dia."
-      ]
+        "Construído em Joomla 1.5 — o CMS PHP dominante daquela época — com um template sob medida alinhado à marca geRHação. Animações em Flash cuidavam do rotator do hero e da marca do logo (prática padrão em 2009). O MySQL sustentava o armazenamento de conteúdo. A arquitetura orientada a CMS foi a decisão de negócio central: deu à equipe não técnica do cliente controle direto sobre vagas, cronogramas de cursos, logos de clientes e conteúdo editorial desde o primeiro dia.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Job listings portal",
-          "pt": "Portal de vagas de emprego"
+        heading: {
+          en: "Job listings portal",
+          pt: "Portal de vagas de emprego",
         },
-        "body": {
-          "en": "connecting candidates with employer clients, driving application volume and reducing the manual overhead of managing open positions by phone and email",
-          "pt": "conectando candidatos aos clientes empregadores, impulsionando o volume de candidaturas e reduzindo o trabalho manual de gerenciar vagas em aberto por telefone e e-mail"
-        }
+        body: {
+          en: "connecting candidates with employer clients, driving application volume and reducing the manual overhead of managing open positions by phone and email",
+          pt: "conectando candidatos aos clientes empregadores, impulsionando o volume de candidaturas e reduzindo o trabalho manual de gerenciar vagas em aberto por telefone e e-mail",
+        },
       },
       {
-        "heading": {
-          "en": "Professional training course catalog",
-          "pt": "Catálogo de cursos de capacitação profissional"
+        heading: {
+          en: "Professional training course catalog",
+          pt: "Catálogo de cursos de capacitação profissional",
         },
-        "body": {
-          "en": "showcasing geRHação's development curriculum — workshops, soft-skills programs, and certification courses — turning the site into an active lead generation channel for the training business",
-          "pt": "exibindo o currículo de desenvolvimento da geRHação — workshops, programas de soft skills e cursos de certificação — transformando o site em um canal ativo de geração de leads para o negócio de treinamento"
-        }
+        body: {
+          en: "showcasing geRHação's development curriculum — workshops, soft-skills programs, and certification courses — turning the site into an active lead generation channel for the training business",
+          pt: "exibindo o currículo de desenvolvimento da geRHação — workshops, programas de soft skills e cursos de certificação — transformando o site em um canal ativo de geração de leads para o negócio de treinamento",
+        },
       },
       {
-        "heading": {
-          "en": "Client showcase and corporate credibility section",
-          "pt": "Seção de vitrine de clientes e credibilidade corporativa"
+        heading: {
+          en: "Client showcase and corporate credibility section",
+          pt: "Seção de vitrine de clientes e credibilidade corporativa",
         },
-        "body": {
-          "en": "displaying the firm's roster of B2B clients, giving prospects the social proof needed to start a conversation at the top of the sales funnel",
-          "pt": "exibindo a carteira de clientes B2B da empresa, dando aos prospects a prova social necessária para iniciar uma conversa no topo do funil de vendas"
-        }
-      }
+        body: {
+          en: "displaying the firm's roster of B2B clients, giving prospects the social proof needed to start a conversation at the top of the sales funnel",
+          pt: "exibindo a carteira de clientes B2B da empresa, dando aos prospects a prova social necessária para iniciar uma conversa no topo do funil de vendas",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "Joomla",
-        "version": "1.5",
-        "icon": "/devicons/joomla.svg"
+        name: "Joomla",
+        version: "1.5",
+        icon: "/devicons/joomla.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.x",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        version: "5.x",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/gerhacao/screenshots/gerhacao.png"
+        src: "/projects/gerhacao/screenshots/gerhacao.png",
       },
       {
-        "src": "/projects/gerhacao/screenshots/a-empresa.png"
+        src: "/projects/gerhacao/screenshots/a-empresa.png",
       },
       {
-        "src": "/projects/gerhacao/screenshots/treinamentos.png"
+        src: "/projects/gerhacao/screenshots/treinamentos.png",
       },
       {
-        "src": "/projects/gerhacao/screenshots/comercial.png"
+        src: "/projects/gerhacao/screenshots/comercial.png",
       },
       {
-        "src": "/projects/gerhacao/screenshots/clientes.png"
+        src: "/projects/gerhacao/screenshots/clientes.png",
       },
       {
-        "src": "/projects/gerhacao/screenshots/meditacao-diaria.png"
+        src: "/projects/gerhacao/screenshots/meditacao-diaria.png",
       },
       {
-        "src": "/projects/gerhacao/screenshots/gerhacao-gestao-de-recursos-humanos.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/gerhacao/screenshots/gerhacao-gestao-de-recursos-humanos.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "maquel",
-    "year": "2009",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/maquel",
-    "logo": "/projects/maquel/maquel-logo.jpg",
-    "name": {
-      "en": "Maquel Cosméticos",
-      "pt": "Maquel Cosméticos"
+    slug: "maquel",
+    year: "2009",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://webarchive.leonardolimadevasconcellos.workers.dev/maquel",
+    logo: "/projects/maquel/maquel-logo.jpg",
+    name: {
+      en: "Maquel Cosméticos",
+      pt: "Maquel Cosméticos",
     },
-    "tagline": {
-      "en": "A custom Joomla CMS website for Maquel Estética Profissional, a Joinville cosmetics manufacturer, featuring a product catalog, active ingredients glossary, and professional protocols for beauty therapists.",
-      "pt": "Um site com CMS Joomla sob medida para a Maquel Estética Profissional, fabricante de cosméticos de Joinville, com catálogo de produtos, glossário de ativos e protocolos profissionais para esteticistas."
+    tagline: {
+      en: "A custom Joomla CMS website for Maquel Estética Profissional, a Joinville cosmetics manufacturer, featuring a product catalog, active ingredients glossary, and professional protocols for beauty therapists.",
+      pt: "Um site com CMS Joomla sob medida para a Maquel Estética Profissional, fabricante de cosméticos de Joinville, com catálogo de produtos, glossário de ativos e protocolos profissionais para esteticistas.",
     },
-    "kicker": {
-      "en": "// digital catalog · beauty & esthetics · Joinville",
-      "pt": "// catálogo digital · beleza & estética · Joinville"
+    kicker: {
+      en: "// digital catalog · beauty & esthetics · Joinville",
+      pt: "// catálogo digital · beleza & estética · Joinville",
     },
-    "intro": {
-      "en": "A custom Joomla 1.0 website for Maquel Estética Profissional — a Joinville cosmetics manufacturer — with a branded product catalog, professional esthetics protocols, and an active ingredients glossary for beauty therapists across Brazil.",
-      "pt": "Um site Joomla 1.0 sob medida para a Maquel Estética Profissional — fabricante de cosméticos de Joinville — com catálogo de produtos de marca, protocolos profissionais de estética e um glossário de ativos para esteticistas de todo o Brasil."
+    intro: {
+      en: "A custom Joomla 1.0 website for Maquel Estética Profissional — a Joinville cosmetics manufacturer — with a branded product catalog, professional esthetics protocols, and an active ingredients glossary for beauty therapists across Brazil.",
+      pt: "Um site Joomla 1.0 sob medida para a Maquel Estética Profissional — fabricante de cosméticos de Joinville — com catálogo de produtos de marca, protocolos profissionais de estética e um glossário de ativos para esteticistas de todo o Brasil.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "Maquel Cosméticos was the official website for Maquel Estética Profissional, a cosmetics manufacturer based in Joinville, Brazil. Launched in 2009, the site served both as a public-facing brand platform and a professional resource center for the beauty therapists who used Maquel products in their practice.",
         "Built on Joomla! 1.0 — the leading open-source PHP CMS of its era — the site featured a fully custom template with a branded purple-and-white palette and the company's visual identity. Sections covered the company's history, mission, and quality seals, alongside a VirtueMart-powered product catalog with individual product pages, high-quality imagery, and detailed formulation descriptions.",
-        "The \"Espaço Estética\" section was a dedicated professional hub: it provided step-by-step application protocols for estheticians, a glossary of active ingredients explaining the science behind each formulation, and a DocMan-powered download library for press materials and technical documents.",
-        "An Acajoom newsletter module let visitors subscribe to Maquel product news, supporting ongoing client retention. The site gave Maquel a full digital presence — extending their reach from physical salon supply chains to an online community of professional estheticians across Brazil."
+        'The "Espaço Estética" section was a dedicated professional hub: it provided step-by-step application protocols for estheticians, a glossary of active ingredients explaining the science behind each formulation, and a DocMan-powered download library for press materials and technical documents.',
+        "An Acajoom newsletter module let visitors subscribe to Maquel product news, supporting ongoing client retention. The site gave Maquel a full digital presence — extending their reach from physical salon supply chains to an online community of professional estheticians across Brazil.",
       ],
-      "pt": [
+      pt: [
         "O Maquel Cosméticos era o site oficial da Maquel Estética Profissional, fabricante de cosméticos sediada em Joinville, Brasil. Lançado em 2009, o site servia tanto como plataforma pública de marca quanto como central de recursos profissionais para os esteticistas que usavam produtos Maquel em sua prática.",
         "Construído em Joomla! 1.0 — o principal CMS PHP de código aberto de sua época — o site tinha um template totalmente sob medida com uma paleta de marca em roxo e branco e a identidade visual da empresa. As seções cobriam a história, a missão e os selos de qualidade da empresa, ao lado de um catálogo de produtos movido a VirtueMart com páginas individuais de produto, imagens de alta qualidade e descrições detalhadas de formulação.",
-        "A seção \"Espaço Estética\" era um hub profissional dedicado: fornecia protocolos de aplicação passo a passo para esteticistas, um glossário de ativos explicando a ciência por trás de cada formulação, e uma biblioteca de downloads movida a DocMan para materiais de imprensa e documentos técnicos.",
-        "Um módulo de newsletter Acajoom permitia aos visitantes assinar as novidades de produtos Maquel, apoiando a retenção contínua de clientes. O site deu à Maquel uma presença digital completa — estendendo seu alcance das cadeias físicas de fornecimento de salões a uma comunidade online de esteticistas profissionais de todo o Brasil."
-      ]
+        'A seção "Espaço Estética" era um hub profissional dedicado: fornecia protocolos de aplicação passo a passo para esteticistas, um glossário de ativos explicando a ciência por trás de cada formulação, e uma biblioteca de downloads movida a DocMan para materiais de imprensa e documentos técnicos.',
+        "Um módulo de newsletter Acajoom permitia aos visitantes assinar as novidades de produtos Maquel, apoiando a retenção contínua de clientes. O site deu à Maquel uma presença digital completa — estendendo seu alcance das cadeias físicas de fornecimento de salões a uma comunidade online de esteticistas profissionais de todo o Brasil.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Custom branded template",
-          "pt": "Template de marca sob medida"
+        heading: {
+          en: "Custom branded template",
+          pt: "Template de marca sob medida",
         },
-        "body": {
-          "en": "a Joomla template with a branded purple-and-white palette and table-based layout, giving Maquel a polished online presence that estheticians and distributors could navigate without developer involvement",
-          "pt": "um template Joomla com paleta de marca em roxo e branco e layout baseado em tabelas, dando à Maquel uma presença online caprichada que esteticistas e distribuidores podiam navegar sem envolvimento de desenvolvedor"
-        }
+        body: {
+          en: "a Joomla template with a branded purple-and-white palette and table-based layout, giving Maquel a polished online presence that estheticians and distributors could navigate without developer involvement",
+          pt: "um template Joomla com paleta de marca em roxo e branco e layout baseado em tabelas, dando à Maquel uma presença online caprichada que esteticistas e distribuidores podiam navegar sem envolvimento de desenvolvedor",
+        },
       },
       {
-        "heading": {
-          "en": "Product catalog and newsletter",
-          "pt": "Catálogo de produtos e newsletter"
+        heading: {
+          en: "Product catalog and newsletter",
+          pt: "Catálogo de produtos e newsletter",
         },
-        "body": {
-          "en": "a VirtueMart catalog paired with Acajoom newsletter subscriptions, enabling Maquel to showcase its line and maintain direct email communication with professional clients",
-          "pt": "um catálogo VirtueMart somado às assinaturas de newsletter Acajoom, permitindo à Maquel exibir sua linha e manter comunicação direta por e-mail com clientes profissionais"
-        }
+        body: {
+          en: "a VirtueMart catalog paired with Acajoom newsletter subscriptions, enabling Maquel to showcase its line and maintain direct email communication with professional clients",
+          pt: "um catálogo VirtueMart somado às assinaturas de newsletter Acajoom, permitindo à Maquel exibir sua linha e manter comunicação direta por e-mail com clientes profissionais",
+        },
       },
       {
-        "heading": {
-          "en": "Technical authority hub",
-          "pt": "Hub de autoridade técnica"
+        heading: {
+          en: "Technical authority hub",
+          pt: "Hub de autoridade técnica",
         },
-        "body": {
-          "en": "an \"Espaço Estética\" area with application protocols, a downloadable media library, and an active-ingredients glossary, positioning Maquel as a technical reference for beauty professionals",
-          "pt": "uma área \"Espaço Estética\" com protocolos de aplicação, uma biblioteca de mídia para download e um glossário de ativos, posicionando a Maquel como referência técnica para profissionais de beleza"
-        }
-      }
+        body: {
+          en: 'an "Espaço Estética" area with application protocols, a downloadable media library, and an active-ingredients glossary, positioning Maquel as a technical reference for beauty professionals',
+          pt: 'uma área "Espaço Estética" com protocolos de aplicação, uma biblioteca de mídia para download e um glossário de ativos, posicionando a Maquel como referência técnica para profissionais de beleza',
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "Joomla!",
-        "version": "1.0",
-        "icon": "/devicons/joomla.svg"
-      }
+        name: "Joomla!",
+        version: "1.0",
+        icon: "/devicons/joomla.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/maquel/screenshots/maquel-cosmeticos-a-historia-da-maquel.png"
+        src: "/projects/maquel/screenshots/maquel-cosmeticos-a-historia-da-maquel.png",
       },
       {
-        "src": "/projects/maquel/screenshots/maquel-cosmeticos-cursos.png"
+        src: "/projects/maquel/screenshots/maquel-cosmeticos-cursos.png",
       },
       {
-        "src": "/projects/maquel/screenshots/maquel-cosmeticos-downloads.png"
+        src: "/projects/maquel/screenshots/maquel-cosmeticos-downloads.png",
       },
       {
-        "src": "/projects/maquel/screenshots/maquel-cosmeticos-envie-seu-curriculo.png"
+        src: "/projects/maquel/screenshots/maquel-cosmeticos-envie-seu-curriculo.png",
       },
       {
-        "src": "/projects/maquel/screenshots/maquel-cosmeticos-glossary.png"
+        src: "/projects/maquel/screenshots/maquel-cosmeticos-glossary.png",
       },
       {
-        "src": "/projects/maquel/screenshots/maquel-cosmeticos-nossos-selos.png"
+        src: "/projects/maquel/screenshots/maquel-cosmeticos-nossos-selos.png",
       },
       {
-        "src": "/projects/maquel/screenshots/maquel-cosmeticos-produtos-maquel.png"
+        src: "/projects/maquel/screenshots/maquel-cosmeticos-produtos-maquel.png",
       },
       {
-        "src": "/projects/maquel/screenshots/maquel-cosmeticos-visao-e-missao.png"
+        src: "/projects/maquel/screenshots/maquel-cosmeticos-visao-e-missao.png",
       },
       {
-        "src": "/projects/maquel/screenshots/maquel-cosmeticos-home.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/maquel/screenshots/maquel-cosmeticos-home.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "tlantic",
-    "year": "2009",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/tlantic",
-    "logo": "/projects/tlantic/tlantic-logo.png",
-    "name": {
-      "en": "Tlantic — Corporate Website Wireframe",
-      "pt": "Tlantic — Wireframe de Site Corporativo"
+    slug: "tlantic",
+    year: "2009",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/tlantic",
+    logo: "/projects/tlantic/tlantic-logo.png",
+    name: {
+      en: "Tlantic — Corporate Website Wireframe",
+      pt: "Tlantic — Wireframe de Site Corporativo",
     },
-    "tagline": {
-      "en": "A corporate wireframe for Tlantic, a B2B retail-technology provider, translating their full service catalog into a navigable institutional site with a hero slideshow, mega-menu, and news carousel.",
-      "pt": "Um wireframe corporativo para a Tlantic, fornecedora B2B de tecnologia para o varejo, traduzindo todo o seu catálogo de serviços em um site institucional navegável com slideshow de hero, mega-menu e carrossel de notícias."
+    tagline: {
+      en: "A corporate wireframe for Tlantic, a B2B retail-technology provider, translating their full service catalog into a navigable institutional site with a hero slideshow, mega-menu, and news carousel.",
+      pt: "Um wireframe corporativo para a Tlantic, fornecedora B2B de tecnologia para o varejo, traduzindo todo o seu catálogo de serviços em um site institucional navegável com slideshow de hero, mega-menu e carrossel de notícias.",
     },
-    "kicker": {
-      "en": "// institutional site mockup · B2B retail technology",
-      "pt": "// mockup de site institucional · tecnologia B2B para varejo"
+    kicker: {
+      en: "// institutional site mockup · B2B retail technology",
+      pt: "// mockup de site institucional · tecnologia B2B para varejo",
     },
-    "intro": {
-      "en": "A corporate wireframe for Tlantic, a B2B retail-technology provider, translating their full service catalog into a navigable institutional site with a hero slideshow, mega-menu, and news carousel.",
-      "pt": "Um wireframe corporativo para a Tlantic, fornecedora B2B de tecnologia para o varejo, traduzindo todo o seu catálogo de serviços em um site institucional navegável com slideshow de hero, mega-menu e carrossel de notícias."
+    intro: {
+      en: "A corporate wireframe for Tlantic, a B2B retail-technology provider, translating their full service catalog into a navigable institutional site with a hero slideshow, mega-menu, and news carousel.",
+      pt: "Um wireframe corporativo para a Tlantic, fornecedora B2B de tecnologia para o varejo, traduzindo todo o seu catálogo de serviços em um site institucional navegável com slideshow de hero, mega-menu e carrossel de notícias.",
     },
-    "body": {
-      "en": [
-        "This project is a static HTML/CSS/jQuery wireframe for Tlantic, a Portuguese retail-technology company specializing in mobility, automation, business intelligence and e-business solutions for the retail sector. The brief was to translate Tlantic's institutional positioning — \"Inovação e Tecnologia no Varejo\" (\"Innovation and Technology in Retail\") — into a corporate site capable of presenting four distinct business lines (Mobilidade, Automação, Inteligência, e-Business) alongside company history, partners, and press coverage, without overwhelming the visitor.",
+    body: {
+      en: [
+        'This project is a static HTML/CSS/jQuery wireframe for Tlantic, a Portuguese retail-technology company specializing in mobility, automation, business intelligence and e-business solutions for the retail sector. The brief was to translate Tlantic\'s institutional positioning — "Inovação e Tecnologia no Varejo" ("Innovation and Technology in Retail") — into a corporate site capable of presenting four distinct business lines (Mobilidade, Automação, Inteligência, e-Business) alongside company history, partners, and press coverage, without overwhelming the visitor.',
         "The wireframe centers on a hero slideshow and a multi-tier dropdown mega-menu, where each top-level item (Quem Somos, Soluções, Cases) expands into four sub-sections with their own descriptive copy — effectively a full sitemap surfaced at the navigation level. A secondary auto-rotating carousel handles news and press releases independently of the hero. The footer repeats the entire navigation as a flat sitemap, both for usability and for search-engine crawlability — important for a B2B vendor whose buyers often arrive via search rather than direct navigation.",
-        "The repository preserves both the original site source (`www/`) and a wget-crawled snapshot of the live site (`rip/`), kept for archival reference."
+        "The repository preserves both the original site source (`www/`) and a wget-crawled snapshot of the live site (`rip/`), kept for archival reference.",
       ],
-      "pt": [
-        "Este projeto é um wireframe estático em HTML/CSS/jQuery para a Tlantic, uma empresa portuguesa de tecnologia para o varejo especializada em soluções de mobilidade, automação, business intelligence e e-business para o setor varejista. O briefing era traduzir o posicionamento institucional da Tlantic — \"Inovação e Tecnologia no Varejo\" — em um site corporativo capaz de apresentar quatro linhas de negócio distintas (Mobilidade, Automação, Inteligência, e-Business) ao lado da história da empresa, parceiros e cobertura de imprensa, sem sobrecarregar o visitante.",
+      pt: [
+        'Este projeto é um wireframe estático em HTML/CSS/jQuery para a Tlantic, uma empresa portuguesa de tecnologia para o varejo especializada em soluções de mobilidade, automação, business intelligence e e-business para o setor varejista. O briefing era traduzir o posicionamento institucional da Tlantic — "Inovação e Tecnologia no Varejo" — em um site corporativo capaz de apresentar quatro linhas de negócio distintas (Mobilidade, Automação, Inteligência, e-Business) ao lado da história da empresa, parceiros e cobertura de imprensa, sem sobrecarregar o visitante.',
         "O wireframe se organiza em torno de um slideshow de hero e um mega-menu dropdown de múltiplos níveis, em que cada item de topo (Quem Somos, Soluções, Cases) se expande em quatro subseções com seu próprio texto descritivo — efetivamente um sitemap completo exposto no nível da navegação. Um carrossel secundário de autorrotação cuida de notícias e releases de imprensa de forma independente do hero. O rodapé repete toda a navegação como um sitemap plano, tanto por usabilidade quanto por rastreabilidade em mecanismos de busca — importante para um fornecedor B2B cujos compradores muitas vezes chegam por busca em vez de navegação direta.",
-        "O repositório preserva tanto o código-fonte original do site (`www/`) quanto um snapshot do site no ar rastreado por wget (`rip/`), mantidos para referência de arquivo."
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Deep mega-menu navigation",
-          "pt": "Navegação em mega-menu profundo"
-        },
-        "body": {
-          "en": "a multi-level menu (Quem Somos / Soluções / Cases) mapping Tlantic's entire service catalog — 4 business units × 4 sub-pages each — into a single hover-driven navigation, so prospects could find the right offering without leaving the homepage",
-          "pt": "um menu de múltiplos níveis (Quem Somos / Soluções / Cases) mapeando todo o catálogo de serviços da Tlantic — 4 unidades de negócio × 4 subpáginas cada — em uma única navegação por hover, para que os prospects encontrassem a oferta certa sem sair da home"
-        }
-      },
-      {
-        "heading": {
-          "en": "Self-updating homepage",
-          "pt": "Home que se atualiza sozinha"
-        },
-        "body": {
-          "en": "a hero slideshow and auto-rotating news carousel that kept the homepage visually current and let Tlantic surface fresh announcements and press without backend involvement",
-          "pt": "um slideshow de hero e um carrossel de notícias de autorrotação que mantinham a home visualmente atual e permitiam à Tlantic destacar novos anúncios e imprensa sem envolvimento de backend"
-        }
-      },
-      {
-        "heading": {
-          "en": "SEO-friendly sitemap",
-          "pt": "Sitemap amigável a SEO"
-        },
-        "body": {
-          "en": "a full HTML footer sitemap mirroring the entire site structure, improving crawlability for a B2B company whose growth depends on being found by procurement and IT decision-makers",
-          "pt": "um sitemap completo em HTML no rodapé espelhando toda a estrutura do site, melhorando a rastreabilidade para uma empresa B2B cujo crescimento depende de ser encontrada por decisores de compras e de TI"
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
-      },
-      {
-        "name": "jQuery",
-        "version": "1.5.1",
-        "icon": "/devicons/jquery-original.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/tlantic/screenshots/tlantic.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "alfa-eletro",
-    "year": "2008",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/alfa-eletro",
-    "logo": "/projects/alfa-eletro/alfa-eletro-logo.png",
-    "name": {
-      "en": "Alfa Eletro — Electronic Components Catalog",
-      "pt": "Alfa Eletro — Catálogo de Componentes Eletrônicos"
-    },
-    "tagline": {
-      "en": "E-commerce website and product catalog for an electronics and industrial automation components retailer.",
-      "pt": "Site de e-commerce e catálogo de produtos para uma varejista de componentes de eletrônica e automação industrial."
-    },
-    "kicker": {
-      "en": "// joomla · electronics & industrial automation",
-      "pt": "// joomla · eletrônica & automação industrial"
-    },
-    "intro": {
-      "en": "Joomla 1.5 e-commerce website and product catalog for Alfa Eletro, a Brazilian electronics and industrial automation retailer. Built with VirtueMart, it covered resistors, sensors, converters, and more.",
-      "pt": "Site de e-commerce e catálogo de produtos em Joomla 1.5 para a Alfa Eletro, varejista brasileira de eletrônica e automação industrial. Construído com VirtueMart, cobria resistores, sensores, conversores e mais."
-    },
-    "body": {
-      "en": [
-        "Alfa Eletro was a Brazilian retailer specialising in electronics and industrial automation components. This project delivered their full web presence: a public-facing product catalog backed by a VirtueMart shopping cart, a contact and quote flow, company and branch location pages, and a \"Projetos Eletrônicos\" (Electronic Projects) section.",
-        "The product range spanned two broad areas — discrete electronic components and industrial automation hardware. Categories included resistors, capacitors, diodes (through-hole and SMD), cables, connectors, power supplies, solid-state relays, relay couplers, signal converters, temperature controllers, temperature sensors, thermocouples, timers, potentiometers, and ventilation fans.",
-        "The site was built on Joomla! 1.5 with a custom template providing a three-column layout: left sidebar for category navigation, central content area for product listings, and a right column for promotions and banners. MooTools powered the interactive menus and product image lightboxes (Slimbox). A MySQL database backed the full product and order data, preserved in the repository as a SQL dump."
+        "O repositório preserva tanto o código-fonte original do site (`www/`) quanto um snapshot do site no ar rastreado por wget (`rip/`), mantidos para referência de arquivo.",
       ],
-      "pt": [
-        "A Alfa Eletro era uma varejista brasileira especializada em componentes de eletrônica e automação industrial. Este projeto entregou toda a sua presença web: um catálogo de produtos voltado ao público, apoiado por um carrinho de compras VirtueMart, um fluxo de contato e orçamento, páginas da empresa e de localização de filiais, e uma seção \"Projetos Eletrônicos\".",
-        "A linha de produtos abrangia duas grandes áreas — componentes eletrônicos discretos e hardware de automação industrial. As categorias incluíam resistores, capacitores, diodos (through-hole e SMD), cabos, conectores, fontes de alimentação, relés de estado sólido, acopladores de relé, conversores de sinal, controladores de temperatura, sensores de temperatura, termopares, temporizadores, potenciômetros e ventiladores.",
-        "O site foi construído em Joomla! 1.5 com um template sob medida que fornecia um layout de três colunas: barra lateral esquerda para navegação por categorias, área central de conteúdo para listagens de produtos e uma coluna direita para promoções e banners. O MooTools alimentava os menus interativos e os lightboxes de imagem de produto (Slimbox). Um banco de dados MySQL sustentava todos os dados de produtos e pedidos, preservado no repositório como um dump SQL."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Full product catalog & quote flow",
-          "pt": "Catálogo de produtos completo & fluxo de orçamento"
+        heading: {
+          en: "Deep mega-menu navigation",
+          pt: "Navegação em mega-menu profundo",
         },
-        "body": {
-          "en": "I structured the retailer's entire inventory into dozens of browsable categories (resistors, sensors, converters, relays, controllers and more) backed by a VirtueMart cart and contact-driven quote requests, giving Alfa Eletro its first online sales channel beyond the phone and front counter and letting customers self-serve their product research around the clock.",
-          "pt": "Estruturei todo o estoque da varejista em dezenas de categorias navegáveis (resistores, sensores, conversores, relés, controladores e mais) apoiadas por um carrinho VirtueMart e pedidos de orçamento por contato, dando à Alfa Eletro seu primeiro canal de vendas online além do telefone e do balcão, e permitindo aos clientes pesquisar produtos por conta própria a qualquer hora."
-        }
+        body: {
+          en: "a multi-level menu (Quem Somos / Soluções / Cases) mapping Tlantic's entire service catalog — 4 business units × 4 sub-pages each — into a single hover-driven navigation, so prospects could find the right offering without leaving the homepage",
+          pt: "um menu de múltiplos níveis (Quem Somos / Soluções / Cases) mapeando todo o catálogo de serviços da Tlantic — 4 unidades de negócio × 4 subpáginas cada — em uma única navegação por hover, para que os prospects encontrassem a oferta certa sem sair da home",
+        },
       },
       {
-        "heading": {
-          "en": "Self-manageable CMS",
-          "pt": "CMS autogerenciável"
+        heading: {
+          en: "Self-updating homepage",
+          pt: "Home que se atualiza sozinha",
         },
-        "body": {
-          "en": "I built a custom three-column template on Joomla 1.5 CMS so non-technical staff could add products, swap promotional banners and publish company pages through the admin panel without a developer, cutting content-update turnaround from days to minutes and removing an ongoing maintenance cost from the business.",
-          "pt": "Construí um template de três colunas sob medida no CMS Joomla 1.5 para que a equipe não técnica pudesse adicionar produtos, trocar banners promocionais e publicar páginas da empresa pelo painel administrativo sem um desenvolvedor, reduzindo o tempo de atualização de conteúdo de dias para minutos e removendo um custo contínuo de manutenção do negócio."
-        }
+        body: {
+          en: "a hero slideshow and auto-rotating news carousel that kept the homepage visually current and let Tlantic surface fresh announcements and press without backend involvement",
+          pt: "um slideshow de hero e um carrossel de notícias de autorrotação que mantinham a home visualmente atual e permitiam à Tlantic destacar novos anúncios e imprensa sem envolvimento de backend",
+        },
       },
       {
-        "heading": {
-          "en": "Lead-routing & technical resource hub",
-          "pt": "Roteamento de leads & hub de recursos técnicos"
+        heading: {
+          en: "SEO-friendly sitemap",
+          pt: "Sitemap amigável a SEO",
         },
-        "body": {
-          "en": "I added per-branch commercial contact forms, a \"Projetos Eletrônicos\" downloads area (PhocaDownload) and location/shipping pages, routing each enquiry to the right sales rep and positioning the company as a technical reference that attracted qualified B2B leads rather than just walk-in traffic.",
-          "pt": "Adicionei formulários de contato comercial por filial, uma área de downloads \"Projetos Eletrônicos\" (PhocaDownload) e páginas de localização/entrega, encaminhando cada consulta ao representante de vendas certo e posicionando a empresa como referência técnica que atraía leads B2B qualificados em vez de apenas tráfego de balcão."
-        }
-      }
+        body: {
+          en: "a full HTML footer sitemap mirroring the entire site structure, improving crawlability for a B2B company whose growth depends on being found by procurement and IT decision-makers",
+          pt: "um sitemap completo em HTML no rodapé espelhando toda a estrutura do site, melhorando a rastreabilidade para uma empresa B2B cujo crescimento depende de ser encontrada por decisores de compras e de TI",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "jQuery",
+        version: "1.5.1",
+        icon: "/devicons/jquery-original.svg",
       },
-      {
-        "name": "Joomla",
-        "version": "1.5",
-        "icon": "/devicons/joomla.svg"
-      },
-      {
-        "name": "MySQL",
-        "icon": "/devicons/mysql-original.svg"
-      }
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/alfa-eletro/screenshots/cabos.png"
+        src: "/projects/tlantic/screenshots/tlantic.png",
+        featured: true,
       },
-      {
-        "src": "/projects/alfa-eletro/screenshots/contato.png"
-      },
-      {
-        "src": "/projects/alfa-eletro/screenshots/empresas-localizacao.png"
-      },
-      {
-        "src": "/projects/alfa-eletro/screenshots/projetos-eletronicos.png"
-      },
-      {
-        "src": "/projects/alfa-eletro/screenshots/ldi.png"
-      },
-      {
-        "src": "/projects/alfa-eletro/screenshots/alfa-eletro-comercio-de-produtos-eletro-eletronicos.png",
-        "featured": true
-      }
-    ]
+    ],
   },
   {
-    "slug": "aquitemjoinville",
-    "year": "2008",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/aquitemjoinville",
-    "logo": "/projects/aquitemjoinville/aquitemjoinville-logo.jpg",
-    "name": {
-      "en": "Aqui Tem Joinville",
-      "pt": "Aqui Tem Joinville"
+    slug: "alfa-eletro",
+    year: "2008",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/alfa-eletro",
+    logo: "/projects/alfa-eletro/alfa-eletro-logo.png",
+    name: {
+      en: "Alfa Eletro — Electronic Components Catalog",
+      pt: "Alfa Eletro — Catálogo de Componentes Eletrônicos",
     },
-    "tagline": {
-      "en": "A city-wide web portal for Joinville, SC, offering news, events, classifieds, business listings, recipes, and local services — all in one place.",
-      "pt": "Um portal web para toda a cidade de Joinville, SC, oferecendo notícias, eventos, classificados, guia de empresas, receitas e serviços locais — tudo em um só lugar."
+    tagline: {
+      en: "E-commerce website and product catalog for an electronics and industrial automation components retailer.",
+      pt: "Site de e-commerce e catálogo de produtos para uma varejista de componentes de eletrônica e automação industrial.",
     },
-    "kicker": {
-      "en": "// city portal · joinville, sc · 2008",
-      "pt": "// portal da cidade · joinville, sc · 2008"
+    kicker: {
+      en: "// joomla · electronics & industrial automation",
+      pt: "// joomla · eletrônica & automação industrial",
     },
-    "intro": {
-      "en": "A city-wide web portal for Joinville, SC, offering news, events, classifieds, business listings, recipes, and local services. Launched in 2008, it served as the city's digital hub connecting residents with local businesses.",
-      "pt": "Um portal web para toda a cidade de Joinville, SC, oferecendo notícias, eventos, classificados, guia de empresas, receitas e serviços locais. Lançado em 2008, funcionou como o hub digital da cidade conectando moradores a empresas locais."
+    intro: {
+      en: "Joomla 1.5 e-commerce website and product catalog for Alfa Eletro, a Brazilian electronics and industrial automation retailer. Built with VirtueMart, it covered resistors, sensors, converters, and more.",
+      pt: "Site de e-commerce e catálogo de produtos em Joomla 1.5 para a Alfa Eletro, varejista brasileira de eletrônica e automação industrial. Construído com VirtueMart, cobria resistores, sensores, conversores e mais.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
+        'Alfa Eletro was a Brazilian retailer specialising in electronics and industrial automation components. This project delivered their full web presence: a public-facing product catalog backed by a VirtueMart shopping cart, a contact and quote flow, company and branch location pages, and a "Projetos Eletrônicos" (Electronic Projects) section.',
+        "The product range spanned two broad areas — discrete electronic components and industrial automation hardware. Categories included resistors, capacitors, diodes (through-hole and SMD), cables, connectors, power supplies, solid-state relays, relay couplers, signal converters, temperature controllers, temperature sensors, thermocouples, timers, potentiometers, and ventilation fans.",
+        "The site was built on Joomla! 1.5 with a custom template providing a three-column layout: left sidebar for category navigation, central content area for product listings, and a right column for promotions and banners. MooTools powered the interactive menus and product image lightboxes (Slimbox). A MySQL database backed the full product and order data, preserved in the repository as a SQL dump.",
+      ],
+      pt: [
+        'A Alfa Eletro era uma varejista brasileira especializada em componentes de eletrônica e automação industrial. Este projeto entregou toda a sua presença web: um catálogo de produtos voltado ao público, apoiado por um carrinho de compras VirtueMart, um fluxo de contato e orçamento, páginas da empresa e de localização de filiais, e uma seção "Projetos Eletrônicos".',
+        "A linha de produtos abrangia duas grandes áreas — componentes eletrônicos discretos e hardware de automação industrial. As categorias incluíam resistores, capacitores, diodos (through-hole e SMD), cabos, conectores, fontes de alimentação, relés de estado sólido, acopladores de relé, conversores de sinal, controladores de temperatura, sensores de temperatura, termopares, temporizadores, potenciômetros e ventiladores.",
+        "O site foi construído em Joomla! 1.5 com um template sob medida que fornecia um layout de três colunas: barra lateral esquerda para navegação por categorias, área central de conteúdo para listagens de produtos e uma coluna direita para promoções e banners. O MooTools alimentava os menus interativos e os lightboxes de imagem de produto (Slimbox). Um banco de dados MySQL sustentava todos os dados de produtos e pedidos, preservado no repositório como um dump SQL.",
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Full product catalog & quote flow",
+          pt: "Catálogo de produtos completo & fluxo de orçamento",
+        },
+        body: {
+          en: "I structured the retailer's entire inventory into dozens of browsable categories (resistors, sensors, converters, relays, controllers and more) backed by a VirtueMart cart and contact-driven quote requests, giving Alfa Eletro its first online sales channel beyond the phone and front counter and letting customers self-serve their product research around the clock.",
+          pt: "Estruturei todo o estoque da varejista em dezenas de categorias navegáveis (resistores, sensores, conversores, relés, controladores e mais) apoiadas por um carrinho VirtueMart e pedidos de orçamento por contato, dando à Alfa Eletro seu primeiro canal de vendas online além do telefone e do balcão, e permitindo aos clientes pesquisar produtos por conta própria a qualquer hora.",
+        },
+      },
+      {
+        heading: {
+          en: "Self-manageable CMS",
+          pt: "CMS autogerenciável",
+        },
+        body: {
+          en: "I built a custom three-column template on Joomla 1.5 CMS so non-technical staff could add products, swap promotional banners and publish company pages through the admin panel without a developer, cutting content-update turnaround from days to minutes and removing an ongoing maintenance cost from the business.",
+          pt: "Construí um template de três colunas sob medida no CMS Joomla 1.5 para que a equipe não técnica pudesse adicionar produtos, trocar banners promocionais e publicar páginas da empresa pelo painel administrativo sem um desenvolvedor, reduzindo o tempo de atualização de conteúdo de dias para minutos e removendo um custo contínuo de manutenção do negócio.",
+        },
+      },
+      {
+        heading: {
+          en: "Lead-routing & technical resource hub",
+          pt: "Roteamento de leads & hub de recursos técnicos",
+        },
+        body: {
+          en: 'I added per-branch commercial contact forms, a "Projetos Eletrônicos" downloads area (PhocaDownload) and location/shipping pages, routing each enquiry to the right sales rep and positioning the company as a technical reference that attracted qualified B2B leads rather than just walk-in traffic.',
+          pt: 'Adicionei formulários de contato comercial por filial, uma área de downloads "Projetos Eletrônicos" (PhocaDownload) e páginas de localização/entrega, encaminhando cada consulta ao representante de vendas certo e posicionando a empresa como referência técnica que atraía leads B2B qualificados em vez de apenas tráfego de balcão.',
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
+      },
+      {
+        name: "Joomla",
+        version: "1.5",
+        icon: "/devicons/joomla.svg",
+      },
+      {
+        name: "MySQL",
+        icon: "/devicons/mysql-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/alfa-eletro/screenshots/cabos.png",
+      },
+      {
+        src: "/projects/alfa-eletro/screenshots/contato.png",
+      },
+      {
+        src: "/projects/alfa-eletro/screenshots/empresas-localizacao.png",
+      },
+      {
+        src: "/projects/alfa-eletro/screenshots/projetos-eletronicos.png",
+      },
+      {
+        src: "/projects/alfa-eletro/screenshots/ldi.png",
+      },
+      {
+        src: "/projects/alfa-eletro/screenshots/alfa-eletro-comercio-de-produtos-eletro-eletronicos.png",
+        featured: true,
+      },
+    ],
+  },
+  {
+    slug: "aquitemjoinville",
+    year: "2008",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/aquitemjoinville",
+    logo: "/projects/aquitemjoinville/aquitemjoinville-logo.jpg",
+    name: {
+      en: "Aqui Tem Joinville",
+      pt: "Aqui Tem Joinville",
+    },
+    tagline: {
+      en: "A city-wide web portal for Joinville, SC, offering news, events, classifieds, business listings, recipes, and local services — all in one place.",
+      pt: "Um portal web para toda a cidade de Joinville, SC, oferecendo notícias, eventos, classificados, guia de empresas, receitas e serviços locais — tudo em um só lugar.",
+    },
+    kicker: {
+      en: "// city portal · joinville, sc · 2008",
+      pt: "// portal da cidade · joinville, sc · 2008",
+    },
+    intro: {
+      en: "A city-wide web portal for Joinville, SC, offering news, events, classifieds, business listings, recipes, and local services. Launched in 2008, it served as the city's digital hub connecting residents with local businesses.",
+      pt: "Um portal web para toda a cidade de Joinville, SC, oferecendo notícias, eventos, classificados, guia de empresas, receitas e serviços locais. Lançado em 2008, funcionou como o hub digital da cidade conectando moradores a empresas locais.",
+    },
+    body: {
+      en: [
         "Founded on December 12, 2008, **Aqui Tem Joinville** was Joinville's answer to national portals like UOL and Terra — a single destination where residents of the city and surrounding region could find everything local, online.",
         "The platform delivered a comprehensive suite of services from a single domain:",
         "News & Editorial Content — locally written articles covering events, health, fashion, and sports, giving the portal editorial credibility and repeat traffic.",
@@ -2741,9 +2778,9 @@ export const WORKS: Work[] = [
         "Polls — community participation features that increased engagement and time-on-site.",
         "Sponsored Banner Advertising — a tiered advertising network with multiple banner placements across the site, generating revenue and giving local businesses an affordable, targeted channel to reach Joinville's online audience.",
         "The portal directly enabled local commerce growth at a pivotal moment — 2008, when internet adoption was accelerating in mid-sized Brazilian cities but hyper-local online platforms barely existed. By providing an ad-supported business directory and classifieds platform, the project created measurable ROI for advertisers: their listings and banners reached a geographically concentrated audience that national portals could not serve. The yellow pages feature alone gave dozens of local businesses their first searchable online presence. The ad network provided a low-barrier entry point for businesses with no prior digital advertising budget.",
-        "Technically, the project combined a PHP/Mambo CMS backend — responsible for managing multiple content sections simultaneously — with an Adobe Flex-powered interactive layer that enhanced the browsing experience beyond what plain HTML/JavaScript could offer in 2008. The MySQL-backed classifieds and directory engine was designed for efficient search and filtering, the critical path for any yellow pages product."
+        "Technically, the project combined a PHP/Mambo CMS backend — responsible for managing multiple content sections simultaneously — with an Adobe Flex-powered interactive layer that enhanced the browsing experience beyond what plain HTML/JavaScript could offer in 2008. The MySQL-backed classifieds and directory engine was designed for efficient search and filtering, the critical path for any yellow pages product.",
       ],
-      "pt": [
+      pt: [
         "Fundado em 12 de dezembro de 2008, o **Aqui Tem Joinville** foi a resposta de Joinville a portais nacionais como UOL e Terra — um único destino onde os moradores da cidade e da região pudessem encontrar tudo o que era local, online.",
         "A plataforma entregava um conjunto abrangente de serviços a partir de um único domínio:",
         "Notícias & Conteúdo Editorial — artigos escritos localmente cobrindo eventos, saúde, moda e esportes, dando ao portal credibilidade editorial e tráfego recorrente.",
@@ -2754,1498 +2791,1520 @@ export const WORKS: Work[] = [
         "Enquetes — recursos de participação da comunidade que aumentavam o engajamento e o tempo no site.",
         "Publicidade em Banners Patrocinados — uma rede de publicidade em níveis com múltiplos espaços de banner por todo o site, gerando receita e dando às empresas locais um canal acessível e segmentado para alcançar o público online de Joinville.",
         "O portal viabilizou diretamente o crescimento do comércio local em um momento decisivo — 2008, quando a adoção da internet acelerava nas cidades brasileiras de médio porte, mas plataformas online hiperlocais mal existiam. Ao oferecer um guia de empresas e uma plataforma de classificados sustentados por publicidade, o projeto criou um ROI mensurável para os anunciantes: seus anúncios e banners alcançavam um público geograficamente concentrado que os portais nacionais não conseguiam atender. Só o recurso de páginas amarelas deu a dezenas de empresas locais sua primeira presença online pesquisável. A rede de anúncios oferecia um ponto de entrada de baixa barreira para empresas sem nenhum orçamento prévio de publicidade digital.",
-        "Tecnicamente, o projeto combinava um backend PHP/CMS Mambo — responsável por gerenciar várias seções de conteúdo simultaneamente — com uma camada interativa movida a Adobe Flex que enriquecia a experiência de navegação além do que HTML/JavaScript puro podia oferecer em 2008. O motor de classificados e diretório apoiado em MySQL foi projetado para busca e filtragem eficientes, o caminho crítico para qualquer produto de páginas amarelas."
-      ]
+        "Tecnicamente, o projeto combinava um backend PHP/CMS Mambo — responsável por gerenciar várias seções de conteúdo simultaneamente — com uma camada interativa movida a Adobe Flex que enriquecia a experiência de navegação além do que HTML/JavaScript puro podia oferecer em 2008. O motor de classificados e diretório apoiado em MySQL foi projetado para busca e filtragem eficientes, o caminho crítico para qualquer produto de páginas amarelas.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Searchable yellow-pages engine",
-          "pt": "Motor de páginas amarelas pesquisável"
+        heading: {
+          en: "Searchable yellow-pages engine",
+          pt: "Motor de páginas amarelas pesquisável",
         },
-        "body": {
-          "en": "I designed a category-driven MySQL business directory with fast search and filtering, giving hundreds of local businesses their first online presence and turning the portal into the region's go-to place to find a service.",
-          "pt": "Projetei um guia de empresas em MySQL orientado a categorias com busca e filtragem rápidas, dando a centenas de empresas locais sua primeira presença online e transformando o portal no lugar de referência da região para encontrar um serviço."
-        }
+        body: {
+          en: "I designed a category-driven MySQL business directory with fast search and filtering, giving hundreds of local businesses their first online presence and turning the portal into the region's go-to place to find a service.",
+          pt: "Projetei um guia de empresas em MySQL orientado a categorias com busca e filtragem rápidas, dando a centenas de empresas locais sua primeira presença online e transformando o portal no lugar de referência da região para encontrar um serviço.",
+        },
       },
       {
-        "heading": {
-          "en": "Tiered banner ad network",
-          "pt": "Rede de anúncios em banners por níveis"
+        heading: {
+          en: "Tiered banner ad network",
+          pt: "Rede de anúncios em banners por níveis",
         },
-        "body": {
-          "en": "I built a multi-placement sponsored-advertising system on top of the Mambo CMS, creating the site's revenue engine and a low-barrier, geographically targeted channel that let small Joinville businesses advertise online for the first time.",
-          "pt": "Construí um sistema de publicidade patrocinada de múltiplos espaços sobre o CMS Mambo, criando o motor de receita do site e um canal de baixa barreira e geograficamente segmentado que permitia a pequenas empresas de Joinville anunciar online pela primeira vez."
-        }
+        body: {
+          en: "I built a multi-placement sponsored-advertising system on top of the Mambo CMS, creating the site's revenue engine and a low-barrier, geographically targeted channel that let small Joinville businesses advertise online for the first time.",
+          pt: "Construí um sistema de publicidade patrocinada de múltiplos espaços sobre o CMS Mambo, criando o motor de receita do site e um canal de baixa barreira e geograficamente segmentado que permitia a pequenas empresas de Joinville anunciar online pela primeira vez.",
+        },
       },
       {
-        "heading": {
-          "en": "Multi-vertical content platform",
-          "pt": "Plataforma de conteúdo multivertical"
+        heading: {
+          en: "Multi-vertical content platform",
+          pt: "Plataforma de conteúdo multivertical",
         },
-        "body": {
-          "en": "I unified news, events, classifieds, recipes, polls, and a web directory under one PHP/Flex codebase, broadening the audience beyond news readers and sustaining the repeat traffic and dwell time that made ad inventory valuable.",
-          "pt": "Unifiquei notícias, eventos, classificados, receitas, enquetes e um diretório web sob uma única base de código PHP/Flex, ampliando a audiência para além dos leitores de notícias e sustentando o tráfego recorrente e o tempo de permanência que tornavam o inventário de anúncios valioso."
-        }
-      }
+        body: {
+          en: "I unified news, events, classifieds, recipes, polls, and a web directory under one PHP/Flex codebase, broadening the audience beyond news readers and sustaining the repeat traffic and dwell time that made ad inventory valuable.",
+          pt: "Unifiquei notícias, eventos, classificados, receitas, enquetes e um diretório web sob uma única base de código PHP/Flex, ampliando a audiência para além dos leitores de notícias e sustentando o tráfego recorrente e o tempo de permanência que tornavam o inventário de anúncios valioso.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.2",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.2",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "ActionScript",
-        "version": "3.0",
-        "icon": "/devicons/actionscript.svg"
+        name: "ActionScript",
+        version: "3.0",
+        icon: "/devicons/actionscript.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "Mambo CMS",
-        "version": "4.6",
-        "icon": "/devicons/mambo-flower.svg"
+        name: "Mambo CMS",
+        version: "4.6",
+        icon: "/devicons/mambo-flower.svg",
       },
       {
-        "name": "Apache Flex",
-        "version": "3.0",
-        "icon": "/devicons/Apache_Flex_logo.svg"
+        name: "Apache Flex",
+        version: "3.0",
+        icon: "/devicons/Apache_Flex_logo.svg",
       },
       {
-        "name": "Adobe Flash",
-        "version": "CS4",
-        "icon": "/devicons/Adobe_Flash_Player_32.svg"
+        name: "Adobe Flash",
+        version: "CS4",
+        icon: "/devicons/Adobe_Flash_Player_32.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.1",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        version: "5.1",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/aquitemjoinville/screenshots/layout.png",
-        "featured": true
+        src: "/projects/aquitemjoinville/screenshots/layout.png",
+        featured: true,
       },
       {
-        "src": "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-culinaria.png"
+        src: "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-culinaria.png",
       },
       {
-        "src": "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-eventos.png"
+        src: "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-eventos.png",
       },
       {
-        "src": "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-classificados.png"
+        src: "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-classificados.png",
       },
       {
-        "src": "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-classificados-imoveis.png"
+        src: "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-classificados-imoveis.png",
       },
       {
-        "src": "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-classificados-imoveis-terreno-floresta.png"
+        src: "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-classificados-imoveis-terreno-floresta.png",
       },
       {
-        "src": "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-principal.png"
-      }
-    ]
+        src: "/projects/aquitemjoinville/screenshots/aquitemjoinville-com-br-principal.png",
+      },
+    ],
   },
   {
-    "slug": "managerconsulting-landing-page",
-    "year": "2008",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/managerconsulting-landing-page",
-    "logo": "/projects/managerconsulting-landing-page/managerconsulting-landing-page-logo.jpg",
-    "name": {
-      "en": "Manager Consulting",
-      "pt": "Manager Consulting"
+    slug: "managerconsulting-landing-page",
+    year: "2008",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/managerconsulting-landing-page",
+    logo: "/projects/managerconsulting-landing-page/managerconsulting-landing-page-logo.jpg",
+    name: {
+      en: "Manager Consulting",
+      pt: "Manager Consulting",
     },
-    "tagline": {
-      "en": "A 2008 landing page for a Joinville IT consulting firm, integrating live-agent chat status, remote desktop access, and a support portal to keep clients connected while a full site was in development.",
-      "pt": "Uma landing page de 2008 para uma empresa de consultoria em TI de Joinville, integrando status de chat com atendente ao vivo, acesso remoto à área de trabalho e um portal de suporte para manter os clientes conectados enquanto um site completo estava em desenvolvimento."
+    tagline: {
+      en: "A 2008 landing page for a Joinville IT consulting firm, integrating live-agent chat status, remote desktop access, and a support portal to keep clients connected while a full site was in development.",
+      pt: "Uma landing page de 2008 para uma empresa de consultoria em TI de Joinville, integrando status de chat com atendente ao vivo, acesso remoto à área de trabalho e um portal de suporte para manter os clientes conectados enquanto um site completo estava em desenvolvimento.",
     },
-    "kicker": {
-      "en": "// landing page · manager consulting · joinville",
-      "pt": "// landing page · manager consulting · joinville"
+    kicker: {
+      en: "// landing page · manager consulting · joinville",
+      pt: "// landing page · manager consulting · joinville",
     },
-    "intro": {
-      "en": "A 2008 landing page for a Joinville IT consulting firm, integrating live-agent chat status, remote desktop access, and a support portal to keep clients connected while a full site was in development.",
-      "pt": "Uma landing page de 2008 para uma empresa de consultoria em TI de Joinville, integrando status de chat com atendente ao vivo, acesso remoto à área de trabalho e um portal de suporte para manter os clientes conectados enquanto um site completo estava em desenvolvimento."
+    intro: {
+      en: "A 2008 landing page for a Joinville IT consulting firm, integrating live-agent chat status, remote desktop access, and a support portal to keep clients connected while a full site was in development.",
+      pt: "Uma landing page de 2008 para uma empresa de consultoria em TI de Joinville, integrando status de chat com atendente ao vivo, acesso remoto à área de trabalho e um portal de suporte para manter os clientes conectados enquanto um site completo estava em desenvolvimento.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "Manager Consulting was an IT consulting and business technology firm headquartered in Joinville, Santa Catarina, Brazil. This landing page — built in 2008 — served as the company's interim web presence while a full site was in development.",
-        "Despite its \"coming soon\" framing, the page was not merely a placeholder: it exposed all three of the firm's primary client touchpoints in one place. The MySuite iframe surfaced a real-time live-agent status indicator, showing whether someone was available before clients committed to the chat flow. Those needing hands-on technical help could jump directly to a remote desktop session. A direct sales email was embedded inline for async inquiries.",
+        'Despite its "coming soon" framing, the page was not merely a placeholder: it exposed all three of the firm\'s primary client touchpoints in one place. The MySuite iframe surfaced a real-time live-agent status indicator, showing whether someone was available before clients committed to the chat flow. Those needing hands-on technical help could jump directly to a remote desktop session. A direct sales email was embedded inline for async inquiries.',
         "The address block — Rua Dona Francisca, 1700, Platz Dona Francisca, Joinville — grounded the firm's physical presence for local business clients at a time when web trust signals still leaned heavily on brick-and-mortar legitimacy.",
-        "All of it was delivered as a single self-contained HTML file with inline CSS and a trivial JavaScript popup helper — no framework, no dependencies, no build toolchain."
+        "All of it was delivered as a single self-contained HTML file with inline CSS and a trivial JavaScript popup helper — no framework, no dependencies, no build toolchain.",
       ],
-      "pt": [
+      pt: [
         "A Manager Consulting era uma empresa de consultoria em TI e tecnologia de negócios com sede em Joinville, Santa Catarina, Brasil. Esta landing page — construída em 2008 — servia como presença web provisória da empresa enquanto um site completo estava em desenvolvimento.",
-        "Apesar do enquadramento de \"em breve\", a página não era um mero placeholder: expunha os três principais pontos de contato da empresa com o cliente em um só lugar. O iframe do MySuite exibia um indicador de status de atendente ao vivo em tempo real, mostrando se alguém estava disponível antes de o cliente entrar no fluxo de chat. Quem precisava de ajuda técnica prática podia ir direto a uma sessão de acesso remoto à área de trabalho. Um e-mail de vendas direto estava embutido inline para consultas assíncronas.",
+        'Apesar do enquadramento de "em breve", a página não era um mero placeholder: expunha os três principais pontos de contato da empresa com o cliente em um só lugar. O iframe do MySuite exibia um indicador de status de atendente ao vivo em tempo real, mostrando se alguém estava disponível antes de o cliente entrar no fluxo de chat. Quem precisava de ajuda técnica prática podia ir direto a uma sessão de acesso remoto à área de trabalho. Um e-mail de vendas direto estava embutido inline para consultas assíncronas.',
         "O bloco de endereço — Rua Dona Francisca, 1700, Platz Dona Francisca, Joinville — ancorava a presença física da empresa para clientes locais numa época em que os sinais de confiança na web ainda se apoiavam fortemente na legitimidade do endereço físico.",
-        "Tudo isso foi entregue como um único arquivo HTML autocontido com CSS inline e um trivial auxiliar de popup em JavaScript — sem framework, sem dependências, sem toolchain de build."
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Embedded live-agent chat status",
-          "pt": "Status de chat com atendente ao vivo embutido"
-        },
-        "body": {
-          "en": "Integrated MySuite's real-time online/offline indicator via iframe so clients could see agent availability at a glance, reducing missed support contacts before a full site existed.",
-          "pt": "Integrei o indicador online/offline em tempo real do MySuite via iframe, para que os clientes vissem a disponibilidade do atendente de relance, reduzindo contatos de suporte perdidos antes mesmo de existir um site completo."
-        }
-      },
-      {
-        "heading": {
-          "en": "Direct remote desktop CTA",
-          "pt": "CTA direto de acesso remoto"
-        },
-        "body": {
-          "en": "Surfaced the firm's remote access tool as a first-class action, letting clients initiate a technical session without calling in or navigating a separate site.",
-          "pt": "Destaquei a ferramenta de acesso remoto da empresa como uma ação de primeira classe, permitindo aos clientes iniciar uma sessão técnica sem ligar ou navegar por um site separado."
-        }
-      },
-      {
-        "heading": {
-          "en": "Zero-dependency single-file delivery",
-          "pt": "Entrega em arquivo único sem dependências"
-        },
-        "body": {
-          "en": "The entire landing experience fit in one HTML file with inline CSS: no build step, no backend, sub-second load on the dial-up and early broadband connections common in Brazilian offices in 2008.",
-          "pt": "Toda a experiência da landing coube em um arquivo HTML com CSS inline: sem etapa de build, sem backend, carregamento em menos de um segundo nas conexões discadas e de banda larga inicial comuns nos escritórios brasileiros de 2008."
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/managerconsulting-landing-page/screenshots/manager-consulting-tecnologia-e-gestao-de-negocios.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "mobtex",
-    "year": "2008",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/mobtex",
-    "logo": "/projects/mobtex/mobtex-logo.png",
-    "name": {
-      "en": "Mobtex Tecidos de Alto Desempenho",
-      "pt": "Mobtex Tecidos de Alto Desempenho"
-    },
-    "tagline": {
-      "en": "Joomla 1.0 corporate website built in 2008 for Mobtex, a Joinville-based manufacturer of high-performance fabrics and shoe materials across three specialized product lines.",
-      "pt": "Site corporativo em Joomla 1.0 construído em 2008 para a Mobtex, fabricante de Joinville de tecidos de alto desempenho e materiais para calçados em três linhas de produtos especializadas."
-    },
-    "kicker": {
-      "en": "// high-performance textiles · Mobtex, Joinville",
-      "pt": "// têxteis de alto desempenho · Mobtex, Joinville"
-    },
-    "intro": {
-      "en": "Joomla 1.0 corporate website built in 2008 for Mobtex, a Joinville-based manufacturer of high-performance fabrics and shoe materials across three specialized product lines.",
-      "pt": "Site corporativo em Joomla 1.0 construído em 2008 para a Mobtex, fabricante de Joinville de tecidos de alto desempenho e materiais para calçados em três linhas de produtos especializadas."
-    },
-    "body": {
-      "en": [
-        "Mobtex is a Joinville, Santa Catarina-based manufacturer of high-performance technical textiles and footwear materials. Their catalogue covers three market segments: **Fitness** (sport apparel fabrics), **Shoes** (shoe industry materials), and **Diverse** (general industrial applications). The brand positioning — \"Liberdade para Criar\" (Freedom to Create) — positioned Mobtex not as a commodity supplier but as an innovation partner, described internally through four values: Integradora, Próxima, Corajosa, and Realizadora.",
-        "The website was built in 2008 on Joomla! 1.0 with a fully bespoke theme. The design brief came from agency Inventiva; the front-end implementation, template development, and CMS setup were done entirely by Leonardo Vasconcellos. The dark, high-contrast visual language mirrors the industrial seriousness of a B2B supplier, while each product line received its own accent color (orange, teal, pink) to orient buyers on first glance. The Joomla CMS layer gave Mobtex's team full editorial control over product descriptions and company news without developer involvement — a significant operational benefit for a small manufacturer in 2008."
+        "Tudo isso foi entregue como um único arquivo HTML autocontido com CSS inline e um trivial auxiliar de popup em JavaScript — sem framework, sem dependências, sem toolchain de build.",
       ],
-      "pt": [
-        "A Mobtex é uma fabricante de Joinville, Santa Catarina, de têxteis técnicos de alto desempenho e materiais para calçados. Seu catálogo cobre três segmentos de mercado: **Fitness** (tecidos para vestuário esportivo), **Shoes** (materiais para a indústria calçadista) e **Diverse** (aplicações industriais em geral). O posicionamento de marca — \"Liberdade para Criar\" — apresentava a Mobtex não como fornecedora de commodities, mas como parceira de inovação, descrita internamente por quatro valores: Integradora, Próxima, Corajosa e Realizadora.",
-        "O site foi construído em 2008 em Joomla! 1.0 com um tema totalmente sob medida. O briefing de design veio da agência Inventiva; a implementação do front-end, o desenvolvimento do template e a configuração do CMS foram feitos inteiramente por Leonardo Vasconcellos. A linguagem visual escura e de alto contraste espelhava a seriedade industrial de um fornecedor B2B, enquanto cada linha de produto recebeu sua própria cor de destaque (laranja, verde-azulado, rosa) para orientar os compradores à primeira vista. A camada de CMS Joomla deu ao time da Mobtex total controle editorial sobre descrições de produtos e notícias da empresa sem envolvimento de desenvolvedor — um benefício operacional significativo para uma pequena fabricante em 2008."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Custom brand-driven template",
-          "pt": "Template sob medida orientado à marca"
+        heading: {
+          en: "Embedded live-agent chat status",
+          pt: "Status de chat com atendente ao vivo embutido",
         },
-        "body": {
-          "en": "a fully custom template built from a design agency brief, translating Mobtex's \"Liberdade para Criar\" brand identity into a dark, industrial-grade web presence that stood out in the 2008 B2B market",
-          "pt": "um template totalmente sob medida construído a partir de um briefing de agência de design, traduzindo a identidade de marca \"Liberdade para Criar\" da Mobtex em uma presença web escura e de nível industrial que se destacava no mercado B2B de 2008"
-        }
+        body: {
+          en: "Integrated MySuite's real-time online/offline indicator via iframe so clients could see agent availability at a glance, reducing missed support contacts before a full site existed.",
+          pt: "Integrei o indicador online/offline em tempo real do MySuite via iframe, para que os clientes vissem a disponibilidade do atendente de relance, reduzindo contatos de suporte perdidos antes mesmo de existir um site completo.",
+        },
       },
       {
-        "heading": {
-          "en": "Color-coded product lines",
-          "pt": "Linhas de produtos com código de cores"
+        heading: {
+          en: "Direct remote desktop CTA",
+          pt: "CTA direto de acesso remoto",
         },
-        "body": {
-          "en": "three catalogue sections (Fitness, Shoes, Diverse) with contextual product photography, giving buyers an immediate visual path to the right material category without sales friction",
-          "pt": "três seções de catálogo (Fitness, Shoes, Diverse) com fotografia de produto contextual, dando aos compradores um caminho visual imediato até a categoria de material certa, sem atrito de vendas"
-        }
+        body: {
+          en: "Surfaced the firm's remote access tool as a first-class action, letting clients initiate a technical session without calling in or navigating a separate site.",
+          pt: "Destaquei a ferramenta de acesso remoto da empresa como uma ação de primeira classe, permitindo aos clientes iniciar uma sessão técnica sem ligar ou navegar por um site separado.",
+        },
       },
       {
-        "heading": {
-          "en": "Compact animated navigation",
-          "pt": "Navegação animada e compacta"
+        heading: {
+          en: "Zero-dependency single-file delivery",
+          pt: "Entrega em arquivo único sem dependências",
         },
-        "body": {
-          "en": "an animated accordion menu that kept the sidebar compact and navigable within the browser constraints of the era, reducing load time and improving usability on period hardware",
-          "pt": "um menu acordeão animado que mantinha a barra lateral compacta e navegável dentro das limitações de navegador da época, reduzindo o tempo de carregamento e melhorando a usabilidade no hardware do período"
-        }
-      }
+        body: {
+          en: "The entire landing experience fit in one HTML file with inline CSS: no build step, no backend, sub-second load on the dial-up and early broadband connections common in Brazilian offices in 2008.",
+          pt: "Toda a experiência da landing coube em um arquivo HTML com CSS inline: sem etapa de build, sem backend, carregamento em menos de um segundo nas conexões discadas e de banda larga inicial comuns nos escritórios brasileiros de 2008.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
-      {
-        "name": "PHP",
-        "version": "4 / 5",
-        "icon": "/devicons/php-original.svg"
-      },
-      {
-        "name": "Joomla!",
-        "version": "1.0",
-        "icon": "/devicons/joomla.svg"
-      },
-      {
-        "name": "YUI",
-        "version": "2.0",
-        "icon": "/devicons/yahoo.png"
-      }
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/mobtex/screenshots/mobtex-contato.png"
+        src: "/projects/managerconsulting-landing-page/screenshots/manager-consulting-tecnologia-e-gestao-de-negocios.png",
+        featured: true,
       },
-      {
-        "src": "/projects/mobtex/screenshots/mobtex-diverse.png"
-      },
-      {
-        "src": "/projects/mobtex/screenshots/mobtex-empresa.png"
-      },
-      {
-        "src": "/projects/mobtex/screenshots/mobtex-fitness.png"
-      },
-      {
-        "src": "/projects/mobtex/screenshots/mobtex-nossa-marca.png"
-      },
-      {
-        "src": "/projects/mobtex/screenshots/mobtex-shoes.png"
-      },
-      {
-        "src": "/projects/mobtex/screenshots/mobtex-tecidos.png"
-      },
-      {
-        "src": "/projects/mobtex/screenshots/mobtex-home.png",
-        "featured": true
-      }
-    ]
+    ],
   },
   {
-    "slug": "nr-10",
-    "year": "2008",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/nr-10",
-    "logo": "/projects/nr-10/nr-10-logo.jpg",
-    "name": {
-      "en": "NR-10 — Segurança em Eletricidade",
-      "pt": "NR-10 — Segurança em Eletricidade"
+    slug: "mobtex",
+    year: "2008",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://webarchive.leonardolimadevasconcellos.workers.dev/mobtex",
+    logo: "/projects/mobtex/mobtex-logo.png",
+    name: {
+      en: "Mobtex Tecidos de Alto Desempenho",
+      pt: "Mobtex Tecidos de Alto Desempenho",
     },
-    "tagline": {
-      "en": "A Joomla-powered educational portal delivering the complete NR-10 electrical safety regulatory text, training course listings, and a members-only student area — serving Brazilian electricians and safety professionals required to comply with federal law.",
-      "pt": "Um portal educacional em Joomla que entrega o texto regulatório completo da NR-10 de segurança em eletricidade, listagens de cursos de treinamento e uma área do aluno exclusiva para membros — atendendo eletricistas e profissionais de segurança brasileiros obrigados a cumprir a lei federal."
+    tagline: {
+      en: "Joomla 1.0 corporate website built in 2008 for Mobtex, a Joinville-based manufacturer of high-performance fabrics and shoe materials across three specialized product lines.",
+      pt: "Site corporativo em Joomla 1.0 construído em 2008 para a Mobtex, fabricante de Joinville de tecidos de alto desempenho e materiais para calçados em três linhas de produtos especializadas.",
     },
-    "kicker": {
-      "en": "// segurança elétrica · portal NR-10",
-      "pt": "// segurança elétrica · portal NR-10"
+    kicker: {
+      en: "// high-performance textiles · Mobtex, Joinville",
+      pt: "// têxteis de alto desempenho · Mobtex, Joinville",
     },
-    "intro": {
-      "en": "A Joomla-powered educational portal delivering the complete NR-10 electrical safety regulatory text, training course listings, and a members-only student area — serving Brazilian electricians and safety professionals required to comply with federal law.",
-      "pt": "Um portal educacional em Joomla que entrega o texto regulatório completo da NR-10 de segurança em eletricidade, listagens de cursos de treinamento e uma área do aluno exclusiva para membros — atendendo eletricistas e profissionais de segurança brasileiros obrigados a cumprir a lei federal."
+    intro: {
+      en: "Joomla 1.0 corporate website built in 2008 for Mobtex, a Joinville-based manufacturer of high-performance fabrics and shoe materials across three specialized product lines.",
+      pt: "Site corporativo em Joomla 1.0 construído em 2008 para a Mobtex, fabricante de Joinville de tecidos de alto desempenho e materiais para calçados em três linhas de produtos especializadas.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
+        'Mobtex is a Joinville, Santa Catarina-based manufacturer of high-performance technical textiles and footwear materials. Their catalogue covers three market segments: **Fitness** (sport apparel fabrics), **Shoes** (shoe industry materials), and **Diverse** (general industrial applications). The brand positioning — "Liberdade para Criar" (Freedom to Create) — positioned Mobtex not as a commodity supplier but as an innovation partner, described internally through four values: Integradora, Próxima, Corajosa, and Realizadora.',
+        "The website was built in 2008 on Joomla! 1.0 with a fully bespoke theme. The design brief came from agency Inventiva; the front-end implementation, template development, and CMS setup were done entirely by Leonardo Vasconcellos. The dark, high-contrast visual language mirrors the industrial seriousness of a B2B supplier, while each product line received its own accent color (orange, teal, pink) to orient buyers on first glance. The Joomla CMS layer gave Mobtex's team full editorial control over product descriptions and company news without developer involvement — a significant operational benefit for a small manufacturer in 2008.",
+      ],
+      pt: [
+        'A Mobtex é uma fabricante de Joinville, Santa Catarina, de têxteis técnicos de alto desempenho e materiais para calçados. Seu catálogo cobre três segmentos de mercado: **Fitness** (tecidos para vestuário esportivo), **Shoes** (materiais para a indústria calçadista) e **Diverse** (aplicações industriais em geral). O posicionamento de marca — "Liberdade para Criar" — apresentava a Mobtex não como fornecedora de commodities, mas como parceira de inovação, descrita internamente por quatro valores: Integradora, Próxima, Corajosa e Realizadora.',
+        "O site foi construído em 2008 em Joomla! 1.0 com um tema totalmente sob medida. O briefing de design veio da agência Inventiva; a implementação do front-end, o desenvolvimento do template e a configuração do CMS foram feitos inteiramente por Leonardo Vasconcellos. A linguagem visual escura e de alto contraste espelhava a seriedade industrial de um fornecedor B2B, enquanto cada linha de produto recebeu sua própria cor de destaque (laranja, verde-azulado, rosa) para orientar os compradores à primeira vista. A camada de CMS Joomla deu ao time da Mobtex total controle editorial sobre descrições de produtos e notícias da empresa sem envolvimento de desenvolvedor — um benefício operacional significativo para uma pequena fabricante em 2008.",
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Custom brand-driven template",
+          pt: "Template sob medida orientado à marca",
+        },
+        body: {
+          en: 'a fully custom template built from a design agency brief, translating Mobtex\'s "Liberdade para Criar" brand identity into a dark, industrial-grade web presence that stood out in the 2008 B2B market',
+          pt: 'um template totalmente sob medida construído a partir de um briefing de agência de design, traduzindo a identidade de marca "Liberdade para Criar" da Mobtex em uma presença web escura e de nível industrial que se destacava no mercado B2B de 2008',
+        },
+      },
+      {
+        heading: {
+          en: "Color-coded product lines",
+          pt: "Linhas de produtos com código de cores",
+        },
+        body: {
+          en: "three catalogue sections (Fitness, Shoes, Diverse) with contextual product photography, giving buyers an immediate visual path to the right material category without sales friction",
+          pt: "três seções de catálogo (Fitness, Shoes, Diverse) com fotografia de produto contextual, dando aos compradores um caminho visual imediato até a categoria de material certa, sem atrito de vendas",
+        },
+      },
+      {
+        heading: {
+          en: "Compact animated navigation",
+          pt: "Navegação animada e compacta",
+        },
+        body: {
+          en: "an animated accordion menu that kept the sidebar compact and navigable within the browser constraints of the era, reducing load time and improving usability on period hardware",
+          pt: "um menu acordeão animado que mantinha a barra lateral compacta e navegável dentro das limitações de navegador da época, reduzindo o tempo de carregamento e melhorando a usabilidade no hardware do período",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "PHP",
+        version: "4 / 5",
+        icon: "/devicons/php-original.svg",
+      },
+      {
+        name: "Joomla!",
+        version: "1.0",
+        icon: "/devicons/joomla.svg",
+      },
+      {
+        name: "YUI",
+        version: "2.0",
+        icon: "/devicons/yahoo.png",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/mobtex/screenshots/mobtex-contato.png",
+      },
+      {
+        src: "/projects/mobtex/screenshots/mobtex-diverse.png",
+      },
+      {
+        src: "/projects/mobtex/screenshots/mobtex-empresa.png",
+      },
+      {
+        src: "/projects/mobtex/screenshots/mobtex-fitness.png",
+      },
+      {
+        src: "/projects/mobtex/screenshots/mobtex-nossa-marca.png",
+      },
+      {
+        src: "/projects/mobtex/screenshots/mobtex-shoes.png",
+      },
+      {
+        src: "/projects/mobtex/screenshots/mobtex-tecidos.png",
+      },
+      {
+        src: "/projects/mobtex/screenshots/mobtex-home.png",
+        featured: true,
+      },
+    ],
+  },
+  {
+    slug: "nr-10",
+    year: "2008",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://webarchive.leonardolimadevasconcellos.workers.dev/nr-10",
+    logo: "/projects/nr-10/nr-10-logo.jpg",
+    name: {
+      en: "NR-10 — Segurança em Eletricidade",
+      pt: "NR-10 — Segurança em Eletricidade",
+    },
+    tagline: {
+      en: "A Joomla-powered educational portal delivering the complete NR-10 electrical safety regulatory text, training course listings, and a members-only student area — serving Brazilian electricians and safety professionals required to comply with federal law.",
+      pt: "Um portal educacional em Joomla que entrega o texto regulatório completo da NR-10 de segurança em eletricidade, listagens de cursos de treinamento e uma área do aluno exclusiva para membros — atendendo eletricistas e profissionais de segurança brasileiros obrigados a cumprir a lei federal.",
+    },
+    kicker: {
+      en: "// segurança elétrica · portal NR-10",
+      pt: "// segurança elétrica · portal NR-10",
+    },
+    intro: {
+      en: "A Joomla-powered educational portal delivering the complete NR-10 electrical safety regulatory text, training course listings, and a members-only student area — serving Brazilian electricians and safety professionals required to comply with federal law.",
+      pt: "Um portal educacional em Joomla que entrega o texto regulatório completo da NR-10 de segurança em eletricidade, listagens de cursos de treinamento e uma área do aluno exclusiva para membros — atendendo eletricistas e profissionais de segurança brasileiros obrigados a cumprir a lei federal.",
+    },
+    body: {
+      en: [
         "NR-10 was a Joomla-based educational portal at www.nr-10.com dedicated to Brazil's Norma Regulamentadora Nº 10 — the federal standard that defines safety requirements for electrical installations and services in every workplace that generates, transmits, distributes, or consumes electricity.",
         "The site served electricians, safety engineers, and companies obligated to comply with the standard: it published the full NR-10 regulatory text (Portaria nº 598/2004 and subsequent amendments), catalogued the relevant ABNT technical norms (NBR-5410, NBR-14039) and MTE ministerial ordinances, and listed the mandatory 40-hour Basic Course and 40-hour Complementary SEP Course required for worker authorization.",
         "Beyond a reference library, the portal included a user registration and login system giving enrolled students access to a password-protected Sala dos Alunos — a members-only area for course participants. The green-themed, XHTML-validated site supported PDF export and print views for every regulatory article, and carried an RSS feed so subscribers could follow updates to the norms.",
-        "The project was built for a Brazilian electrical safety training provider in 2008, using Joomla 1.0.x on a shared PHP/MySQL host, and was the developer's first CMS deployment."
+        "The project was built for a Brazilian electrical safety training provider in 2008, using Joomla 1.0.x on a shared PHP/MySQL host, and was the developer's first CMS deployment.",
       ],
-      "pt": [
+      pt: [
         "O NR-10 era um portal educacional em Joomla no www.nr-10.com dedicado à Norma Regulamentadora Nº 10 do Brasil — a norma federal que define os requisitos de segurança para instalações e serviços em eletricidade em todo local de trabalho que gera, transmite, distribui ou consome energia elétrica.",
         "O site atendia eletricistas, engenheiros de segurança e empresas obrigadas a cumprir a norma: publicava o texto regulatório completo da NR-10 (Portaria nº 598/2004 e alterações posteriores), catalogava as normas técnicas ABNT pertinentes (NBR-5410, NBR-14039) e as portarias ministeriais do MTE, e listava o Curso Básico de 40 horas e o Curso Complementar SEP de 40 horas obrigatórios para a autorização do trabalhador.",
         "Além de uma biblioteca de referência, o portal incluía um sistema de cadastro e login de usuários que dava aos alunos matriculados acesso a uma Sala dos Alunos protegida por senha — uma área exclusiva para membros participantes dos cursos. O site, de tema verde e com XHTML validado, oferecia exportação em PDF e visões de impressão para cada artigo regulatório, e trazia um feed RSS para que os assinantes acompanhassem as atualizações das normas.",
-        "O projeto foi construído para um provedor brasileiro de treinamento em segurança elétrica em 2008, usando Joomla 1.0.x em uma hospedagem PHP/MySQL compartilhada, e foi a primeira implantação de CMS do desenvolvedor."
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Official regulatory library",
-          "pt": "Biblioteca regulatória oficial"
-        },
-        "body": {
-          "en": "a full CMS portal publishing the complete official NR-10 regulatory text and ABNT/MTE standards, giving Brazil's electricians instant access to the legally binding safety requirements that govern their work authorization",
-          "pt": "um portal CMS completo publicando o texto regulatório oficial completo da NR-10 e as normas ABNT/MTE, dando aos eletricistas do Brasil acesso instantâneo aos requisitos de segurança legalmente obrigatórios que regem sua autorização de trabalho"
-        }
-      },
-      {
-        "heading": {
-          "en": "Members-only student area",
-          "pt": "Área do aluno exclusiva para membros"
-        },
-        "body": {
-          "en": "user registration and login gating a \"Sala dos Alunos\" (Student Room), enabling training providers to lock premium course materials behind membership and turn compliance content into a product",
-          "pt": "cadastro e login de usuários protegendo uma \"Sala dos Alunos\", permitindo aos provedores de treinamento trancar materiais premium de curso atrás de uma assinatura e transformar conteúdo de conformidade em um produto"
-        }
-      },
-      {
-        "heading": {
-          "en": "Standards-compliant custom template",
-          "pt": "Template sob medida em conformidade com padrões"
-        },
-        "body": {
-          "en": "a green-branded template with animated navigation, W3C-validated markup, lightbox galleries, and PDF/print exports, meeting the professional standards expected by safety regulators and institutional clients",
-          "pt": "um template com marca verde, navegação animada, marcação validada pela W3C, galerias em lightbox e exportações em PDF/impressão, atendendo aos padrões profissionais esperados por reguladores de segurança e clientes institucionais"
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "PHP",
-        "version": "4.x",
-        "icon": "/devicons/php-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
-      },
-      {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "Joomla",
-        "version": "1.0.x",
-        "icon": "/devicons/joomla.svg"
-      },
-      {
-        "name": "MySQL",
-        "version": "3.x",
-        "icon": "/devicons/mysql-original.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/nr-10/screenshots/nr-10-norma-nr-10.png"
-      },
-      {
-        "src": "/projects/nr-10/screenshots/nr-10-cadastro.png"
-      },
-      {
-        "src": "/projects/nr-10/screenshots/nr-10-home.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "supercarwash",
-    "year": "2008",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/supercarwash",
-    "logo": "/projects/supercarwash/supercarwash-logo.png",
-    "name": {
-      "en": "Super Car Wash",
-      "pt": "Super Car Wash"
-    },
-    "tagline": {
-      "en": "A custom Joomla 1.5 CMS build for an eco-friendly dry car wash, pairing a bespoke template with a member portal for service tracking and discounts.",
-      "pt": "Uma construção com CMS Joomla 1.5 sob medida para uma lavagem de carros a seco e ecológica, unindo um template exclusivo a um portal de membros para acompanhamento de serviços e descontos."
-    },
-    "kicker": {
-      "en": "// joomla cms · eco-friendly car wash",
-      "pt": "// cms joomla · lavagem de carros ecológica"
-    },
-    "intro": {
-      "en": "A custom Joomla template and member portal built for a Brazilian eco-friendly \"dry wash\" car detailing business, turning a static brochure site into a retention tool with login-gated service tracking and discounts.",
-      "pt": "Um template Joomla sob medida e portal de membros construído para uma estética automotiva brasileira de \"lavagem a seco\" ecológica, transformando um site de folheto estático em uma ferramenta de retenção com acompanhamento de serviços e descontos protegidos por login."
-    },
-    "body": {
-      "en": [
-        "Super Car Wash is a Brazilian car detailing business built around \"dry wash\" technology — an eco-conscious alternative to traditional water-based washing developed in response to growing water scarcity concerns. The site was built on Joomla! 1.5 with a fully custom template designed from scratch: a bespoke logo, hand-built CSS theme, and tailored layout rather than a stock Joomla skin.",
-        "Beyond the public-facing service catalog — covering everything from external/internal washing to upholstery hydration, air-conditioning sanitization, paintless dent repair (\"Martelinho de Ouro\"), and specialized paint correction — the site includes a custom member area. Registered customers could log in to follow the service performed on their vehicle and access exclusive discounts, giving the business a tool for customer retention beyond a single visit.",
-        "The homepage leads with the business's environmental positioning: a news-slider module explaining the ecological rationale behind dry-wash technology and its water-saving benefits, reinforcing the brand's \"green\" differentiator in a competitive local market."
+        "O projeto foi construído para um provedor brasileiro de treinamento em segurança elétrica em 2008, usando Joomla 1.0.x em uma hospedagem PHP/MySQL compartilhada, e foi a primeira implantação de CMS do desenvolvedor.",
       ],
-      "pt": [
-        "A Super Car Wash é uma estética automotiva brasileira construída em torno da tecnologia de \"lavagem a seco\" — uma alternativa ecológica à lavagem tradicional com água, desenvolvida em resposta às crescentes preocupações com a escassez de água. O site foi construído em Joomla! 1.5 com um template totalmente sob medida projetado do zero: um logo exclusivo, um tema CSS feito à mão e um layout adaptado, em vez de uma skin Joomla de prateleira.",
-        "Além do catálogo de serviços voltado ao público — cobrindo de lavagem externa/interna à hidratação de estofados, higienização de ar-condicionado, reparo de amassados sem pintura (\"Martelinho de Ouro\") e correção de pintura especializada — o site inclui uma área de membros sob medida. Clientes cadastrados podiam fazer login para acompanhar o serviço realizado em seu veículo e acessar descontos exclusivos, dando ao negócio uma ferramenta de retenção de clientes para além de uma única visita.",
-        "A home abre com o posicionamento ambiental do negócio: um módulo de slider de notícias explicando a lógica ecológica por trás da tecnologia de lavagem a seco e seus benefícios de economia de água, reforçando o diferencial \"verde\" da marca em um mercado local competitivo."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Bespoke brand template",
-          "pt": "Template de marca exclusivo"
+        heading: {
+          en: "Official regulatory library",
+          pt: "Biblioteca regulatória oficial",
         },
-        "body": {
-          "en": "a fully custom template built from scratch (logo, layout, and CSS) instead of an off-the-shelf theme, giving the business a distinct brand identity rather than a generic templated site",
-          "pt": "um template totalmente sob medida construído do zero (logo, layout e CSS) em vez de um tema de prateleira, dando ao negócio uma identidade de marca distinta em vez de um site com cara de template genérico"
-        }
+        body: {
+          en: "a full CMS portal publishing the complete official NR-10 regulatory text and ABNT/MTE standards, giving Brazil's electricians instant access to the legally binding safety requirements that govern their work authorization",
+          pt: "um portal CMS completo publicando o texto regulatório oficial completo da NR-10 e as normas ABNT/MTE, dando aos eletricistas do Brasil acesso instantâneo aos requisitos de segurança legalmente obrigatórios que regem sua autorização de trabalho",
+        },
       },
       {
-        "heading": {
-          "en": "Member loyalty area",
-          "pt": "Área de fidelidade para membros"
+        heading: {
+          en: "Members-only student area",
+          pt: "Área do aluno exclusiva para membros",
         },
-        "body": {
-          "en": "a login/registration area letting customers track their vehicle's service history and unlock discounts, turning the site from a static brochure into a retention and loyalty tool",
-          "pt": "uma área de login/cadastro permitindo aos clientes acompanhar o histórico de serviços de seu veículo e liberar descontos, transformando o site de um folheto estático em uma ferramenta de retenção e fidelidade"
-        }
+        body: {
+          en: 'user registration and login gating a "Sala dos Alunos" (Student Room), enabling training providers to lock premium course materials behind membership and turn compliance content into a product',
+          pt: 'cadastro e login de usuários protegendo uma "Sala dos Alunos", permitindo aos provedores de treinamento trancar materiais premium de curso atrás de uma assinatura e transformar conteúdo de conformidade em um produto',
+        },
       },
       {
-        "heading": {
-          "en": "Editable service catalog",
-          "pt": "Catálogo de serviços editável"
+        heading: {
+          en: "Standards-compliant custom template",
+          pt: "Template sob medida em conformidade com padrões",
         },
-        "body": {
-          "en": "the full catalog of 14 offerings (from dry wash to leather hydration to paint correction) modeled as structured, editable content, letting non-technical staff manage offerings and pricing without touching code",
-          "pt": "o catálogo completo de 14 ofertas (da lavagem a seco à hidratação de couro e à correção de pintura) modelado como conteúdo estruturado e editável, permitindo à equipe não técnica gerenciar ofertas e preços sem tocar em código"
-        }
-      }
+        body: {
+          en: "a green-branded template with animated navigation, W3C-validated markup, lightbox galleries, and PDF/print exports, meeting the professional standards expected by safety regulators and institutional clients",
+          pt: "um template com marca verde, navegação animada, marcação validada pela W3C, galerias em lightbox e exportações em PDF/impressão, atendendo aos padrões profissionais esperados por reguladores de segurança e clientes institucionais",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "4.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "Joomla!",
-        "version": "1.5.8",
-        "icon": "/devicons/joomla.svg"
+        name: "Joomla",
+        version: "1.0.x",
+        icon: "/devicons/joomla.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.x",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        version: "3.x",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/supercarwash/screenshots/super-car-wash-login.png"
+        src: "/projects/nr-10/screenshots/nr-10-norma-nr-10.png",
       },
       {
-        "src": "/projects/supercarwash/screenshots/super-car-wash.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/nr-10/screenshots/nr-10-cadastro.png",
+      },
+      {
+        src: "/projects/nr-10/screenshots/nr-10-home.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "century-eventos",
-    "year": "2007",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/century-eventos",
-    "logo": "/projects/century-eventos/century-eventos-logo.png",
-    "name": {
-      "en": "Century Foto e Vídeo",
-      "pt": "Century Foto e Vídeo"
+    slug: "supercarwash",
+    year: "2008",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/supercarwash",
+    logo: "/projects/supercarwash/supercarwash-logo.png",
+    name: {
+      en: "Super Car Wash",
+      pt: "Super Car Wash",
     },
-    "tagline": {
-      "en": "A PHP-powered website and CMS for a professional wedding and events photography studio in Joinville, Brazil.",
-      "pt": "Um site e CMS em PHP para um estúdio profissional de fotografia de casamentos e eventos em Joinville, Brasil."
+    tagline: {
+      en: "A custom Joomla 1.5 CMS build for an eco-friendly dry car wash, pairing a bespoke template with a member portal for service tracking and discounts.",
+      pt: "Uma construção com CMS Joomla 1.5 sob medida para uma lavagem de carros a seco e ecológica, unindo um template exclusivo a um portal de membros para acompanhamento de serviços e descontos.",
     },
-    "kicker": {
-      "en": "// wedding & events photography · Century Foto e Vídeo",
-      "pt": "// fotografia de casamentos & eventos · Century Foto e Vídeo"
+    kicker: {
+      en: "// joomla cms · eco-friendly car wash",
+      pt: "// cms joomla · lavagem de carros ecológica",
     },
-    "intro": {
-      "en": "A PHP-powered website and CMS for a professional wedding and events photography studio in Joinville, Brazil.",
-      "pt": "Um site e CMS em PHP para um estúdio profissional de fotografia de casamentos e eventos em Joinville, Brasil."
+    intro: {
+      en: 'A custom Joomla template and member portal built for a Brazilian eco-friendly "dry wash" car detailing business, turning a static brochure site into a retention tool with login-gated service tracking and discounts.',
+      pt: 'Um template Joomla sob medida e portal de membros construído para uma estética automotiva brasileira de "lavagem a seco" ecológica, transformando um site de folheto estático em uma ferramenta de retenção com acompanhamento de serviços e descontos protegidos por login.',
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
+        'Super Car Wash is a Brazilian car detailing business built around "dry wash" technology — an eco-conscious alternative to traditional water-based washing developed in response to growing water scarcity concerns. The site was built on Joomla! 1.5 with a fully custom template designed from scratch: a bespoke logo, hand-built CSS theme, and tailored layout rather than a stock Joomla skin.',
+        'Beyond the public-facing service catalog — covering everything from external/internal washing to upholstery hydration, air-conditioning sanitization, paintless dent repair ("Martelinho de Ouro"), and specialized paint correction — the site includes a custom member area. Registered customers could log in to follow the service performed on their vehicle and access exclusive discounts, giving the business a tool for customer retention beyond a single visit.',
+        "The homepage leads with the business's environmental positioning: a news-slider module explaining the ecological rationale behind dry-wash technology and its water-saving benefits, reinforcing the brand's \"green\" differentiator in a competitive local market.",
+      ],
+      pt: [
+        'A Super Car Wash é uma estética automotiva brasileira construída em torno da tecnologia de "lavagem a seco" — uma alternativa ecológica à lavagem tradicional com água, desenvolvida em resposta às crescentes preocupações com a escassez de água. O site foi construído em Joomla! 1.5 com um template totalmente sob medida projetado do zero: um logo exclusivo, um tema CSS feito à mão e um layout adaptado, em vez de uma skin Joomla de prateleira.',
+        'Além do catálogo de serviços voltado ao público — cobrindo de lavagem externa/interna à hidratação de estofados, higienização de ar-condicionado, reparo de amassados sem pintura ("Martelinho de Ouro") e correção de pintura especializada — o site inclui uma área de membros sob medida. Clientes cadastrados podiam fazer login para acompanhar o serviço realizado em seu veículo e acessar descontos exclusivos, dando ao negócio uma ferramenta de retenção de clientes para além de uma única visita.',
+        'A home abre com o posicionamento ambiental do negócio: um módulo de slider de notícias explicando a lógica ecológica por trás da tecnologia de lavagem a seco e seus benefícios de economia de água, reforçando o diferencial "verde" da marca em um mercado local competitivo.',
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Bespoke brand template",
+          pt: "Template de marca exclusivo",
+        },
+        body: {
+          en: "a fully custom template built from scratch (logo, layout, and CSS) instead of an off-the-shelf theme, giving the business a distinct brand identity rather than a generic templated site",
+          pt: "um template totalmente sob medida construído do zero (logo, layout e CSS) em vez de um tema de prateleira, dando ao negócio uma identidade de marca distinta em vez de um site com cara de template genérico",
+        },
+      },
+      {
+        heading: {
+          en: "Member loyalty area",
+          pt: "Área de fidelidade para membros",
+        },
+        body: {
+          en: "a login/registration area letting customers track their vehicle's service history and unlock discounts, turning the site from a static brochure into a retention and loyalty tool",
+          pt: "uma área de login/cadastro permitindo aos clientes acompanhar o histórico de serviços de seu veículo e liberar descontos, transformando o site de um folheto estático em uma ferramenta de retenção e fidelidade",
+        },
+      },
+      {
+        heading: {
+          en: "Editable service catalog",
+          pt: "Catálogo de serviços editável",
+        },
+        body: {
+          en: "the full catalog of 14 offerings (from dry wash to leather hydration to paint correction) modeled as structured, editable content, letting non-technical staff manage offerings and pricing without touching code",
+          pt: "o catálogo completo de 14 ofertas (da lavagem a seco à hidratação de couro e à correção de pintura) modelado como conteúdo estruturado e editável, permitindo à equipe não técnica gerenciar ofertas e preços sem tocar em código",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
+      },
+      {
+        name: "Joomla!",
+        version: "1.5.8",
+        icon: "/devicons/joomla.svg",
+      },
+      {
+        name: "MySQL",
+        version: "5.x",
+        icon: "/devicons/mysql-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/supercarwash/screenshots/super-car-wash-login.png",
+      },
+      {
+        src: "/projects/supercarwash/screenshots/super-car-wash.png",
+        featured: true,
+      },
+    ],
+  },
+  {
+    slug: "century-eventos",
+    year: "2007",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/century-eventos",
+    logo: "/projects/century-eventos/century-eventos-logo.png",
+    name: {
+      en: "Century Foto e Vídeo",
+      pt: "Century Foto e Vídeo",
+    },
+    tagline: {
+      en: "A PHP-powered website and CMS for a professional wedding and events photography studio in Joinville, Brazil.",
+      pt: "Um site e CMS em PHP para um estúdio profissional de fotografia de casamentos e eventos em Joinville, Brasil.",
+    },
+    kicker: {
+      en: "// wedding & events photography · Century Foto e Vídeo",
+      pt: "// fotografia de casamentos & eventos · Century Foto e Vídeo",
+    },
+    intro: {
+      en: "A PHP-powered website and CMS for a professional wedding and events photography studio in Joinville, Brazil.",
+      pt: "Um site e CMS em PHP para um estúdio profissional de fotografia de casamentos e eventos em Joinville, Brasil.",
+    },
+    body: {
+      en: [
         "Century Foto e Vídeo is a professional photography and videography studio based in Joinville, Santa Catarina, serving the Brazilian wedding and events market. At a time when most small studios relied on static HTML sites or expensive off-the-shelf solutions, this project delivered a fully custom web presence — including a bespoke CMS — built from scratch.",
         "The website's centerpiece was an immersive photo gallery: nine high-resolution images cycling session-by-session in the background, with a thumbnail rail for direct navigation. Clicking a thumbnail triggered a smooth image swap and played an audio click — an interaction model that was genuinely ahead of the curve in 2007. A Flash-animated logo rounded out the premium aesthetic the client wanted to project.",
-        "Behind the front end, a purpose-built PHP/MySQL CMS gave the studio owner complete control over their content. The admin panel included a WYSIWYG rich-text editor for page copy, an event management wizard to track bookings, and an image uploader that automatically applied a watermark to protect the studio's photography IP. No developer involvement was needed for day-to-day updates — a meaningful operational gain for a small business owner managing a portfolio on a tight schedule."
+        "Behind the front end, a purpose-built PHP/MySQL CMS gave the studio owner complete control over their content. The admin panel included a WYSIWYG rich-text editor for page copy, an event management wizard to track bookings, and an image uploader that automatically applied a watermark to protect the studio's photography IP. No developer involvement was needed for day-to-day updates — a meaningful operational gain for a small business owner managing a portfolio on a tight schedule.",
       ],
-      "pt": [
+      pt: [
         "A Century Foto e Vídeo é um estúdio profissional de fotografia e videografia sediado em Joinville, Santa Catarina, atendendo o mercado brasileiro de casamentos e eventos. Numa época em que a maioria dos pequenos estúdios dependia de sites HTML estáticos ou de soluções de prateleira caras, este projeto entregou uma presença web totalmente sob medida — incluindo um CMS exclusivo — construída do zero.",
         "A peça central do site era uma galeria de fotos imersiva: nove imagens em alta resolução alternando sessão a sessão ao fundo, com uma trilha de miniaturas para navegação direta. Clicar em uma miniatura disparava uma troca de imagem suave e tocava um clique de áudio — um modelo de interação genuinamente à frente de seu tempo em 2007. Um logo animado em Flash completava a estética premium que o cliente queria projetar.",
-        "Por trás do front-end, um CMS PHP/MySQL feito sob medida dava ao dono do estúdio controle total sobre seu conteúdo. O painel administrativo incluía um editor de texto rico WYSIWYG para o texto das páginas, um assistente de gestão de eventos para acompanhar reservas e um uploader de imagens que aplicava automaticamente uma marca d'água para proteger a propriedade intelectual das fotografias do estúdio. Nenhum envolvimento de desenvolvedor era necessário para as atualizações do dia a dia — um ganho operacional relevante para um pequeno empresário gerenciando um portfólio em uma agenda apertada."
-      ]
+        "Por trás do front-end, um CMS PHP/MySQL feito sob medida dava ao dono do estúdio controle total sobre seu conteúdo. O painel administrativo incluía um editor de texto rico WYSIWYG para o texto das páginas, um assistente de gestão de eventos para acompanhar reservas e um uploader de imagens que aplicava automaticamente uma marca d'água para proteger a propriedade intelectual das fotografias do estúdio. Nenhum envolvimento de desenvolvedor era necessário para as atualizações do dia a dia — um ganho operacional relevante para um pequeno empresário gerenciando um portfólio em uma agenda apertada.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Custom CMS",
-          "pt": "CMS sob medida"
+        heading: {
+          en: "Custom CMS",
+          pt: "CMS sob medida",
         },
-        "body": {
-          "en": "WYSIWYG editing and event management gave the studio owner full control over content and bookings, eliminating the need for a developer to make routine updates",
-          "pt": "a edição WYSIWYG e a gestão de eventos davam ao dono do estúdio controle total sobre conteúdo e reservas, eliminando a necessidade de um desenvolvedor para fazer atualizações de rotina"
-        }
+        body: {
+          en: "WYSIWYG editing and event management gave the studio owner full control over content and bookings, eliminating the need for a developer to make routine updates",
+          pt: "a edição WYSIWYG e a gestão de eventos davam ao dono do estúdio controle total sobre conteúdo e reservas, eliminando a necessidade de um desenvolvedor para fazer atualizações de rotina",
+        },
       },
       {
-        "heading": {
-          "en": "Watermarked image uploads",
-          "pt": "Uploads de imagem com marca d'água"
+        heading: {
+          en: "Watermarked image uploads",
+          pt: "Uploads de imagem com marca d'água",
         },
-        "body": {
-          "en": "Automatic watermarking on every uploaded photo protected the studio's photography IP without adding manual work to the publishing process",
-          "pt": "a marca d'água automática em cada foto enviada protegia a propriedade intelectual das fotografias do estúdio sem adicionar trabalho manual ao processo de publicação"
-        }
+        body: {
+          en: "Automatic watermarking on every uploaded photo protected the studio's photography IP without adding manual work to the publishing process",
+          pt: "a marca d'água automática em cada foto enviada protegia a propriedade intelectual das fotografias do estúdio sem adicionar trabalho manual ao processo de publicação",
+        },
       },
       {
-        "heading": {
-          "en": "Interactive photo gallery",
-          "pt": "Galeria de fotos interativa"
+        heading: {
+          en: "Interactive photo gallery",
+          pt: "Galeria de fotos interativa",
         },
-        "body": {
-          "en": "Thumbnail navigation, background cycling, and click-sound hover effects delivered a premium, production-quality browsing experience that helped the studio stand out in 2007",
-          "pt": "navegação por miniaturas, alternância de fundo e efeitos de clique com som entregavam uma experiência de navegação premium, com qualidade de produção, que ajudou o estúdio a se destacar em 2007"
-        }
-      }
+        body: {
+          en: "Thumbnail navigation, background cycling, and click-sound hover effects delivered a premium, production-quality browsing experience that helped the studio stand out in 2007",
+          pt: "navegação por miniaturas, alternância de fundo e efeitos de clique com som entregavam uma experiência de navegação premium, com qualidade de produção, que ajudou o estúdio a se destacar em 2007",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.x",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        version: "5.x",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/century-eventos/screenshots/century-foto-e-video-1.png"
+        src: "/projects/century-eventos/screenshots/century-foto-e-video-1.png",
       },
       {
-        "src": "/projects/century-eventos/screenshots/century-foto-e-video-2.png"
+        src: "/projects/century-eventos/screenshots/century-foto-e-video-2.png",
       },
       {
-        "src": "/projects/century-eventos/screenshots/century-foto-e-video-3.png"
+        src: "/projects/century-eventos/screenshots/century-foto-e-video-3.png",
       },
       {
-        "src": "/projects/century-eventos/screenshots/century-foto-e-video.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/century-eventos/screenshots/century-foto-e-video.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "e-profissionalizando",
-    "year": "2007",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/e-profissionalizando",
-    "logo": "/projects/e-profissionalizando/e-profissionalizando-logo.jpg",
-    "name": {
-      "en": "E-Profissionalizando — Cursos Profissionalizantes Online",
-      "pt": "E-Profissionalizando — Cursos Profissionalizantes Online"
+    slug: "e-profissionalizando",
+    year: "2007",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/e-profissionalizando",
+    logo: "/projects/e-profissionalizando/e-profissionalizando-logo.jpg",
+    name: {
+      en: "E-Profissionalizando — Cursos Profissionalizantes Online",
+      pt: "E-Profissionalizando — Cursos Profissionalizantes Online",
     },
-    "tagline": {
-      "en": "Online portal offering nationally-certified professional courses at affordable prices to students across all of Brazil.",
-      "pt": "Portal online que oferece cursos profissionalizantes com certificação nacional a preços acessíveis para estudantes de todo o Brasil."
+    tagline: {
+      en: "Online portal offering nationally-certified professional courses at affordable prices to students across all of Brazil.",
+      pt: "Portal online que oferece cursos profissionalizantes com certificação nacional a preços acessíveis para estudantes de todo o Brasil.",
     },
-    "kicker": {
-      "en": "// professional courses · e-learning platform",
-      "pt": "// cursos profissionalizantes · plataforma de e-learning"
+    kicker: {
+      en: "// professional courses · e-learning platform",
+      pt: "// cursos profissionalizantes · plataforma de e-learning",
     },
-    "intro": {
-      "en": "E-Profissionalizando was one of Brazil's first e-learning portals for professional certification — offering legally-recognised courses delivered entirely online and accessible to students across all 26 states since 2007.",
-      "pt": "O E-Profissionalizando foi um dos primeiros portais de e-learning do Brasil para certificação profissional — oferecendo cursos legalmente reconhecidos entregues inteiramente online e acessíveis a estudantes dos 26 estados desde 2007."
+    intro: {
+      en: "E-Profissionalizando was one of Brazil's first e-learning portals for professional certification — offering legally-recognised courses delivered entirely online and accessible to students across all 26 states since 2007.",
+      pt: "O E-Profissionalizando foi um dos primeiros portais de e-learning do Brasil para certificação profissional — oferecendo cursos legalmente reconhecidos entregues inteiramente online e acessíveis a estudantes dos 26 estados desde 2007.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "E-Profissionalizando launched in 2007 as one of Brazil's first dedicated e-learning marketplaces for professional certification. At a time when internet access was rapidly expanding across the country but affordable career education remained out of reach for most Brazilians, the platform filled a critical gap: courses that were legally certified, delivered entirely online, and accessible from any corner of the country.",
         "The platform was built by the same team behind **INGLESCURSO**, then the most popular online English-language course in Brazil — bringing proven e-commerce and content-delivery expertise to the broader professional education space. This lineage meant the product shipped with battle-tested infrastructure for handling high-volume course sales, certificate issuance, and student management from day one.",
         "Every course on E-Profissionalizando — whether developed in-house or by partner institutions — carried legal standing recognised across the entire Brazilian territory. Certificates were mailed to students anywhere in Brazil at no additional cost, removing the last practical barrier for learners in remote states and smaller cities where traditional vocational schools simply did not exist.",
-        "The platform spanned dozens of course categories — health, social services, business, technology, and more — and operated as a marketplace for partner institutions alongside its own catalogue. At its peak, E-Profissionalizando was one of the most visited destinations for affordable professional certification in Brazil."
+        "The platform spanned dozens of course categories — health, social services, business, technology, and more — and operated as a marketplace for partner institutions alongside its own catalogue. At its peak, E-Profissionalizando was one of the most visited destinations for affordable professional certification in Brazil.",
       ],
-      "pt": [
+      pt: [
         "O E-Profissionalizando foi lançado em 2007 como um dos primeiros marketplaces de e-learning dedicados à certificação profissional no Brasil. Numa época em que o acesso à internet se expandia rapidamente pelo país, mas a educação profissional acessível permanecia fora do alcance da maioria dos brasileiros, a plataforma preencheu uma lacuna crítica: cursos legalmente certificados, entregues inteiramente online e acessíveis de qualquer canto do país.",
         "A plataforma foi construída pela mesma equipe por trás do **INGLESCURSO**, então o curso de inglês online mais popular do Brasil — trazendo expertise comprovada em e-commerce e entrega de conteúdo para o espaço mais amplo da educação profissional. Essa linhagem significava que o produto já nascia com uma infraestrutura testada em batalha para lidar com vendas de cursos em alto volume, emissão de certificados e gestão de alunos desde o primeiro dia.",
         "Cada curso do E-Profissionalizando — desenvolvido internamente ou por instituições parceiras — tinha validade legal reconhecida em todo o território brasileiro. Os certificados eram enviados aos alunos em qualquer lugar do Brasil sem custo adicional, removendo a última barreira prática para os estudantes de estados remotos e cidades menores, onde escolas profissionalizantes tradicionais simplesmente não existiam.",
-        "A plataforma abrangia dezenas de categorias de cursos — saúde, serviço social, negócios, tecnologia e mais — e operava como um marketplace para instituições parceiras ao lado de seu próprio catálogo. Em seu auge, o E-Profissionalizando foi um dos destinos mais visitados para certificação profissional acessível no Brasil."
-      ]
+        "A plataforma abrangia dezenas de categorias de cursos — saúde, serviço social, negócios, tecnologia e mais — e operava como um marketplace para instituições parceiras ao lado de seu próprio catálogo. Em seu auge, o E-Profissionalizando foi um dos destinos mais visitados para certificação profissional acessível no Brasil.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "E-commerce checkout flow",
-          "pt": "Fluxo de checkout de e-commerce"
+        heading: {
+          en: "E-commerce checkout flow",
+          pt: "Fluxo de checkout de e-commerce",
         },
-        "body": {
-          "en": "built the purchase pipeline for online courses, letting the business turn nationwide demand for professional certification into direct, self-serve revenue.",
-          "pt": "construí o pipeline de compra de cursos online, permitindo ao negócio transformar a demanda nacional por certificação profissional em receita direta e self-service."
-        }
+        body: {
+          en: "built the purchase pipeline for online courses, letting the business turn nationwide demand for professional certification into direct, self-serve revenue.",
+          pt: "construí o pipeline de compra de cursos online, permitindo ao negócio transformar a demanda nacional por certificação profissional em receita direta e self-service.",
+        },
       },
       {
-        "heading": {
-          "en": "Nationally-recognized certificate delivery",
-          "pt": "Entrega de certificados de reconhecimento nacional"
+        heading: {
+          en: "Nationally-recognized certificate delivery",
+          pt: "Entrega de certificados de reconhecimento nacional",
         },
-        "body": {
-          "en": "integrated a certification and mailing system so every completed course carried legal standing anywhere in Brazil, removing a key trust barrier to conversion.",
-          "pt": "integrei um sistema de certificação e envio postal para que cada curso concluído tivesse validade legal em qualquer lugar do Brasil, removendo uma barreira-chave de confiança à conversão."
-        }
+        body: {
+          en: "integrated a certification and mailing system so every completed course carried legal standing anywhere in Brazil, removing a key trust barrier to conversion.",
+          pt: "integrei um sistema de certificação e envio postal para que cada curso concluído tivesse validade legal em qualquer lugar do Brasil, removendo uma barreira-chave de confiança à conversão.",
+        },
       },
       {
-        "heading": {
-          "en": "Multi-state scale",
-          "pt": "Escala multiestadual"
+        heading: {
+          en: "Multi-state scale",
+          pt: "Escala multiestadual",
         },
-        "body": {
-          "en": "architected the platform to serve students across all 26 Brazilian states, extending the business's reach into regions with no local vocational schools.",
-          "pt": "arquitetei a plataforma para atender estudantes dos 26 estados brasileiros, estendendo o alcance do negócio a regiões sem escolas profissionalizantes locais."
-        }
-      }
+        body: {
+          en: "architected the platform to serve students across all 26 Brazilian states, extending the business's reach into regions with no local vocational schools.",
+          pt: "arquitetei a plataforma para atender estudantes dos 26 estados brasileiros, estendendo o alcance do negócio a regiões sem escolas profissionalizantes locais.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "Joomla",
-        "version": "1.5.20",
-        "icon": "/devicons/joomla.svg"
+        name: "Joomla",
+        version: "1.5.20",
+        icon: "/devicons/joomla.svg",
       },
       {
-        "name": "MySQL",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/e-profissionalizando/screenshots/cursos-online-na-area-da-saude-e-servico-social.png"
+        src: "/projects/e-profissionalizando/screenshots/cursos-online-na-area-da-saude-e-servico-social.png",
       },
       {
-        "src": "/projects/e-profissionalizando/screenshots/cursos-profissionalizantes-online-com-certificado.png"
+        src: "/projects/e-profissionalizando/screenshots/cursos-profissionalizantes-online-com-certificado.png",
       },
       {
-        "src": "/projects/e-profissionalizando/screenshots/cursos-profissionalizantes-online-com-certificado-1.png"
+        src: "/projects/e-profissionalizando/screenshots/cursos-profissionalizantes-online-com-certificado-1.png",
       },
       {
-        "src": "/projects/e-profissionalizando/screenshots/e-profissionalizando-cursos-profissionalizantes-online-com-certificado.png"
+        src: "/projects/e-profissionalizando/screenshots/e-profissionalizando-cursos-profissionalizantes-online-com-certificado.png",
       },
       {
-        "src": "/projects/e-profissionalizando/screenshots/e-profissionalizando-cursos-profissionalizantes-online-com-certificado-1.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/e-profissionalizando/screenshots/e-profissionalizando-cursos-profissionalizantes-online-com-certificado-1.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "first-personal-website",
-    "year": "2007",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/first-personal-website",
-    "logo": "/projects/first-personal-website/first-personal-website-logo.png",
-    "name": {
-      "en": "Leonardo Vasconcellos — First Website",
-      "pt": "Leonardo Vasconcellos — Primeiro Site"
+    slug: "first-personal-website",
+    year: "2007",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/first-personal-website",
+    logo: "/projects/first-personal-website/first-personal-website-logo.png",
+    name: {
+      en: "Leonardo Vasconcellos — First Website",
+      pt: "Leonardo Vasconcellos — Primeiro Site",
     },
-    "tagline": {
-      "en": "My history on the web!",
-      "pt": "Minha história na web!"
+    tagline: {
+      en: "My history on the web!",
+      pt: "Minha história na web!",
     },
-    "kicker": {
-      "en": "// personal website · portfolio · 2007",
-      "pt": "// site pessoal · portfólio · 2007"
+    kicker: {
+      en: "// personal website · portfolio · 2007",
+      pt: "// site pessoal · portfólio · 2007",
     },
-    "intro": {
-      "en": "A bilingual hand-coded personal website from 2007, cataloguing 13+ client-built PHP/MySQL platforms — a calling card assembled before full-stack was a job title and before GitHub was a portfolio.",
-      "pt": "Um site pessoal bilíngue codificado à mão de 2007, catalogando mais de 13 plataformas PHP/MySQL construídas para clientes — um cartão de visitas montado antes de full-stack ser um cargo e antes de o GitHub ser um portfólio."
+    intro: {
+      en: "A bilingual hand-coded personal website from 2007, cataloguing 13+ client-built PHP/MySQL platforms — a calling card assembled before full-stack was a job title and before GitHub was a portfolio.",
+      pt: "Um site pessoal bilíngue codificado à mão de 2007, catalogando mais de 13 plataformas PHP/MySQL construídas para clientes — um cartão de visitas montado antes de full-stack ser um cargo e antes de o GitHub ser um portfólio.",
     },
-    "body": {
-      "en": [
-        "This was Leonardo's first footprint on the web — a bilingual personal website hand-built in 2007, before GitHub existed as a portfolio platform and before \"personal brand\" entered the developer lexicon. He assembled it in raw HTML and CSS because he had already shipped enough client work to need a showcase, and because the most direct way to have a website is to build one.",
+    body: {
+      en: [
+        'This was Leonardo\'s first footprint on the web — a bilingual personal website hand-built in 2007, before GitHub existed as a portfolio platform and before "personal brand" entered the developer lexicon. He assembled it in raw HTML and CSS because he had already shipped enough client work to need a showcase, and because the most direct way to have a website is to build one.',
         "**Bilingual from day one.** The site runs in both English and Portuguese via parallel directory trees (`en/` and `br/`), each with mirrored page structures and a shared design system. No i18n libraries, no build steps — just clean structural separation that let Brazilian and international clients navigate in their own language. The bilingual requirement was built into the architecture from the start, not bolted on after.",
         "**A live catalogue of client work.** The portfolio section documents every production system Leonardo had shipped by 2007: custom PHP/MySQL CMS platforms built for clients who needed to manage their own content without technical staff; an e-commerce system with full inventory management, boleto bancário payment integration, and Google-powered search; an email marketing engine (Reacher WebMailer) with audience segmentation, a WYSIWYG template editor, and CRON-scheduled batch sends that delivered personalised emails — not mass blasts — to stay out of spam filters; a government social-welfare records system (Secretaria do Bem Estar Social) replacing paper files with digital family registries, programme tracking, and HTML-based printed reports; and a web analytics tool adapted from open source and extended with Brazilian regional geographic data.",
         "Most entries credit sole authorship: design, analysis, and implementation by Leonardo. For clients, that meant one point of contact from brief to deployment — leaner projects with no handoffs, no version mismatches, and no communication overhead between designer and developer.",
         "**A complete professional history.** The resume section reads like a systems engineer's origin story: Windows NT network administration starting in 1996, Linux (Conectiva official courses), Oracle, SQL Server, ASP, MacOS X server configuration at Quantic Solutions, an Oracle/SSI B2B system for Franke Douat, and four years of independent web development. His MCP certification (Microsoft Certified Professional, Windows NT4) dated to 2000 — when many developers his age were still learning HTML.",
-        "**The design itself.** Black background, `#00FF00` green body text, hover states in acid yellow. It was 2007, and the aesthetic was deliberate — terminal palette, maximum contrast, no rounded corners, no gradients. The layout was table-based (the correct cross-browser approach before CSS positioning was reliable), with image-sliced headers and a Microsoft IE shadow filter for depth. A technically correct implementation of the web as it existed at the time."
+        "**The design itself.** Black background, `#00FF00` green body text, hover states in acid yellow. It was 2007, and the aesthetic was deliberate — terminal palette, maximum contrast, no rounded corners, no gradients. The layout was table-based (the correct cross-browser approach before CSS positioning was reliable), with image-sliced headers and a Microsoft IE shadow filter for depth. A technically correct implementation of the web as it existed at the time.",
       ],
-      "pt": [
-        "Este foi o primeiro rastro de Leonardo na web — um site pessoal bilíngue construído à mão em 2007, antes de o GitHub existir como plataforma de portfólio e antes de \"marca pessoal\" entrar no vocabulário dos desenvolvedores. Ele o montou em HTML e CSS puros porque já havia entregue trabalho suficiente para clientes a ponto de precisar de uma vitrine, e porque a forma mais direta de ter um site é construir um.",
+      pt: [
+        'Este foi o primeiro rastro de Leonardo na web — um site pessoal bilíngue construído à mão em 2007, antes de o GitHub existir como plataforma de portfólio e antes de "marca pessoal" entrar no vocabulário dos desenvolvedores. Ele o montou em HTML e CSS puros porque já havia entregue trabalho suficiente para clientes a ponto de precisar de uma vitrine, e porque a forma mais direta de ter um site é construir um.',
         "**Bilíngue desde o primeiro dia.** O site funciona em inglês e português por meio de árvores de diretórios paralelas (`en/` e `br/`), cada uma com estruturas de página espelhadas e um sistema de design compartilhado. Sem bibliotecas de i18n, sem etapas de build — apenas uma separação estrutural limpa que permitia a clientes brasileiros e internacionais navegar em seu próprio idioma. O requisito bilíngue foi incorporado à arquitetura desde o início, não acoplado depois.",
         "**Um catálogo vivo de trabalhos para clientes.** A seção de portfólio documenta cada sistema em produção que Leonardo havia entregue até 2007: plataformas CMS PHP/MySQL sob medida construídas para clientes que precisavam gerenciar o próprio conteúdo sem equipe técnica; um sistema de e-commerce com gestão completa de estoque, integração de pagamento por boleto bancário e busca com tecnologia Google; um motor de e-mail marketing (Reacher WebMailer) com segmentação de público, um editor de templates WYSIWYG e envios em lote agendados por CRON que entregavam e-mails personalizados — não disparos em massa — para escapar dos filtros de spam; um sistema de registros de assistência social do governo (Secretaria do Bem Estar Social) substituindo arquivos de papel por cadastros familiares digitais, acompanhamento de programas e relatórios impressos em HTML; e uma ferramenta de web analytics adaptada de código aberto e estendida com dados geográficos regionais brasileiros.",
         "A maioria das entradas credita autoria única: design, análise e implementação por Leonardo. Para os clientes, isso significava um único ponto de contato do briefing à implantação — projetos mais enxutos, sem repasses, sem incompatibilidades de versão e sem overhead de comunicação entre designer e desenvolvedor.",
         "**Um histórico profissional completo.** A seção de currículo se lê como a história de origem de um engenheiro de sistemas: administração de redes Windows NT a partir de 1996, Linux (cursos oficiais da Conectiva), Oracle, SQL Server, ASP, configuração de servidor MacOS X na Quantic Solutions, um sistema B2B Oracle/SSI para a Franke Douat e quatro anos de desenvolvimento web independente. Sua certificação MCP (Microsoft Certified Professional, Windows NT4) datava de 2000 — quando muitos desenvolvedores da sua idade ainda estavam aprendendo HTML.",
-        "**O design em si.** Fundo preto, texto de corpo em verde `#00FF00`, estados de hover em amarelo ácido. Era 2007, e a estética era deliberada — paleta de terminal, contraste máximo, sem cantos arredondados, sem gradientes. O layout era baseado em tabelas (a abordagem cross-browser correta antes de o posicionamento em CSS ser confiável), com cabeçalhos fatiados em imagens e um filtro de sombra do Microsoft IE para dar profundidade. Uma implementação tecnicamente correta da web como ela existia na época."
-      ]
+        "**O design em si.** Fundo preto, texto de corpo em verde `#00FF00`, estados de hover em amarelo ácido. Era 2007, e a estética era deliberada — paleta de terminal, contraste máximo, sem cantos arredondados, sem gradientes. O layout era baseado em tabelas (a abordagem cross-browser correta antes de o posicionamento em CSS ser confiável), com cabeçalhos fatiados em imagens e um filtro de sombra do Microsoft IE para dar profundidade. Uma implementação tecnicamente correta da web como ela existia na época.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Full bilingual browsing experience (EN/PT-BR)",
-          "pt": "Experiência de navegação totalmente bilíngue (EN/PT-BR)"
+        heading: {
+          en: "Full bilingual browsing experience (EN/PT-BR)",
+          pt: "Experiência de navegação totalmente bilíngue (EN/PT-BR)",
         },
-        "body": {
-          "en": "parallel directory trees and mirrored page structures let Brazilian and international clients navigate in their own language, years before internationalization libraries existed, widening the reach of a one-person practice.",
-          "pt": "árvores de diretórios paralelas e estruturas de página espelhadas permitiam a clientes brasileiros e internacionais navegar em seu próprio idioma, anos antes de existirem bibliotecas de internacionalização, ampliando o alcance de uma prática de uma só pessoa."
-        }
+        body: {
+          en: "parallel directory trees and mirrored page structures let Brazilian and international clients navigate in their own language, years before internationalization libraries existed, widening the reach of a one-person practice.",
+          pt: "árvores de diretórios paralelas e estruturas de página espelhadas permitiam a clientes brasileiros e internacionais navegar em seu próprio idioma, anos antes de existirem bibliotecas de internacionalização, ampliando o alcance de uma prática de uma só pessoa.",
+        },
       },
       {
-        "heading": {
-          "en": "A live catalogue of 13+ client platforms",
-          "pt": "Um catálogo vivo de mais de 13 plataformas de clientes"
+        heading: {
+          en: "A live catalogue of 13+ client platforms",
+          pt: "Um catálogo vivo de mais de 13 plataformas de clientes",
         },
-        "body": {
-          "en": "CMS, e-commerce, email marketing, and government records systems shipped for real clients, turned into a self-updating portfolio that did the selling before a first meeting.",
-          "pt": "sistemas de CMS, e-commerce, e-mail marketing e registros governamentais entregues para clientes reais, transformados em um portfólio que se atualiza sozinho e que vendia antes mesmo de uma primeira reunião."
-        }
+        body: {
+          en: "CMS, e-commerce, email marketing, and government records systems shipped for real clients, turned into a self-updating portfolio that did the selling before a first meeting.",
+          pt: "sistemas de CMS, e-commerce, e-mail marketing e registros governamentais entregues para clientes reais, transformados em um portfólio que se atualiza sozinho e que vendia antes mesmo de uma primeira reunião.",
+        },
       },
       {
-        "heading": {
-          "en": "Hand-coded, framework-free build",
-          "pt": "Construção codificada à mão, sem frameworks"
+        heading: {
+          en: "Hand-coded, framework-free build",
+          pt: "Construção codificada à mão, sem frameworks",
         },
-        "body": {
-          "en": "table-based layout, image-sliced headers, and cross-browser depth effects delivered a technically correct site with no tooling or dependencies, proving direct command of the raw platform.",
-          "pt": "layout baseado em tabelas, cabeçalhos fatiados em imagens e efeitos de profundidade cross-browser entregavam um site tecnicamente correto sem ferramentas ou dependências, comprovando domínio direto da plataforma bruta."
-        }
-      }
+        body: {
+          en: "table-based layout, image-sliced headers, and cross-browser depth effects delivered a technically correct site with no tooling or dependencies, proving direct command of the raw platform.",
+          pt: "layout baseado em tabelas, cabeçalhos fatiados em imagens e efeitos de profundidade cross-browser entregavam um site tecnicamente correto sem ferramentas ou dependências, comprovando domínio direto da plataforma bruta.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
-      }
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/first-personal-website/screenshots/portfolio.png"
+        src: "/projects/first-personal-website/screenshots/portfolio.png",
       },
       {
-        "src": "/projects/first-personal-website/screenshots/language-selection.png",
-        "featured": true
+        src: "/projects/first-personal-website/screenshots/language-selection.png",
+        featured: true,
       },
       {
-        "src": "/projects/first-personal-website/screenshots/home.png"
+        src: "/projects/first-personal-website/screenshots/home.png",
       },
       {
-        "src": "/projects/first-personal-website/screenshots/curriculum.png"
+        src: "/projects/first-personal-website/screenshots/curriculum.png",
       },
       {
-        "src": "/projects/first-personal-website/screenshots/photos.png"
+        src: "/projects/first-personal-website/screenshots/photos.png",
       },
       {
-        "src": "/projects/first-personal-website/screenshots/technologies.png"
+        src: "/projects/first-personal-website/screenshots/technologies.png",
       },
       {
-        "src": "/projects/first-personal-website/screenshots/contacts.png"
-      }
-    ]
+        src: "/projects/first-personal-website/screenshots/contacts.png",
+      },
+    ],
   },
   {
-    "slug": "simple-squid-proxy-user-admin",
-    "year": "2007",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/simple-squid-proxy-user-admin",
-    "logo": "🌐",
-    "isLogoEmoji": true,
-    "name": {
-      "en": "Squid Proxy User Console",
-      "pt": "Console de Usuários do Proxy Squid"
+    slug: "simple-squid-proxy-user-admin",
+    year: "2007",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/simple-squid-proxy-user-admin",
+    logo: "🌐",
+    isLogoEmoji: true,
+    name: {
+      en: "Squid Proxy User Console",
+      pt: "Console de Usuários do Proxy Squid",
     },
-    "tagline": {
-      "en": "A PHP/MySQL web console that lets a business owner provision, tier, and expire Squid proxy logins, bulk-import an existing user base, and manage a site blacklist — without ever touching a terminal.",
-      "pt": "Um console web em PHP/MySQL que permite ao dono de um negócio provisionar, hierarquizar e expirar logins do proxy Squid, importar em massa uma base de usuários existente e gerenciar uma blacklist de sites — sem nunca tocar num terminal."
+    tagline: {
+      en: "A PHP/MySQL web console that lets a business owner provision, tier, and expire Squid proxy logins, bulk-import an existing user base, and manage a site blacklist — without ever touching a terminal.",
+      pt: "Um console web em PHP/MySQL que permite ao dono de um negócio provisionar, hierarquizar e expirar logins do proxy Squid, importar em massa uma base de usuários existente e gerenciar uma blacklist de sites — sem nunca tocar num terminal.",
     },
-    "kicker": {
-      "en": "// squid proxy · access control",
-      "pt": "// proxy squid · controle de acesso"
+    kicker: {
+      en: "// squid proxy · access control",
+      pt: "// proxy squid · controle de acesso",
     },
-    "intro": {
-      "en": "A PHP/MySQL web console that lets a business owner provision, tier, and expire Squid proxy logins, bulk-import an existing user base, and manage a site blacklist — without ever touching a terminal.",
-      "pt": "Um console web em PHP/MySQL que permite ao dono de um negócio provisionar, hierarquizar e expirar logins do proxy Squid, importar em massa uma base de usuários existente e gerenciar uma blacklist de sites — sem nunca tocar num terminal."
+    intro: {
+      en: "A PHP/MySQL web console that lets a business owner provision, tier, and expire Squid proxy logins, bulk-import an existing user base, and manage a site blacklist — without ever touching a terminal.",
+      pt: "Um console web em PHP/MySQL que permite ao dono de um negócio provisionar, hierarquizar e expirar logins do proxy Squid, importar em massa uma base de usuários existente e gerenciar uma blacklist de sites — sem nunca tocar num terminal.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "This project is a lightweight internal web console built to put Squid proxy administration in the hands of a non-technical business owner. Before this tool, managing who could use the company's internet connection meant SSH-ing into the proxy server and hand-editing `htpasswd` files and Squid ACL text files for every new employee, every access change, and every site to block.",
         "The console organizes proxy users into three access tiers — Restrito (restricted), Pleno (full), and Master (administrative) — each backed by its own Squid ACL file, with per-user expiration dates so temporary or contractor access lapses automatically instead of lingering as a security risk. Saving a user from the form transparently shells out to `htpasswd` and triggers `squid -k reconfigure`, so changes take effect on the live proxy immediately.",
-        "For the initial rollout, a bulk-import screen accepts the business's existing system `passwd` file and assigns an access tier to the whole batch at once, avoiding a manual re-entry of every existing account. A blacklist editor exposes Squid's site-blocking ACL as a simple textarea, and an embedded SARG report view gives the owner direct visibility into who is using how much bandwidth — turning a server the business depended on, but couldn't see into, into something they could actually manage day to day."
+        "For the initial rollout, a bulk-import screen accepts the business's existing system `passwd` file and assigns an access tier to the whole batch at once, avoiding a manual re-entry of every existing account. A blacklist editor exposes Squid's site-blocking ACL as a simple textarea, and an embedded SARG report view gives the owner direct visibility into who is using how much bandwidth — turning a server the business depended on, but couldn't see into, into something they could actually manage day to day.",
       ],
-      "pt": [
+      pt: [
         "Este projeto é um console web interno leve, construído para colocar a administração do proxy Squid nas mãos de um dono de negócio não técnico. Antes desta ferramenta, gerenciar quem podia usar a conexão de internet da empresa significava dar SSH no servidor de proxy e editar à mão arquivos `htpasswd` e arquivos de texto de ACL do Squid para cada novo funcionário, cada mudança de acesso e cada site a bloquear.",
         "O console organiza os usuários do proxy em três níveis de acesso — Restrito, Pleno e Master — cada um apoiado por seu próprio arquivo de ACL do Squid, com datas de expiração por usuário para que acessos temporários ou de terceiros caduquem automaticamente em vez de persistirem como um risco de segurança. Salvar um usuário pelo formulário chama de forma transparente o `htpasswd` e dispara `squid -k reconfigure`, de modo que as mudanças entram em vigor no proxy ao vivo imediatamente.",
-        "Para a implantação inicial, uma tela de importação em massa aceita o arquivo `passwd` de sistema existente do negócio e atribui um nível de acesso ao lote inteiro de uma vez, evitando a reentrada manual de cada conta existente. Um editor de blacklist expõe a ACL de bloqueio de sites do Squid como um simples campo de texto, e uma visão embutida de relatório SARG dá ao dono visibilidade direta de quem está usando quanta banda — transformando um servidor de que o negócio dependia, mas que não conseguia enxergar, em algo que ele podia de fato gerenciar no dia a dia."
-      ]
+        "Para a implantação inicial, uma tela de importação em massa aceita o arquivo `passwd` de sistema existente do negócio e atribui um nível de acesso ao lote inteiro de uma vez, evitando a reentrada manual de cada conta existente. Um editor de blacklist expõe a ACL de bloqueio de sites do Squid como um simples campo de texto, e uma visão embutida de relatório SARG dá ao dono visibilidade direta de quem está usando quanta banda — transformando um servidor de que o negócio dependia, mas que não conseguia enxergar, em algo que ele podia de fato gerenciar no dia a dia.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Self-service provisioning console",
-          "pt": "Console de provisionamento self-service"
+        heading: {
+          en: "Self-service provisioning console",
+          pt: "Console de provisionamento self-service",
         },
-        "body": {
-          "en": "a browser console letting non-technical staff create three tiers of proxy access (Restrito/Pleno/Master) with automatic expiration dates, while the backend runs `htpasswd` and `squid -k reconfigure` directly — removing IT's need to SSH into the proxy server for every new hire or contractor",
-          "pt": "um console no navegador que permite à equipe não técnica criar três níveis de acesso ao proxy (Restrito/Pleno/Master) com datas de expiração automáticas, enquanto o backend roda `htpasswd` e `squid -k reconfigure` diretamente — removendo a necessidade de a TI dar SSH no servidor de proxy a cada nova contratação ou terceiro"
-        }
+        body: {
+          en: "a browser console letting non-technical staff create three tiers of proxy access (Restrito/Pleno/Master) with automatic expiration dates, while the backend runs `htpasswd` and `squid -k reconfigure` directly — removing IT's need to SSH into the proxy server for every new hire or contractor",
+          pt: "um console no navegador que permite à equipe não técnica criar três níveis de acesso ao proxy (Restrito/Pleno/Master) com datas de expiração automáticas, enquanto o backend roda `htpasswd` e `squid -k reconfigure` diretamente — removendo a necessidade de a TI dar SSH no servidor de proxy a cada nova contratação ou terceiro",
+        },
       },
       {
-        "heading": {
-          "en": "Bulk user import",
-          "pt": "Importação de usuários em massa"
+        heading: {
+          en: "Bulk user import",
+          pt: "Importação de usuários em massa",
         },
-        "body": {
-          "en": "a tool that ingests an existing system `passwd` file and assigns access tiers in one pass, letting the client onboard its entire existing employee base in minutes instead of re-keying every account by hand",
-          "pt": "uma ferramenta que ingere um arquivo `passwd` de sistema existente e atribui níveis de acesso em uma só passada, permitindo ao cliente integrar toda a sua base de funcionários existente em minutos, em vez de redigitar cada conta à mão"
-        }
+        body: {
+          en: "a tool that ingests an existing system `passwd` file and assigns access tiers in one pass, letting the client onboard its entire existing employee base in minutes instead of re-keying every account by hand",
+          pt: "uma ferramenta que ingere um arquivo `passwd` de sistema existente e atribui níveis de acesso em uma só passada, permitindo ao cliente integrar toda a sua base de funcionários existente em minutos, em vez de redigitar cada conta à mão",
+        },
       },
       {
-        "heading": {
-          "en": "In-console usage reporting",
-          "pt": "Relatórios de uso no próprio console"
+        heading: {
+          en: "In-console usage reporting",
+          pt: "Relatórios de uso no próprio console",
         },
-        "body": {
-          "en": "embedded SARG traffic reports alongside a blacklist editor, giving the business owner visibility into internet usage and the ability to block distracting or inappropriate sites without opening a terminal",
-          "pt": "relatórios de tráfego SARG embutidos ao lado de um editor de blacklist, dando ao dono do negócio visibilidade do uso de internet e a capacidade de bloquear sites que distraem ou são inapropriados sem abrir um terminal"
-        }
-      }
+        body: {
+          en: "embedded SARG traffic reports alongside a blacklist editor, giving the business owner visibility into internet usage and the ability to block distracting or inappropriate sites without opening a terminal",
+          pt: "relatórios de tráfego SARG embutidos ao lado de um editor de blacklist, dando ao dono do negócio visibilidade do uso de internet e a capacidade de bloquear sites que distraem ou são inapropriados sem abrir um terminal",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "JavaScript",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.0",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        version: "5.0",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/simple-squid-proxy-user-admin/screenshots/blacklist.png"
+        src: "/projects/simple-squid-proxy-user-admin/screenshots/blacklist.png",
       },
       {
-        "src": "/projects/simple-squid-proxy-user-admin/screenshots/config.png"
+        src: "/projects/simple-squid-proxy-user-admin/screenshots/config.png",
       },
       {
-        "src": "/projects/simple-squid-proxy-user-admin/screenshots/import.png"
+        src: "/projects/simple-squid-proxy-user-admin/screenshots/import.png",
       },
       {
-        "src": "/projects/simple-squid-proxy-user-admin/screenshots/login.png"
+        src: "/projects/simple-squid-proxy-user-admin/screenshots/login.png",
       },
       {
-        "src": "/projects/simple-squid-proxy-user-admin/screenshots/new-user.png"
+        src: "/projects/simple-squid-proxy-user-admin/screenshots/new-user.png",
       },
       {
-        "src": "/projects/simple-squid-proxy-user-admin/screenshots/report.png"
+        src: "/projects/simple-squid-proxy-user-admin/screenshots/report.png",
       },
       {
-        "src": "/projects/simple-squid-proxy-user-admin/screenshots/users.png"
+        src: "/projects/simple-squid-proxy-user-admin/screenshots/users.png",
       },
       {
-        "src": "/projects/simple-squid-proxy-user-admin/screenshots/control-panel.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/simple-squid-proxy-user-admin/screenshots/control-panel.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "jbc",
-    "year": "2006",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/jbc",
-    "logo": "/projects/jbc/jbc-logo.png",
-    "name": {
-      "en": "JBC — Joinville Business Center",
-      "pt": "JBC — Joinville Business Center"
+    slug: "jbc",
+    year: "2006",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://webarchive.leonardolimadevasconcellos.workers.dev/jbc",
+    logo: "/projects/jbc/jbc-logo.png",
+    name: {
+      en: "JBC — Joinville Business Center",
+      pt: "JBC — Joinville Business Center",
     },
-    "tagline": {
-      "en": "A visually immersive corporate website built with Adobe Flash and PHP for Joinville Business Center, featuring an animated office-desk navigation metaphor and a custom-built CMS to convert prospective coworking tenants at business launch.",
-      "pt": "Um site corporativo visualmente imersivo construído com Adobe Flash e PHP para o Joinville Business Center, com uma metáfora de navegação por mesa de escritório animada e um CMS feito sob medida para converter potenciais locatários de coworking no lançamento do negócio."
+    tagline: {
+      en: "A visually immersive corporate website built with Adobe Flash and PHP for Joinville Business Center, featuring an animated office-desk navigation metaphor and a custom-built CMS to convert prospective coworking tenants at business launch.",
+      pt: "Um site corporativo visualmente imersivo construído com Adobe Flash e PHP para o Joinville Business Center, com uma metáfora de navegação por mesa de escritório animada e um CMS feito sob medida para converter potenciais locatários de coworking no lançamento do negócio.",
     },
-    "kicker": {
-      "en": "// virtual office · joinville business center",
-      "pt": "// escritório virtual · joinville business center"
+    kicker: {
+      en: "// virtual office · joinville business center",
+      pt: "// escritório virtual · joinville business center",
     },
-    "intro": {
-      "en": "Full brand and web launch for Joinville Business Center: Flash animated desk-metaphor navigation plus a PHP CMS so the client could update all five content sections with zero developer involvement.",
-      "pt": "Lançamento completo de marca e web para o Joinville Business Center: navegação em Flash com metáfora animada de mesa de escritório mais um CMS em PHP para que o cliente pudesse atualizar todas as cinco seções de conteúdo sem nenhum envolvimento de desenvolvedor."
+    intro: {
+      en: "Full brand and web launch for Joinville Business Center: Flash animated desk-metaphor navigation plus a PHP CMS so the client could update all five content sections with zero developer involvement.",
+      pt: "Lançamento completo de marca e web para o Joinville Business Center: navegação em Flash com metáfora animada de mesa de escritório mais um CMS em PHP para que o cliente pudesse atualizar todas as cinco seções de conteúdo sem nenhum envolvimento de desenvolvedor.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "Joinville Business Center (JBC) was a virtual office and coworking space in Joinville, Santa Catarina, Brazil — one of the earliest operations of its kind in the region. This website was the company's digital presence from its founding in 2006.",
         "The site was a deliberate hybrid: an Adobe Flash shell delivered the brand experience — a fully animated office-desk scene where five sticky notes acted as navigation buttons, each revealing a content panel for Home, Structure, Services, Advantages, and Contacts. Once the intro animation finished, a secondary lateral Flash movie and two transparent iframes loaded the PHP-driven content, keeping the animated shell intact while making page content dynamic and manageable.",
         "The PHP pages were served through a custom CMS built specifically for this project, allowing the JBC team to edit copy across all five sections from a browser interface without modifying code. The WYSIWYG editor (based on InnovaEditor) was integrated directly into the admin back-end.",
-        "The entire brand identity — logo, color palette, and typography — was designed alongside the site. Multiple logo iterations (versions 993 through 1202 are archived in the repo) show the refinement process that led to the final mark, which paired a custom typeface with a warm gold-on-dark palette matching the site's aesthetic."
+        "The entire brand identity — logo, color palette, and typography — was designed alongside the site. Multiple logo iterations (versions 993 through 1202 are archived in the repo) show the refinement process that led to the final mark, which paired a custom typeface with a warm gold-on-dark palette matching the site's aesthetic.",
       ],
-      "pt": [
+      pt: [
         "O Joinville Business Center (JBC) era um escritório virtual e espaço de coworking em Joinville, Santa Catarina, Brasil — uma das primeiras operações do tipo na região. Este site foi a presença digital da empresa desde sua fundação em 2006.",
         "O site era um híbrido deliberado: um shell em Adobe Flash entregava a experiência de marca — uma cena de mesa de escritório totalmente animada em que cinco post-its atuavam como botões de navegação, cada um revelando um painel de conteúdo para Início, Estrutura, Serviços, Vantagens e Contatos. Uma vez terminada a animação de introdução, um filme Flash lateral secundário e dois iframes transparentes carregavam o conteúdo movido a PHP, mantendo o shell animado intacto enquanto tornava o conteúdo das páginas dinâmico e gerenciável.",
         "As páginas em PHP eram servidas por um CMS sob medida construído especificamente para este projeto, permitindo à equipe do JBC editar o texto de todas as cinco seções por uma interface de navegador sem modificar código. O editor WYSIWYG (baseado no InnovaEditor) estava integrado diretamente ao back-end administrativo.",
-        "Toda a identidade de marca — logo, paleta de cores e tipografia — foi projetada junto com o site. Múltiplas iterações do logo (as versões 993 a 1202 estão arquivadas no repositório) mostram o processo de refinamento que levou à marca final, que combinava uma tipografia sob medida com uma paleta quente de dourado sobre escuro combinando com a estética do site."
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Complete brand launch package",
-          "pt": "Pacote completo de lançamento de marca"
-        },
-        "body": {
-          "en": "logo, visual identity, and website delivered together, enabling JBC to go to market with a coherent professional presence from day one",
-          "pt": "logo, identidade visual e site entregues juntos, permitindo ao JBC ir ao mercado com uma presença profissional coerente desde o primeiro dia"
-        }
-      },
-      {
-        "heading": {
-          "en": "Self-editable custom CMS",
-          "pt": "CMS sob medida autoeditável"
-        },
-        "body": {
-          "en": "a hybrid Flash + PHP architecture letting the client update all five content sections without developer involvement, reducing ongoing maintenance cost",
-          "pt": "uma arquitetura híbrida Flash + PHP permitindo ao cliente atualizar todas as cinco seções de conteúdo sem envolvimento de desenvolvedor, reduzindo o custo contínuo de manutenção"
-        }
-      },
-      {
-        "heading": {
-          "en": "Memorable animated interface",
-          "pt": "Interface animada memorável"
-        },
-        "body": {
-          "en": "an office-desk UI with five sticky-note hotspots (Home, Structure, Services, Advantages, Contacts) that guided visitors through the sales funnel in a single interaction",
-          "pt": "uma UI de mesa de escritório com cinco hotspots de post-it (Início, Estrutura, Serviços, Vantagens, Contatos) que guiavam os visitantes pelo funil de vendas em uma única interação"
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "HTML",
-        "version": "4.01",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS",
-        "version": "2",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "PHP",
-        "version": "5",
-        "icon": "/devicons/php-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
-      },
-      {
-        "name": "ActionScript",
-        "version": "2.0",
-        "icon": "/devicons/actionscript.svg"
-      },
-      {
-        "name": "MySQL",
-        "version": "5.1",
-        "icon": "/devicons/mysql-original.svg"
-      },
-      {
-        "name": "Adobe Flash Player",
-        "icon": "/devicons/Adobe_Flash_Player_32.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/jbc/screenshots/joinville-business-center.png"
-      },
-      {
-        "src": "/projects/jbc/screenshots/joinville-business-center-jbc-1.png"
-      },
-      {
-        "src": "/projects/jbc/screenshots/joinville-business-center-jbc-2.png"
-      },
-      {
-        "src": "/projects/jbc/screenshots/joinville-business-center-jbc-3.png"
-      },
-      {
-        "src": "/projects/jbc/screenshots/joinville-business-center-jbc-4.png"
-      },
-      {
-        "src": "/projects/jbc/screenshots/joinville-business-center-jbc.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "powermedia",
-    "year": "2006",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/powermedia",
-    "logo": "/projects/powermedia/powermedia-logo.jpg",
-    "name": {
-      "en": "PowerMedia Organizer",
-      "pt": "PowerMedia Organizer"
-    },
-    "tagline": {
-      "en": "PowerMedia Organizer is a PHP/MySQL catalog and print-production system built for a client to manage a large CD/DVD media collection, from title registration to printable catalogs and disc labels.",
-      "pt": "O PowerMedia Organizer é um sistema de catálogo e produção de impressão em PHP/MySQL construído para um cliente gerenciar uma grande coleção de mídia em CD/DVD, do cadastro de títulos a catálogos e rótulos de disco imprimíveis."
-    },
-    "kicker": {
-      "en": "// media cataloging · client project",
-      "pt": "// catalogação de mídia · projeto para cliente"
-    },
-    "intro": {
-      "en": "PowerMedia Organizer is a PHP/MySQL system built for a client to catalog a large CD/DVD library, turning entries into printable catalogs and disc labels.",
-      "pt": "O PowerMedia Organizer é um sistema em PHP/MySQL construído para um cliente catalogar uma grande biblioteca de CD/DVD, transformando os registros em catálogos e rótulos de disco imprimíveis."
-    },
-    "body": {
-      "en": [
-        "PowerMedia Organizer is a catalog and print-production system built in PHP and MySQL for a client managing a large physical CD/DVD library. It handles the full lifecycle of a media catalog: registering titles with front and back cover art, grouping them under configurable media types, and browsing/searching the collection through a paginated, sortable list or icon grid.",
-        "The core business problem it solved was production overhead: generating printed catalogs and disc labels by hand for a large, growing collection. PowerMedia replaced that with a configurable print pipeline — page layout, cover dimensions, font sizes, and items-per-page are all adjustable — so catalogs and labels could be regenerated on demand instead of rebuilt manually each time. A dedicated cover-printing workflow let staff batch-select which covers go to print, and a \"gravação\" (burn queue) screen tracked which titles were queued to be recorded to disc. A dynamic image-resizing endpoint served each cover at whatever size a screen needed from a single stored file, and a Flash-based viewer let staff inspect cover art closely before printing."
+        "Toda a identidade de marca — logo, paleta de cores e tipografia — foi projetada junto com o site. Múltiplas iterações do logo (as versões 993 a 1202 estão arquivadas no repositório) mostram o processo de refinamento que levou à marca final, que combinava uma tipografia sob medida com uma paleta quente de dourado sobre escuro combinando com a estética do site.",
       ],
-      "pt": [
-        "O PowerMedia Organizer é um sistema de catálogo e produção de impressão construído em PHP e MySQL para um cliente que gerenciava uma grande biblioteca física de CD/DVD. Ele cuida de todo o ciclo de vida de um catálogo de mídia: cadastrar títulos com artes de capa frontal e traseira, agrupá-los sob tipos de mídia configuráveis e navegar/pesquisar a coleção por uma lista paginada e ordenável ou uma grade de ícones.",
-        "O problema de negócio central que ele resolvia era o overhead de produção: gerar catálogos impressos e rótulos de disco à mão para uma coleção grande e em crescimento. O PowerMedia substituiu isso por um pipeline de impressão configurável — layout de página, dimensões da capa, tamanhos de fonte e itens por página são todos ajustáveis — para que catálogos e rótulos pudessem ser regerados sob demanda em vez de refeitos manualmente a cada vez. Um fluxo dedicado de impressão de capas permitia à equipe selecionar em lote quais capas iam para impressão, e uma tela de \"gravação\" (fila de gravação) acompanhava quais títulos estavam na fila para serem gravados em disco. Um endpoint de redimensionamento dinâmico de imagem servia cada capa em qualquer tamanho que uma tela precisasse a partir de um único arquivo armazenado, e um visualizador em Flash permitia à equipe inspecionar a arte de capa de perto antes de imprimir."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Searchable media catalog",
-          "pt": "Catálogo de mídia pesquisável"
+        heading: {
+          en: "Complete brand launch package",
+          pt: "Pacote completo de lançamento de marca",
         },
-        "body": {
-          "en": "a full CRUD system for titles, media types, and cover art that replaced manual tracking of a large physical media library (980+ titles in the sample data) with a searchable, sortable, paginated database",
-          "pt": "um sistema CRUD completo para títulos, tipos de mídia e artes de capa que substituiu o controle manual de uma grande biblioteca de mídia física (mais de 980 títulos nos dados de amostra) por um banco de dados pesquisável, ordenável e paginado"
-        }
+        body: {
+          en: "logo, visual identity, and website delivered together, enabling JBC to go to market with a coherent professional presence from day one",
+          pt: "logo, identidade visual e site entregues juntos, permitindo ao JBC ir ao mercado com uma presença profissional coerente desde o primeiro dia",
+        },
       },
       {
-        "heading": {
-          "en": "Configurable print pipeline",
-          "pt": "Pipeline de impressão configurável"
+        heading: {
+          en: "Self-editable custom CMS",
+          pt: "CMS sob medida autoeditável",
         },
-        "body": {
-          "en": "a catalog-and-label print system with custom page sizes, cover dimensions, font sizes, and items-per-row, turning a recurring manual production task into a few-click, repeatable workflow",
-          "pt": "um sistema de impressão de catálogo e rótulos com tamanhos de página, dimensões de capa, tamanhos de fonte e itens por linha personalizados, transformando uma tarefa de produção manual recorrente em um fluxo repetível de poucos cliques"
-        }
+        body: {
+          en: "a hybrid Flash + PHP architecture letting the client update all five content sections without developer involvement, reducing ongoing maintenance cost",
+          pt: "uma arquitetura híbrida Flash + PHP permitindo ao cliente atualizar todas as cinco seções de conteúdo sem envolvimento de desenvolvedor, reduzindo o custo contínuo de manutenção",
+        },
       },
       {
-        "heading": {
-          "en": "One-image cover rendering",
-          "pt": "Renderização de capa a partir de uma única imagem"
+        heading: {
+          en: "Memorable animated interface",
+          pt: "Interface animada memorável",
         },
-        "body": {
-          "en": "a dynamic image-resizing endpoint plus a cover zoom viewer, so a single stored cover per title renders correctly across thumbnails, print layouts, and detail views, cutting storage overhead and manual image prep",
-          "pt": "um endpoint de redimensionamento dinâmico de imagem somado a um visualizador de zoom de capa, para que uma única capa armazenada por título renderize corretamente em miniaturas, layouts de impressão e visões de detalhe, cortando o overhead de armazenamento e o preparo manual de imagens"
-        }
-      }
+        body: {
+          en: "an office-desk UI with five sticky-note hotspots (Home, Structure, Services, Advantages, Contacts) that guided visitors through the sales funnel in a single interaction",
+          pt: "uma UI de mesa de escritório com cinco hotspots de post-it (Início, Estrutura, Serviços, Vantagens, Contatos) que guiavam os visitantes pelo funil de vendas em uma única interação",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "HTML",
+        version: "4.01",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "JavaScript",
-        "icon": "/devicons/javascript-original.svg"
+        name: "CSS",
+        version: "2",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "PHP",
+        version: "5",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "MySQL",
-        "version": "4.x",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "ActionScript",
+        version: "2.0",
+        icon: "/devicons/actionscript.svg",
+      },
+      {
+        name: "MySQL",
+        version: "5.1",
+        icon: "/devicons/mysql-original.svg",
+      },
+      {
+        name: "Adobe Flash Player",
+        icon: "/devicons/Adobe_Flash_Player_32.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/powermedia/screenshots/powermedia-organizer-1.png"
+        src: "/projects/jbc/screenshots/joinville-business-center.png",
       },
       {
-        "src": "/projects/powermedia/screenshots/powermedia-organizer-2.png"
+        src: "/projects/jbc/screenshots/joinville-business-center-jbc-1.png",
       },
       {
-        "src": "/projects/powermedia/screenshots/powermedia-organizer-3.png"
+        src: "/projects/jbc/screenshots/joinville-business-center-jbc-2.png",
       },
       {
-        "src": "/projects/powermedia/screenshots/powermedia-organizer-4.png"
+        src: "/projects/jbc/screenshots/joinville-business-center-jbc-3.png",
       },
       {
-        "src": "/projects/powermedia/screenshots/powermedia-organizer-5.png"
+        src: "/projects/jbc/screenshots/joinville-business-center-jbc-4.png",
       },
       {
-        "src": "/projects/powermedia/screenshots/powermedia-organizer-6.png"
+        src: "/projects/jbc/screenshots/joinville-business-center-jbc.png",
+        featured: true,
       },
-      {
-        "src": "/projects/powermedia/screenshots/powermedia-organizer.png",
-        "featured": true
-      }
-    ]
+    ],
   },
   {
-    "slug": "devhouse",
-    "year": "2005",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/devhouse",
-    "logo": "/projects/devhouse/devhouse-logo.png",
-    "name": {
-      "en": "DevHouse — Internet Software Development House",
-      "pt": "DevHouse — Internet Software Development House"
+    slug: "powermedia",
+    year: "2006",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/powermedia",
+    logo: "/projects/powermedia/powermedia-logo.jpg",
+    name: {
+      en: "PowerMedia Organizer",
+      pt: "PowerMedia Organizer",
     },
-    "tagline": {
-      "en": "DevHouse was a boutique web development studio that designed and built custom websites, CMS platforms, and interactive experiences for businesses in Joinville, Brazil.",
-      "pt": "A DevHouse era um estúdio boutique de desenvolvimento web que projetava e construía sites sob medida, plataformas CMS e experiências interativas para empresas de Joinville, Brasil."
+    tagline: {
+      en: "PowerMedia Organizer is a PHP/MySQL catalog and print-production system built for a client to manage a large CD/DVD media collection, from title registration to printable catalogs and disc labels.",
+      pt: "O PowerMedia Organizer é um sistema de catálogo e produção de impressão em PHP/MySQL construído para um cliente gerenciar uma grande coleção de mídia em CD/DVD, do cadastro de títulos a catálogos e rótulos de disco imprimíveis.",
     },
-    "kicker": {
-      "en": "// software house · 2004–2020",
-      "pt": "// software house · 2004–2020"
+    kicker: {
+      en: "// media cataloging · client project",
+      pt: "// catalogação de mídia · projeto para cliente",
     },
-    "intro": {
-      "en": "DevHouse was a web studio in Joinville, Brazil that built custom CMS sites, e-commerce systems, and interactive experiences for local businesses across 8+ client projects from 2004 to 2020.",
-      "pt": "A DevHouse era um estúdio web de Joinville, Brasil, que construía sites com CMS sob medida, sistemas de e-commerce e experiências interativas para empresas locais em mais de 8 projetos de clientes, de 2004 a 2020."
+    intro: {
+      en: "PowerMedia Organizer is a PHP/MySQL system built for a client to catalog a large CD/DVD library, turning entries into printable catalogs and disc labels.",
+      pt: "O PowerMedia Organizer é um sistema em PHP/MySQL construído para um cliente catalogar uma grande biblioteca de CD/DVD, transformando os registros em catálogos e rótulos de disco imprimíveis.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
+        "PowerMedia Organizer is a catalog and print-production system built in PHP and MySQL for a client managing a large physical CD/DVD library. It handles the full lifecycle of a media catalog: registering titles with front and back cover art, grouping them under configurable media types, and browsing/searching the collection through a paginated, sortable list or icon grid.",
+        'The core business problem it solved was production overhead: generating printed catalogs and disc labels by hand for a large, growing collection. PowerMedia replaced that with a configurable print pipeline — page layout, cover dimensions, font sizes, and items-per-page are all adjustable — so catalogs and labels could be regenerated on demand instead of rebuilt manually each time. A dedicated cover-printing workflow let staff batch-select which covers go to print, and a "gravação" (burn queue) screen tracked which titles were queued to be recorded to disc. A dynamic image-resizing endpoint served each cover at whatever size a screen needed from a single stored file, and a Flash-based viewer let staff inspect cover art closely before printing.',
+      ],
+      pt: [
+        "O PowerMedia Organizer é um sistema de catálogo e produção de impressão construído em PHP e MySQL para um cliente que gerenciava uma grande biblioteca física de CD/DVD. Ele cuida de todo o ciclo de vida de um catálogo de mídia: cadastrar títulos com artes de capa frontal e traseira, agrupá-los sob tipos de mídia configuráveis e navegar/pesquisar a coleção por uma lista paginada e ordenável ou uma grade de ícones.",
+        'O problema de negócio central que ele resolvia era o overhead de produção: gerar catálogos impressos e rótulos de disco à mão para uma coleção grande e em crescimento. O PowerMedia substituiu isso por um pipeline de impressão configurável — layout de página, dimensões da capa, tamanhos de fonte e itens por página são todos ajustáveis — para que catálogos e rótulos pudessem ser regerados sob demanda em vez de refeitos manualmente a cada vez. Um fluxo dedicado de impressão de capas permitia à equipe selecionar em lote quais capas iam para impressão, e uma tela de "gravação" (fila de gravação) acompanhava quais títulos estavam na fila para serem gravados em disco. Um endpoint de redimensionamento dinâmico de imagem servia cada capa em qualquer tamanho que uma tela precisasse a partir de um único arquivo armazenado, e um visualizador em Flash permitia à equipe inspecionar a arte de capa de perto antes de imprimir.',
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Searchable media catalog",
+          pt: "Catálogo de mídia pesquisável",
+        },
+        body: {
+          en: "a full CRUD system for titles, media types, and cover art that replaced manual tracking of a large physical media library (980+ titles in the sample data) with a searchable, sortable, paginated database",
+          pt: "um sistema CRUD completo para títulos, tipos de mídia e artes de capa que substituiu o controle manual de uma grande biblioteca de mídia física (mais de 980 títulos nos dados de amostra) por um banco de dados pesquisável, ordenável e paginado",
+        },
+      },
+      {
+        heading: {
+          en: "Configurable print pipeline",
+          pt: "Pipeline de impressão configurável",
+        },
+        body: {
+          en: "a catalog-and-label print system with custom page sizes, cover dimensions, font sizes, and items-per-row, turning a recurring manual production task into a few-click, repeatable workflow",
+          pt: "um sistema de impressão de catálogo e rótulos com tamanhos de página, dimensões de capa, tamanhos de fonte e itens por linha personalizados, transformando uma tarefa de produção manual recorrente em um fluxo repetível de poucos cliques",
+        },
+      },
+      {
+        heading: {
+          en: "One-image cover rendering",
+          pt: "Renderização de capa a partir de uma única imagem",
+        },
+        body: {
+          en: "a dynamic image-resizing endpoint plus a cover zoom viewer, so a single stored cover per title renders correctly across thumbnails, print layouts, and detail views, cutting storage overhead and manual image prep",
+          pt: "um endpoint de redimensionamento dinâmico de imagem somado a um visualizador de zoom de capa, para que uma única capa armazenada por título renderize corretamente em miniaturas, layouts de impressão e visões de detalhe, cortando o overhead de armazenamento e o preparo manual de imagens",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
+      },
+      {
+        name: "JavaScript",
+        icon: "/devicons/javascript-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "MySQL",
+        version: "4.x",
+        icon: "/devicons/mysql-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/powermedia/screenshots/powermedia-organizer-1.png",
+      },
+      {
+        src: "/projects/powermedia/screenshots/powermedia-organizer-2.png",
+      },
+      {
+        src: "/projects/powermedia/screenshots/powermedia-organizer-3.png",
+      },
+      {
+        src: "/projects/powermedia/screenshots/powermedia-organizer-4.png",
+      },
+      {
+        src: "/projects/powermedia/screenshots/powermedia-organizer-5.png",
+      },
+      {
+        src: "/projects/powermedia/screenshots/powermedia-organizer-6.png",
+      },
+      {
+        src: "/projects/powermedia/screenshots/powermedia-organizer.png",
+        featured: true,
+      },
+    ],
+  },
+  {
+    slug: "devhouse",
+    year: "2005",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/devhouse",
+    logo: "/projects/devhouse/devhouse-logo.png",
+    name: {
+      en: "DevHouse — Internet Software Development House",
+      pt: "DevHouse — Internet Software Development House",
+    },
+    tagline: {
+      en: "DevHouse was a boutique web development studio that designed and built custom websites, CMS platforms, and interactive experiences for businesses in Joinville, Brazil.",
+      pt: "A DevHouse era um estúdio boutique de desenvolvimento web que projetava e construía sites sob medida, plataformas CMS e experiências interativas para empresas de Joinville, Brasil.",
+    },
+    kicker: {
+      en: "// software house · 2004–2020",
+      pt: "// software house · 2004–2020",
+    },
+    intro: {
+      en: "DevHouse was a web studio in Joinville, Brazil that built custom CMS sites, e-commerce systems, and interactive experiences for local businesses across 8+ client projects from 2004 to 2020.",
+      pt: "A DevHouse era um estúdio web de Joinville, Brasil, que construía sites com CMS sob medida, sistemas de e-commerce e experiências interativas para empresas locais em mais de 8 projetos de clientes, de 2004 a 2020.",
+    },
+    body: {
+      en: [
         "DevHouse was an internet software development house based in Joinville, Santa Catarina, Brazil, launched in 2005 by Leonardo Vasconcellos. The studio's own site was a single-page MooTools-powered showcase — a Mac OS-style \"fisheye dock\" for navigation and a lightbox gallery for browsing past work — backed by Skype, MSN, and email contact widgets, typical of the era's small web agencies.",
         "The portfolio spanned a wide range of client needs: an e-commerce storefront repurposed into a quote-request system for Alfa Eletro; a full educational portal for Oficina dos Sonhos; a jobs-and-training portal for the HR company geRHação; an Adobe Flash/PHP corporate site with an animated office-navigation metaphor for Joinville Business Center; a custom Joomla CMS for the cosmetics brand Maquel, complete with product catalog and ingredient glossary; a Joomla-based wedding/events portal for Núcleo do Evento (active 2004–2017) with an online store and live chat; a custom WordPress theme for the photography studio VonMuller; and a business brokerage platform for Investim.",
-        "Across these projects, DevHouse paired off-the-shelf CMS platforms (Joomla, WordPress) with hand-built systems where the business required something a template couldn't provide — quote workflows, content glossaries, or animated lead-generation experiences."
+        "Across these projects, DevHouse paired off-the-shelf CMS platforms (Joomla, WordPress) with hand-built systems where the business required something a template couldn't provide — quote workflows, content glossaries, or animated lead-generation experiences.",
       ],
-      "pt": [
-        "A DevHouse era uma internet software development house sediada em Joinville, Santa Catarina, Brasil, lançada em 2005 por Leonardo Vasconcellos. O próprio site do estúdio era uma vitrine de página única movida a MooTools — uma \"dock fisheye\" no estilo do Mac OS para navegação e uma galeria em lightbox para navegar por trabalhos anteriores — apoiada por widgets de contato de Skype, MSN e e-mail, típicos das pequenas agências web da época.",
+      pt: [
+        'A DevHouse era uma internet software development house sediada em Joinville, Santa Catarina, Brasil, lançada em 2005 por Leonardo Vasconcellos. O próprio site do estúdio era uma vitrine de página única movida a MooTools — uma "dock fisheye" no estilo do Mac OS para navegação e uma galeria em lightbox para navegar por trabalhos anteriores — apoiada por widgets de contato de Skype, MSN e e-mail, típicos das pequenas agências web da época.',
         "O portfólio abrangia uma ampla gama de necessidades de clientes: uma vitrine de e-commerce reaproveitada como sistema de pedidos de orçamento para a Alfa Eletro; um portal educacional completo para a Oficina dos Sonhos; um portal de empregos e capacitação para a empresa de RH geRHação; um site corporativo em Adobe Flash/PHP com uma metáfora animada de navegação por escritório para o Joinville Business Center; um CMS Joomla sob medida para a marca de cosméticos Maquel, completo com catálogo de produtos e glossário de ativos; um portal de casamentos/eventos em Joomla para o Núcleo do Evento (ativo de 2004 a 2017) com loja online e chat ao vivo; um tema WordPress sob medida para o estúdio de fotografia VonMuller; e uma plataforma de corretagem de negócios para a Investim.",
-        "Ao longo desses projetos, a DevHouse combinava plataformas CMS de prateleira (Joomla, WordPress) com sistemas construídos à mão sempre que o negócio exigia algo que um template não podia oferecer — fluxos de orçamento, glossários de conteúdo ou experiências animadas de geração de leads."
-      ]
+        "Ao longo desses projetos, a DevHouse combinava plataformas CMS de prateleira (Joomla, WordPress) com sistemas construídos à mão sempre que o negócio exigia algo que um template não podia oferecer — fluxos de orçamento, glossários de conteúdo ou experiências animadas de geração de leads.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Tailored client sites at scale",
-          "pt": "Sites sob medida para clientes em escala"
+        heading: {
+          en: "Tailored client sites at scale",
+          pt: "Sites sob medida para clientes em escala",
         },
-        "body": {
-          "en": "8+ custom builds spanning e-commerce, HR recruitment, cosmetics retail, event/wedding services, and B2B brokerage, each mapped to the client's actual sales or lead-gen funnel instead of a one-size-fits-all template.",
-          "pt": "mais de 8 construções sob medida abrangendo e-commerce, recrutamento de RH, varejo de cosméticos, serviços de eventos/casamentos e corretagem B2B, cada uma mapeada ao funil real de vendas ou de geração de leads do cliente, em vez de um template tamanho-único."
-        }
+        body: {
+          en: "8+ custom builds spanning e-commerce, HR recruitment, cosmetics retail, event/wedding services, and B2B brokerage, each mapped to the client's actual sales or lead-gen funnel instead of a one-size-fits-all template.",
+          pt: "mais de 8 construções sob medida abrangendo e-commerce, recrutamento de RH, varejo de cosméticos, serviços de eventos/casamentos e corretagem B2B, cada uma mapeada ao funil real de vendas ou de geração de leads do cliente, em vez de um template tamanho-único.",
+        },
       },
       {
-        "heading": {
-          "en": "Custom CMS with product catalog",
-          "pt": "CMS sob medida com catálogo de produtos"
+        heading: {
+          en: "Custom CMS with product catalog",
+          pt: "CMS sob medida com catálogo de produtos",
         },
-        "body": {
-          "en": "a Joomla-based CMS for Maquel Cosméticos with a full product catalog and active-ingredient glossary, letting non-technical staff manage content without developer involvement.",
-          "pt": "um CMS baseado em Joomla para a Maquel Cosméticos com catálogo completo de produtos e glossário de ativos, permitindo à equipe não técnica gerenciar conteúdo sem envolvimento de desenvolvedor."
-        }
+        body: {
+          en: "a Joomla-based CMS for Maquel Cosméticos with a full product catalog and active-ingredient glossary, letting non-technical staff manage content without developer involvement.",
+          pt: "um CMS baseado em Joomla para a Maquel Cosméticos com catálogo completo de produtos e glossário de ativos, permitindo à equipe não técnica gerenciar conteúdo sem envolvimento de desenvolvedor.",
+        },
       },
       {
-        "heading": {
-          "en": "Interactive lead-generation experience",
-          "pt": "Experiência interativa de geração de leads"
+        heading: {
+          en: "Interactive lead-generation experience",
+          pt: "Experiência interativa de geração de leads",
         },
-        "body": {
-          "en": "an Adobe Flash + PHP office-navigation site for Joinville Business Center, using an animated desk metaphor and bespoke CMS to convert prospective coworking tenants during the business's launch.",
-          "pt": "um site de navegação por escritório em Adobe Flash + PHP para o Joinville Business Center, usando uma metáfora de mesa animada e um CMS sob medida para converter potenciais locatários de coworking durante o lançamento do negócio."
-        }
-      }
+        body: {
+          en: "an Adobe Flash + PHP office-navigation site for Joinville Business Center, using an animated desk metaphor and bespoke CMS to convert prospective coworking tenants during the business's launch.",
+          pt: "um site de navegação por escritório em Adobe Flash + PHP para o Joinville Business Center, usando uma metáfora de mesa animada e um CMS sob medida para converter potenciais locatários de coworking durante o lançamento do negócio.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "MooTools",
-        "version": "1.x",
-        "icon": "/devicons/mootools-icon.svg"
-      }
+        name: "MooTools",
+        version: "1.x",
+        icon: "/devicons/mootools-icon.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/devhouse/screenshots/portfolio-lightbox.png"
+        src: "/projects/devhouse/screenshots/portfolio-lightbox.png",
       },
       {
-        "src": "/projects/devhouse/screenshots/homepage.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/devhouse/screenshots/homepage.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "ldi",
-    "year": "2005",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/ldi",
-    "logo": "/projects/ldi/ldi-logo.jpg",
-    "name": {
-      "en": "LDI Eletrônica Industrial",
-      "pt": "LDI Eletrônica Industrial"
+    slug: "ldi",
+    year: "2005",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://webarchive.leonardolimadevasconcellos.workers.dev/ldi",
+    logo: "/projects/ldi/ldi-logo.jpg",
+    name: {
+      en: "LDI Eletrônica Industrial",
+      pt: "LDI Eletrônica Industrial",
     },
-    "tagline": {
-      "en": "A PHP/MySQL e-commerce and product catalog platform for an industrial electronics distributor, featuring a 20-category browsable catalog, customer registration and inquiry cart, and a custom CMS admin panel.",
-      "pt": "Uma plataforma de e-commerce e catálogo de produtos em PHP/MySQL para um distribuidor de eletrônica industrial, com um catálogo navegável de 20 categorias, cadastro de clientes e carrinho de consulta, e um painel administrativo de CMS sob medida."
+    tagline: {
+      en: "A PHP/MySQL e-commerce and product catalog platform for an industrial electronics distributor, featuring a 20-category browsable catalog, customer registration and inquiry cart, and a custom CMS admin panel.",
+      pt: "Uma plataforma de e-commerce e catálogo de produtos em PHP/MySQL para um distribuidor de eletrônica industrial, com um catálogo navegável de 20 categorias, cadastro de clientes e carrinho de consulta, e um painel administrativo de CMS sob medida.",
     },
-    "kicker": {
-      "en": "// industrial automation · LDI Eletrônica · custom CMS",
-      "pt": "// automação industrial · LDI Eletrônica · CMS sob medida"
+    kicker: {
+      en: "// industrial automation · LDI Eletrônica · custom CMS",
+      pt: "// automação industrial · LDI Eletrônica · CMS sob medida",
     },
-    "intro": {
-      "en": "A dynamic PHP/MySQL platform built for an industrial electronics distributor — full product catalog across 20+ categories, custom CMS admin, customer registration, inquiry cart, and a Flash animated splash screen, all delivered in 2005.",
-      "pt": "Uma plataforma dinâmica em PHP/MySQL construída para um distribuidor de eletrônica industrial — catálogo completo de produtos em mais de 20 categorias, admin de CMS sob medida, cadastro de clientes, carrinho de consulta e uma tela de abertura animada em Flash, tudo entregue em 2005."
+    intro: {
+      en: "A dynamic PHP/MySQL platform built for an industrial electronics distributor — full product catalog across 20+ categories, custom CMS admin, customer registration, inquiry cart, and a Flash animated splash screen, all delivered in 2005.",
+      pt: "Uma plataforma dinâmica em PHP/MySQL construída para um distribuidor de eletrônica industrial — catálogo completo de produtos em mais de 20 categorias, admin de CMS sob medida, cadastro de clientes, carrinho de consulta e uma tela de abertura animada em Flash, tudo entregue em 2005.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "LDI Eletrônica Industrial is a Joinville-based (Santa Catarina, Brazil) distributor and manufacturer of industrial automation and electronics components. Their product line spans 20+ categories — solid-state relays, digital timers, temperature and refrigeration controllers, process controllers, digital indicators and counters, signal converters, current transformers, presence and temperature sensors, surge filters, fuses, and queue-management panels — serving industrial clients across Brazil.",
-        "The website, released in 2005, was built to replace a static brochure presence with a fully dynamic platform. At its core is a MySQL-backed product catalog organized into categorized \"families,\" with paginated listings, product images with pop-up enlargement, PDF data sheets, and a full-text search covering product code, name, and description.",
+        'The website, released in 2005, was built to replace a static brochure presence with a fully dynamic platform. At its core is a MySQL-backed product catalog organized into categorized "families," with paginated listings, product images with pop-up enlargement, PDF data sheets, and a full-text search covering product code, name, and description.',
         "The front end opened with a Flash animated splash screen (now playable via Ruffle.js). Navigation used JavaScript-driven fly-out menus generated from the database, so new categories appeared in the menu automatically as soon as an admin added them. A left sidebar displayed the full category list and a live cart summary.",
         "The custom admin panel (`/admin`) let non-technical staff manage every piece of content — products, categories, text pages, partner links, contact directories, and site configuration — through browser-based forms with image upload and thumbnail generation. Customers could register via a four-step wizard, log in, and build an inquiry basket. A product-recommendation feature let users forward product pages by email, and a newsletter system supported outbound marketing.",
-        "Stack: PHP 5 + MySQL 5.0, vanilla JavaScript (Dreamweaver MX-era DHTML helpers), and Macromedia Flash for the animated intro."
+        "Stack: PHP 5 + MySQL 5.0, vanilla JavaScript (Dreamweaver MX-era DHTML helpers), and Macromedia Flash for the animated intro.",
       ],
-      "pt": [
+      pt: [
         "A LDI Eletrônica Industrial é uma distribuidora e fabricante de Joinville (Santa Catarina, Brasil) de componentes de automação industrial e eletrônica. Sua linha de produtos abrange mais de 20 categorias — relés de estado sólido, temporizadores digitais, controladores de temperatura e refrigeração, controladores de processo, indicadores e contadores digitais, conversores de sinal, transformadores de corrente, sensores de presença e de temperatura, filtros de surto, fusíveis e painéis de gerenciamento de filas — atendendo clientes industriais de todo o Brasil.",
-        "O site, lançado em 2005, foi construído para substituir uma presença de folheto estático por uma plataforma totalmente dinâmica. Em seu núcleo está um catálogo de produtos apoiado em MySQL organizado em \"famílias\" categorizadas, com listagens paginadas, imagens de produto com ampliação em pop-up, folhas de dados em PDF e uma busca em texto completo cobrindo código, nome e descrição do produto.",
+        'O site, lançado em 2005, foi construído para substituir uma presença de folheto estático por uma plataforma totalmente dinâmica. Em seu núcleo está um catálogo de produtos apoiado em MySQL organizado em "famílias" categorizadas, com listagens paginadas, imagens de produto com ampliação em pop-up, folhas de dados em PDF e uma busca em texto completo cobrindo código, nome e descrição do produto.',
         "O front-end abria com uma tela de abertura animada em Flash (agora reproduzível via Ruffle.js). A navegação usava menus fly-out movidos a JavaScript gerados a partir do banco de dados, de modo que novas categorias apareciam no menu automaticamente assim que um administrador as adicionava. Uma barra lateral esquerda exibia a lista completa de categorias e um resumo ao vivo do carrinho.",
         "O painel administrativo sob medida (`/admin`) permitia à equipe não técnica gerenciar cada peça de conteúdo — produtos, categorias, páginas de texto, links de parceiros, diretórios de contato e configuração do site — por formulários no navegador com upload de imagem e geração de miniaturas. Os clientes podiam se cadastrar por um assistente de quatro etapas, fazer login e montar um cesto de consulta. Um recurso de recomendação de produtos permitia aos usuários encaminhar páginas de produto por e-mail, e um sistema de newsletter apoiava o marketing de saída.",
-        "Stack: PHP 5 + MySQL 5.0, JavaScript puro (auxiliares DHTML da era Dreamweaver MX) e Macromedia Flash para a introdução animada."
-      ]
+        "Stack: PHP 5 + MySQL 5.0, JavaScript puro (auxiliares DHTML da era Dreamweaver MX) e Macromedia Flash para a introdução animada.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Database-driven product catalog",
-          "pt": "Catálogo de produtos orientado a banco de dados"
+        heading: {
+          en: "Database-driven product catalog",
+          pt: "Catálogo de produtos orientado a banco de dados",
         },
-        "body": {
-          "en": "A searchable, categorized catalog spanning 20+ product families with datasheets and image enlargement replaced a static brochure site, letting industrial buyers find exact components fast.",
-          "pt": "Um catálogo pesquisável e categorizado abrangendo mais de 20 famílias de produtos com folhas de dados e ampliação de imagem substituiu um site de folheto estático, permitindo aos compradores industriais encontrar componentes exatos rapidamente."
-        }
+        body: {
+          en: "A searchable, categorized catalog spanning 20+ product families with datasheets and image enlargement replaced a static brochure site, letting industrial buyers find exact components fast.",
+          pt: "Um catálogo pesquisável e categorizado abrangendo mais de 20 famílias de produtos com folhas de dados e ampliação de imagem substituiu um site de folheto estático, permitindo aos compradores industriais encontrar componentes exatos rapidamente.",
+        },
       },
       {
-        "heading": {
-          "en": "Self-service content administration",
-          "pt": "Administração de conteúdo self-service"
+        heading: {
+          en: "Self-service content administration",
+          pt: "Administração de conteúdo self-service",
         },
-        "body": {
-          "en": "A browser-based admin panel let non-technical staff manage products, categories, and pages — new categories even appeared in navigation automatically — removing ongoing dependence on a developer.",
-          "pt": "Um painel administrativo no navegador permitia à equipe não técnica gerenciar produtos, categorias e páginas — novas categorias até apareciam na navegação automaticamente — removendo a dependência contínua de um desenvolvedor."
-        }
+        body: {
+          en: "A browser-based admin panel let non-technical staff manage products, categories, and pages — new categories even appeared in navigation automatically — removing ongoing dependence on a developer.",
+          pt: "Um painel administrativo no navegador permitia à equipe não técnica gerenciar produtos, categorias e páginas — novas categorias até apareciam na navegação automaticamente — removendo a dependência contínua de um desenvolvedor.",
+        },
       },
       {
-        "heading": {
-          "en": "Customer registration and inquiry cart",
-          "pt": "Cadastro de clientes e carrinho de consulta"
+        heading: {
+          en: "Customer registration and inquiry cart",
+          pt: "Cadastro de clientes e carrinho de consulta",
         },
-        "body": {
-          "en": "A guided sign-up wizard plus an inquiry basket and product-forwarding email turned catalog browsing into captured B2B leads and an outbound marketing channel.",
-          "pt": "Um assistente de cadastro guiado somado a um cesto de consulta e ao encaminhamento de produtos por e-mail transformava a navegação do catálogo em leads B2B capturados e um canal de marketing de saída."
-        }
-      }
+        body: {
+          en: "A guided sign-up wizard plus an inquiry basket and product-forwarding email turned catalog browsing into captured B2B leads and an outbound marketing channel.",
+          pt: "Um assistente de cadastro guiado somado a um cesto de consulta e ao encaminhamento de produtos por e-mail transformava a navegação do catálogo em leads B2B capturados e um canal de marketing de saída.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.2",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.2",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.0",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        version: "5.0",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/ldi/screenshots/01.png",
-        "featured": true
+        src: "/projects/ldi/screenshots/01.png",
+        featured: true,
       },
       {
-        "src": "/projects/ldi/screenshots/capture.png"
+        src: "/projects/ldi/screenshots/capture.png",
       },
       {
-        "src": "/projects/ldi/screenshots/ldi-comercio-de-produtos-eletronicos-ltda-1.png"
+        src: "/projects/ldi/screenshots/ldi-comercio-de-produtos-eletronicos-ltda-1.png",
       },
       {
-        "src": "/projects/ldi/screenshots/ldi-comercio-de-produtos-eletronicos-ltda-2.png"
+        src: "/projects/ldi/screenshots/ldi-comercio-de-produtos-eletronicos-ltda-2.png",
       },
       {
-        "src": "/projects/ldi/screenshots/mala-direta-ldi.png"
+        src: "/projects/ldi/screenshots/mala-direta-ldi.png",
       },
       {
-        "src": "/projects/ldi/screenshots/localhost-8080-produtos-php-html.png"
+        src: "/projects/ldi/screenshots/localhost-8080-produtos-php-html.png",
       },
       {
-        "src": "/projects/ldi/screenshots/ldi-comercio-de-produtos-eletronicos-ltda.png"
-      }
-    ]
+        src: "/projects/ldi/screenshots/ldi-comercio-de-produtos-eletronicos-ltda.png",
+      },
+    ],
   },
   {
-    "slug": "oficina-dos-sonhos",
-    "year": "2005",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/oficina-dos-sonhos",
-    "logo": "/projects/oficina-dos-sonhos/oficina-dos-sonhos-logo.jpg",
-    "name": {
-      "en": "Escola Oficina dos Sonhos",
-      "pt": "Escola Oficina dos Sonhos"
+    slug: "oficina-dos-sonhos",
+    year: "2005",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/oficina-dos-sonhos",
+    logo: "/projects/oficina-dos-sonhos/oficina-dos-sonhos-logo.jpg",
+    name: {
+      en: "Escola Oficina dos Sonhos",
+      pt: "Escola Oficina dos Sonhos",
     },
-    "tagline": {
-      "en": "The complete online portal for Escola Oficina dos Sonhos — a Christian elementary school in Joinville, Brazil — delivering academic programs, news, photo galleries, and family communications since 2005.",
-      "pt": "O portal online completo da Escola Oficina dos Sonhos — uma escola cristã de ensino fundamental em Joinville, Brasil — entregando programas acadêmicos, notícias, galerias de fotos e comunicação com as famílias desde 2005."
+    tagline: {
+      en: "The complete online portal for Escola Oficina dos Sonhos — a Christian elementary school in Joinville, Brazil — delivering academic programs, news, photo galleries, and family communications since 2005.",
+      pt: "O portal online completo da Escola Oficina dos Sonhos — uma escola cristã de ensino fundamental em Joinville, Brasil — entregando programas acadêmicos, notícias, galerias de fotos e comunicação com as famílias desde 2005.",
     },
-    "kicker": {
-      "en": "// school website · oficina dos sonhos",
-      "pt": "// site de escola · oficina dos sonhos"
+    kicker: {
+      en: "// school website · oficina dos sonhos",
+      pt: "// site de escola · oficina dos sonhos",
     },
-    "intro": {
-      "en": "A heavily customized school portal for Escola Oficina dos Sonhos — a Christian elementary school in Joinville, Brazil — serving news, academic programs, photo galleries, and family communications since 2005.",
-      "pt": "Um portal escolar fortemente customizado para a Escola Oficina dos Sonhos — uma escola cristã de ensino fundamental em Joinville, Brasil — servindo notícias, programas acadêmicos, galerias de fotos e comunicação com as famílias desde 2005."
+    intro: {
+      en: "A heavily customized school portal for Escola Oficina dos Sonhos — a Christian elementary school in Joinville, Brazil — serving news, academic programs, photo galleries, and family communications since 2005.",
+      pt: "Um portal escolar fortemente customizado para a Escola Oficina dos Sonhos — uma escola cristã de ensino fundamental em Joinville, Brasil — servindo notícias, programas acadêmicos, galerias de fotos e comunicação com as famílias desde 2005.",
     },
-    "body": {
-      "en": [
-        "Oficina dos Sonhos (\"Workshop of Dreams\") is a Christian evangelical school in Joinville, Santa Catarina, Brazil, serving families from Educação Infantil (early childhood) through Ensino Fundamental (primary education).",
+    body: {
+      en: [
+        'Oficina dos Sonhos ("Workshop of Dreams") is a Christian evangelical school in Joinville, Santa Catarina, Brazil, serving families from Educação Infantil (early childhood) through Ensino Fundamental (primary education).',
         "At a time when few small private schools in Brazil had any meaningful online presence, Oficina dos Sonhos launched a full-featured institutional portal built on a heavily customized CMS. Rather than using the platform out of the box, the site was extensively tailored — custom templates, integrated third-party components, and purpose-built modules — to match the school's identity and serve the specific needs of its community.",
         "Institutional pages — covering the school's history, leadership, Christian principles and values, and physical structure",
         "Academic sections — for both Ensino Fundamental and Educação Infantil with pedagogical proposals, reading recommendations, and annual academic calendars",
@@ -4253,11 +4312,11 @@ export const WORKS: Work[] = [
         "Practical family resources — school supply lists, transportation details, and extra-curricular activity schedules — published online rather than sent home on paper",
         "Photo gallery — showcasing school events, classroom life, and special occasions such as the Patati Patata visit",
         "Event calendar — with monthly scheduling and activity listings for each class level",
-        "Daily devotional sidebar — (\"Maná Diário\") reinforcing the school's Christian identity on every page",
+        'Daily devotional sidebar — ("Maná Diário") reinforcing the school\'s Christian identity on every page',
         "Student poll and community engagement — features that made the site feel alive and interactive",
-        "The site ran as the school's primary digital touchpoint for years, modernizing how the institution communicated with families and positioning Oficina dos Sonhos as a forward-thinking, professionally run school in its community — at a time when this level of web presence was genuinely rare among small Brazilian private schools."
+        "The site ran as the school's primary digital touchpoint for years, modernizing how the institution communicated with families and positioning Oficina dos Sonhos as a forward-thinking, professionally run school in its community — at a time when this level of web presence was genuinely rare among small Brazilian private schools.",
       ],
-      "pt": [
+      pt: [
         "A Oficina dos Sonhos é uma escola evangélica cristã em Joinville, Santa Catarina, Brasil, atendendo famílias da Educação Infantil ao Ensino Fundamental.",
         "Numa época em que poucas pequenas escolas privadas no Brasil tinham qualquer presença online significativa, a Oficina dos Sonhos lançou um portal institucional completo construído sobre um CMS fortemente customizado. Em vez de usar a plataforma de forma pronta, o site foi extensivamente adaptado — templates sob medida, componentes de terceiros integrados e módulos feitos sob medida — para combinar com a identidade da escola e atender às necessidades específicas de sua comunidade.",
         "Páginas institucionais — cobrindo a história da escola, sua liderança, seus princípios e valores cristãos, e sua estrutura física",
@@ -4266,1449 +4325,1469 @@ export const WORKS: Work[] = [
         "Recursos práticos para as famílias — listas de material escolar, detalhes de transporte e horários de atividades extracurriculares — publicados online em vez de enviados para casa em papel",
         "Galeria de fotos — exibindo eventos escolares, a vida em sala de aula e ocasiões especiais como a visita da Patati Patatá",
         "Agenda de eventos — com programação mensal e listagem de atividades para cada nível de turma",
-        "Barra lateral com devocional diário — (\"Maná Diário\") reforçando a identidade cristã da escola em cada página",
+        'Barra lateral com devocional diário — ("Maná Diário") reforçando a identidade cristã da escola em cada página',
         "Enquete dos alunos e engajamento da comunidade — recursos que faziam o site parecer vivo e interativo",
-        "O site funcionou como o principal ponto de contato digital da escola por anos, modernizando a forma como a instituição se comunicava com as famílias e posicionando a Oficina dos Sonhos como uma escola inovadora e profissionalmente gerida em sua comunidade — numa época em que esse nível de presença web era genuinamente raro entre as pequenas escolas privadas brasileiras."
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Full institutional portal",
-          "pt": "Portal institucional completo"
-        },
-        "body": {
-          "en": "a heavily customized CMS presenting the school's identity, academics, and values online when few small Brazilian private schools had any web presence, positioning it as forward-thinking and professionally run",
-          "pt": "um CMS fortemente customizado apresentando online a identidade, o ensino e os valores da escola quando poucas pequenas escolas privadas brasileiras tinham qualquer presença web, posicionando-a como inovadora e profissionalmente gerida"
-        }
-      },
-      {
-        "heading": {
-          "en": "Self-service family resources",
-          "pt": "Recursos self-service para as famílias"
-        },
-        "body": {
-          "en": "supply lists, transportation details, calendars, and activity schedules published online instead of sent home on paper, cutting paper communication and keeping families consistently informed",
-          "pt": "listas de material, detalhes de transporte, calendários e horários de atividades publicados online em vez de enviados para casa em papel, cortando a comunicação em papel e mantendo as famílias consistentemente informadas"
-        }
-      },
-      {
-        "heading": {
-          "en": "Community engagement features",
-          "pt": "Recursos de engajamento da comunidade"
-        },
-        "body": {
-          "en": "a photo gallery, daily devotional, event calendar, and student polls that made the site an active, returned-to touchpoint reinforcing the school's identity with its community",
-          "pt": "uma galeria de fotos, um devocional diário, uma agenda de eventos e enquetes dos alunos que faziam do site um ponto de contato ativo, ao qual se retornava, reforçando a identidade da escola com sua comunidade"
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
-      },
-      {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "PHP",
-        "version": "5.6",
-        "icon": "/devicons/php-original.svg"
-      },
-      {
-        "name": "Joomla",
-        "version": "1.5",
-        "icon": "/devicons/joomla.svg"
-      },
-      {
-        "name": "MySQL",
-        "version": "5.7",
-        "icon": "/devicons/mysql-original.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/primeira-versao.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/site-antigo.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/contatos.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/educacao-infantil.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/ensino-fundamental.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/estrutura.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/galeria-de-fotos.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/galeria-de-fotos-ensino-fundamental.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/galeria-de-fotos-patati-patata-na-oficina.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/galeria-de-fotos-patati-patata-na-oficina-foto.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/historico.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/indicacao-de-leitura.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/informativo.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/informativo-ensino-fundamental.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/lista-materiais-educacao-fundamental.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/lista-de-materiais-educacao-infantil.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/marcia-poletti.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/palavra-da-direcao.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/para-refletir.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/principios-e-valores.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/proposta-pedagogica.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/proposta-pedagogica-infantil.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/calendario-letivo-ensino-fundamental.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/transporte-escolar.png"
-      },
-      {
-        "src": "/projects/oficina-dos-sonhos/screenshots/escola-oficina-dos-sonhos.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "oriente",
-    "year": "2005",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/oriente",
-    "logo": "/projects/oriente/oriente-logo.jpg",
-    "name": {
-      "en": "Oriente Limpeza, Conservação e Dedetização",
-      "pt": "Oriente Limpeza, Conservação e Dedetização"
-    },
-    "tagline": {
-      "en": "A Joomla-built corporate site for Grupo Oriente, a Brazilian facilities-services company, showcasing cleaning, conservation, and pest-control offerings alongside lead-capture and recruitment portals.",
-      "pt": "Um site corporativo construído em Joomla para o Grupo Oriente, empresa brasileira de serviços de facilities, exibindo ofertas de limpeza, conservação e controle de pragas ao lado de portais de captação de leads e recrutamento."
-    },
-    "kicker": {
-      "en": "// facilities services · cleaning, conservation & pest control",
-      "pt": "// serviços de facilities · limpeza, conservação & controle de pragas"
-    },
-    "intro": {
-      "en": "Corporate site for Grupo Oriente, a Brazilian facilities-services company, built on Joomla to turn cleaning, conservation, and pest-control marketing into an active lead-generation and recruitment channel rather than a static brochure.",
-      "pt": "Site corporativo para o Grupo Oriente, empresa brasileira de serviços de facilities, construído em Joomla para transformar o marketing de limpeza, conservação e controle de pragas em um canal ativo de geração de leads e recrutamento, em vez de um folheto estático."
-    },
-    "body": {
-      "en": [
-        "Founded in May 2005, Grupo Oriente is a Brazilian facilities-services company built on developing people to deliver conservation, maintenance, cleaning, sanitization, pest control, and temporary staffing/recruitment services. The site was built on Joomla 1.5 with a custom theme and serves as the company's primary commercial touchpoint: prospective clients request quotes (\"Faça um orçamento\") and site visits directly through the homepage, job candidates apply through a dedicated Recrutamento e Seleção flow, and existing clients self-serve compliance certificates (FGTS, INSS, state tax clearance) without contacting the back office. The \"Vantagens\" page makes the outsourcing pitch explicit — eliminating labor-law risk, severance costs, equipment/uniform procurement, and absence coverage by delegating those operational burdens to Oriente. This repository preserves that original 2005-era build, running on a Dockerized PHP 5.6/MySQL 5.6 stack matching the original Joomla 1.5.18 deployment."
+        "O site funcionou como o principal ponto de contato digital da escola por anos, modernizando a forma como a instituição se comunicava com as famílias e posicionando a Oficina dos Sonhos como uma escola inovadora e profissionalmente gerida em sua comunidade — numa época em que esse nível de presença web era genuinamente raro entre as pequenas escolas privadas brasileiras.",
       ],
-      "pt": [
-        "Fundado em maio de 2005, o Grupo Oriente é uma empresa brasileira de serviços de facilities construída sobre o desenvolvimento de pessoas para entregar serviços de conservação, manutenção, limpeza, higienização, controle de pragas e recrutamento/mão de obra temporária. O site foi construído em Joomla 1.5 com um tema sob medida e serve como o principal ponto de contato comercial da empresa: potenciais clientes solicitam orçamentos (\"Faça um orçamento\") e visitas técnicas diretamente pela home, candidatos a vagas se inscrevem por um fluxo dedicado de Recrutamento e Seleção, e clientes existentes acessam por conta própria certidões de conformidade (FGTS, INSS, regularidade fiscal estadual) sem contatar o back office. A página \"Vantagens\" explicita o argumento de terceirização — eliminando risco trabalhista, custos rescisórios, aquisição de equipamentos/uniformes e cobertura de faltas ao delegar esses fardos operacionais à Oriente. Este repositório preserva aquela construção original da era de 2005, rodando sobre uma stack dockerizada de PHP 5.6/MySQL 5.6 correspondente à implantação original em Joomla 1.5.18."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Lead-generation forms",
-          "pt": "Formulários de geração de leads"
+        heading: {
+          en: "Full institutional portal",
+          pt: "Portal institucional completo",
         },
-        "body": {
-          "en": "quote, recruitment, and visit-request forms wired directly into the company's sales and HR workflows, turning the site into an active lead-generation channel instead of a static brochure",
-          "pt": "formulários de orçamento, recrutamento e solicitação de visita conectados diretamente aos fluxos de vendas e RH da empresa, transformando o site em um canal ativo de geração de leads em vez de um folheto estático"
-        }
+        body: {
+          en: "a heavily customized CMS presenting the school's identity, academics, and values online when few small Brazilian private schools had any web presence, positioning it as forward-thinking and professionally run",
+          pt: "um CMS fortemente customizado apresentando online a identidade, o ensino e os valores da escola quando poucas pequenas escolas privadas brasileiras tinham qualquer presença web, posicionando-a como inovadora e profissionalmente gerida",
+        },
       },
       {
-        "heading": {
-          "en": "Self-service compliance documents",
-          "pt": "Documentos de conformidade self-service"
+        heading: {
+          en: "Self-service family resources",
+          pt: "Recursos self-service para as famílias",
         },
-        "body": {
-          "en": "downloadable client due-diligence paperwork (FGTS, INSS, state tax certificates) on the Certidões and Clientes pages, cutting manual back-office requests for compliance documents",
-          "pt": "documentação de due diligence para clientes disponível para download (certidões de FGTS, INSS, tributos estaduais) nas páginas Certidões e Clientes, reduzindo as solicitações manuais de documentos de conformidade ao back office"
-        }
+        body: {
+          en: "supply lists, transportation details, calendars, and activity schedules published online instead of sent home on paper, cutting paper communication and keeping families consistently informed",
+          pt: "listas de material, detalhes de transporte, calendários e horários de atividades publicados online em vez de enviados para casa em papel, cortando a comunicação em papel e mantendo as famílias consistentemente informadas",
+        },
       },
       {
-        "heading": {
-          "en": "Containerized legacy stack",
-          "pt": "Stack legada em contêiner"
+        heading: {
+          en: "Community engagement features",
+          pt: "Recursos de engajamento da comunidade",
         },
-        "body": {
-          "en": "the original Joomla 1.5 / PHP 5.6 / MySQL 5.6 stack packaged with Docker so a 2010-era CMS can still be reliably run and demoed today, preserving the site and its workflows for archival reference",
-          "pt": "a stack original Joomla 1.5 / PHP 5.6 / MySQL 5.6 empacotada com Docker para que um CMS da era de 2010 ainda possa ser rodado e demonstrado de forma confiável hoje, preservando o site e seus fluxos para referência de arquivo"
-        }
-      }
+        body: {
+          en: "a photo gallery, daily devotional, event calendar, and student polls that made the site an active, returned-to touchpoint reinforcing the school's identity with its community",
+          pt: "uma galeria de fotos, um devocional diário, uma agenda de eventos e enquetes dos alunos que faziam do site um ponto de contato ativo, ao qual se retornava, reforçando a identidade da escola com sua comunidade",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.6",
-        "icon": "/devicons/php-original.svg"
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "Joomla!",
-        "version": "1.5.18",
-        "icon": "/devicons/joomla.svg"
+        name: "PHP",
+        version: "5.6",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.6",
-        "icon": "/devicons/mysql-original.svg"
+        name: "Joomla",
+        version: "1.5",
+        icon: "/devicons/joomla.svg",
       },
       {
-        "name": "Docker",
-        "icon": "/devicons/docker-original.svg"
-      }
+        name: "MySQL",
+        version: "5.7",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-candidatos.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/primeira-versao.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-certidoes.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/site-antigo.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-clientes.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/contatos.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-contato.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/educacao-infantil.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-desinsetizacao.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/ensino-fundamental.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-disk-servicos.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/estrutura.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-faca-um-orcamento.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/galeria-de-fotos.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-limpeza-e-conservacao.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/galeria-de-fotos-ensino-fundamental.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-localizacao.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/galeria-de-fotos-patati-patata-na-oficina.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-missao-visao-e-valores.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/galeria-de-fotos-patati-patata-na-oficina-foto.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-perfil.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/historico.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-recrutamento-e-selecao.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/indicacao-de-leitura.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-solicite-uma-visita.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/informativo.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-temporario-estagiario.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/informativo-ensino-fundamental.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-terceirizados.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/lista-materiais-educacao-fundamental.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-vantagens.png"
+        src: "/projects/oficina-dos-sonhos/screenshots/lista-de-materiais-educacao-infantil.png",
       },
       {
-        "src": "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-oriente-limpeza-e-dedetizacao.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/oficina-dos-sonhos/screenshots/marcia-poletti.png",
+      },
+      {
+        src: "/projects/oficina-dos-sonhos/screenshots/palavra-da-direcao.png",
+      },
+      {
+        src: "/projects/oficina-dos-sonhos/screenshots/para-refletir.png",
+      },
+      {
+        src: "/projects/oficina-dos-sonhos/screenshots/principios-e-valores.png",
+      },
+      {
+        src: "/projects/oficina-dos-sonhos/screenshots/proposta-pedagogica.png",
+      },
+      {
+        src: "/projects/oficina-dos-sonhos/screenshots/proposta-pedagogica-infantil.png",
+      },
+      {
+        src: "/projects/oficina-dos-sonhos/screenshots/calendario-letivo-ensino-fundamental.png",
+      },
+      {
+        src: "/projects/oficina-dos-sonhos/screenshots/transporte-escolar.png",
+      },
+      {
+        src: "/projects/oficina-dos-sonhos/screenshots/escola-oficina-dos-sonhos.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "reacher",
-    "year": "2005",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/reacher",
-    "logo": "/projects/reacher/reacher-logo.png",
-    "name": {
-      "en": "Re@cher WebMailer",
-      "pt": "Re@cher WebMailer"
+    slug: "oriente",
+    year: "2005",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/oriente",
+    logo: "/projects/oriente/oriente-logo.jpg",
+    name: {
+      en: "Oriente Limpeza, Conservação e Dedetização",
+      pt: "Oriente Limpeza, Conservação e Dedetização",
     },
-    "tagline": {
-      "en": "A full-fledged email marketing and CRM platform with SpamAssassin-powered spam-score pre-checks, segmented targeting, and a built-in HTML campaign editor.",
-      "pt": "Uma plataforma completa de e-mail marketing e CRM com pré-checagens de spam-score movidas a SpamAssassin, segmentação de público e um editor de campanhas HTML embutido."
+    tagline: {
+      en: "A Joomla-built corporate site for Grupo Oriente, a Brazilian facilities-services company, showcasing cleaning, conservation, and pest-control offerings alongside lead-capture and recruitment portals.",
+      pt: "Um site corporativo construído em Joomla para o Grupo Oriente, empresa brasileira de serviços de facilities, exibindo ofertas de limpeza, conservação e controle de pragas ao lado de portais de captação de leads e recrutamento.",
     },
-    "kicker": {
-      "en": "// email marketing · CRM for direct-mail campaigns",
-      "pt": "// e-mail marketing · CRM para campanhas de mala direta"
+    kicker: {
+      en: "// facilities services · cleaning, conservation & pest control",
+      pt: "// serviços de facilities · limpeza, conservação & controle de pragas",
     },
-    "intro": {
-      "en": "A full-fledged PHP/MySQL email marketing platform with SpamAssassin spam-score pre-checks, segmented targeting, a built-in HTML campaign editor, and automated open/bounce tracking — built in 2005, ahead of its time.",
-      "pt": "Uma plataforma completa de e-mail marketing em PHP/MySQL com pré-checagens de spam-score via SpamAssassin, segmentação de público, um editor de campanhas HTML embutido e rastreamento automático de aberturas/retornos — construída em 2005, à frente de seu tempo."
+    intro: {
+      en: "Corporate site for Grupo Oriente, a Brazilian facilities-services company, built on Joomla to turn cleaning, conservation, and pest-control marketing into an active lead-generation and recruitment channel rather than a static brochure.",
+      pt: "Site corporativo para o Grupo Oriente, empresa brasileira de serviços de facilities, construído em Joomla para transformar o marketing de limpeza, conservação e controle de pragas em um canal ativo de geração de leads e recrutamento, em vez de um folheto estático.",
     },
-    "body": {
-      "en": [
-        "Re@cher WebMailer is a full-fledged email marketing and CRM platform, built from scratch in PHP and MySQL starting in 2005 — one of the earlier homegrown systems of its kind, predating most of today's SaaS email platforms. It let a business manage its contacts as a structured database — people linked to institutions, institutions linked to market segments — so a single campaign (\"mala direta\") could be aimed precisely at a segment rather than blasted to the entire list.",
+    body: {
+      en: [
+        'Founded in May 2005, Grupo Oriente is a Brazilian facilities-services company built on developing people to deliver conservation, maintenance, cleaning, sanitization, pest control, and temporary staffing/recruitment services. The site was built on Joomla 1.5 with a custom theme and serves as the company\'s primary commercial touchpoint: prospective clients request quotes ("Faça um orçamento") and site visits directly through the homepage, job candidates apply through a dedicated Recrutamento e Seleção flow, and existing clients self-serve compliance certificates (FGTS, INSS, state tax clearance) without contacting the back office. The "Vantagens" page makes the outsourcing pitch explicit — eliminating labor-law risk, severance costs, equipment/uniform procurement, and absence coverage by delegating those operational burdens to Oriente. This repository preserves that original 2005-era build, running on a Dockerized PHP 5.6/MySQL 5.6 stack matching the original Joomla 1.5.18 deployment.',
+      ],
+      pt: [
+        'Fundado em maio de 2005, o Grupo Oriente é uma empresa brasileira de serviços de facilities construída sobre o desenvolvimento de pessoas para entregar serviços de conservação, manutenção, limpeza, higienização, controle de pragas e recrutamento/mão de obra temporária. O site foi construído em Joomla 1.5 com um tema sob medida e serve como o principal ponto de contato comercial da empresa: potenciais clientes solicitam orçamentos ("Faça um orçamento") e visitas técnicas diretamente pela home, candidatos a vagas se inscrevem por um fluxo dedicado de Recrutamento e Seleção, e clientes existentes acessam por conta própria certidões de conformidade (FGTS, INSS, regularidade fiscal estadual) sem contatar o back office. A página "Vantagens" explicita o argumento de terceirização — eliminando risco trabalhista, custos rescisórios, aquisição de equipamentos/uniformes e cobertura de faltas ao delegar esses fardos operacionais à Oriente. Este repositório preserva aquela construção original da era de 2005, rodando sobre uma stack dockerizada de PHP 5.6/MySQL 5.6 correspondente à implantação original em Joomla 1.5.18.',
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Lead-generation forms",
+          pt: "Formulários de geração de leads",
+        },
+        body: {
+          en: "quote, recruitment, and visit-request forms wired directly into the company's sales and HR workflows, turning the site into an active lead-generation channel instead of a static brochure",
+          pt: "formulários de orçamento, recrutamento e solicitação de visita conectados diretamente aos fluxos de vendas e RH da empresa, transformando o site em um canal ativo de geração de leads em vez de um folheto estático",
+        },
+      },
+      {
+        heading: {
+          en: "Self-service compliance documents",
+          pt: "Documentos de conformidade self-service",
+        },
+        body: {
+          en: "downloadable client due-diligence paperwork (FGTS, INSS, state tax certificates) on the Certidões and Clientes pages, cutting manual back-office requests for compliance documents",
+          pt: "documentação de due diligence para clientes disponível para download (certidões de FGTS, INSS, tributos estaduais) nas páginas Certidões e Clientes, reduzindo as solicitações manuais de documentos de conformidade ao back office",
+        },
+      },
+      {
+        heading: {
+          en: "Containerized legacy stack",
+          pt: "Stack legada em contêiner",
+        },
+        body: {
+          en: "the original Joomla 1.5 / PHP 5.6 / MySQL 5.6 stack packaged with Docker so a 2010-era CMS can still be reliably run and demoed today, preserving the site and its workflows for archival reference",
+          pt: "a stack original Joomla 1.5 / PHP 5.6 / MySQL 5.6 empacotada com Docker para que um CMS da era de 2010 ainda possa ser rodado e demonstrado de forma confiável hoje, preservando o site e seus fluxos para referência de arquivo",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "PHP",
+        version: "5.6",
+        icon: "/devicons/php-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "Joomla!",
+        version: "1.5.18",
+        icon: "/devicons/joomla.svg",
+      },
+      {
+        name: "MySQL",
+        version: "5.6",
+        icon: "/devicons/mysql-original.svg",
+      },
+      {
+        name: "Docker",
+        icon: "/devicons/docker-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-candidatos.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-certidoes.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-clientes.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-contato.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-desinsetizacao.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-disk-servicos.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-faca-um-orcamento.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-limpeza-e-conservacao.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-localizacao.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-missao-visao-e-valores.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-perfil.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-recrutamento-e-selecao.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-solicite-uma-visita.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-temporario-estagiario.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-terceirizados.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-vantagens.png",
+      },
+      {
+        src: "/projects/oriente/screenshots/oriente-limpeza-e-dedetizacao-oriente-limpeza-e-dedetizacao.png",
+        featured: true,
+      },
+    ],
+  },
+  {
+    slug: "reacher",
+    year: "2005",
+    pinned: false,
+    frontPage: true,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/reacher",
+    logo: "/projects/reacher/reacher-logo.png",
+    name: {
+      en: "Re@cher WebMailer",
+      pt: "Re@cher WebMailer",
+    },
+    tagline: {
+      en: "A full-fledged email marketing and CRM platform with SpamAssassin-powered spam-score pre-checks, segmented targeting, and a built-in HTML campaign editor.",
+      pt: "Uma plataforma completa de e-mail marketing e CRM com pré-checagens de spam-score movidas a SpamAssassin, segmentação de público e um editor de campanhas HTML embutido.",
+    },
+    kicker: {
+      en: "// email marketing · CRM for direct-mail campaigns",
+      pt: "// e-mail marketing · CRM para campanhas de mala direta",
+    },
+    intro: {
+      en: "A full-fledged PHP/MySQL email marketing platform with SpamAssassin spam-score pre-checks, segmented targeting, a built-in HTML campaign editor, and automated open/bounce tracking — built in 2005, ahead of its time.",
+      pt: "Uma plataforma completa de e-mail marketing em PHP/MySQL com pré-checagens de spam-score via SpamAssassin, segmentação de público, um editor de campanhas HTML embutido e rastreamento automático de aberturas/retornos — construída em 2005, à frente de seu tempo.",
+    },
+    body: {
+      en: [
+        'Re@cher WebMailer is a full-fledged email marketing and CRM platform, built from scratch in PHP and MySQL starting in 2005 — one of the earlier homegrown systems of its kind, predating most of today\'s SaaS email platforms. It let a business manage its contacts as a structured database — people linked to institutions, institutions linked to market segments — so a single campaign ("mala direta") could be aimed precisely at a segment rather than blasted to the entire list.',
         "Before a campaign ever left the building, it passed through a SpamAssassin integration: each message was scored against SpamAssassin's heuristic rule set (the same engine many mail servers use to filter incoming spam) and flagged if its score crossed the threshold associated with landing in a spam folder. That let the marketing team catch deliverability-killing patterns — spammy phrasing, missing headers, suspicious link density — before sending, instead of finding out after a campaign quietly vanished into recipients' spam folders.",
         "Campaigns were composed in a custom in-browser WYSIWYG HTML editor (with separate code paths for Internet Explorer and Mozilla, reflecting the era), saved as reusable templates, and scheduled for a future send date. A background engine picked up due campaigns, personalized each email with the recipient's name, and delivered them in batches — with an alternate path to send through Microsoft Outlook for ad-hoc runs. The system also handled day-to-day CRM chores: automatic birthday emails, recurring reminders, and a contact-import pipeline for growing the list.",
-        "On the measurement side, every sent campaign embedded a tracking pixel to record opens (with unique-view counts) and was checked against a dedicated bounce mailbox via IMAP — addresses that hard-bounced were automatically flagged and excluded from future sends. Together with the SpamAssassin pre-check, this gave the business a closed loop: score, segment, send, measure, and clean — years before \"email deliverability\" was a line item most businesses budgeted for."
+        'On the measurement side, every sent campaign embedded a tracking pixel to record opens (with unique-view counts) and was checked against a dedicated bounce mailbox via IMAP — addresses that hard-bounced were automatically flagged and excluded from future sends. Together with the SpamAssassin pre-check, this gave the business a closed loop: score, segment, send, measure, and clean — years before "email deliverability" was a line item most businesses budgeted for.',
       ],
-      "pt": [
-        "O Re@cher WebMailer é uma plataforma completa de e-mail marketing e CRM, construída do zero em PHP e MySQL a partir de 2005 — um dos sistemas caseiros mais antigos de seu tipo, anterior à maioria das plataformas de e-mail SaaS de hoje. Ele permitia a um negócio gerenciar seus contatos como um banco de dados estruturado — pessoas ligadas a instituições, instituições ligadas a segmentos de mercado — para que uma única campanha (\"mala direta\") pudesse ser direcionada com precisão a um segmento em vez de disparada para a lista inteira.",
+      pt: [
+        'O Re@cher WebMailer é uma plataforma completa de e-mail marketing e CRM, construída do zero em PHP e MySQL a partir de 2005 — um dos sistemas caseiros mais antigos de seu tipo, anterior à maioria das plataformas de e-mail SaaS de hoje. Ele permitia a um negócio gerenciar seus contatos como um banco de dados estruturado — pessoas ligadas a instituições, instituições ligadas a segmentos de mercado — para que uma única campanha ("mala direta") pudesse ser direcionada com precisão a um segmento em vez de disparada para a lista inteira.',
         "Antes de uma campanha sair do prédio, ela passava por uma integração com o SpamAssassin: cada mensagem era pontuada contra o conjunto de regras heurísticas do SpamAssassin (o mesmo motor que muitos servidores de e-mail usam para filtrar spam de entrada) e sinalizada se sua pontuação cruzasse o limiar associado a cair na pasta de spam. Isso permitia ao time de marketing pegar padrões que matam a entregabilidade — frases com cara de spam, cabeçalhos ausentes, densidade suspeita de links — antes de enviar, em vez de descobrir depois que uma campanha havia sumido silenciosamente nas pastas de spam dos destinatários.",
         "As campanhas eram compostas em um editor HTML WYSIWYG sob medida no navegador (com caminhos de código separados para Internet Explorer e Mozilla, refletindo a época), salvas como templates reutilizáveis e agendadas para uma data de envio futura. Um motor em segundo plano pegava as campanhas vencidas, personalizava cada e-mail com o nome do destinatário e os entregava em lotes — com um caminho alternativo para enviar pelo Microsoft Outlook em execuções pontuais. O sistema também cuidava de tarefas de CRM do dia a dia: e-mails automáticos de aniversário, lembretes recorrentes e um pipeline de importação de contatos para fazer a lista crescer.",
-        "No lado da medição, cada campanha enviada embutia um pixel de rastreamento para registrar aberturas (com contagem de visualizações únicas) e era verificada contra uma caixa de retornos dedicada via IMAP — endereços com hard bounce eram automaticamente sinalizados e excluídos de envios futuros. Junto com a pré-checagem do SpamAssassin, isso dava ao negócio um ciclo fechado: pontuar, segmentar, enviar, medir e limpar — anos antes de \"entregabilidade de e-mail\" ser um item de orçamento para a maioria das empresas."
-      ]
+        'No lado da medição, cada campanha enviada embutia um pixel de rastreamento para registrar aberturas (com contagem de visualizações únicas) e era verificada contra uma caixa de retornos dedicada via IMAP — endereços com hard bounce eram automaticamente sinalizados e excluídos de envios futuros. Junto com a pré-checagem do SpamAssassin, isso dava ao negócio um ciclo fechado: pontuar, segmentar, enviar, medir e limpar — anos antes de "entregabilidade de e-mail" ser um item de orçamento para a maioria das empresas.',
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Spam-score pre-flight checks",
-          "pt": "Checagens de spam-score antes do envio"
+        heading: {
+          en: "Spam-score pre-flight checks",
+          pt: "Checagens de spam-score antes do envio",
         },
-        "body": {
-          "en": "Every campaign was scored against a heuristic spam-filter rule set before sending, catching deliverability-killing patterns up front so messages reached inboxes instead of spam folders.",
-          "pt": "Cada campanha era pontuada contra um conjunto de regras heurísticas de filtro de spam antes do envio, pegando padrões que matam a entregabilidade de antemão para que as mensagens chegassem à caixa de entrada em vez da pasta de spam."
-        }
+        body: {
+          en: "Every campaign was scored against a heuristic spam-filter rule set before sending, catching deliverability-killing patterns up front so messages reached inboxes instead of spam folders.",
+          pt: "Cada campanha era pontuada contra um conjunto de regras heurísticas de filtro de spam antes do envio, pegando padrões que matam a entregabilidade de antemão para que as mensagens chegassem à caixa de entrada em vez da pasta de spam.",
+        },
       },
       {
-        "heading": {
-          "en": "Segmented campaign targeting",
-          "pt": "Segmentação de campanhas"
+        heading: {
+          en: "Segmented campaign targeting",
+          pt: "Segmentação de campanhas",
         },
-        "body": {
-          "en": "A structured contact database linking people to institutions and market segments let a single mailing hit a precise audience rather than a blanket blast, lifting relevance and response.",
-          "pt": "Um banco de dados estruturado de contatos ligando pessoas a instituições e segmentos de mercado permitia que uma única mala direta atingisse um público preciso em vez de um disparo geral, elevando a relevância e a resposta."
-        }
+        body: {
+          en: "A structured contact database linking people to institutions and market segments let a single mailing hit a precise audience rather than a blanket blast, lifting relevance and response.",
+          pt: "Um banco de dados estruturado de contatos ligando pessoas a instituições e segmentos de mercado permitia que uma única mala direta atingisse um público preciso em vez de um disparo geral, elevando a relevância e a resposta.",
+        },
       },
       {
-        "heading": {
-          "en": "Closed-loop tracking and list hygiene",
-          "pt": "Rastreamento em ciclo fechado e higiene de lista"
+        heading: {
+          en: "Closed-loop tracking and list hygiene",
+          pt: "Rastreamento em ciclo fechado e higiene de lista",
         },
-        "body": {
-          "en": "Open tracking and automated bounce handling flagged and excluded dead addresses on their own, giving the business a measure-and-clean cycle years ahead of the market.",
-          "pt": "O rastreamento de aberturas e o tratamento automático de retornos sinalizavam e excluíam endereços mortos por conta própria, dando ao negócio um ciclo de medir e limpar anos à frente do mercado."
-        }
-      }
+        body: {
+          en: "Open tracking and automated bounce handling flagged and excluded dead addresses on their own, giving the business a measure-and-clean cycle years ahead of the market.",
+          pt: "O rastreamento de aberturas e o tratamento automático de retornos sinalizavam e excluíam endereços mortos por conta própria, dando ao negócio um ciclo de medir e limpar anos à frente do mercado.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.6",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.6",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.7",
-        "icon": "/devicons/mysql-original.svg"
+        name: "MySQL",
+        version: "5.7",
+        icon: "/devicons/mysql-original.svg",
       },
       {
-        "name": "Apache",
-        "icon": "/devicons/apache-original.svg"
+        name: "Apache",
+        icon: "/devicons/apache-original.svg",
       },
       {
-        "name": "Docker",
-        "icon": "/devicons/docker-original.svg"
-      }
+        name: "Docker",
+        icon: "/devicons/docker-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/reacher/screenshots/re-cher-webmailer-1.png"
+        src: "/projects/reacher/screenshots/re-cher-webmailer-1.png",
       },
       {
-        "src": "/projects/reacher/screenshots/re-cher-webmailer-2.png"
+        src: "/projects/reacher/screenshots/re-cher-webmailer-2.png",
       },
       {
-        "src": "/projects/reacher/screenshots/re-cher-webmailer-3.png"
+        src: "/projects/reacher/screenshots/re-cher-webmailer-3.png",
       },
       {
-        "src": "/projects/reacher/screenshots/re-cher-webmailer-4.png"
+        src: "/projects/reacher/screenshots/re-cher-webmailer-4.png",
       },
       {
-        "src": "/projects/reacher/screenshots/re-cher-webmailer-5.png"
+        src: "/projects/reacher/screenshots/re-cher-webmailer-5.png",
       },
       {
-        "src": "/projects/reacher/screenshots/re-cher-webmailer-6.png"
+        src: "/projects/reacher/screenshots/re-cher-webmailer-6.png",
       },
       {
-        "src": "/projects/reacher/screenshots/re-cher-webmailer.png"
+        src: "/projects/reacher/screenshots/re-cher-webmailer.png",
       },
       {
-        "src": "/projects/reacher/screenshots/re-cher-webmailer-home.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/reacher/screenshots/re-cher-webmailer-home.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "sbes",
-    "year": "2005",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/sbes",
-    "logo": "/projects/sbes/sbes-logo.jpg",
-    "name": {
-      "en": "Projeto Social Futura",
-      "pt": "Projeto Social Futura"
+    slug: "sbes",
+    year: "2005",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://webarchive2.leonardolimadevasconcellos.workers.dev/sbes",
+    logo: "/projects/sbes/sbes-logo.jpg",
+    name: {
+      en: "Projeto Social Futura",
+      pt: "Projeto Social Futura",
     },
-    "tagline": {
-      "en": "A PHP/MySQL records and case-management system built for Joinville City Hall's Department of Social Welfare, replacing paper family registries with searchable digital households, benefit tracking, and audit-ready printed reports.",
-      "pt": "Um sistema de registros e gestão de casos em PHP/MySQL construído para a Secretaria do Bem Estar Social da Prefeitura de Joinville, substituindo cadastros familiares em papel por domicílios digitais pesquisáveis, acompanhamento de benefícios e relatórios impressos prontos para auditoria."
+    tagline: {
+      en: "A PHP/MySQL records and case-management system built for Joinville City Hall's Department of Social Welfare, replacing paper family registries with searchable digital households, benefit tracking, and audit-ready printed reports.",
+      pt: "Um sistema de registros e gestão de casos em PHP/MySQL construído para a Secretaria do Bem Estar Social da Prefeitura de Joinville, substituindo cadastros familiares em papel por domicílios digitais pesquisáveis, acompanhamento de benefícios e relatórios impressos prontos para auditoria.",
     },
-    "kicker": {
-      "en": "// government records · Secretaria do Bem Estar Social",
-      "pt": "// registros governamentais · Secretaria do Bem Estar Social"
+    kicker: {
+      en: "// government records · Secretaria do Bem Estar Social",
+      pt: "// registros governamentais · Secretaria do Bem Estar Social",
     },
-    "intro": {
-      "en": "A PHP/MySQL records system built for Joinville City Hall's Department of Social Welfare, replacing paper family registries with searchable households, benefit tracking, and audit-ready printed reports.",
-      "pt": "Um sistema de registros em PHP/MySQL construído para a Secretaria do Bem Estar Social da Prefeitura de Joinville, substituindo cadastros familiares em papel por domicílios pesquisáveis, acompanhamento de benefícios e relatórios impressos prontos para auditoria."
+    intro: {
+      en: "A PHP/MySQL records system built for Joinville City Hall's Department of Social Welfare, replacing paper family registries with searchable households, benefit tracking, and audit-ready printed reports.",
+      pt: "Um sistema de registros em PHP/MySQL construído para a Secretaria do Bem Estar Social da Prefeitura de Joinville, substituindo cadastros familiares em papel por domicílios pesquisáveis, acompanhamento de benefícios e relatórios impressos prontos para auditoria.",
     },
-    "body": {
-      "en": [
-        "SBES (Secretaria do Bem Estar Social) is a records and case-management system built for the city of Joinville's Department of Social Welfare. Internally branded \"Projeto Social Futura — Gestão Social,\" it replaced a paper-based filing process for tracking families enrolled in municipal social assistance programs.",
+    body: {
+      en: [
+        'SBES (Secretaria do Bem Estar Social) is a records and case-management system built for the city of Joinville\'s Department of Social Welfare. Internally branded "Projeto Social Futura — Gestão Social," it replaced a paper-based filing process for tracking families enrolled in municipal social assistance programs.',
         "The system centers on two core records: the Domicílio (household) and the Pessoa (person), each tied to a physical address and socioeconomic profile. From there, caseworkers enroll a household in one or more Programas Sociais (social programs — food assistance, gas vouchers, etc.), log Benefícios (benefit disbursements) against that enrollment, and keep a running Histórico (case history) for each family.",
         "Access is split across four roles — Operador, Assistente Social, Secretário, and Administrador — each surfaced as its own tab on the home dashboard, so a front-line caseworker and the department secretary see only the actions relevant to their job. Two printable reports close the loop with the city's audit requirements: a Ficha de Usuário (per-family case file) and a Recebimento de Benefício (proof-of-benefit receipt), both rendered as print-ready HTML directly from the database.",
-        "Built in PHP 4 against a MySQL backend, the system was developed and deployed for Joinville's City Hall in 2005. This repository preserves a wget-crawled archive of the live application (`rip/`) alongside the original PHP source (`www/`) and database schema (`db/sbes.sql`)."
+        "Built in PHP 4 against a MySQL backend, the system was developed and deployed for Joinville's City Hall in 2005. This repository preserves a wget-crawled archive of the live application (`rip/`) alongside the original PHP source (`www/`) and database schema (`db/sbes.sql`).",
       ],
-      "pt": [
-        "O SBES (Secretaria do Bem Estar Social) é um sistema de registros e gestão de casos construído para a Secretaria do Bem Estar Social do município de Joinville. Batizado internamente de \"Projeto Social Futura — Gestão Social\", ele substituiu um processo de arquivamento em papel para acompanhar famílias inscritas em programas municipais de assistência social.",
+      pt: [
+        'O SBES (Secretaria do Bem Estar Social) é um sistema de registros e gestão de casos construído para a Secretaria do Bem Estar Social do município de Joinville. Batizado internamente de "Projeto Social Futura — Gestão Social", ele substituiu um processo de arquivamento em papel para acompanhar famílias inscritas em programas municipais de assistência social.',
         "O sistema gira em torno de dois registros centrais: o Domicílio (residência) e a Pessoa, cada um vinculado a um endereço físico e a um perfil socioeconômico. A partir daí, os assistentes sociais inscrevem um domicílio em um ou mais Programas Sociais (assistência alimentar, vale-gás, etc.), registram Benefícios (repasses de benefícios) contra essa inscrição e mantêm um Histórico corrente (histórico de caso) para cada família.",
         "O acesso é dividido em quatro papéis — Operador, Assistente Social, Secretário e Administrador — cada um apresentado como sua própria aba no painel inicial, de modo que um assistente social de linha de frente e o secretário da pasta veem apenas as ações relevantes ao seu trabalho. Dois relatórios imprimíveis fecham o ciclo com os requisitos de auditoria da prefeitura: uma Ficha de Usuário (ficha de caso por família) e um Recebimento de Benefício (comprovante de recebimento de benefício), ambos renderizados como HTML pronto para impressão diretamente do banco de dados.",
-        "Construído em PHP 4 sobre um backend MySQL, o sistema foi desenvolvido e implantado para a Prefeitura de Joinville em 2005. Este repositório preserva um arquivo do aplicativo no ar rastreado por wget (`rip/`) ao lado do código-fonte PHP original (`www/`) e do esquema do banco de dados (`db/sbes.sql`)."
-      ]
+        "Construído em PHP 4 sobre um backend MySQL, o sistema foi desenvolvido e implantado para a Prefeitura de Joinville em 2005. Este repositório preserva um arquivo do aplicativo no ar rastreado por wget (`rip/`) ao lado do código-fonte PHP original (`www/`) e do esquema do banco de dados (`db/sbes.sql`).",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Searchable digital registry",
-          "pt": "Cadastro digital pesquisável"
+        heading: {
+          en: "Searchable digital registry",
+          pt: "Cadastro digital pesquisável",
         },
-        "body": {
-          "en": "a digital household-and-person database replacing paper-based family registries, cutting the time caseworkers spent locating a family's history from manual filing to a single search",
-          "pt": "um banco de dados digital de domicílios e pessoas substituindo os cadastros familiares em papel, reduzindo o tempo que os assistentes sociais gastavam para localizar o histórico de uma família, do arquivamento manual a uma única busca"
-        }
+        body: {
+          en: "a digital household-and-person database replacing paper-based family registries, cutting the time caseworkers spent locating a family's history from manual filing to a single search",
+          pt: "um banco de dados digital de domicílios e pessoas substituindo os cadastros familiares em papel, reduzindo o tempo que os assistentes sociais gastavam para localizar o histórico de uma família, do arquivamento manual a uma única busca",
+        },
       },
       {
-        "heading": {
-          "en": "Role-based staff workflow",
-          "pt": "Fluxo de trabalho da equipe por papéis"
+        heading: {
+          en: "Role-based staff workflow",
+          pt: "Fluxo de trabalho da equipe por papéis",
         },
-        "body": {
-          "en": "tiered access (Operador, Assistente Social, Secretário, Administrador) so each level of City Hall staff saw only the actions relevant to their job, reducing training overhead and data-entry errors",
-          "pt": "acesso em níveis (Operador, Assistente Social, Secretário, Administrador) para que cada nível da equipe da prefeitura visse apenas as ações relevantes ao seu trabalho, reduzindo o overhead de treinamento e os erros de digitação"
-        }
+        body: {
+          en: "tiered access (Operador, Assistente Social, Secretário, Administrador) so each level of City Hall staff saw only the actions relevant to their job, reducing training overhead and data-entry errors",
+          pt: "acesso em níveis (Operador, Assistente Social, Secretário, Administrador) para que cada nível da equipe da prefeitura visse apenas as ações relevantes ao seu trabalho, reduzindo o overhead de treinamento e os erros de digitação",
+        },
       },
       {
-        "heading": {
-          "en": "Print-ready audit reports",
-          "pt": "Relatórios de auditoria prontos para impressão"
+        heading: {
+          en: "Print-ready audit reports",
+          pt: "Relatórios de auditoria prontos para impressão",
         },
-        "body": {
-          "en": "per-family case files and proof-of-benefit receipts generated straight from the database, giving the department auditable records without manual transcription",
-          "pt": "fichas de caso por família e comprovantes de recebimento de benefício gerados direto do banco de dados, dando à secretaria registros auditáveis sem transcrição manual"
-        }
-      }
+        body: {
+          en: "per-family case files and proof-of-benefit receipts generated straight from the database, giving the department auditable records without manual transcription",
+          pt: "fichas de caso por família e comprovantes de recebimento de benefício gerados direto do banco de dados, dando à secretaria registros auditáveis sem transcrição manual",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "PHP",
-        "version": "4.3.4",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "4.3.4",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "MySQL",
-        "version": "4.1.0",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        version: "4.1.0",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/sbes/screenshots/01-login.jpg"
+        src: "/projects/sbes/screenshots/01-login.jpg",
       },
       {
-        "src": "/projects/sbes/screenshots/03-ficha-do-domicilio.jpg"
+        src: "/projects/sbes/screenshots/03-ficha-do-domicilio.jpg",
       },
       {
-        "src": "/projects/sbes/screenshots/04-relatorio-beneficios.jpg"
+        src: "/projects/sbes/screenshots/04-relatorio-beneficios.jpg",
       },
       {
-        "src": "/projects/sbes/screenshots/05-busca-relatorio.jpg"
+        src: "/projects/sbes/screenshots/05-busca-relatorio.jpg",
       },
       {
-        "src": "/projects/sbes/screenshots/06-socio-economico.jpg"
+        src: "/projects/sbes/screenshots/06-socio-economico.jpg",
       },
       {
-        "src": "/projects/sbes/screenshots/07-programa-social.jpg"
+        src: "/projects/sbes/screenshots/07-programa-social.jpg",
       },
       {
-        "src": "/projects/sbes/screenshots/08-usuario.jpg"
+        src: "/projects/sbes/screenshots/08-usuario.jpg",
       },
       {
-        "src": "/projects/sbes/screenshots/02-home.jpg",
-        "featured": true
-      }
-    ]
+        src: "/projects/sbes/screenshots/02-home.jpg",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "monumento-ao-voluntario",
-    "year": "2004",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/monumento-ao-voluntario",
-    "logo": "/projects/monumento-ao-voluntario/monumento-ao-voluntario-logo.jpg",
-    "name": {
-      "en": "Monumento ao Voluntário Rotary Club",
-      "pt": "Monumento ao Voluntário Rotary Club"
+    slug: "monumento-ao-voluntario",
+    year: "2004",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/monumento-ao-voluntario",
+    logo: "/projects/monumento-ao-voluntario/monumento-ao-voluntario-logo.jpg",
+    name: {
+      en: "Monumento ao Voluntário Rotary Club",
+      pt: "Monumento ao Voluntário Rotary Club",
     },
-    "tagline": {
-      "en": "A dynamic PHP campaign site built in 2004 to drive corporate sponsorships and community support for the construction of a 16.2-meter steel volunteer monument in Joinville, Brazil, moving the Rotary Club project from fundraising to inauguration in under three months.",
-      "pt": "Um site de campanha dinâmico em PHP construído em 2004 para impulsionar patrocínios corporativos e apoio da comunidade à construção de um monumento ao voluntário de 16,2 metros em aço em Joinville, Brasil, levando o projeto do Rotary Club da arrecadação à inauguração em menos de três meses."
+    tagline: {
+      en: "A dynamic PHP campaign site built in 2004 to drive corporate sponsorships and community support for the construction of a 16.2-meter steel volunteer monument in Joinville, Brazil, moving the Rotary Club project from fundraising to inauguration in under three months.",
+      pt: "Um site de campanha dinâmico em PHP construído em 2004 para impulsionar patrocínios corporativos e apoio da comunidade à construção de um monumento ao voluntário de 16,2 metros em aço em Joinville, Brasil, levando o projeto do Rotary Club da arrecadação à inauguração em menos de três meses.",
     },
-    "kicker": {
-      "en": "// civic campaign · Rotary Club Joinville",
-      "pt": "// campanha cívica · Rotary Club Joinville"
+    kicker: {
+      en: "// civic campaign · Rotary Club Joinville",
+      pt: "// campanha cívica · Rotary Club Joinville",
     },
-    "intro": {
-      "en": "A dynamic PHP campaign site built in 2004 to drive corporate sponsorships and community support for a 16.2-meter steel volunteer monument in Joinville, Brazil — from fundraising to inauguration in under three months.",
-      "pt": "Um site de campanha dinâmico em PHP construído em 2004 para impulsionar patrocínios corporativos e apoio da comunidade a um monumento ao voluntário de 16,2 metros em aço em Joinville, Brasil — da arrecadação à inauguração em menos de três meses."
+    intro: {
+      en: "A dynamic PHP campaign site built in 2004 to drive corporate sponsorships and community support for a 16.2-meter steel volunteer monument in Joinville, Brazil — from fundraising to inauguration in under three months.",
+      pt: "Um site de campanha dinâmico em PHP construído em 2004 para impulsionar patrocínios corporativos e apoio da comunidade a um monumento ao voluntário de 16,2 metros em aço em Joinville, Brasil — da arrecadação à inauguração em menos de três meses.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "The Rotary Clubs of Joinville commissioned this site in late 2004 to support their centennial community project: erecting a 16.2-meter COR-420 patinated-steel monument in the Arena Joinville square as a permanent tribute to volunteerism and a marker of Rotary International's 100th anniversary (February 23, 2005).",
         "Built by Leonardo Vasconcellos (UDESC) and Sandro Marcos da Silva (Hannover Info), the site launched alongside the campaign's public kick-off in November 2004 and served as the project's primary digital presence through the monument's inauguration just three months later.",
         "The site is a PHP application with shared template functions rendering header, navigation, and footer consistently across pages. The horizontal JavaScript navigation menu used image-based backgrounds and mouseover events for institutional sub-menus.",
         "**Sections:** The homepage presented project objectives, a sidebar news feed, and the monument's full engineering specs (materials, dimensions, weight, finish). The news section preserved five dated articles — including press clippings from *A Notícia* newspaper — documenting milestones from announcement to inauguration. The sponsor page delivered a formal corporate pitch letter with naming rights on the monument plaque.",
         "**Outcome:** The campaign raised approximately R$120,000 from corporate partners (Engepasa, Vega do Sul), the Municipal Government, and the State Government of Santa Catarina, enabling the 7-ton structure to be built and inaugurated on schedule.",
-        "**Preservation:** The Flash inauguration animation was later restored using Ruffle.rs (WebAssembly Flash player), ensuring the archive remains fully functional in modern browsers."
+        "**Preservation:** The Flash inauguration animation was later restored using Ruffle.rs (WebAssembly Flash player), ensuring the archive remains fully functional in modern browsers.",
       ],
-      "pt": [
+      pt: [
         "Os Rotary Clubs de Joinville encomendaram este site no fim de 2004 para apoiar seu projeto comunitário do centenário: erguer um monumento de 16,2 metros em aço patinável COR-420 na praça da Arena Joinville, como um tributo permanente ao voluntariado e um marco do 100º aniversário do Rotary International (23 de fevereiro de 2005).",
         "Construído por Leonardo Vasconcellos (UDESC) e Sandro Marcos da Silva (Hannover Info), o site foi lançado junto com o pontapé inicial público da campanha em novembro de 2004 e serviu como a principal presença digital do projeto até a inauguração do monumento, apenas três meses depois.",
         "O site é uma aplicação PHP com funções de template compartilhadas renderizando cabeçalho, navegação e rodapé de forma consistente entre as páginas. O menu de navegação horizontal em JavaScript usava fundos baseados em imagens e eventos de mouseover para os submenus institucionais.",
         "**Seções:** A home apresentava os objetivos do projeto, um feed lateral de notícias e as especificações completas de engenharia do monumento (materiais, dimensões, peso, acabamento). A seção de notícias preservava cinco artigos datados — incluindo recortes de imprensa do jornal *A Notícia* — documentando marcos do anúncio à inauguração. A página de patrocínio entregava uma carta formal de proposta corporativa com direitos de nome na placa do monumento.",
         "**Resultado:** A campanha arrecadou cerca de R$120.000 de parceiros corporativos (Engepasa, Vega do Sul), da Prefeitura Municipal e do Governo do Estado de Santa Catarina, viabilizando que a estrutura de 7 toneladas fosse construída e inaugurada no prazo.",
-        "**Preservação:** A animação de inauguração em Flash foi posteriormente restaurada usando o Ruffle.rs (reprodutor Flash em WebAssembly), garantindo que o arquivo permaneça totalmente funcional em navegadores modernos."
-      ]
+        "**Preservação:** A animação de inauguração em Flash foi posteriormente restaurada usando o Ruffle.rs (reprodutor Flash em WebAssembly), garantindo que o arquivo permaneça totalmente funcional em navegadores modernos.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Self-service news system",
-          "pt": "Sistema de notícias self-service"
+        heading: {
+          en: "Self-service news system",
+          pt: "Sistema de notícias self-service",
         },
-        "body": {
-          "en": "a dynamic news module that let the Rotary team publish dated milestone updates — press clippings, cornerstone ceremony, inauguration photos — without touching code, keeping donors and the public informed throughout the campaign",
-          "pt": "um módulo de notícias dinâmico que permitia ao time do Rotary publicar atualizações datadas de marcos — recortes de imprensa, cerimônia da pedra fundamental, fotos da inauguração — sem tocar em código, mantendo doadores e público informados durante toda a campanha"
-        }
+        body: {
+          en: "a dynamic news module that let the Rotary team publish dated milestone updates — press clippings, cornerstone ceremony, inauguration photos — without touching code, keeping donors and the public informed throughout the campaign",
+          pt: "um módulo de notícias dinâmico que permitia ao time do Rotary publicar atualizações datadas de marcos — recortes de imprensa, cerimônia da pedra fundamental, fotos da inauguração — sem tocar em código, mantendo doadores e público informados durante toda a campanha",
+        },
       },
       {
-        "heading": {
-          "en": "Sponsor acquisition page",
-          "pt": "Página de captação de patrocinadores"
+        heading: {
+          en: "Sponsor acquisition page",
+          pt: "Página de captação de patrocinadores",
         },
-        "body": {
-          "en": "a formal donor pitch with named recognition on the monument plaque, directly supporting the ~R$120,000 fundraising goal that brought corporate partners (Engepasa, Vega do Sul) and the municipal government on board",
-          "pt": "uma proposta formal a doadores com reconhecimento nominal na placa do monumento, apoiando diretamente a meta de arrecadação de ~R$120.000 que trouxe parceiros corporativos (Engepasa, Vega do Sul) e a prefeitura para o projeto"
-        }
+        body: {
+          en: "a formal donor pitch with named recognition on the monument plaque, directly supporting the ~R$120,000 fundraising goal that brought corporate partners (Engepasa, Vega do Sul) and the municipal government on board",
+          pt: "uma proposta formal a doadores com reconhecimento nominal na placa do monumento, apoiando diretamente a meta de arrecadação de ~R$120.000 que trouxe parceiros corporativos (Engepasa, Vega do Sul) e a prefeitura para o projeto",
+        },
       },
       {
-        "heading": {
-          "en": "Animated campaign banner",
-          "pt": "Banner de campanha animado"
+        heading: {
+          en: "Animated campaign banner",
+          pt: "Banner de campanha animado",
         },
-        "body": {
-          "en": "a Flash banner with a cookie-based repeat-visit flag, an early personalization mechanic that gave the campaign a polished presence while controlling the experience on return visits",
-          "pt": "um banner em Flash com uma flag de visita repetida baseada em cookie, uma mecânica de personalização precoce que dava à campanha uma presença caprichada enquanto controlava a experiência nas visitas de retorno"
-        }
-      }
+        body: {
+          en: "a Flash banner with a cookie-based repeat-visit flag, an early personalization mechanic that gave the campaign a polished presence while controlling the experience on return visits",
+          pt: "um banner em Flash com uma flag de visita repetida baseada em cookie, uma mecânica de personalização precoce que dava à campanha uma presença caprichada enquanto controlava a experiência nas visitas de retorno",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "PHP",
-        "version": "4.x",
-        "icon": "/devicons/php-original.svg"
-      }
+        name: "PHP",
+        version: "4.x",
+        icon: "/devicons/php-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/monumento-ao-voluntario/screenshots/monumento-ao-voluntario-1.png"
+        src: "/projects/monumento-ao-voluntario/screenshots/monumento-ao-voluntario-1.png",
       },
       {
-        "src": "/projects/monumento-ao-voluntario/screenshots/screenshot.png"
+        src: "/projects/monumento-ao-voluntario/screenshots/screenshot.png",
       },
       {
-        "src": "/projects/monumento-ao-voluntario/screenshots/monumento-ao-voluntario.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/monumento-ao-voluntario/screenshots/monumento-ao-voluntario.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "nucleo-do-evento",
-    "year": "2004",
-    "pinned": false,
-    "liveUrl": "https://webarchive.leonardolimadevasconcellos.workers.dev/nucleo-do-evento",
-    "logo": "/projects/nucleo-do-evento/nucleo-do-evento-logo.png",
-    "name": {
-      "en": "Núcleo do Evento!",
-      "pt": "Núcleo do Evento!"
+    slug: "nucleo-do-evento",
+    year: "2004",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive.leonardolimadevasconcellos.workers.dev/nucleo-do-evento",
+    logo: "/projects/nucleo-do-evento/nucleo-do-evento-logo.png",
+    name: {
+      en: "Núcleo do Evento!",
+      pt: "Núcleo do Evento!",
     },
-    "tagline": {
-      "en": "A Joomla-powered wedding and event portal for Joinville, Brazil — featuring an e-commerce store, photography editorial, live chat, and community tools, live from 2004 to 2017.",
-      "pt": "Um portal de casamentos e eventos movido a Joomla para Joinville, Brasil — com loja de e-commerce, editorial de fotografia, chat ao vivo e ferramentas de comunidade, no ar de 2004 a 2017."
+    tagline: {
+      en: "A Joomla-powered wedding and event portal for Joinville, Brazil — featuring an e-commerce store, photography editorial, live chat, and community tools, live from 2004 to 2017.",
+      pt: "Um portal de casamentos e eventos movido a Joomla para Joinville, Brasil — com loja de e-commerce, editorial de fotografia, chat ao vivo e ferramentas de comunidade, no ar de 2004 a 2017.",
     },
-    "kicker": {
-      "en": "// event portal · wedding photos",
-      "pt": "// portal de eventos · fotos de casamento"
+    kicker: {
+      en: "// event portal · wedding photos",
+      pt: "// portal de eventos · fotos de casamento",
     },
-    "intro": {
-      "en": "Núcleo do Evento! was a Joomla-powered wedding and event portal for Joinville, Brazil — featuring an e-commerce store, photography editorial, live chat, and community tools, live from 2004 to 2017.",
-      "pt": "O Núcleo do Evento! era um portal de casamentos e eventos movido a Joomla para Joinville, Brasil — com loja de e-commerce, editorial de fotografia, chat ao vivo e ferramentas de comunidade, no ar de 2004 a 2017."
+    intro: {
+      en: "Núcleo do Evento! was a Joomla-powered wedding and event portal for Joinville, Brazil — featuring an e-commerce store, photography editorial, live chat, and community tools, live from 2004 to 2017.",
+      pt: "O Núcleo do Evento! era um portal de casamentos e eventos movido a Joomla para Joinville, Brasil — com loja de e-commerce, editorial de fotografia, chat ao vivo e ferramentas de comunidade, no ar de 2004 a 2017.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "Núcleo do Evento! was a Brazilian wedding and event web portal serving Joinville and the surrounding region of Santa Catarina. Launched in 2004, it was designed as a one-stop destination for couples, wedding photographers, event organizers, and suppliers involved in weddings, 15th birthday celebrations (_debutante_), and corporate events.",
         "Built on Joomla 1.x CMS with a fully custom template and Flash-animated logo, the site integrated a VirtueMArt online store selling wedding supplies (costumes, party accessories, and decorations), an editorial blog with photography tips and planning articles for brides, a live chat room, Google Maps for venue discovery, and multi-format RSS feeds to keep subscribers updated on new photography content and products.",
         "The platform doubled as a regional SEO vehicle: the homepage covered virtually every Portuguese-language search term related to weddings, wedding photography, and events in Joinville — driving organic discovery to the supplier directory and storefront. Built and maintained by Leonardo Lima de Vasconcellos, the site remained live from 2004 through 2017, over a decade on the same Joomla installation. This repository is an archived version of the live site, preserved via wget crawl alongside the original Joomla source tree.",
-        "**Key features — what was built and why it mattered:**"
+        "**Key features — what was built and why it mattered:**",
       ],
-      "pt": [
+      pt: [
         "O Núcleo do Evento! era um portal web brasileiro de casamentos e eventos atendendo Joinville e a região do entorno em Santa Catarina. Lançado em 2004, foi projetado como um destino único para casais, fotógrafos de casamento, organizadores de eventos e fornecedores envolvidos em casamentos, festas de 15 anos (debutantes) e eventos corporativos.",
         "Construído sobre o CMS Joomla 1.x com um template totalmente sob medida e logo animado em Flash, o site integrava uma loja online VirtueMart vendendo artigos para casamento (fantasias, acessórios de festa e decorações), um blog editorial com dicas de fotografia e artigos de planejamento para noivas, uma sala de chat ao vivo, o Google Maps para descoberta de locais e feeds RSS em múltiplos formatos para manter os assinantes atualizados sobre novos conteúdos de fotografia e produtos.",
         "A plataforma funcionava também como um veículo de SEO regional: a home cobria praticamente todo termo de busca em português relacionado a casamentos, fotografia de casamento e eventos em Joinville — impulsionando a descoberta orgânica para o diretório de fornecedores e para a loja. Construído e mantido por Leonardo Lima de Vasconcellos, o site permaneceu no ar de 2004 a 2017, mais de uma década na mesma instalação Joomla. Este repositório é uma versão arquivada do site no ar, preservada por rastreamento wget ao lado da árvore de código-fonte original do Joomla.",
-        "**Principais recursos — o que foi construído e por que importou:**"
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Regional wedding and event hub",
-          "pt": "Hub regional de casamentos e eventos"
-        },
-        "body": {
-          "en": "a custom-templated portal for Joinville aggregating photography vendors, suppliers, and editorial content, giving couples and organizers a single planning destination and sparing suppliers from maintaining standalone sites",
-          "pt": "um portal com template sob medida para Joinville agregando fotógrafos, fornecedores e conteúdo editorial, dando a casais e organizadores um único destino de planejamento e poupando os fornecedores de manter sites próprios"
-        }
-      },
-      {
-        "heading": {
-          "en": "Integrated e-commerce store",
-          "pt": "Loja de e-commerce integrada"
-        },
-        "body": {
-          "en": "VirtueMart product categories (costumes, wedding accessories, decorations) with search and cart, enabling direct online sales of event and wedding supplies alongside the editorial content",
-          "pt": "categorias de produtos VirtueMart (fantasias, acessórios de casamento, decorações) com busca e carrinho, permitindo a venda direta online de artigos de eventos e casamentos ao lado do conteúdo editorial"
-        }
-      },
-      {
-        "heading": {
-          "en": "Community engagement platform",
-          "pt": "Plataforma de engajamento da comunidade"
-        },
-        "body": {
-          "en": "live chat, maps, registration, audience polling, and multi-format RSS feeds that served brides, photographers, and vendors across the site's 13-year lifespan",
-          "pt": "chat ao vivo, mapas, cadastro, enquetes de público e feeds RSS em múltiplos formatos que serviram noivas, fotógrafos e fornecedores ao longo dos 13 anos de vida do site"
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "PHP",
-        "version": "4.x/5.x",
-        "icon": "/devicons/php-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
-      },
-      {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "Joomla",
-        "version": "1.0.x",
-        "icon": "/devicons/joomla.svg"
-      },
-      {
-        "name": "MySQL",
-        "version": "4.x",
-        "icon": "/devicons/mysql-original.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/nucleo-do-evento/screenshots/asa-de-borboleta-pequena.png"
-      },
-      {
-        "src": "/projects/nucleo-do-evento/screenshots/contato.png"
-      },
-      {
-        "src": "/projects/nucleo-do-evento/screenshots/nucleo-do-evento.png"
-      },
-      {
-        "src": "/projects/nucleo-do-evento/screenshots/nucleo-do-evento-seu-evento-em-jonville-e-regiao.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "resgate",
-    "year": "2004",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/resgate",
-    "logo": "/projects/resgate/resgate-logo.png",
-    "name": {
-      "en": "Resgate Construções",
-      "pt": "Resgate Construções"
-    },
-    "tagline": {
-      "en": "A marketing site for Resgate Construções, a precast-concrete homebuilder in Joinville, Brazil, showcasing house models, completed projects, and government-financing options for prospective homeowners.",
-      "pt": "Um site de marketing para a Resgate Construções, construtora de casas em concreto pré-moldado em Joinville, Brasil, exibindo modelos de casas, projetos concluídos e opções de financiamento governamental para futuros proprietários."
-    },
-    "kicker": {
-      "en": "// construction · precast concrete homes",
-      "pt": "// construção · casas em concreto pré-moldado"
-    },
-    "intro": {
-      "en": "A Joomla-based marketing site for Resgate Construções, a precast-concrete homebuilder in Joinville, Brazil, showcasing house models, finished builds, and financing options for prospective homeowners.",
-      "pt": "Um site de marketing baseado em Joomla para a Resgate Construções, construtora de casas em concreto pré-moldado em Joinville, Brasil, exibindo modelos de casas, construções finalizadas e opções de financiamento para futuros proprietários."
-    },
-    "body": {
-      "en": [
-        "Resgate Construções builds precast concrete homes in Joinville, Santa Catarina, Brazil, under the technical responsibility of civil engineer Cláudio Barreto (CREA-SC 59203-9). This site served as the company's digital storefront: a Joomla 1.5 CMS site presenting the company's mission, model homes (Compacto, com Varanda, Personalizado), photo galleries of completed and in-progress builds, and financing options tied to Caixa Econômica Federal's Minha Casa Minha Vida program.",
-        "The project is preserved here as an archive: the original Joomla 1.5 / PHP 5.6 codebase runs inside a Docker container (PHP 5.6 + Apache, MySQL 5.7) so the legacy site can still be rebuilt and viewed locally, with a `rip/` directory holding an HTTrack-crawled static snapshot of the live site for reference."
+        "**Principais recursos — o que foi construído e por que importou:**",
       ],
-      "pt": [
-        "A Resgate Construções constrói casas em concreto pré-moldado em Joinville, Santa Catarina, Brasil, sob a responsabilidade técnica do engenheiro civil Cláudio Barreto (CREA-SC 59203-9). Este site serviu como a vitrine digital da empresa: um site com CMS Joomla 1.5 apresentando a missão da empresa, modelos de casas (Compacto, com Varanda, Personalizado), galerias de fotos de construções concluídas e em andamento, e opções de financiamento vinculadas ao programa Minha Casa Minha Vida da Caixa Econômica Federal.",
-        "O projeto é preservado aqui como um arquivo: a base de código original em Joomla 1.5 / PHP 5.6 roda dentro de um contêiner Docker (PHP 5.6 + Apache, MySQL 5.7) para que o site legado ainda possa ser reconstruído e visualizado localmente, com um diretório `rip/` guardando um snapshot estático do site no ar rastreado por HTTrack para referência."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Professional online catalog",
-          "pt": "Catálogo online profissional"
+        heading: {
+          en: "Regional wedding and event hub",
+          pt: "Hub regional de casamentos e eventos",
         },
-        "body": {
-          "en": "a full custom-templated site giving a small precast-housing contractor a professional catalog and lead channel beyond word-of-mouth",
-          "pt": "um site com template totalmente sob medida dando a uma pequena construtora de casas pré-moldadas um catálogo profissional e um canal de leads para além do boca a boca"
-        }
+        body: {
+          en: "a custom-templated portal for Joinville aggregating photography vendors, suppliers, and editorial content, giving couples and organizers a single planning destination and sparing suppliers from maintaining standalone sites",
+          pt: "um portal com template sob medida para Joinville agregando fotógrafos, fornecedores e conteúdo editorial, dando a casais e organizadores um único destino de planejamento e poupando os fornecedores de manter sites próprios",
+        },
       },
       {
-        "heading": {
-          "en": "Visual project galleries",
-          "pt": "Galerias visuais de projetos"
+        heading: {
+          en: "Integrated e-commerce store",
+          pt: "Loja de e-commerce integrada",
         },
-        "body": {
-          "en": "photo sets of completed and in-progress builds that gave prospective buyers visual proof of structural quality before requesting a quote",
-          "pt": "conjuntos de fotos de construções concluídas e em andamento que davam aos potenciais compradores prova visual da qualidade estrutural antes de solicitar um orçamento"
-        }
+        body: {
+          en: "VirtueMart product categories (costumes, wedding accessories, decorations) with search and cart, enabling direct online sales of event and wedding supplies alongside the editorial content",
+          pt: "categorias de produtos VirtueMart (fantasias, acessórios de casamento, decorações) com busca e carrinho, permitindo a venda direta online de artigos de eventos e casamentos ao lado do conteúdo editorial",
+        },
       },
       {
-        "heading": {
-          "en": "Trust-building credentials",
-          "pt": "Credenciais que constroem confiança"
+        heading: {
+          en: "Community engagement platform",
+          pt: "Plataforma de engajamento da comunidade",
         },
-        "body": {
-          "en": "financing details (Caixa Econômica Federal / Minha Casa Minha Vida) and the responsible engineer's CREA registration surfaced directly on the site, reducing friction for budget-conscious homebuyers",
-          "pt": "detalhes de financiamento (Caixa Econômica Federal / Minha Casa Minha Vida) e o registro no CREA do engenheiro responsável exibidos diretamente no site, reduzindo o atrito para compradores atentos ao orçamento"
-        }
-      }
+        body: {
+          en: "live chat, maps, registration, audience polling, and multi-format RSS feeds that served brides, photographers, and vendors across the site's 13-year lifespan",
+          pt: "chat ao vivo, mapas, cadastro, enquetes de público e feeds RSS em múltiplos formatos que serviram noivas, fotógrafos e fornecedores ao longo dos 13 anos de vida do site",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "JavaScript",
-        "version": "ES5",
-        "icon": "/devicons/javascript-original.svg"
+        name: "PHP",
+        version: "4.x/5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "PHP",
-        "version": "5.6",
-        "icon": "/devicons/php-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "Joomla!",
-        "version": "1.5",
-        "icon": "/devicons/joomla.svg"
+        name: "Joomla",
+        version: "1.0.x",
+        icon: "/devicons/joomla.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.7",
-        "icon": "/devicons/mysql-original.svg"
+        name: "MySQL",
+        version: "4.x",
+        icon: "/devicons/mysql-original.svg",
       },
-      {
-        "name": "Docker",
-        "version": "Compose",
-        "icon": "/devicons/docker-original.svg"
-      }
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/resgate/screenshots/site-resgate.jpg",
-        "featured": true
-      }
-    ]
+        src: "/projects/nucleo-do-evento/screenshots/asa-de-borboleta-pequena.png",
+      },
+      {
+        src: "/projects/nucleo-do-evento/screenshots/contato.png",
+      },
+      {
+        src: "/projects/nucleo-do-evento/screenshots/nucleo-do-evento.png",
+      },
+      {
+        src: "/projects/nucleo-do-evento/screenshots/nucleo-do-evento-seu-evento-em-jonville-e-regiao.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "agenda-ead",
-    "year": "2003",
-    "pinned": false,
-    "liveUrl": "https://leonardo-vasconcellos.vercel.app/portfolio/agenda-ead",
-    "logo": "📅",
-    "isLogoEmoji": true,
-    "name": {
-      "en": "E-Learning Scheduler",
-      "pt": "Agenda EAD"
+    slug: "resgate",
+    year: "2004",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/resgate",
+    logo: "/projects/resgate/resgate-logo.png",
+    name: {
+      en: "Resgate Construções",
+      pt: "Resgate Construções",
     },
-    "tagline": {
-      "en": "A PHP/MySQL web application for managing academic schedules, appointments, and activities in a distance-learning (EAD) environment.",
-      "pt": "Uma aplicação web em PHP/MySQL para gerenciar cronogramas acadêmicos, compromissos e atividades em um ambiente de ensino a distância (EAD)."
+    tagline: {
+      en: "A marketing site for Resgate Construções, a precast-concrete homebuilder in Joinville, Brazil, showcasing house models, completed projects, and government-financing options for prospective homeowners.",
+      pt: "Um site de marketing para a Resgate Construções, construtora de casas em concreto pré-moldado em Joinville, Brasil, exibindo modelos de casas, projetos concluídos e opções de financiamento governamental para futuros proprietários.",
     },
-    "kicker": {
-      "en": "// academic calendar · distance learning platform",
-      "pt": "// calendário acadêmico · plataforma de ensino a distância"
+    kicker: {
+      en: "// construction · precast concrete homes",
+      pt: "// construção · casas em concreto pré-moldado",
     },
-    "intro": {
-      "en": "A PHP/MySQL web application for managing academic schedules, appointments, and activities in a distance-learning (EAD) environment.",
-      "pt": "Uma aplicação web em PHP/MySQL para gerenciar cronogramas acadêmicos, compromissos e atividades em um ambiente de ensino a distância (EAD)."
+    intro: {
+      en: "A Joomla-based marketing site for Resgate Construções, a precast-concrete homebuilder in Joinville, Brazil, showcasing house models, finished builds, and financing options for prospective homeowners.",
+      pt: "Um site de marketing baseado em Joomla para a Resgate Construções, construtora de casas em concreto pré-moldado em Joinville, Brasil, exibindo modelos de casas, construções finalizadas e opções de financiamento para futuros proprietários.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
+        "Resgate Construções builds precast concrete homes in Joinville, Santa Catarina, Brazil, under the technical responsibility of civil engineer Cláudio Barreto (CREA-SC 59203-9). This site served as the company's digital storefront: a Joomla 1.5 CMS site presenting the company's mission, model homes (Compacto, com Varanda, Personalizado), photo galleries of completed and in-progress builds, and financing options tied to Caixa Econômica Federal's Minha Casa Minha Vida program.",
+        "The project is preserved here as an archive: the original Joomla 1.5 / PHP 5.6 codebase runs inside a Docker container (PHP 5.6 + Apache, MySQL 5.7) so the legacy site can still be rebuilt and viewed locally, with a `rip/` directory holding an HTTrack-crawled static snapshot of the live site for reference.",
+      ],
+      pt: [
+        "A Resgate Construções constrói casas em concreto pré-moldado em Joinville, Santa Catarina, Brasil, sob a responsabilidade técnica do engenheiro civil Cláudio Barreto (CREA-SC 59203-9). Este site serviu como a vitrine digital da empresa: um site com CMS Joomla 1.5 apresentando a missão da empresa, modelos de casas (Compacto, com Varanda, Personalizado), galerias de fotos de construções concluídas e em andamento, e opções de financiamento vinculadas ao programa Minha Casa Minha Vida da Caixa Econômica Federal.",
+        "O projeto é preservado aqui como um arquivo: a base de código original em Joomla 1.5 / PHP 5.6 roda dentro de um contêiner Docker (PHP 5.6 + Apache, MySQL 5.7) para que o site legado ainda possa ser reconstruído e visualizado localmente, com um diretório `rip/` guardando um snapshot estático do site no ar rastreado por HTTrack para referência.",
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Professional online catalog",
+          pt: "Catálogo online profissional",
+        },
+        body: {
+          en: "a full custom-templated site giving a small precast-housing contractor a professional catalog and lead channel beyond word-of-mouth",
+          pt: "um site com template totalmente sob medida dando a uma pequena construtora de casas pré-moldadas um catálogo profissional e um canal de leads para além do boca a boca",
+        },
+      },
+      {
+        heading: {
+          en: "Visual project galleries",
+          pt: "Galerias visuais de projetos",
+        },
+        body: {
+          en: "photo sets of completed and in-progress builds that gave prospective buyers visual proof of structural quality before requesting a quote",
+          pt: "conjuntos de fotos de construções concluídas e em andamento que davam aos potenciais compradores prova visual da qualidade estrutural antes de solicitar um orçamento",
+        },
+      },
+      {
+        heading: {
+          en: "Trust-building credentials",
+          pt: "Credenciais que constroem confiança",
+        },
+        body: {
+          en: "financing details (Caixa Econômica Federal / Minha Casa Minha Vida) and the responsible engineer's CREA registration surfaced directly on the site, reducing friction for budget-conscious homebuyers",
+          pt: "detalhes de financiamento (Caixa Econômica Federal / Minha Casa Minha Vida) e o registro no CREA do engenheiro responsável exibidos diretamente no site, reduzindo o atrito para compradores atentos ao orçamento",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "JavaScript",
+        version: "ES5",
+        icon: "/devicons/javascript-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "PHP",
+        version: "5.6",
+        icon: "/devicons/php-original.svg",
+      },
+      {
+        name: "Joomla!",
+        version: "1.5",
+        icon: "/devicons/joomla.svg",
+      },
+      {
+        name: "MySQL",
+        version: "5.7",
+        icon: "/devicons/mysql-original.svg",
+      },
+      {
+        name: "Docker",
+        version: "Compose",
+        icon: "/devicons/docker-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/resgate/screenshots/site-resgate.jpg",
+        featured: true,
+      },
+    ],
+  },
+  {
+    slug: "agenda-ead",
+    year: "2003",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://leonardo-vasconcellos.vercel.app/portfolio/agenda-ead",
+    logo: "📅",
+    isLogoEmoji: true,
+    name: {
+      en: "E-Learning Scheduler",
+      pt: "Agenda EAD",
+    },
+    tagline: {
+      en: "A PHP/MySQL web application for managing academic schedules, appointments, and activities in a distance-learning (EAD) environment.",
+      pt: "Uma aplicação web em PHP/MySQL para gerenciar cronogramas acadêmicos, compromissos e atividades em um ambiente de ensino a distância (EAD).",
+    },
+    kicker: {
+      en: "// academic calendar · distance learning platform",
+      pt: "// calendário acadêmico · plataforma de ensino a distância",
+    },
+    intro: {
+      en: "A PHP/MySQL web application for managing academic schedules, appointments, and activities in a distance-learning (EAD) environment.",
+      pt: "Uma aplicação web em PHP/MySQL para gerenciar cronogramas acadêmicos, compromissos e atividades em um ambiente de ensino a distância (EAD).",
+    },
+    body: {
+      en: [
         "E-Learning Scheduler is a browser-based academic management platform built for distance-learning (EAD) institutions. It gives professors and students a shared scheduling environment where three types of academic activities — appointments (*compromissos*), tasks (*tarefas*), and events (*eventos*) — are tracked on a navigable calendar.",
         "The calendar supports daily, weekly, and monthly views. Days with scheduled items are highlighted; clicking any marked date reveals the activities due that day or week. A background motor script handles automated email reminders, dispatching notifications to users ahead of their scheduled appointments.",
         "Access is governed by a three-tier role system: administrators configure the platform and manage all users; professors create and assign activities scoped to specific courses and classes; and students see only the activities relevant to their enrollment and group membership. Personal contact lists and a built-in Q&A help panel round out the feature set.",
-        "The MySQL schema covers seven entities — appointments, tasks, events, users, courses, classes, and contact groups — all linked by course and class identifiers so that activities reach precisely the right audience."
+        "The MySQL schema covers seven entities — appointments, tasks, events, users, courses, classes, and contact groups — all linked by course and class identifiers so that activities reach precisely the right audience.",
       ],
-      "pt": [
+      pt: [
         "O E-Learning Scheduler é uma plataforma de gestão acadêmica no navegador construída para instituições de ensino a distância (EAD). Ela dá a professores e alunos um ambiente compartilhado de agendamento em que três tipos de atividades acadêmicas — compromissos, tarefas e eventos — são acompanhados em um calendário navegável.",
         "O calendário suporta visões diária, semanal e mensal. Os dias com itens agendados são destacados; clicar em qualquer data marcada revela as atividades previstas para aquele dia ou semana. Um script motor em segundo plano cuida dos lembretes automáticos por e-mail, disparando notificações aos usuários antes de seus compromissos agendados.",
         "O acesso é governado por um sistema de papéis de três níveis: administradores configuram a plataforma e gerenciam todos os usuários; professores criam e atribuem atividades vinculadas a cursos e turmas específicos; e alunos veem apenas as atividades relevantes à sua matrícula e ao seu grupo. Listas de contatos pessoais e um painel de ajuda de perguntas e respostas embutido completam o conjunto de recursos.",
-        "O esquema MySQL cobre sete entidades — compromissos, tarefas, eventos, usuários, cursos, turmas e grupos de contatos — todas ligadas por identificadores de curso e turma para que as atividades cheguem precisamente ao público certo."
-      ]
+        "O esquema MySQL cobre sete entidades — compromissos, tarefas, eventos, usuários, cursos, turmas e grupos de contatos — todas ligadas por identificadores de curso e turma para que as atividades cheguem precisamente ao público certo.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Automated email reminder motor",
-          "pt": "Motor de lembretes automáticos por e-mail"
+        heading: {
+          en: "Automated email reminder motor",
+          pt: "Motor de lembretes automáticos por e-mail",
         },
-        "body": {
-          "en": "I built a standalone background script (`motor.php`) that scans the schedule and dispatches reminder emails ahead of each deadline, cutting missed appointments and freeing staff from manually chasing students.",
-          "pt": "Construí um script de fundo autônomo (`motor.php`) que varre a agenda e dispara e-mails de lembrete antes de cada prazo, reduzindo compromissos perdidos e liberando a equipe de cobrar os alunos manualmente."
-        }
+        body: {
+          en: "I built a standalone background script (`motor.php`) that scans the schedule and dispatches reminder emails ahead of each deadline, cutting missed appointments and freeing staff from manually chasing students.",
+          pt: "Construí um script de fundo autônomo (`motor.php`) que varre a agenda e dispara e-mails de lembrete antes de cada prazo, reduzindo compromissos perdidos e liberando a equipe de cobrar os alunos manualmente.",
+        },
       },
       {
-        "heading": {
-          "en": "Role-scoped access control",
-          "pt": "Controle de acesso por papel"
+        heading: {
+          en: "Role-scoped access control",
+          pt: "Controle de acesso por papel",
         },
-        "body": {
-          "en": "I implemented a three-tier permission system (admin, professor, student) so every user sees only the activities tied to their courses, classes, and groups, keeping the platform trustworthy at institutional scale and reducing support overhead.",
-          "pt": "Implementei um sistema de permissões de três níveis (admin, professor, aluno) para que cada usuário veja apenas as atividades vinculadas a seus cursos, turmas e grupos, mantendo a plataforma confiável em escala institucional e reduzindo o overhead de suporte."
-        }
+        body: {
+          en: "I implemented a three-tier permission system (admin, professor, student) so every user sees only the activities tied to their courses, classes, and groups, keeping the platform trustworthy at institutional scale and reducing support overhead.",
+          pt: "Implementei um sistema de permissões de três níveis (admin, professor, aluno) para que cada usuário veja apenas as atividades vinculadas a seus cursos, turmas e grupos, mantendo a plataforma confiável em escala institucional e reduzindo o overhead de suporte.",
+        },
       },
       {
-        "heading": {
-          "en": "Multi-view calendar with course-targeted activities",
-          "pt": "Calendário multivisão com atividades direcionadas por curso"
+        heading: {
+          en: "Multi-view calendar with course-targeted activities",
+          pt: "Calendário multivisão com atividades direcionadas por curso",
         },
-        "body": {
-          "en": "I designed a daily/weekly/monthly calendar that highlights active days and joins appointments, tasks, and events to course and class identifiers, so announcements reach exactly the right audience and boost student engagement.",
-          "pt": "Projetei um calendário diário/semanal/mensal que destaca os dias ativos e vincula compromissos, tarefas e eventos a identificadores de curso e turma, para que os avisos cheguem exatamente ao público certo e aumentem o engajamento dos alunos."
-        }
-      }
+        body: {
+          en: "I designed a daily/weekly/monthly calendar that highlights active days and joins appointments, tasks, and events to course and class identifiers, so announcements reach exactly the right audience and boost student engagement.",
+          pt: "Projetei um calendário diário/semanal/mensal que destaca os dias ativos e vincula compromissos, tarefas e eventos a identificadores de curso e turma, para que os avisos cheguem exatamente ao público certo e aumentem o engajamento dos alunos.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "ES3",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        version: "ES3",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.x",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        version: "5.x",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/agenda-ead/screenshots/admin-change-password.png"
+        src: "/projects/agenda-ead/screenshots/admin-change-password.png",
       },
       {
-        "src": "/projects/agenda-ead/screenshots/admin-setup.png"
+        src: "/projects/agenda-ead/screenshots/admin-setup.png",
       },
       {
-        "src": "/projects/agenda-ead/screenshots/appointment.png"
+        src: "/projects/agenda-ead/screenshots/appointment.png",
       },
       {
-        "src": "/projects/agenda-ead/screenshots/help.png"
+        src: "/projects/agenda-ead/screenshots/help.png",
       },
       {
-        "src": "/projects/agenda-ead/screenshots/new-student.png"
+        src: "/projects/agenda-ead/screenshots/new-student.png",
       },
       {
-        "src": "/projects/agenda-ead/screenshots/calendar.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/agenda-ead/screenshots/calendar.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "quantic-solutions",
-    "year": "2003",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/quantic-solutions",
-    "logo": "/projects/quantic-solutions/quantic-solutions-logo.gif",
-    "name": {
-      "en": "Quantic Solutions Portal & CMS",
-      "pt": "Quantic Solutions Portal & CMS"
+    slug: "quantic-solutions",
+    year: "2003",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/quantic-solutions",
+    logo: "/projects/quantic-solutions/quantic-solutions-logo.gif",
+    name: {
+      en: "Quantic Solutions Portal & CMS",
+      pt: "Quantic Solutions Portal & CMS",
     },
-    "tagline": {
-      "en": "A from-scratch bilingual CMS and corporate portal for Quantic Solutions, a Brazilian pre-press software vendor — giving non-technical staff full control over content, leads, and job postings without touching code.",
-      "pt": "Um CMS bilíngue e portal corporativo construídos do zero para a Quantic Solutions, uma fornecedora brasileira de software de pré-impressão — dando à equipe não técnica controle total sobre conteúdo, leads e vagas de emprego sem tocar em código."
+    tagline: {
+      en: "A from-scratch bilingual CMS and corporate portal for Quantic Solutions, a Brazilian pre-press software vendor — giving non-technical staff full control over content, leads, and job postings without touching code.",
+      pt: "Um CMS bilíngue e portal corporativo construídos do zero para a Quantic Solutions, uma fornecedora brasileira de software de pré-impressão — dando à equipe não técnica controle total sobre conteúdo, leads e vagas de emprego sem tocar em código.",
     },
-    "kicker": {
-      "en": "// custom CMS · graphic industry software",
-      "pt": "// cms sob medida · software para a indústria gráfica"
+    kicker: {
+      en: "// custom CMS · graphic industry software",
+      pt: "// cms sob medida · software para a indústria gráfica",
     },
-    "intro": {
-      "en": "Custom-built bilingual CMS and corporate site for Quantic Solutions, a Brazilian pre-press software vendor — letting non-technical staff manage content, news, partners, job postings, and client leads without ever touching code.",
-      "pt": "CMS bilíngue e site corporativo construídos sob medida para a Quantic Solutions, uma fornecedora brasileira de software de pré-impressão — permitindo à equipe não técnica gerenciar conteúdo, notícias, parceiros, vagas de emprego e leads de clientes sem nunca tocar em código."
+    intro: {
+      en: "Custom-built bilingual CMS and corporate site for Quantic Solutions, a Brazilian pre-press software vendor — letting non-technical staff manage content, news, partners, job postings, and client leads without ever touching code.",
+      pt: "CMS bilíngue e site corporativo construídos sob medida para a Quantic Solutions, uma fornecedora brasileira de software de pré-impressão — permitindo à equipe não técnica gerenciar conteúdo, notícias, parceiros, vagas de emprego e leads de clientes sem nunca tocar em código.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "Quantic Solutions (legally Quantic Softwares e Informática Ltda.) is a Brazilian technology company providing professional pre-press and remote-proofing software for the graphic industry. Its flagship products, **Octopus** (a modular SQL-backed pre-press workflow server tracking jobs from creation through delivery) and **Cyan eProof** (remote proofing), served print shops, ad agencies, and graphic service bureaus across Brazil — an industry the site itself describes as billing over R$6 billion/year, concentrated mostly in the Southeast and South.",
-        "This repository is the corporate website and the bespoke CMS built to run it: a bilingual (PT/EN) public site (home, company history, clients, solutions, services, partners, press, careers, contact) backed by a full custom admin panel for non-technical staff — user/group permissions, news and press-release publishing, partner and client management, job-opening postings with online applications, an image/file library, and newsletter capture. Everything from page copy to client logos to job listings could be updated by Quantic's own team, with zero developer involvement after launch."
+        "This repository is the corporate website and the bespoke CMS built to run it: a bilingual (PT/EN) public site (home, company history, clients, solutions, services, partners, press, careers, contact) backed by a full custom admin panel for non-technical staff — user/group permissions, news and press-release publishing, partner and client management, job-opening postings with online applications, an image/file library, and newsletter capture. Everything from page copy to client logos to job listings could be updated by Quantic's own team, with zero developer involvement after launch.",
       ],
-      "pt": [
+      pt: [
         "A Quantic Solutions (juridicamente Quantic Softwares e Informática Ltda.) é uma empresa brasileira de tecnologia que fornece software profissional de pré-impressão e prova remota para a indústria gráfica. Seus produtos principais, o **Octopus** (um servidor modular de fluxo de pré-impressão apoiado em SQL que acompanha os trabalhos da criação à entrega) e o **Cyan eProof** (prova remota), atendiam gráficas, agências de publicidade e bureaus de serviços gráficos de todo o Brasil — um setor que o próprio site descreve como faturando mais de R$6 bilhões/ano, concentrado majoritariamente no Sudeste e no Sul.",
-        "Este repositório é o site corporativo e o CMS sob medida construído para operá-lo: um site público bilíngue (PT/EN) (home, história da empresa, clientes, soluções, serviços, parceiros, imprensa, carreiras, contato) apoiado por um painel administrativo totalmente sob medida para a equipe não técnica — permissões de usuário/grupo, publicação de notícias e releases de imprensa, gestão de parceiros e clientes, publicação de vagas com candidaturas online, uma biblioteca de imagens/arquivos e captação de newsletter. Tudo, do texto das páginas aos logos de clientes e às listagens de vagas, podia ser atualizado pela própria equipe da Quantic, com zero envolvimento de desenvolvedor após o lançamento."
-      ]
-    },
-    "features": [
-      {
-        "heading": {
-          "en": "Full custom admin CMS",
-          "pt": "CMS administrativo totalmente sob medida"
-        },
-        "body": {
-          "en": "a from-scratch back office (users, permissions, news, partners, job postings, client portal) that let Quantic's staff manage the entire site without ever calling a developer",
-          "pt": "um back office construído do zero (usuários, permissões, notícias, parceiros, vagas de emprego, portal do cliente) que permitia à equipe da Quantic gerenciar o site inteiro sem nunca chamar um desenvolvedor"
-        }
-      },
-      {
-        "heading": {
-          "en": "Self-service lead capture",
-          "pt": "Captação de leads self-service"
-        },
-        "body": {
-          "en": "a newsletter and lead-capture system wired directly into the public site, turning every visitor into a trackable lead for the company's B2B sales pipeline",
-          "pt": "um sistema de newsletter e captação de leads conectado diretamente ao site público, transformando cada visitante em um lead rastreável para o pipeline de vendas B2B da empresa"
-        }
-      },
-      {
-        "heading": {
-          "en": "Client/partner extranet",
-          "pt": "Extranet de clientes/parceiros"
-        },
-        "body": {
-          "en": "an \"área exclusiva para clientes, colaboradores e parceiros\" giving customers direct access to services and documents, cutting support overhead while reinforcing a tech-forward image in a traditionally analog industry",
-          "pt": "uma \"área exclusiva para clientes, colaboradores e parceiros\" dando aos clientes acesso direto a serviços e documentos, cortando o overhead de suporte e reforçando uma imagem inovadora em um setor tradicionalmente analógico"
-        }
-      }
-    ],
-    "tech": [
-      {
-        "name": "PHP",
-        "version": "5.x",
-        "icon": "/devicons/php-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "icon": "/devicons/javascript-original.svg"
-      },
-      {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
-      },
-      {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
-      },
-      {
-        "name": "MySQL",
-        "version": "5.0",
-        "icon": "/devicons/mysql-original.svg"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/quantic-solutions/screenshots/quantic-solutions-1.png"
-      },
-      {
-        "src": "/projects/quantic-solutions/screenshots/quantic-solutions-2.png"
-      },
-      {
-        "src": "/projects/quantic-solutions/screenshots/quantic-solutions-3.png"
-      },
-      {
-        "src": "/projects/quantic-solutions/screenshots/quantic-solutions-4.png"
-      },
-      {
-        "src": "/projects/quantic-solutions/screenshots/quantic-solutions-5.png"
-      },
-      {
-        "src": "/projects/quantic-solutions/screenshots/quantic-solutions-6.png"
-      },
-      {
-        "src": "/projects/quantic-solutions/screenshots/quantic-solutions.png"
-      },
-      {
-        "src": "/projects/quantic-solutions/screenshots/quantic-solutions-softwares-para-industria-grafica.png",
-        "featured": true
-      }
-    ]
-  },
-  {
-    "slug": "suleventos",
-    "year": "2003",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/suleventos",
-    "logo": "/projects/suleventos/suleventos-logo.gif",
-    "name": {
-      "en": "Sul Eventos",
-      "pt": "Sul Eventos"
-    },
-    "tagline": {
-      "en": "A custom-built PHP/MySQL event portal for Joinville, SC — connecting couples and event-goers with vendors, venues, and advertisers through a single white-labeled CMS.",
-      "pt": "Um portal de eventos em PHP/MySQL construído sob medida para Joinville, SC — conectando casais e frequentadores de eventos a fornecedores, locais e anunciantes por meio de um único CMS white-label."
-    },
-    "kicker": {
-      "en": "// event portal · wedding & vendor directory, Joinville-SC",
-      "pt": "// portal de eventos · diretório de casamentos & fornecedores, Joinville-SC"
-    },
-    "intro": {
-      "en": "A self-built event portal for Joinville, SC, centered on weddings — pairing a public events calendar with a vendor directory, advertiser banners, and a printable loyalty card that turned partner listings into a direct revenue channel.",
-      "pt": "Um portal de eventos construído do zero para Joinville, SC, centrado em casamentos — unindo um calendário público de eventos a um diretório de fornecedores, banners de anunciantes e um cartão de fidelidade imprimível que transformava as listagens de parceiros em um canal direto de receita."
-    },
-    "body": {
-      "en": [
-        "Sul Eventos was a self-built event portal serving Joinville and the broader Santa Catarina region, centered on weddings and milestone celebrations. Beyond a public-facing events calendar, the platform doubled as a small local-business marketplace: a categorized directory of vendors (photographers, dress shops, venues, caterers) each with their own photo gallery and contact page, an advertiser/banner system for paid placements, and a printable partner loyalty card that gave cardholders discounts across the network — directly monetizing the partner relationships the site curated. It also included a wedding gift registry, church and notary directories to help couples navigate ceremony logistics, a polls/tips section, and a live chat room. Everything — from the public site to the admin panel used to manage events, partners, and ads — was custom-built in PHP/MySQL, and the same engine was reused to power at least two other client deployments, Century Eventos and Fer Eventos."
+        "Este repositório é o site corporativo e o CMS sob medida construído para operá-lo: um site público bilíngue (PT/EN) (home, história da empresa, clientes, soluções, serviços, parceiros, imprensa, carreiras, contato) apoiado por um painel administrativo totalmente sob medida para a equipe não técnica — permissões de usuário/grupo, publicação de notícias e releases de imprensa, gestão de parceiros e clientes, publicação de vagas com candidaturas online, uma biblioteca de imagens/arquivos e captação de newsletter. Tudo, do texto das páginas aos logos de clientes e às listagens de vagas, podia ser atualizado pela própria equipe da Quantic, com zero envolvimento de desenvolvedor após o lançamento.",
       ],
-      "pt": [
-        "O Sul Eventos era um portal de eventos construído do zero atendendo Joinville e a região mais ampla de Santa Catarina, centrado em casamentos e celebrações marcantes. Além de um calendário de eventos voltado ao público, a plataforma funcionava também como um pequeno marketplace de negócios locais: um diretório categorizado de fornecedores (fotógrafos, lojas de vestidos, locais, buffets), cada um com sua própria galeria de fotos e página de contato, um sistema de anunciantes/banners para inserções pagas, e um cartão de fidelidade de parceiros imprimível que dava aos portadores descontos por toda a rede — monetizando diretamente as relações de parceria que o site curava. Também incluía uma lista de presentes de casamento, diretórios de igrejas e cartórios para ajudar os casais a navegar pela logística da cerimônia, uma seção de enquetes/dicas e uma sala de chat ao vivo. Tudo — do site público ao painel administrativo usado para gerenciar eventos, parceiros e anúncios — foi construído sob medida em PHP/MySQL, e o mesmo motor foi reaproveitado para dar vida a pelo menos duas outras implantações de clientes, a Century Eventos e a Fer Eventos."
-      ]
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Full custom CMS",
-          "pt": "CMS totalmente sob medida"
+        heading: {
+          en: "Full custom admin CMS",
+          pt: "CMS administrativo totalmente sob medida",
         },
-        "body": {
-          "en": "a from-scratch admin panel with content wizards, so non-technical staff could manage events, vendors, and ads without touching code",
-          "pt": "um painel administrativo construído do zero com assistentes de conteúdo, para que a equipe não técnica pudesse gerenciar eventos, fornecedores e anúncios sem tocar em código"
-        }
+        body: {
+          en: "a from-scratch back office (users, permissions, news, partners, job postings, client portal) that let Quantic's staff manage the entire site without ever calling a developer",
+          pt: "um back office construído do zero (usuários, permissões, notícias, parceiros, vagas de emprego, portal do cliente) que permitia à equipe da Quantic gerenciar o site inteiro sem nunca chamar um desenvolvedor",
+        },
       },
       {
-        "heading": {
-          "en": "Vendor directory and loyalty program",
-          "pt": "Diretório de fornecedores e programa de fidelidade"
+        heading: {
+          en: "Self-service lead capture",
+          pt: "Captação de leads self-service",
         },
-        "body": {
-          "en": "a directory paired with a printable discount card for advertisers, turning the site into a direct revenue channel via paid listings and banner ads",
-          "pt": "um diretório somado a um cartão de descontos imprimível para anunciantes, transformando o site em um canal direto de receita via listagens pagas e banners de anúncio"
-        }
+        body: {
+          en: "a newsletter and lead-capture system wired directly into the public site, turning every visitor into a trackable lead for the company's B2B sales pipeline",
+          pt: "um sistema de newsletter e captação de leads conectado diretamente ao site público, transformando cada visitante em um lead rastreável para o pipeline de vendas B2B da empresa",
+        },
       },
       {
-        "heading": {
-          "en": "White-label reusable platform",
-          "pt": "Plataforma reutilizável white-label"
+        heading: {
+          en: "Client/partner extranet",
+          pt: "Extranet de clientes/parceiros",
         },
-        "body": {
-          "en": "a codebase engineered to be re-skinned across multiple client sites (Century Eventos, Fer Eventos), multiplying the return on a single build",
-          "pt": "uma base de código projetada para ser re-skinada em múltiplos sites de clientes (Century Eventos, Fer Eventos), multiplicando o retorno de uma única construção"
-        }
-      }
+        body: {
+          en: 'an "área exclusiva para clientes, colaboradores e parceiros" giving customers direct access to services and documents, cutting support overhead while reinforcing a tech-forward image in a traditionally analog industry',
+          pt: 'uma "área exclusiva para clientes, colaboradores e parceiros" dando aos clientes acesso direto a serviços e documentos, cortando o overhead de suporte e reforçando uma imagem inovadora em um setor tradicionalmente analógico',
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "PHP",
-        "version": "4 / 5",
-        "icon": "/devicons/php-original.svg"
+        name: "PHP",
+        version: "5.x",
+        icon: "/devicons/php-original.svg",
       },
       {
-        "name": "JavaScript",
-        "icon": "/devicons/javascript-original.svg"
+        name: "JavaScript",
+        icon: "/devicons/javascript-original.svg",
       },
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "MySQL",
-        "version": "5.0",
-        "icon": "/devicons/mysql-original.svg"
-      }
+        name: "MySQL",
+        version: "5.0",
+        icon: "/devicons/mysql-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina-1.png"
+        src: "/projects/quantic-solutions/screenshots/quantic-solutions-1.png",
       },
       {
-        "src": "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina-2.png"
+        src: "/projects/quantic-solutions/screenshots/quantic-solutions-2.png",
       },
       {
-        "src": "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina-3.png"
+        src: "/projects/quantic-solutions/screenshots/quantic-solutions-3.png",
       },
       {
-        "src": "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina-4.png"
+        src: "/projects/quantic-solutions/screenshots/quantic-solutions-4.png",
       },
       {
-        "src": "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina-5.png"
+        src: "/projects/quantic-solutions/screenshots/quantic-solutions-5.png",
       },
       {
-        "src": "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina.png"
+        src: "/projects/quantic-solutions/screenshots/quantic-solutions-6.png",
       },
       {
-        "src": "/projects/suleventos/screenshots/centuryeventos-com-br.png"
+        src: "/projects/quantic-solutions/screenshots/quantic-solutions.png",
       },
       {
-        "src": "/projects/suleventos/screenshots/centuryeventos-com-br-1.png"
+        src: "/projects/quantic-solutions/screenshots/quantic-solutions-softwares-para-industria-grafica.png",
+        featured: true,
       },
-      {
-        "src": "/projects/suleventos/screenshots/centuryeventos-com-br-2.png"
-      },
-      {
-        "src": "/projects/suleventos/screenshots/centuryeventos-com-br-3.png"
-      },
-      {
-        "src": "/projects/suleventos/screenshots/centuryeventos-com-br-4.png"
-      },
-      {
-        "src": "/projects/suleventos/screenshots/centuryeventos-com-br-5.png"
-      },
-      {
-        "src": "/projects/suleventos/screenshots/suleventos-com-br.png"
-      },
-      {
-        "src": "/projects/suleventos/screenshots/suleventos-com-br-1.png"
-      },
-      {
-        "src": "/projects/suleventos/screenshots/suleventos-com-br-2.png"
-      },
-      {
-        "src": "/projects/suleventos/screenshots/suleventos-com-br-parceiros.png"
-      },
-      {
-        "src": "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina.png",
-        "featured": true
-      }
-    ]
+    ],
   },
   {
-    "slug": "websolutions",
-    "year": "2002",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/websolutions",
-    "logo": "🌐",
-    "isLogoEmoji": true,
-    "name": {
-      "en": "Web Solutions (Vasconcellos & Marcucci)",
-      "pt": "Web Solutions (Vasconcellos & Marcucci)"
+    slug: "suleventos",
+    year: "2003",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/suleventos",
+    logo: "/projects/suleventos/suleventos-logo.gif",
+    name: {
+      en: "Sul Eventos",
+      pt: "Sul Eventos",
     },
-    "tagline": {
-      "en": "A self-built marketing site for Web Solutions, an early-career freelance partnership offering webdesign, web portals, and custom systems development.",
-      "pt": "Um site de marketing construído do zero para a Web Solutions, uma parceria freelance de início de carreira oferecendo webdesign, portais web e desenvolvimento de sistemas sob medida."
+    tagline: {
+      en: "A custom-built PHP/MySQL event portal for Joinville, SC — connecting couples and event-goers with vendors, venues, and advertisers through a single white-labeled CMS.",
+      pt: "Um portal de eventos em PHP/MySQL construído sob medida para Joinville, SC — conectando casais e frequentadores de eventos a fornecedores, locais e anunciantes por meio de um único CMS white-label.",
     },
-    "kicker": {
-      "en": "// webdesign · freelance partnership",
-      "pt": "// webdesign · parceria freelance"
+    kicker: {
+      en: "// event portal · wedding & vendor directory, Joinville-SC",
+      pt: "// portal de eventos · diretório de casamentos & fornecedores, Joinville-SC",
     },
-    "intro": {
-      "en": "A self-built marketing site for Web Solutions, an early-career freelance partnership offering webdesign, web portals, and custom systems development.",
-      "pt": "Um site de marketing construído do zero para a Web Solutions, uma parceria freelance de início de carreira oferecendo webdesign, portais web e desenvolvimento de sistemas sob medida."
+    intro: {
+      en: "A self-built event portal for Joinville, SC, centered on weddings — pairing a public events calendar with a vendor directory, advertiser banners, and a printable loyalty card that turned partner listings into a direct revenue channel.",
+      pt: "Um portal de eventos construído do zero para Joinville, SC, centrado em casamentos — unindo um calendário público de eventos a um diretório de fornecedores, banners de anunciantes e um cartão de fidelidade imprimível que transformava as listagens de parceiros em um canal direto de receita.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
+        "Sul Eventos was a self-built event portal serving Joinville and the broader Santa Catarina region, centered on weddings and milestone celebrations. Beyond a public-facing events calendar, the platform doubled as a small local-business marketplace: a categorized directory of vendors (photographers, dress shops, venues, caterers) each with their own photo gallery and contact page, an advertiser/banner system for paid placements, and a printable partner loyalty card that gave cardholders discounts across the network — directly monetizing the partner relationships the site curated. It also included a wedding gift registry, church and notary directories to help couples navigate ceremony logistics, a polls/tips section, and a live chat room. Everything — from the public site to the admin panel used to manage events, partners, and ads — was custom-built in PHP/MySQL, and the same engine was reused to power at least two other client deployments, Century Eventos and Fer Eventos.",
+      ],
+      pt: [
+        "O Sul Eventos era um portal de eventos construído do zero atendendo Joinville e a região mais ampla de Santa Catarina, centrado em casamentos e celebrações marcantes. Além de um calendário de eventos voltado ao público, a plataforma funcionava também como um pequeno marketplace de negócios locais: um diretório categorizado de fornecedores (fotógrafos, lojas de vestidos, locais, buffets), cada um com sua própria galeria de fotos e página de contato, um sistema de anunciantes/banners para inserções pagas, e um cartão de fidelidade de parceiros imprimível que dava aos portadores descontos por toda a rede — monetizando diretamente as relações de parceria que o site curava. Também incluía uma lista de presentes de casamento, diretórios de igrejas e cartórios para ajudar os casais a navegar pela logística da cerimônia, uma seção de enquetes/dicas e uma sala de chat ao vivo. Tudo — do site público ao painel administrativo usado para gerenciar eventos, parceiros e anúncios — foi construído sob medida em PHP/MySQL, e o mesmo motor foi reaproveitado para dar vida a pelo menos duas outras implantações de clientes, a Century Eventos e a Fer Eventos.",
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Full custom CMS",
+          pt: "CMS totalmente sob medida",
+        },
+        body: {
+          en: "a from-scratch admin panel with content wizards, so non-technical staff could manage events, vendors, and ads without touching code",
+          pt: "um painel administrativo construído do zero com assistentes de conteúdo, para que a equipe não técnica pudesse gerenciar eventos, fornecedores e anúncios sem tocar em código",
+        },
+      },
+      {
+        heading: {
+          en: "Vendor directory and loyalty program",
+          pt: "Diretório de fornecedores e programa de fidelidade",
+        },
+        body: {
+          en: "a directory paired with a printable discount card for advertisers, turning the site into a direct revenue channel via paid listings and banner ads",
+          pt: "um diretório somado a um cartão de descontos imprimível para anunciantes, transformando o site em um canal direto de receita via listagens pagas e banners de anúncio",
+        },
+      },
+      {
+        heading: {
+          en: "White-label reusable platform",
+          pt: "Plataforma reutilizável white-label",
+        },
+        body: {
+          en: "a codebase engineered to be re-skinned across multiple client sites (Century Eventos, Fer Eventos), multiplying the return on a single build",
+          pt: "uma base de código projetada para ser re-skinada em múltiplos sites de clientes (Century Eventos, Fer Eventos), multiplicando o retorno de uma única construção",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "PHP",
+        version: "4 / 5",
+        icon: "/devicons/php-original.svg",
+      },
+      {
+        name: "JavaScript",
+        icon: "/devicons/javascript-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "MySQL",
+        version: "5.0",
+        icon: "/devicons/mysql-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina-1.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina-2.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina-3.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina-4.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina-5.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/centuryeventos-com-br.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/centuryeventos-com-br-1.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/centuryeventos-com-br-2.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/centuryeventos-com-br-3.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/centuryeventos-com-br-4.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/centuryeventos-com-br-5.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/suleventos-com-br.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/suleventos-com-br-1.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/suleventos-com-br-2.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/suleventos-com-br-parceiros.png",
+      },
+      {
+        src: "/projects/suleventos/screenshots/sul-eventos-o-portal-de-eventos-de-joinville-santa-catarina.png",
+        featured: true,
+      },
+    ],
+  },
+  {
+    slug: "websolutions",
+    year: "2002",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/websolutions",
+    logo: "🌐",
+    isLogoEmoji: true,
+    name: {
+      en: "Web Solutions (Vasconcellos & Marcucci)",
+      pt: "Web Solutions (Vasconcellos & Marcucci)",
+    },
+    tagline: {
+      en: "A self-built marketing site for Web Solutions, an early-career freelance partnership offering webdesign, web portals, and custom systems development.",
+      pt: "Um site de marketing construído do zero para a Web Solutions, uma parceria freelance de início de carreira oferecendo webdesign, portais web e desenvolvimento de sistemas sob medida.",
+    },
+    kicker: {
+      en: "// webdesign · freelance partnership",
+      pt: "// webdesign · parceria freelance",
+    },
+    intro: {
+      en: "A self-built marketing site for Web Solutions, an early-career freelance partnership offering webdesign, web portals, and custom systems development.",
+      pt: "Um site de marketing construído do zero para a Web Solutions, uma parceria freelance de início de carreira oferecendo webdesign, portais web e desenvolvimento de sistemas sob medida.",
+    },
+    body: {
+      en: [
         "Web Solutions was an early-career freelance partnership between Leonardo Lima de Vasconcellos and Fernando Marcucci, offering webdesign, web portal, and custom systems development services. This repository preserves the partnership's own marketing site — a self-hosted, table-based HTML portfolio typical of the early-2000s web — built to showcase completed client work and provide direct contact details for new business.",
         "The portfolio embedded three real projects: Flundi, a community site for an electronic-music mailing list; a browser-based tool for editing CSS attributes online; and a corporate site for Alpen, a textile manufacturer. Together they show the range of work the partnership took on, from community sites to internal tooling to corporate web presences.",
-        "This archive preserves the site exactly as served — the original `.htm` files, embedded images, and the CorelDraw source files used for the site design and a matching business card — kept for historical reference only."
+        "This archive preserves the site exactly as served — the original `.htm` files, embedded images, and the CorelDraw source files used for the site design and a matching business card — kept for historical reference only.",
       ],
-      "pt": [
+      pt: [
         "A Web Solutions era uma parceria freelance de início de carreira entre Leonardo Lima de Vasconcellos e Fernando Marcucci, oferecendo serviços de webdesign, portais web e desenvolvimento de sistemas sob medida. Este repositório preserva o próprio site de marketing da parceria — um portfólio HTML baseado em tabelas e auto-hospedado, típico da web do início dos anos 2000 — construído para exibir trabalhos concluídos para clientes e fornecer dados de contato diretos para novos negócios.",
         "O portfólio incorporava três projetos reais: o Flundi, um site de comunidade para uma mailing list de música eletrônica; uma ferramenta no navegador para editar atributos CSS online; e um site corporativo para a Alpen, uma fabricante têxtil. Juntos, eles mostram a amplitude do trabalho que a parceria assumia, de sites de comunidade a ferramentas internas e presenças web corporativas.",
-        "Este arquivo preserva o site exatamente como era servido — os arquivos `.htm` originais, as imagens embutidas e os arquivos-fonte do CorelDraw usados no design do site e em um cartão de visitas combinando — mantidos apenas para referência histórica."
-      ]
+        "Este arquivo preserva o site exatamente como era servido — os arquivos `.htm` originais, as imagens embutidas e os arquivos-fonte do CorelDraw usados no design do site e em um cartão de visitas combinando — mantidos apenas para referência histórica.",
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Client work portfolio",
-          "pt": "Portfólio de trabalhos para clientes"
+        heading: {
+          en: "Client work portfolio",
+          pt: "Portfólio de trabalhos para clientes",
         },
-        "body": {
-          "en": "A curated showcase of completed projects — a community site, a browser-based style editor, and a corporate textile site — demonstrated the partnership's range and built credibility with prospective clients.",
-          "pt": "Uma vitrine curada de projetos concluídos — um site de comunidade, um editor de estilos no navegador e um site corporativo têxtil — demonstrava a amplitude da parceria e construía credibilidade com potenciais clientes."
-        }
+        body: {
+          en: "A curated showcase of completed projects — a community site, a browser-based style editor, and a corporate textile site — demonstrated the partnership's range and built credibility with prospective clients.",
+          pt: "Uma vitrine curada de projetos concluídos — um site de comunidade, um editor de estilos no navegador e um site corporativo têxtil — demonstrava a amplitude da parceria e construía credibilidade com potenciais clientes.",
+        },
       },
       {
-        "heading": {
-          "en": "Direct-contact lead path",
-          "pt": "Caminho de contato direto para leads"
+        heading: {
+          en: "Direct-contact lead path",
+          pt: "Caminho de contato direto para leads",
         },
-        "body": {
-          "en": "Contact details placed alongside the work gave interested visitors an immediate route to start new business, the core purpose of a freelance marketing site.",
-          "pt": "Dados de contato colocados ao lado dos trabalhos davam aos visitantes interessados uma rota imediata para iniciar novos negócios, o propósito central de um site de marketing freelance."
-        }
+        body: {
+          en: "Contact details placed alongside the work gave interested visitors an immediate route to start new business, the core purpose of a freelance marketing site.",
+          pt: "Dados de contato colocados ao lado dos trabalhos davam aos visitantes interessados uma rota imediata para iniciar novos negócios, o propósito central de um site de marketing freelance.",
+        },
       },
       {
-        "heading": {
-          "en": "Self-produced brand presence",
-          "pt": "Presença de marca produzida internamente"
+        heading: {
+          en: "Self-produced brand presence",
+          pt: "Presença de marca produzida internamente",
         },
-        "body": {
-          "en": "A cohesive visual identity carried across the site and a matching business card, produced in-house, signaled design capability to prospects before a single brief was discussed.",
-          "pt": "Uma identidade visual coesa carregada por todo o site e em um cartão de visitas combinando, produzida internamente, sinalizava capacidade de design aos prospects antes de discutir um único briefing."
-        }
-      }
+        body: {
+          en: "A cohesive visual identity carried across the site and a matching business card, produced in-house, signaled design capability to prospects before a single brief was discussed.",
+          pt: "Uma identidade visual coesa carregada por todo o site e em um cartão de visitas combinando, produzida internamente, sinalizava capacidade de design aos prospects antes de discutir um único briefing.",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "JavaScript",
-        "icon": "/devicons/javascript-original.svg"
-      }
+        name: "JavaScript",
+        icon: "/devicons/javascript-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/websolutions/screenshots/web-solutions.png",
-        "featured": true
-      }
-    ]
+        src: "/projects/websolutions/screenshots/web-solutions.png",
+        featured: true,
+      },
+    ],
   },
   {
-    "slug": "www.leonardovasconcellos.tk",
-    "year": "2002",
-    "pinned": false,
-    "liveUrl": "https://webarchive2.leonardolimadevasconcellos.workers.dev/www.leonardovasconcellos.tk",
-    "logo": "🖥️",
-    "isLogoEmoji": true,
-    "name": {
-      "en": "Leonardo Vasconcellos — Soluções em TI",
-      "pt": "Leonardo Vasconcellos — Soluções em TI"
+    slug: "www.leonardovasconcellos.tk",
+    year: "2002",
+    pinned: false,
+    frontPage: false,
+    liveUrl:
+      "https://webarchive2.leonardolimadevasconcellos.workers.dev/www.leonardovasconcellos.tk",
+    logo: "🖥️",
+    isLogoEmoji: true,
+    name: {
+      en: "Leonardo Vasconcellos — Soluções em TI",
+      pt: "Leonardo Vasconcellos — Soluções em TI",
     },
-    "tagline": {
-      "en": "An archived early-2000s personal site for Leonardo Vasconcellos — freelance IT consultant — combining an online résumé, services brochure, and a Flash intro, restored to run in modern browsers via Ruffle.",
-      "pt": "Um site pessoal arquivado do início dos anos 2000 de Leonardo Vasconcellos — consultor de TI freelance — combinando um currículo online, um folheto de serviços e uma introdução em Flash, restaurado para rodar em navegadores modernos via Ruffle."
+    tagline: {
+      en: "An archived early-2000s personal site for Leonardo Vasconcellos — freelance IT consultant — combining an online résumé, services brochure, and a Flash intro, restored to run in modern browsers via Ruffle.",
+      pt: "Um site pessoal arquivado do início dos anos 2000 de Leonardo Vasconcellos — consultor de TI freelance — combinando um currículo online, um folheto de serviços e uma introdução em Flash, restaurado para rodar em navegadores modernos via Ruffle.",
     },
-    "kicker": {
-      "en": "// personal portfolio · archived 2002",
-      "pt": "// portfólio pessoal · arquivado em 2002"
+    kicker: {
+      en: "// personal portfolio · archived 2002",
+      pt: "// portfólio pessoal · arquivado em 2002",
     },
-    "intro": {
-      "en": "An archived early-2000s personal site for freelance IT consultant Leonardo Vasconcellos — résumé, services brochure, and a Flash intro, revived to run in modern browsers via the Ruffle emulator.",
-      "pt": "Um site pessoal arquivado do início dos anos 2000 do consultor de TI freelance Leonardo Vasconcellos — currículo, folheto de serviços e uma introdução em Flash, revivido para rodar em navegadores modernos via o emulador Ruffle."
+    intro: {
+      en: "An archived early-2000s personal site for freelance IT consultant Leonardo Vasconcellos — résumé, services brochure, and a Flash intro, revived to run in modern browsers via the Ruffle emulator.",
+      pt: "Um site pessoal arquivado do início dos anos 2000 do consultor de TI freelance Leonardo Vasconcellos — currículo, folheto de serviços e uma introdução em Flash, revivido para rodar em navegadores modernos via o emulador Ruffle.",
     },
-    "body": {
-      "en": [
+    body: {
+      en: [
         "This is an archive of one of Leonardo Vasconcellos's earliest personal websites, originally hosted on the free Brazilian host llv.brturbo.com and later pointed at leonardovasconcellos.tk. At the time, Leonardo was working as a freelance IT consultant and support technician in Santa Catarina, Brazil — administering Windows NT and Linux servers, running structured cabling jobs, and building small websites in HTML/ASP/PHP for local businesses.",
-        "The site itself doubled as both a CV and a sales brochure: a \"Curriculum Vitae\" page listing his MCP certification and a string of support/sysadmin roles (Microprint, Dualline, SCTEL, Quantic Solutions, Impacto Tecnologias), a \"Serviços\" page advertising web development, network setup, and Linux/Windows administration, and a \"Soluções\" page with a hand-built Flash diagram explaining internet connection-sharing (NAT, proxy, firewall) to prospective clients. The whole thing opens with an ActionScript-driven Flash intro — preserved here and made playable in modern browsers through the Ruffle emulator, since Flash itself has been dead since 2020."
+        'The site itself doubled as both a CV and a sales brochure: a "Curriculum Vitae" page listing his MCP certification and a string of support/sysadmin roles (Microprint, Dualline, SCTEL, Quantic Solutions, Impacto Tecnologias), a "Serviços" page advertising web development, network setup, and Linux/Windows administration, and a "Soluções" page with a hand-built Flash diagram explaining internet connection-sharing (NAT, proxy, firewall) to prospective clients. The whole thing opens with an ActionScript-driven Flash intro — preserved here and made playable in modern browsers through the Ruffle emulator, since Flash itself has been dead since 2020.',
       ],
-      "pt": [
+      pt: [
         "Este é um arquivo de um dos primeiros sites pessoais de Leonardo Vasconcellos, originalmente hospedado no host gratuito brasileiro llv.brturbo.com e depois apontado para leonardovasconcellos.tk. Na época, Leonardo trabalhava como consultor de TI freelance e técnico de suporte em Santa Catarina, Brasil — administrando servidores Windows NT e Linux, executando trabalhos de cabeamento estruturado e construindo pequenos sites em HTML/ASP/PHP para empresas locais.",
-        "O site em si funcionava tanto como um CV quanto como um folheto de vendas: uma página \"Curriculum Vitae\" listando sua certificação MCP e uma série de cargos de suporte/sysadmin (Microprint, Dualline, SCTEL, Quantic Solutions, Impacto Tecnologias), uma página \"Serviços\" anunciando desenvolvimento web, montagem de redes e administração Linux/Windows, e uma página \"Soluções\" com um diagrama em Flash feito à mão explicando o compartilhamento de conexão de internet (NAT, proxy, firewall) a potenciais clientes. Tudo abre com uma introdução em Flash movida a ActionScript — preservada aqui e tornada reproduzível em navegadores modernos por meio do emulador Ruffle, já que o próprio Flash está morto desde 2020."
-      ]
+        'O site em si funcionava tanto como um CV quanto como um folheto de vendas: uma página "Curriculum Vitae" listando sua certificação MCP e uma série de cargos de suporte/sysadmin (Microprint, Dualline, SCTEL, Quantic Solutions, Impacto Tecnologias), uma página "Serviços" anunciando desenvolvimento web, montagem de redes e administração Linux/Windows, e uma página "Soluções" com um diagrama em Flash feito à mão explicando o compartilhamento de conexão de internet (NAT, proxy, firewall) a potenciais clientes. Tudo abre com uma introdução em Flash movida a ActionScript — preservada aqui e tornada reproduzível em navegadores modernos por meio do emulador Ruffle, já que o próprio Flash está morto desde 2020.',
+      ],
     },
-    "features": [
+    features: [
       {
-        "heading": {
-          "en": "Self-hosted résumé and brochure",
-          "pt": "Currículo e folheto auto-hospedados"
+        heading: {
+          en: "Self-hosted résumé and brochure",
+          pt: "Currículo e folheto auto-hospedados",
         },
-        "body": {
-          "en": "an online CV and services site (Home, Curriculum Vitae, Serviços, Soluções) letting a freelance IT consultant pitch web development, network administration, and infrastructure work to small-business clients without a sales team",
-          "pt": "um CV e site de serviços online (Home, Curriculum Vitae, Serviços, Soluções) permitindo a um consultor de TI freelance oferecer desenvolvimento web, administração de redes e trabalho de infraestrutura a clientes de pequeno porte sem um time de vendas"
-        }
+        body: {
+          en: "an online CV and services site (Home, Curriculum Vitae, Serviços, Soluções) letting a freelance IT consultant pitch web development, network administration, and infrastructure work to small-business clients without a sales team",
+          pt: "um CV e site de serviços online (Home, Curriculum Vitae, Serviços, Soluções) permitindo a um consultor de TI freelance oferecer desenvolvimento web, administração de redes e trabalho de infraestrutura a clientes de pequeno porte sem um time de vendas",
+        },
       },
       {
-        "heading": {
-          "en": "Explanatory interactive intro",
-          "pt": "Introdução interativa e explicativa"
+        heading: {
+          en: "Explanatory interactive intro",
+          pt: "Introdução interativa e explicativa",
         },
-        "body": {
-          "en": "an animated intro and interactive network diagram explaining ADSL connection-sharing, turning a hard-to-sell technical concept into something a non-technical client could understand and approve",
-          "pt": "uma introdução animada e um diagrama de rede interativo explicando o compartilhamento de conexão ADSL, transformando um conceito técnico difícil de vender em algo que um cliente não técnico podia entender e aprovar"
-        }
+        body: {
+          en: "an animated intro and interactive network diagram explaining ADSL connection-sharing, turning a hard-to-sell technical concept into something a non-technical client could understand and approve",
+          pt: "uma introdução animada e um diagrama de rede interativo explicando o compartilhamento de conexão ADSL, transformando um conceito técnico difícil de vender em algo que um cliente não técnico podia entender e aprovar",
+        },
       },
       {
-        "heading": {
-          "en": "Preserved and revived artifact",
-          "pt": "Artefato preservado e revivido"
+        heading: {
+          en: "Preserved and revived artifact",
+          pt: "Artefato preservado e revivido",
         },
-        "body": {
-          "en": "the original ~2002 site rescued from a wget crawl with the Ruffle emulator patched in, making a 20+ year-old Flash intro play natively in today's browsers with zero plugins",
-          "pt": "o site original de ~2002 resgatado de um rastreamento wget com o emulador Ruffle acoplado, fazendo uma introdução em Flash de mais de 20 anos rodar nativamente nos navegadores de hoje sem plugins"
-        }
-      }
+        body: {
+          en: "the original ~2002 site rescued from a wget crawl with the Ruffle emulator patched in, making a 20+ year-old Flash intro play natively in today's browsers with zero plugins",
+          pt: "o site original de ~2002 resgatado de um rastreamento wget com o emulador Ruffle acoplado, fazendo uma introdução em Flash de mais de 20 anos rodar nativamente nos navegadores de hoje sem plugins",
+        },
+      },
     ],
-    "tech": [
+    tech: [
       {
-        "name": "HTML",
-        "version": "5",
-        "icon": "/devicons/html5-original.svg"
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
       },
       {
-        "name": "CSS",
-        "version": "3",
-        "icon": "/devicons/css3-original.svg"
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
       },
       {
-        "name": "JavaScript",
-        "version": "Vanilla",
-        "icon": "/devicons/javascript-original.svg"
-      }
+        name: "JavaScript",
+        version: "Vanilla",
+        icon: "/devicons/javascript-original.svg",
+      },
     ],
-    "screenshots": [
+    screenshots: [
       {
-        "src": "/projects/www.leonardovasconcellos.tk/screenshots/curriculum.png"
+        src: "/projects/www.leonardovasconcellos.tk/screenshots/curriculum.png",
       },
       {
-        "src": "/projects/www.leonardovasconcellos.tk/screenshots/home.png"
+        src: "/projects/www.leonardovasconcellos.tk/screenshots/home.png",
       },
       {
-        "src": "/projects/www.leonardovasconcellos.tk/screenshots/intro.png"
+        src: "/projects/www.leonardovasconcellos.tk/screenshots/intro.png",
       },
       {
-        "src": "/projects/www.leonardovasconcellos.tk/screenshots/servicos.png"
+        src: "/projects/www.leonardovasconcellos.tk/screenshots/servicos.png",
       },
       {
-        "src": "/projects/www.leonardovasconcellos.tk/screenshots/solucoes.png",
-        "featured": true
-      }
-    ]
-  }
+        src: "/projects/www.leonardovasconcellos.tk/screenshots/solucoes.png",
+        featured: true,
+      },
+    ],
+  },
 ];
