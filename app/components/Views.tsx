@@ -14,7 +14,7 @@ import type { Lang } from "@/data/data";
 
 /** UI copy for the generic work detail — has no home in the work catalog. */
 const copy = {
-  openLive: { en: "Open live", pt: "Abrir ao vivo" },
+  openLive: { en: "Open live", pt: "Ver Demonstração" },
   screenshots: { en: "Screenshots", pt: "Capturas de tela" },
   overview: { en: "Overview", pt: "Visão geral" },
   highlights: { en: "Highlights", pt: "Destaques" },
@@ -102,10 +102,7 @@ export function WorkDetail({ lang, id }: { lang: Lang; id: string | null }) {
           <h2 className="lv-detail-h2">
             <Images size={17} /> {copy.screenshots[lang]}
           </h2>
-          <Gallery
-            images={shots}
-            label={`screenshots · ${w.slug}`}
-          />
+          <Gallery images={shots} label={`screenshots · ${w.slug}`} />
         </section>
       )}
 
@@ -153,7 +150,8 @@ export function ArchiveView({ lang }: { lang: Lang }) {
       <p className="lv-archive-lead">{t.archiveLead}</p>
       <div className="lv-archive-grid">
         {works.map((w) => {
-          const shot = w.screenshots.find((s) => s.featured) ?? w.screenshots[0];
+          const shot =
+            w.screenshots.find((s) => s.featured) ?? w.screenshots[0];
           return (
             <Link
               key={w.slug}

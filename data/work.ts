@@ -78,8 +78,8 @@ export const WORKS: Work[] = [
     features: [
       {
         heading: {
-          en: "Built an accessibility-first engine, verified against real screen readers",
-          pt: "Construí um motor com acessibilidade em primeiro lugar, verificado contra leitores de tela reais",
+          en: "Accessibility-first game engine, verified against real screen readers",
+          pt: "Motor de jogo com acessibilidade em primeiro lugar, verificado com leitores de tela reais",
         },
         body: {
           en: '(NVDA, JAWS, VoiceOver, Narrator) and keyboard-only navigation with automated Playwright walkthroughs — turning "screen-reader compatible" into a product a blind child can actually finish alone, which is the entire reach of this social project.',
@@ -149,7 +149,7 @@ export const WORKS: Work[] = [
         src: "/projects/juca/screenshots/06-historias-do-juca.png",
       },
       {
-        src: "/projects/juca/screenshots/01-historias-do-juca.png",
+        src: "/projects/juca/screenshots/05-historias-do-juca.png",
       },
       {
         src: "/projects/juca/screenshots/02-historias-do-juca.png",
@@ -161,7 +161,7 @@ export const WORKS: Work[] = [
         src: "/projects/juca/screenshots/04-historias-do-juca.png",
       },
       {
-        src: "/projects/juca/screenshots/05-historias-do-juca.png",
+        src: "/projects/juca/screenshots/01-historias-do-juca.png",
         featured: true,
       },
     ],
@@ -852,20 +852,20 @@ export const WORKS: Work[] = [
   {
     slug: "easy-clinic",
     year: "2016",
-    pinned: false,
+    pinned: true,
     frontPage: true,
     liveUrl: "https://leonardo-vasconcellos.vercel.app/portfolio/easy-clinic",
     logo: "/projects/easy-clinic/easy-clinic-logo.svg",
     name: {
-      en: "Easy Clinic (Clínica Fácil)",
-      pt: "Easy Clinic (Clínica Fácil)",
+      en: "Easy Clinic",
+      pt: "Clínica Fácil",
     },
     tagline: {
       en: "A full-featured medical clinic management system covering patient records, appointment scheduling, prescriptions, exam tracking, and billing analytics — built for Brazilian healthcare practices.",
       pt: "Um sistema completo de gestão de clínicas médicas cobrindo prontuários, agendamento de consultas, prescrições, acompanhamento de exames e análise de faturamento — feito para consultórios de saúde brasileiros.",
     },
     kicker: {
-      en: "// clinic management system · clínica fácil",
+      en: "// clinic management system · easy clinic",
       pt: "// sistema de gestão de clínicas · clínica fácil",
     },
     intro: {
@@ -882,7 +882,7 @@ export const WORKS: Work[] = [
         "Built with **Meteor 1.4**, **MongoDB 3.2**, **Blaze**, and **Bootstrap 3**. Deployed via Docker. The UI is in Brazilian Portuguese with English and Spanish i18n support.",
       ],
       pt: [
-        "O Easy Clinic é uma plataforma completa de gestão de clínicas desenvolvida para consultórios médicos brasileiros. Ela cobre toda dimensão operacional de uma clínica de pequeno a médio porte: cadastro de pacientes com foto e validação de CPF, uma agenda de consultas em calendário com arrastar-e-soltar e visões de recurso por múltiplos médicos, um sistema completo de prontuário clínico com uma linha do tempo de atendimentos, e um motor de documentos para gerar prescrições, atestados médicos e pedidos de exame a partir de modelos reutilizáveis.",
+        "O Clínica Fácil é uma plataforma completa de gestão de clínicas desenvolvida para consultórios médicos brasileiros. Ela cobre toda dimensão operacional de uma clínica de pequeno a médio porte: cadastro de pacientes com foto e validação de CPF, uma agenda de consultas em calendário com arrastar-e-soltar e visões de recurso por múltiplos médicos, um sistema completo de prontuário clínico com uma linha do tempo de atendimentos, e um motor de documentos para gerar prescrições, atestados médicos e pedidos de exame a partir de modelos reutilizáveis.",
         "O módulo de prontuário vai além de simples anotações. Os médicos podem criar formulários de admissão personalizados usando um construtor visual de arrastar-e-soltar, solicitar exames de um catálogo autoaprendente que infere faixas de referência a partir de entradas em texto livre e as filtra por sexo e idade do paciente, e acompanhar a evolução do paciente ao longo do tempo — IMC, peso, pressão arterial, SpO₂ e frequência cardíaca — com gráficos de tendência renderizados via Chart.js.",
         "No lado do negócio, o painel exibe KPIs ao vivo (total de pacientes, consultas no mês, faturamento mensal) e um gráfico de histórico de consultas de 12 meses. Três telas dedicadas de relatório cobrem volume de consultas, perfil demográfico dos pacientes (faixas etárias, distribuição por sexo) e faturamento de produção. Lembretes automáticos de consulta são enviados por e-mail e SMS por meio de um cron job em segundo plano.",
         "O sistema é entregue em duas edições. A **edição paga** é uma aplicação reativa full-stack: multiusuário com controle de acesso por papéis (super-admin, medical_doctor, default), validação no servidor e sincronização de dados em tempo real via pub/sub. A **edição gratuita** (a pasta `rip/`) é um PWA sem backend que roda inteiramente no navegador — todas as coleções são carregadas de arquivos JSON planos para um armazenamento em memória, com persistência opcional em IndexedDB para usuários recorrentes. Ela expõe as mesmas telas e o mesmo conjunto de recursos da edição paga, o que a torna adequada para um profissional autônomo que não precisa de multiusuário ou sincronização em tempo real.",
