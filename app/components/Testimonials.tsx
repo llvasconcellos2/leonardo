@@ -9,11 +9,26 @@ import type { Lang } from "@/data/data";
 const TESTIMONIALS = [
   {
     quote: {
+      en: "Super attentive, both over WhatsApp and during the home visits he made. I recommend him. He promptly handled the demands for my website and my company's networking strategies, and he also gave personalized support to my father (an 80-year-old man), who needed a lot of attention and patience, honoring these commitments, explaining things clearly and delivering results.",
+      pt: "Super atencioso, tanto através do WhatsApp quanto nas visitas a domicílio que ele fez. Recomendo. Ele atendeu prontamente nas demandas do meu site e estratégias de network da minha empresa, além de também ter feito atendimentos personalizados ao meu pai (um senhor de 80 anos), que precisava de muita atenção e paciência, honrando com estes compromissos, sendo esclarecedor e entregando resultado.",
+    },
+    name: "Lauro Neto",
+    role: { en: "Owner at Ritmo Saúde", pt: "Proprietário na Ritmo Saúde" },
+    rel: {
+      en: "Was Leonardo's client",
+      pt: "Foi cliente do Leonardo",
+    },
+    date: "Oct 2026",
+    avatar: "/assets/lauro.jpeg",
+    source: "LinkedIn",
+  },
+  {
+    quote: {
       en: "Leonardo is a great professional, always eager to get to work and face challenges. He is very skilled both on frontend and backend development, as well as development processes and architecture. He is always open for work discussions, giving awesome ideas for the job in question. As a person, he is very passionate on what he does and he gives a pleasant, light and funny conversation every time we talk. I highly recommend Leonardo's work.",
       pt: "Leonardo é um grande profissional, sempre disposto a trabalhar e enfrentar desafios. Ele é muito habilidoso tanto no desenvolvimento frontend quanto backend, assim como em processos de desenvolvimento e arquitetura. Ele está sempre aberto a discussões sobre o trabalho, trazendo ótimas ideias para o assunto em questão. Como pessoa, ele é muito apaixonado pelo que faz e proporciona uma conversa agradável, leve e divertida sempre que conversamos. Eu recomendo muito o trabalho do Leonardo.",
     },
     name: "Thiago LP",
-    role: "Senior Software Engineer",
+    role: { en: "Senior Software Engineer", pt: "Engenheiro de Software Sênior" },
     rel: {
       en: "Worked with Leonardo on the same team",
       pt: "Trabalhou com Leonardo no mesmo time",
@@ -68,7 +83,7 @@ function TestimonialCard({
         <span className="lv-quote-who">
           <span className="lv-quote-name">{t.name}</span>
           <span className="lv-quote-role">
-            {t.role} · {t.rel[lang]}
+            {t.role[lang]} · {t.rel[lang]}
           </span>
         </span>
         <span className="lv-quote-meta">
