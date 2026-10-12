@@ -103,6 +103,7 @@ export function Nav({ lang }: { lang: Lang }) {
             <Link
               key={l}
               href={l === lang ? "#" : switchHref}
+              scroll={false}
               className={`lv-lang-b ${lang === l ? "is-on" : ""}`}
             >
               {l === "en" ? "🇺🇸" : "🇧🇷"}
