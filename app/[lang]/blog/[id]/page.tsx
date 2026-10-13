@@ -7,6 +7,7 @@ import { MiniFooter } from "@/app/components/ContactFooter";
 import { txt, postSlug } from "@/app/lib/blog";
 import { DEFAULT_OG_IMAGE } from "@/app/[lang]/layout";
 import type { Lang } from "@/data/data";
+import { alternatesFor, pageUrl } from "@/app/lib/seo";
 
 export function generateStaticParams({ params }: { params: { lang: string } }) {
   return BLOG_POSTS.map((p) => ({ id: postSlug(p, params.lang as Lang) }));
@@ -29,15 +30,22 @@ export async function generateMetadata({
   const description = txt(post.excerpt, l);
   // Blog articles share their featured image; fall back to the site default.
   const image = post.featuredImage ?? DEFAULT_OG_IMAGE;
+  // Canonical always uses this locale's slug, so /en/blog/<pt-slug>/ folds into
+  // /en/blog/<en-slug>/ instead of being indexed as a duplicate.
+  const alternates = alternatesFor(l, {
+    en: `blog/${postSlug(post, "en")}`,
+    pt: `blog/${postSlug(post, "pt")}`,
+  });
   return {
     title,
     description,
+    alternates,
     openGraph: {
       type: "article",
       siteName: "Leonardo Vasconcellos",
       title,
       description,
-      url: `/${l}/blog/${postSlug(post, l)}`,
+      url: pageUrl(l, `blog/${postSlug(post, l)}`),
       publishedTime: post.date.toISOString(),
       modifiedTime: post.modified.toISOString(),
       images: [{ url: image, alt: txt(post.title, l) }],

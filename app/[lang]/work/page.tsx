@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArchiveView } from "@/app/components/Views";
 import { MiniFooter } from "@/app/components/ContactFooter";
 import type { Lang } from "@/data/data";
+import { alternatesFor } from "@/app/lib/seo";
 
 const titles: Record<Lang, string> = {
   en: "Work — Leonardo Vasconcellos",
@@ -14,7 +15,10 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  return { title: titles[lang as Lang] ?? titles.en };
+  return {
+    title: titles[lang as Lang] ?? titles.en,
+    alternates: alternatesFor(lang as Lang, "work"),
+  };
 }
 
 export default async function WorkPage({

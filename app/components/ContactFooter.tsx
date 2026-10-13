@@ -24,7 +24,7 @@ export function ContactFooter({ lang }: { lang: Lang }) {
           >
             {t.contact} <Mail size={16} />
           </a>
-          <a href="/cv.pdf" className="lv-btn lv-btn-ghost">
+          <a href={`/${lang}/resume`} className="lv-btn lv-btn-ghost">
             {t.resume} <Download size={16} />
           </a>
         </div>

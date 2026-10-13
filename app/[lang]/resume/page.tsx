@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ResumePage } from "@/app/components/ResumePage";
 import type { Lang } from "@/data/data";
+import { alternatesFor } from "@/app/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -9,6 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params;
   return {
+    alternates: alternatesFor(lang as Lang, "resume"),
     title:
       lang === "pt"
         ? "Currículo — Leonardo Vasconcellos · Engenheiro Full-Stack"

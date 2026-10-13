@@ -7,6 +7,7 @@ import { Testimonials } from "@/app/components/Testimonials";
 import { ContactFooter } from "@/app/components/ContactFooter";
 import { Parallax } from "@/app/components/Parallax";
 import type { Lang } from "@/data/data";
+import { alternatesFor } from "@/app/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,6 +16,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params;
   return {
+    alternates: alternatesFor(lang as Lang, ""),
     title: "Leonardo Vasconcellos — Full-Stack Engineer",
     description:
       lang === "pt"

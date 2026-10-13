@@ -4,6 +4,7 @@ import { BlogIndex } from "@/app/components/BlogIndex";
 import { MiniFooter } from "@/app/components/ContactFooter";
 import { BLOG_T, isNotBlogPath } from "@/app/lib/blog";
 import type { Lang } from "@/data/data";
+import { alternatesFor } from "@/app/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,6 +16,7 @@ export async function generateMetadata({
   return {
     title: `${BLOG_T[l].title} — Leonardo Vasconcellos`,
     description: BLOG_T[l].lead,
+    alternates: alternatesFor(l, "blog"),
   };
 }
 
