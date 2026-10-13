@@ -35,6 +35,24 @@
   border-color: var(--border-strong);
   transform: translateY(-3px);
 }
+.lv-post-figure {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--brand-deep);
+  border: 1px solid var(--border);
+}
+.lv-post-figure img,
+.lv-post-figure .lv-lowpoly {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .lv-post-title {
   font-family: var(--font-display);
   font-weight: 500;

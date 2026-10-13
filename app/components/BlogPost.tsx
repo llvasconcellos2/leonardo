@@ -2,11 +2,30 @@ import "./BlogPost.css";
 import "./WritingSection.css";
 
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Kicker } from "./Primitives";
-import { PostCard } from "./WritingSection";
 import { POSTS, T } from "@/data/data";
-import type { Lang } from "@/data/data";
+import type { Lang, Post } from "@/data/data";
+
+function PostCard({ post, lang }: { post: Post; lang: Lang }) {
+  const t = T[lang];
+  return (
+    <Link href={`/${lang}/writing/${post.id}`} className="lv-post">
+      <Kicker as="p">{post.kicker[lang]}</Kicker>
+      <h3 className="lv-post-title">{post.title[lang]}</h3>
+      <p className="lv-post-excerpt">{post.excerpt[lang]}</p>
+      <div className="lv-post-meta">
+        <span>{post.date}</span>
+        <span>
+          {post.read} {t.minRead}
+        </span>
+        <span className="lv-link-arrow lv-post-read">
+          {t.readMore} <ArrowUpRight size={12} />
+        </span>
+      </div>
+    </Link>
+  );
+}
 
 export function BlogPost({ lang, id }: { lang: Lang; id: string | null }) {
   const post = POSTS.find((x) => x.id === id) || POSTS[0];

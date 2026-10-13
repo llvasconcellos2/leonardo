@@ -1192,7 +1192,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "razr",
       "xt910",
     ],
-    "pinned": false,
+    "pinned": true,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -5802,7 +5802,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "TurboVNC",
       "libjpeg-turbo",
     ],
-    "pinned": false,
+    "pinned": true,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
@@ -6247,7 +6247,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "telnet",
       "ssh",
     ],
-    "pinned": false,
+    "pinned": true,
     "author": {
       "name": "Leonardo Lima de Vasconcellos",
       "email": "leonardolimadevasconcellos@gmail.com",
