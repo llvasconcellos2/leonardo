@@ -10,7 +10,7 @@
 }
 .lv-about-portrait {
   flex: none;
-  width: clamp(120px, 16vw, 190px);
+  width: clamp(120px, 20vw, 300px);
   aspect-ratio: 1;
   border-radius: var(--radius-lg);
   overflow: hidden;

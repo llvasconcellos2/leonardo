@@ -74,25 +74,58 @@ const SKILLS = [
 
 const EDU = [
   {
-    y: "2005",
+    y: "2017",
     en: [
-      "Started shipping software",
-      "First production code — Flash / Flex era.",
+      "Bachelor's Degree in Computer Science",
+      "Finished at UNICESUMAR the course started at UDESC.",
     ],
     pt: [
-      "Comecei a entregar software",
-      "Primeiro código em produção — era Flash / Flex.",
+      "Tecnólogo em Análise e Desenvolvimento de Sistemas",
+      "Terminei na UNICESUMAR o curso que começei na UDESC.",
+    ],
+  },
+  {
+    y: "2019",
+    en: [
+      "Postgraduate in Project Management",
+      "UNICESUMAR - Universidade Centro Superior Maringá.",
+    ],
+    pt: [
+      "Pós-graduação em Gestão de Projetos",
+      "UNICESUMAR - Universidade Centro Superior Maringá.",
+    ],
+  },
+  {
+    y: "2022",
+    en: [
+      "Master's Degree in Software Engineering - Incomplete",
+      "Universidade Tecnológica Federal do Paraná — UTFPR.",
+    ],
+    pt: [
+      "Mestrado em Engenharia de Software - Incompleto",
+      "Universidade Tecnológica Federal do Paraná — UTFPR.",
     ],
   },
   {
     y: "2014",
     en: [
-      "Technical lead, Doctors Without Borders",
-      "Selected from 1,000+ for the Ebola-response records system.",
+      "TOEFL - Test of English as a Foreign Language",
+      "Score: 617 of 677 - C1 Level.",
     ],
     pt: [
-      "Líder técnico, Médicos Sem Fronteiras",
-      "Selecionado entre 1.000+ para o sistema de prontuários do Ebola.",
+      "TOEFL - Test of English as a Foreign Language",
+      "Score: 617 of 677 - Nível C1.",
+    ],
+  },
+  {
+    y: "2000",
+    en: [
+      "Microsoft Certified Professional - MCP",
+      "Microsoft - Windows NT.",
+    ],
+    pt: [
+      "Microsoft Certified Professional - MCP",
+      "Microsoft - Windows NT.",
     ],
   },
 ];
@@ -117,8 +150,8 @@ const STACK = [
 ];
 
 const ERAS = [
-  { y: "2005", l: "Flash / Flex" },
-  { y: "2009", l: "PHP" },
+  { y: "2002", l: "ASP / PHP" },
+  { y: "2009", l: "Flash / Flex" },
   { y: "2012", l: "Java / Android" },
   { y: "2016", l: ".NET" },
   { y: "2021", l: "React / Next · AI" },
@@ -187,7 +220,8 @@ export function AboutSection({ lang }: { lang: Lang }) {
           <div className="lv-acc-group">
             {SKILLS.map((s, i) => (
               <Accordion
-                open={i === 0}
+                // open={i === 0}
+                open = {true}
                 key={i}
                 title={s[lang][0]}
                 body={s[lang][1]}

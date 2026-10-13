@@ -10,7 +10,7 @@ import type { Lang } from "@/data/data";
 
 const heroCopy = {
   en: {
-    kicker: "// full-stack engineer · since 2005",
+    kicker: "// full-stack engineer · since 2002",
     tagline:
       "From Doctors Without Borders to smart cities — two decades building the software people depend on.",
     subline:
@@ -19,7 +19,7 @@ const heroCopy = {
     cta2: "Selected work",
   },
   pt: {
-    kicker: "// engenheiro full-stack · desde 2005",
+    kicker: "// engenheiro full-stack · desde 2002",
     tagline:
       "De Médicos Sem Fronteiras a cidades inteligentes — duas décadas construindo o software de que as pessoas dependem.",
     subline:
