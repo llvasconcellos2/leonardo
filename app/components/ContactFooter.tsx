@@ -53,7 +53,8 @@ export function ContactFooter({ lang }: { lang: Lang }) {
             >
               <Briefcase size={17} />
             </a>
-            <a href="/rss.xml" aria-label="Feed">
+            {/* <a href="/rss.xml" aria-label="Feed"> */}
+            <a href="#" aria-label="Feed">
               <Rss size={17} />
             </a>
           </span>
