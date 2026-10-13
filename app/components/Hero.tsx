@@ -15,7 +15,7 @@ const heroCopy = {
       "From Doctors Without Borders to smart cities — two decades building the software people depend on.",
     subline:
       "I take tangled, mission-critical systems and make them scale: clean, fast, built to last.",
-    cta: "View résumé",
+    cta: "About me",
     cta2: "Selected work",
   },
   pt: {
@@ -24,7 +24,7 @@ const heroCopy = {
       "De Médicos Sem Fronteiras a cidades inteligentes — duas décadas construindo o software de que as pessoas dependem.",
     subline:
       "Eu transformo sistemas complexos e essenciais em soluções escaláveis: limpas, rápidas e feitas para durar.",
-    cta: "Ver currículo",
+    cta: "Sobre mim",
     cta2: "Trabalho selecionado",
   },
 };
