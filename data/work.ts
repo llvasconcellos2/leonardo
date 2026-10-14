@@ -39,6 +39,123 @@ export interface Work {
 
 export const WORKS: Work[] = [
   {
+    slug: "leonardo",
+    year: "2026",
+    pinned: false,
+    frontPage: false,
+    liveUrl: "https://leonardo-vasconcellos.vercel.app/",
+    logo: "/projects/leonardo/leonardo-logo.svg",
+    name: {
+      en: "Leonardo Vasconcellos — Portfolio",
+      pt: "Leonardo Vasconcellos — Portfólio",
+    },
+    tagline: {
+      en: "My bilingual home base, a senior full-stack engineer: portfolio, blog and resume built around mission-critical systems where failure has real consequences.",
+      pt: "Minha base bilíngue, de engenheiro full-stack sênior: portfólio, blog e currículo construídos em torno de sistemas de missão crítica, onde a falha tem consequências reais.",
+    },
+    kicker: {
+      en: "// personal portfolio · leonardo vasconcellos",
+      pt: "// portfólio pessoal · leonardo vasconcellos",
+    },
+    intro: {
+      en: "A bilingual (EN/PT-BR) portfolio, blog and resume for a senior full-stack engineer with two decades of mission-critical work — from Doctors Without Borders to Brazil's top-ranked smart city — hand-built as a fast, dark-only site.",
+      pt: "Um portfólio, blog e currículo bilíngue (EN/PT-BR) de um engenheiro full-stack sênior com duas décadas de trabalho em sistemas de missão crítica — dos Médicos Sem Fronteiras à cidade inteligente mais bem ranqueada do Brasil — construído à mão como um site rápido e somente escuro.",
+    },
+    body: {
+      en: [
+        "This is the personal website of Leonardo Lima de Vasconcellos, a developer who has been building for the web since 2005. Over the years, he has worked on around 70 projects across five eras of web technology, from Flash and Flex to AI-assisted development. The site is organized around a simple idea: introduce the person first, then share his writing, showcase his work, and make it easy to get in touch. The homepage follows that same flow, moving from the hero section through the about page, selected projects, recent posts, client testimonials, and finally the contact section.",
+        "Writing is at the heart of the site. The blog brings together 44 posts migrated from a previous website that surpassed one million views. The original comments and images have been preserved, while the content is now available in both English and Portuguese, with localized URLs and syntax-highlighted code examples.",
+        "The portfolio features 46 projects, displayed in a compact grid that opens into detailed case studies. Some projects also have dedicated showcase pages, including Easy Clinic / Clínica Fácil and Histórias do Juca. When original screenshots were no longer available, seed-based low-poly artwork was generated to keep the archive visually consistent. A print-friendly resume completes the experience for anyone interested in working with Leonardo.",
+        "Behind the scenes, the site uses a dark-only theme and an OKLCH-based color system built around three clearly defined tiers, each with a specific purpose. Exo, Sora, and JetBrains Mono are self-hosted, and the CSS is written by hand for each component, without relying on a utility framework. Pages are server-rendered by default, and every route is pre-generated in both languages. Each page also includes its own SEO metadata, from canonical URLs and language alternates to sitemap and robots configuration, along with social sharing cards.",
+      ],
+      pt: [
+        "Este é o site pessoal de Leonardo Lima de Vasconcellos, um desenvolvedor que constrói para a web desde 2005. Ao longo dos anos, trabalhou em cerca de 70 projetos em cinco eras da tecnologia web, do Flash e Flex ao desenvolvimento assistido por IA. O site é organizado em torno de uma ideia simples: apresentar primeiro a pessoa, depois compartilhar seus textos, mostrar seu trabalho e facilitar o contato. A página inicial segue esse mesmo fluxo, indo da seção principal para a página sobre, projetos selecionados, posts recentes, depoimentos de clientes e, por fim, a seção de contato.",
+        "A escrita está no centro do site. O blog reúne 44 posts migrados de um site anterior que ultrapassou um milhão de visualizações. Os comentários e imagens originais foram preservados, enquanto o conteúdo agora está disponível em inglês e português, com URLs localizadas e exemplos de código com destaque de sintaxe.",
+        "O portfólio traz 46 projetos, exibidos em uma grade compacta que se abre em estudos de caso detalhados. Alguns projetos também têm páginas de destaque dedicadas, incluindo Easy Clinic / Clínica Fácil e Histórias do Juca. Quando as capturas de tela originais não estavam mais disponíveis, foram geradas artes low-poly baseadas em seed para manter o arquivo visualmente consistente. Um currículo próprio para impressão completa a experiência para quem tem interesse em trabalhar com o Leonardo.",
+        "Por trás das cenas, o site usa um tema somente escuro e um sistema de cores baseado em OKLCH, construído em torno de três camadas bem definidas, cada uma com um propósito específico. Exo, Sora e JetBrains Mono são hospedadas localmente, e o CSS é escrito à mão para cada componente, sem depender de um framework de utilitários. As páginas são renderizadas no servidor por padrão, e toda rota é pré-gerada nos dois idiomas. Cada página também inclui seus próprios metadados de SEO, de URLs canônicas e alternativas de idioma à configuração de sitemap e robots, além de cards para compartilhamento social.",
+      ],
+    },
+    features: [
+      {
+        heading: {
+          en: "Bilingual, search-ready publishing",
+          pt: "Publicação bilíngue e pronta para buscadores",
+        },
+        body: {
+          en: "Every page, project and post exists in English and Brazilian Portuguese, with localized slugs, hreflang, canonical URLs and a sitemap — so the same content reaches clients and recruiters in both markets and gets indexed in each.",
+          pt: "Cada página, projeto e post existe em inglês e português brasileiro, com slugs localizados, hreflang, URLs canônicas e sitemap — para que o mesmo conteúdo alcance clientes e recrutadores nos dois mercados e seja indexado em cada um.",
+        },
+      },
+      {
+        heading: {
+          en: "Legacy blog brought back to life",
+          pt: "Blog legado trazido de volta à vida",
+        },
+        body: {
+          en: "A migration pipeline turned an old blog database dump — 44 posts with comments, images and broken encoding — into clean, versioned content with an English translation, so writing that once passed 1,000,000 views keeps bringing in traffic instead of disappearing.",
+          pt: "Um pipeline de migração transformou o dump de um banco de dados de blog antigo — 44 posts com comentários, imagens e codificação quebrada — em conteúdo limpo e versionado, com tradução para o inglês, para que textos que já passaram de 1.000.000 de visualizações continuem trazendo tráfego em vez de desaparecer.",
+        },
+      },
+      {
+        heading: {
+          en: "Two decades of work made verifiable",
+          pt: "Duas décadas de trabalho tornadas verificáveis",
+        },
+        body: {
+          en: "A 46-project archive with dense browsing, in-depth case studies, dedicated showcase pages and generated artwork for projects that lost their screenshots — turning discontinued work into proof a hiring manager can check in minutes.",
+          pt: "Um arquivo de 46 projetos com navegação densa, estudos de caso aprofundados, páginas de destaque dedicadas e arte gerada para projetos que perderam suas capturas de tela — transformando trabalhos descontinuados em prova que um gestor de contratação verifica em minutos.",
+        },
+      },
+    ],
+    tech: [
+      {
+        name: "TypeScript",
+        version: "5.x",
+        icon: "/devicons/typescript-original.svg",
+      },
+      {
+        name: "HTML",
+        version: "5",
+        icon: "/devicons/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        version: "3",
+        icon: "/devicons/css3-original.svg",
+      },
+      {
+        name: "Node.js",
+        version: "scripts",
+        icon: "/devicons/nodejs-original.svg",
+      },
+      {
+        name: "Next.js",
+        version: "16.2.7",
+        icon: "/devicons/nextjs-original.svg",
+      },
+      {
+        name: "React",
+        version: "19.2.4",
+        icon: "/devicons/react-original.svg",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/leonardo/screenshots/screenshot-4-blogindex-desktop.png",
+      },
+      {
+        src: "/projects/leonardo/screenshots/screenshot-5-blogarticle-desktop.png",
+      },
+      {
+        src: "/projects/leonardo/screenshots/screenshot-6-ec-en-desktop.png",
+      },
+      {
+        src: "/projects/leonardo/screenshots/screenshot-1-home-desktop.png",
+        featured: true,
+      },
+    ],
+  },
+  {
     slug: "juca",
     year: "2026",
     pinned: false,
